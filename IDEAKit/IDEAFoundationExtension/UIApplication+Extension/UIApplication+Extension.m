@@ -11,7 +11,6 @@
 
 #if __has_include(<YYKit/YYKit.h>)
 #elif __has_include("YYKit/YYKit.h")
-#elif __has_include("YYKit.h")
 #else
 + (BOOL)isAppExtension {
    static BOOL isAppExtension = NO;

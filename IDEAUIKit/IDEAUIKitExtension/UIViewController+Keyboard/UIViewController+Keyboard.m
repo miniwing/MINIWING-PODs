@@ -8,8 +8,8 @@
 
 #import "UIViewController+Keyboard.h"
 
-UIKIT_EXTERN NSString *const kAnimateKeyboardOpen  = @"keyboard.open";
-UIKIT_EXTERN NSString *const kAnimateKeyboarClose  = @"keyboard.close";
+//UIKIT_EXTERN NSString *const kAnimateKeyboardOpen  = @"keyboard.open";
+//UIKIT_EXTERN NSString *const kAnimateKeyboarClose  = @"keyboard.close";
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wincomplete-implementation"

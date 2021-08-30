@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSAttributedString (Shortcuts)
 
-#if FOUNDATION_EXTENSION
-#else /* FOUNDATION_EXTENSION */
+#if __has_include(<FoundationExtension/FoundationExtension.h>)
+#elif __has_include("FoundationExtension/FoundationExtension.h")
+#else
 + (id)attributedString {
    
     return [[self alloc] init];

@@ -11,8 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * const kAnimateKeyboardOpen;
-UIKIT_EXTERN NSString * const kAnimateKeyboarClose;
+//UIKIT_EXTERN NSString * const kAnimateKeyboardOpen;
+//UIKIT_EXTERN NSString * const kAnimateKeyboarClose;
 
 @interface UIView (Keyboard)
 

@@ -17,9 +17,6 @@
 #elif __has_include("FoundationExtension/FoundationExtension.h")
 #  import "FoundationExtension/FoundationExtension.h"
 #  define FOUNDATION_EXTENSION                                       (1)
-#elif __has_include("FoundationExtension.h")
-#  import "FoundationExtension.h"
-#  define FOUNDATION_EXTENSION                                       (1)
 #else
 #  define FOUNDATION_EXTENSION                                       (0)
 #endif
