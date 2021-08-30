@@ -1,0 +1,61 @@
+NAME                             NORMAL      NIGHT
+
+appTint                          #005F81FF   #409CC8FF
+
+// NavigationBar 配色
+appNavigationBarTitle            #FFFFFFFF   #FFFFFFFF
+appNavigationBarTint             #FFFFFFFF   #FFFFFFFF
+appNavigationBarBackground       #005F81FF   #409CC8FF
+
+// Tabbar 配色
+appTabbarBackground              #FFFFFFFF   #1C1C1EFF
+appTabbarTint                    #005F81FF   #409CC8FF
+appTabbarUnselected              #1C1C1E99   #FFFFFF99
+
+text                             #000000EE   #FFFFFFEE
+switchOn                         #000000EE   #FFFFFFEE
+
+////////////////////////////////////////////////////////
+translucentBackground            #00000033   #FFFFFF7A
+
+label                            #000000FF   #FFFFFFFF
+secondaryLabel                   #3C3C4399   #EBEBF599
+tertiaryLabel                    #3C3C434C   #EBEBF54C
+quaternaryLabel                  #3C3C432D   #EBEBF52D
+systemFill                       #78788033   #7878805B
+secondarySystemFill              #78788028   #78788051
+tertiarySystemFill               #7676801E   #7676803D
+quaternarySystemFill             #74748014   #7676802D
+placeholderText                  #3C3C434C   #EBEBF54C
+systemBackground                 #FFFFFFFF   #000000FF
+secondarySystemBackground        #F2F2F7FF   #1C1C1EFF
+tertiarySystemBackground         #FFFFFFFF   #2C2C2EFF
+systemGroupedBackground          #F2F2F7FF   #000000FF
+secondarySystemGroupedBackground #FFFFFFFF   #1C1C1EFF
+tertiarySystemGroupedBackground  #F2F2F7FF   #2C2C2EFF
+separator                        #3C3C4349   #54545899
+opaqueSeparator                  #C6C6C8FF   #38383AFF
+link                             #007AFFFF   #0984FFFF
+darkText                         #000000FF   #000000FF
+lightText                        #FFFFFF99   #FFFFFF99
+
+systemBlue                       #007AFFFF   #0A84FFFF
+systemGreen                      #34C759FF   #30D158FF
+systemIndigo                     #5856D6FF   #5E5CE6FF
+systemOrange                     #FF9500FF   #FF9F0AFF
+systemPink                       #FF2D55FF   #FF375FFF
+systemPurple                     #AF52DEFF   #BF5AF2FF
+systemRed                        #FF3B30FF   #FF453AFF
+systemTeal                       #5AC8FAFF   #64D2FFFF
+systemYellow                     #FFCC00FF   #FFD60AFF
+
+systemGray                       #8E8E93FF   #8E8E93FF
+systemGray2                      #AEAEB2FF   #636366FF
+systemGray3                      #C7C7CCFF   #48484AFF
+systemGray4                      #D1D1D6FF   #3A3A3CFF
+systemGray5                      #E5E5EAFF   #2C2C2EFF
+systemGray6                      #F2F2F7FF   #1C1C1EFF
+
+////////////////////////////////////////////////////////
+darkGray                         #555555AA   #AAAAAAAA
+lightGray                        #AAAAAAAA   #555555AA

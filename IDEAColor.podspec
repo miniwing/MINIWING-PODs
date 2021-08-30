@@ -1,0 +1,1 @@
+IDEAColor/IDEAColor.podspec

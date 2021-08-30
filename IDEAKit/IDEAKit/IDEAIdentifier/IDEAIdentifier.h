@@ -1,0 +1,26 @@
+//
+//  IDEAIdentifier.h
+//  IDEAKit
+//
+//  Created by Harry on 2019/9/30.
+//  Copyright © 2019 Harry. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface IDEAIdentifier : NSObject
+
++ (NSString *)scheme;
++ (NSString *)schemePrefix;
+
++ (NSString *)identifier;
++ (NSString *)identifierGroup;
++ (NSString *)identifierWidget;
+
++ (NSString *)appURL;
+
+@end
+
+NS_ASSUME_NONNULL_END

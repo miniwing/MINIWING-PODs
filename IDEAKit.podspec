@@ -1,0 +1,1 @@
+IDEAKit/IDEAKit.podspec

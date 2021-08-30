@@ -1,0 +1,1 @@
+IDEAUIVendor/IDEAUIVendor.podspec

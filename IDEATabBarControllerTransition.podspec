@@ -1,0 +1,1 @@
+IDEATabBarControllerTransition/IDEATabBarControllerTransition.podspec
