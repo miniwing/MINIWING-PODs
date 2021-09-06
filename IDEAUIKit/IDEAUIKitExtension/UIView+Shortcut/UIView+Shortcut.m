@@ -1,6 +1,6 @@
 //
 //  UIView+Animated.m
-//  Idea
+//  UIView+Shortcut
 //
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.

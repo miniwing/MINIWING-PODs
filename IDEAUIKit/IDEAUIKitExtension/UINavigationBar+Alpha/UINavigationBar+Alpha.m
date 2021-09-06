@@ -1,6 +1,6 @@
 //
 //  UINavigationBar+Alpha.m
-//  IDEAUIKit
+//  UINavigationBar+Alpha
 //
 //  Created by Harry on 2020/1/8.
 //  Copyright © 2020 Harry. All rights reserved.

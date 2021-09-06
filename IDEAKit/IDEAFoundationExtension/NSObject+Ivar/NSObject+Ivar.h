@@ -5,7 +5,7 @@
 //  Created by Harry on 14-8-12.
 //  Copyright (c) 2014年 Idea.Mobi. All rights reserved.
 //
-//  Mail:iidioter@gmail.com
+//  Mail:miniwing.hz@gmail.com
 //  TEL :+(852)53054612
 //
 

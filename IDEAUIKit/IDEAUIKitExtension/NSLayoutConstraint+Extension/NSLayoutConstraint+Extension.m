@@ -1,6 +1,6 @@
 //
 //  NSLayoutConstraint+Extension.m
-//  IDEAKit
+//  NSLayoutConstraint+Extension
 //
 //  Created by Harry on 2021/6/14.
 //

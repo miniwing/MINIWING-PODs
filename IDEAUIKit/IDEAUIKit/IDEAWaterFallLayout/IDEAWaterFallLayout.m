@@ -1,6 +1,6 @@
 //
 //  IDEAWaterFallLayout.m
-//  IDEAKit
+//  IDEAWaterFallLayout
 //
 //  Created by Harry on 2017/5/18.
 //  Copyright © 2017年 . All rights reserved.

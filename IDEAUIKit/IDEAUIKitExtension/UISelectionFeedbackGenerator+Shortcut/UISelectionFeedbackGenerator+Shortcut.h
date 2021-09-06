@@ -1,6 +1,6 @@
 //
 //  UISelectionFeedbackGenerator+Shortcut.h
-//  IDEAUIKit
+//  UISelectionFeedbackGenerator+Shortcut
 //
 //  Created by Harry on 2021/7/21.
 //

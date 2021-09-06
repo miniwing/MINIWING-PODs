@@ -1,6 +1,6 @@
 //
 //  IDEAWaterFallLayout.h
-//  IDEAKit
+//  IDEAWaterFallLayout
 //
 //  Copyright © 2017年 . All rights reserved.
 //

@@ -1,6 +1,6 @@
 //
 //  UIWindow+SafeArea.m
-//  IDEAUIKit
+//  UIWindow+SafeArea
 //
 //  Created by Harry on 2020/1/13.
 //

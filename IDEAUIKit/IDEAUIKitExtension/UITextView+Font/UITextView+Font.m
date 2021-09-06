@@ -1,6 +1,6 @@
 //
 //  UITextView+Font.m
-//  IDEAUIKit
+//  UITextView+Font
 //
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.

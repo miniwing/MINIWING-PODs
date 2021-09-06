@@ -1,6 +1,6 @@
 //
 //  UINavigationController+TabBar.h
-//  IDEAUIKit
+//  UINavigationController+TabBar
 //
 //  Created by Harry on 2019/9/26.
 //  Copyright © 2019 Harry. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  MBProgressHUD+Extend.h
-//  IDEAUIKit
+//  MBProgressHUD+Extend
 //
 //  Created by Harry on 15/11/10.
 //  Copyright © 2015年 Harry. All rights reserved.

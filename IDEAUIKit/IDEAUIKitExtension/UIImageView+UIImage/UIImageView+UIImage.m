@@ -1,6 +1,6 @@
 //
 //  UIImageView+UIImage.m
-//  IDEAUIKit
+//  UIImageView+UIImage
 //
 //  Created by Harry on 16/3/2.
 //  Copyright © 2016年 Harry. All rights reserved.

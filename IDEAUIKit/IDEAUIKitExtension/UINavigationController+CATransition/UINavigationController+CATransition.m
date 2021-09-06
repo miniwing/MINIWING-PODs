@@ -1,6 +1,6 @@
 //
 //  UINavigationController+CATransition.m
-//  CFPushVCTransition
+//  UINavigationController+CATransition
 //
 //  Created by Peak on 17/3/24.
 //  Copyright © 2017年 Peak. All rights reserved.
@@ -11,7 +11,9 @@
 
 //#define kTransitionDuration 0.8
 
-#define kTransitionDuration               0.25 /* UIAViewAnimationDefaultDuraton */
+//#define kTransitionDuration               0.25 /* UIAViewAnimationDefaultDuraton */
+
+#define kTransitionDuration               UIAViewAnimationDefaultDuraton
 
 NSString *getCATransitionTypeStringWithCATransitionType(UICATransitionType type) {
    switch (type) {

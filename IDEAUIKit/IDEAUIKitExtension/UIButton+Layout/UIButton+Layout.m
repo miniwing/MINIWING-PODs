@@ -1,6 +1,6 @@
 //
 //  UIButton+Layout.m
-//  Button
+//  UIButton+Layout
 //
 //  Created by chh on 2018/1/2.
 //  Copyright © 2018年 chh. All rights reserved.

@@ -1,11 +1,11 @@
 //
 //  UILabel+Font.h
-//  IDEAUIKit
+//  UILabel+Font
 //
 //  Created by Harry on 15/1/16.
 //  Copyright (c) 2015年 Harry. All rights reserved.
 //
-//  Mail:iidioter@gmail.com
+//  Mail:miniwing.hz@gmail.com
 //  TEL :+(852)53054612
 //
 

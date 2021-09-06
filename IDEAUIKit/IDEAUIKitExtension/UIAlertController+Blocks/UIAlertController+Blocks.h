@@ -1,6 +1,6 @@
 //
 //  UIAlertController+Blocks.h
-//  UIAlertControllerBlocks
+//  UIAlertController+Blocks
 //
 //  Created by Ryan Maxwell on 11/09/14.
 //

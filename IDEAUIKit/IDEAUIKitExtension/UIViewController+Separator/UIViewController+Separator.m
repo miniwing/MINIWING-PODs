@@ -1,6 +1,6 @@
 //
 //  UIViewController+Separator.m
-//  Interview
+//  UIViewController+Separator
 //
 //  Created by Harry on 2021/02/25.
 //  Copyright © 2021 Harry. All rights reserved.

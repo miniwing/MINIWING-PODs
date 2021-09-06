@@ -1,6 +1,6 @@
 //
 //  UIView+Radius.m
-//  IDEAUIKit
+//  UIView+Radius
 //
 //  Created by Harry on 15/1/17.
 //  Copyright (c) 2015年 Harry. All rights reserved.

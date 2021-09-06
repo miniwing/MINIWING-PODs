@@ -1,6 +1,6 @@
 //
 //  UILabel+Animate.h
-//  IDEAUIKit
+//  UILabel+Animate
 //
 //  Created by Harry on 2021/3/24.
 //

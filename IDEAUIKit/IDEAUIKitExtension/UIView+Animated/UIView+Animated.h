@@ -1,17 +1,15 @@
 //
 //  UIView+Animated.h
-//  IDEAUIKit
+//  UIView+Animated
 //
 //  Created by Harry on 15/1/16.
 //  Copyright (c) 2015年 Harry. All rights reserved.
 //
-//  Mail:iidioter@gmail.com
+//  Mail:miniwing.hz@gmail.com
 //  TEL :+(852)53054612
 //
 
 #import <UIKit/UIKit.h>
-
-FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 
 @interface UIView (Animated)
 

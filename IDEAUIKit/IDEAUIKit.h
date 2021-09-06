@@ -44,4 +44,11 @@
 #import <IDEAUIKit/UISelectionFeedbackGenerator+Shortcut.h>
 #import <IDEAUIKit/UINotificationFeedbackGenerator+Shortcut.h>
 
+//#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h"))
+//#else
+//static const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
+//#endif
+
+FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
+
 #endif /* IDEAUIKit_H */

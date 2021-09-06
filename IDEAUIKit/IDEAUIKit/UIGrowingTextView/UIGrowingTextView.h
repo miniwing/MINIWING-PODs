@@ -1,12 +1,13 @@
 //
 // UITextView.h
+// UIGrowingTextView
 //
 //	MIT License
 //
 // Created by Harry on 15/10/26.
 // Copyright © 2015年 Harry. All rights reserved.
 //
-// Mail:iidioter@gmail.com
+// Mail:miniwing.hz@gmail.com
 // TEL :+(852)53054612
 
 #import <UIKit/UIKit.h>

@@ -1,6 +1,6 @@
 //
 //  UINotificationFeedbackGenerator+Shortcut.m
-//  IDEAUIKit
+//  UINotificationFeedbackGenerator+Shortcut
 //
 //  Created by Harry on 2021/7/21.
 //

@@ -1,0 +1,1 @@
+IDEAEventBus/IDEAEventBus.podspec

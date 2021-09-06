@@ -1,6 +1,6 @@
 //
 //  IDEAStatusBar.m
-//  IDEAUIKit
+//  IDEAStatusBar
 //
 //  Created by Harry on 2020/3/16.
 //  Copyright © 2020 Harry. All rights reserved.

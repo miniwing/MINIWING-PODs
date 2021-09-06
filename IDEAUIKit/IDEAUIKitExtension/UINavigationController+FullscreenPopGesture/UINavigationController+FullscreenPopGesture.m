@@ -1,6 +1,6 @@
 //
 //  UINavigationController+FullscreenPopGesture.m
-//  IDEAUIKit
+//  UINavigationController+FullscreenPopGesture
 //
 //  Created by CiCi on 16/6/3.
 //  Copyright © 2016年 Harry. All rights reserved.
@@ -13,9 +13,6 @@
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
 #  import "RTRootNavigationController/RTRootNavigationController.h"
-#  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#elif __has_include("RTRootNavigationController.h")
-#  import "RTRootNavigationController.h"
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #else
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)

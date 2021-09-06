@@ -1,6 +1,6 @@
 //
 //  UIImpactFeedbackGenerator+Shortcut.m
-//  IDEAUIKit
+//  UIImpactFeedbackGenerator+Shortcut
 //
 //  Created by Harry on 2021/7/21.
 //

@@ -1,5 +1,6 @@
 //
-//  UITextViewInternal.h
+// UITextViewInternal.h
+// UIGrowingTextView
 //
 //  Created by Hans Pinckaers on 29-06-10.
 //

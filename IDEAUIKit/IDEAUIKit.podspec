@@ -167,6 +167,28 @@ Pod::Spec.new do |spec|
 #  import <MessageUI/MessageUI.h>
 #endif /* __OBJC__ */
 
+#ifdef __OBJC__
+#  if __has_include(<FoundationExtension/FoundationExtension.h>)
+#     import <FoundationExtension/FoundationExtension.h>
+#     define FOUNDATION_EXTENSION                                          (1)
+#  elif __has_include("FoundationExtension/FoundationExtension.h")
+#     import "FoundationExtension/FoundationExtension.h"
+#     define FOUNDATION_EXTENSION                                          (1)
+#  else
+#     define FOUNDATION_EXTENSION                                          (0)
+#  endif
+
+#  if __has_include(<UIKitExtension/UIKitExtension.h>)
+#     import <UIKitExtension/UIKitExtension.h>
+#     define UIKIT_EXTENSION                                               (1)
+#  elif __has_include("UIKitExtension/UIKitExtension.h")
+#     import "UIKitExtension/UIKitExtension.h"
+#     define UIKIT_EXTENSION                                               (1)
+#  else
+#     define UIKIT_EXTENSION                                               (0)
+#  endif
+#endif /* __OBJC__ */
+
 /******************************************************************************************************/
 
 #if __has_feature(objc_arc)
@@ -615,6 +637,8 @@ __END_DECLS
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
 
 /******************************************************************************************************/
+
+FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 
 #import <IDEAUIKit/IDEAUIKit.h>
 

@@ -5,7 +5,7 @@
 //  Created by Harry on 15/11/23.
 //  Copyright © 2015年 Harry. All rights reserved.
 //
-//  Mail:iidioter@gmail.com
+//  Mail:miniwing.hz@gmail.com
 //  TEL :+(852)53054612
 //
 
