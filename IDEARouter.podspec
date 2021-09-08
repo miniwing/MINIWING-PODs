@@ -1,0 +1,1 @@
+IDEARouter/IDEARouter.podspec

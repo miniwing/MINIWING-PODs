@@ -1,0 +1,1 @@
+./IDEAPalettes/IDEAPalettes.podspec

@@ -1,75 +1,54 @@
+#
+#  Be sure to run `pod spec lint IDEAActivityIndicatorView.podspec' to ensure this is a
+#  valid spec and to remove all comments including this before submitting the spec.
+#
+#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
+#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
+#
+
 Pod::Spec.new do |spec|
-  spec.name                         = "IDEAEventBus"
-  spec.version                      = "0.4.1-IDEA"
-  spec.summary                      = "IDEAEventBus"
-  spec.description                  = "IDEANightVersion"
-  spec.homepage                     = "https://github.com/miniwing"
-  spec.license                      = "MIT"
-  spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }
 
-#  spec.source                       = { :path => "." }
-  spec.source                       = { :git => 'https://github.com/miniwing/MINIWING-PODs.git', :tag => spec.version.to_s }
+  spec.name          = "IDEAPalettes"
+  spec.version       = "2.1"
+  spec.authors       = { "Danil Gontovnik" => "danil@gontovnik.com" }
+  spec.homepage      = "https://github.com/miniwing"
+  spec.summary       = "IDEAPalettes is a great way to make loading spinners in your application look nicer."
+   
+#  spec.source        = { :path => "." }
+  spec.source        = { :git => 'https://github.com/miniwing/MINIWING-PODs.git', :tag => spec.version.to_s }
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
-    
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
+#  spec.license       = { :type => "MIT", :file => "LICENSE" }
+#  spec.platform      = :ios, '10.0'
+#  spec.platforms     = { :ios => "8.0", :osx => "10.7", :watchos => "2.0", :tvos => "9.0" }
 
-  spec.ios.pod_target_xcconfig      = {
-                                      'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus',
-                                      'ENABLE_BITCODE'            => 'NO',
-                                      'SWIFT_VERSION'             => '5.0',
-                                      'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
-                                      'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
-                                      'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
-                                    }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
+  spec.ios.deployment_target       = '10.0'
+  spec.watchos.deployment_target   = '4.3'
 
-  spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAEventBus\" '
+  spec.osx.deployment_target       = '10.10'
+  spec.tvos.deployment_target      = '10.0'
+
+  spec.ios.pod_target_xcconfig     = {
+                                    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes',
+                                    'ENABLE_BITCODE'            => 'NO',
+                                    'SWIFT_VERSION'             => '5.0',
+                                    'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
+                                    'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
+                                    'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+                                  }
+  spec.osx.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
+  spec.watchos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes-watchOS' }
+  spec.tvos.pod_target_xcconfig    = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
+
+  spec.pod_target_xcconfig         = {
+    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAPalettes\" '
   }
 
-  spec.frameworks                   = ['Foundation', 'UIKit']
+  spec.requires_arc    = true
 
-  spec.xcconfig                     = {
-    'HEADER_SEARCH_PATHS'           =>
-                                        [
-#                                         "${PODS_TARGET_SRCROOT}/",
-#                                         "${PODS_TARGET_SRCROOT}/../",
-#                                         "${PODS_ROOT}/Headers/Public/**",
-#                                         "${PODS_ROOT}/Headers/Public/YYKit",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAUIKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAColor",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAFONT",
-#                                         "${PODS_ROOT}/Headers/Public/RTRootNavigationController",
-#                                         "${PODS_ROOT}/Headers/Public/IDEANightVersion",
-#                                         "${PODS_ROOT}/Headers/Public/MaterialComponents",
-                                        ],
-                                
-    'FRAMEWORK_SEARCH_PATHS'        =>
-                                        [
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/RTRootNavigationController",
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/MaterialComponents"
-                                        ]
-  }
+  spec.source_files    = "IDEAPalettes/**/*.{h,m}"
 
-  spec.public_header_files          = 'IDEAEventBus/**/*.h'
-                              
-  spec.source_files                 = 'IDEAUIKitExtension/**/*.{h,m}',
-                                      'IDEAFoundationExtension/**/*.{h,m}',
-                                      'IDEAEventBus/**/*.{h,m}'
-  spec.requires_arc                 = true
-
-  if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
-  end # IDEA_YYKIT
+  spec.ios.frameworks  = ['UIKit', 'Foundation']
   
-  spec.dependency   'RTRootNavigationController'
-
   pch_app_kit = <<-EOS
 
 /******************************************************************************************************/
@@ -139,7 +118,6 @@ Pod::Spec.new do |spec|
 #  warning "This project uses features only available in iOS SDK 10.0 and later."
 #endif
 
-#import <pthread.h>
 #import <objc/message.h>
 #import <objc/runtime.h>
 
@@ -154,32 +132,6 @@ Pod::Spec.new do |spec|
 #  import <stdio.h>
 #  import <string.h>
 #endif /* !__OBJC__ */
-
-/******************************************************************************************************/
-
-#ifdef __OBJC__
-
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  else
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
-#  endif
-
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
-#  endif
-
-#endif /* __OBJC__ */
 
 /******************************************************************************************************/
 
@@ -215,51 +167,7 @@ Pod::Spec.new do |spec|
 
 /******************************************************************************************************/
 
-#if (__has_include(<YYKit/YYKit.h>))
-#  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
-#  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
-#  import "YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
-#else /* YY_KIT */
-
-#  ifndef weakify
-#     if __has_feature(objc_arc)
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !weakify */
-
-#  ifndef strongify
-#     if __has_feature(objc_arc)
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !strongify */
-
-#endif
-
-/******************************************************************************************************/
+// #define MODULE                                     "IDEAPalettes"
 
 #define LOG_BUG_SIZE                               (1024 * 1)
 
@@ -622,21 +530,6 @@ __END_DECLS
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
 
 /******************************************************************************************************/
-
-#define TRANSITION_ANIMATION_BOUNCE                (30)
-
-/******************************************************************************************************/
-
-#define LAYER_FADE                                 (__ON__)
-
-#define DEBUG_COLOR                                (__OFF__)
-#define DEBUG_NAVIGATION_BAR                       (__OFF__)
-#define DEBUG_TRANSITION                           (__OFF__)
-
-/******************************************************************************************************/
-
-// #import "IDEAKit.h"
-// #import "IDEAUIKit.h"
 
   EOS
   spec.prefix_header_contents = pch_app_kit

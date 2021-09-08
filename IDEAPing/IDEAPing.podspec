@@ -1,74 +1,90 @@
 Pod::Spec.new do |spec|
-  spec.name                         = "IDEAEventBus"
-  spec.version                      = "0.4.1-IDEA"
-  spec.summary                      = "IDEAEventBus"
-  spec.description                  = "IDEANightVersion"
-  spec.homepage                     = "https://github.com/miniwing"
-  spec.license                      = "MIT"
-  spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }
+  spec.name                 = "IDEAPing"
+  spec.version              = "1.0.0"
+  spec.summary              = "IDEAPing"
+  spec.description          = "IDEAPing"
+  spec.homepage             = "https://github.com/miniwing"
+  spec.license              = "MIT"
+  spec.author               = { "Harry" => "miniwing.hz@gmail.com" }
+#  spec.platform             = :ios, "10.0"
+  
+#  spec.requires_arc = true
+#  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']
+  
+  spec.source                     = { :path => "." }
 
-#  spec.source                       = { :path => "." }
-  spec.source                       = { :git => 'https://github.com/miniwing/MINIWING-PODs.git', :tag => spec.version.to_s }
+  spec.ios.deployment_target      = '10.0'
+  spec.watchos.deployment_target  = '4.3'
+#  spec.osx.deployment_target      = '10.10'
+#  spec.tvos.deployment_target     = '10.0'
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
+  spec.ios.pod_target_xcconfig     = {
+                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPing',
+                                        'ENABLE_BITCODE'            => 'NO',
+                                        'SWIFT_VERSION'             => '5.0',
+                                        'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
+                                        'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
+                                        'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+                                      }
+  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPing' }
+  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPing-watchOS' }
+  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPing' }
+  
+  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
     
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
-
-  spec.ios.pod_target_xcconfig      = {
-                                      'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus',
-                                      'ENABLE_BITCODE'            => 'NO',
-                                      'SWIFT_VERSION'             => '5.0',
-                                      'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
-                                      'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
-                                      'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
-                                    }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
+  spec.xcconfig                     = {
+    'HEADER_SEARCH_PATHS'               => [
+#                                            "${PODS_TARGET_SRCROOT}/",
+#                                            "${PODS_TARGET_SRCROOT}/../",
+#                                            "${PODS_ROOT}/Headers/Public/YYKit/",
+#                                            "${PODS_ROOT}/Headers/Public/AFNetworking",
+#                                            "${PODS_ROOT}/Headers/Public/IDEAPing/",
+#                                            "${PODS_ROOT}/Headers/Public/IDEAColor",
+                                            ],
+  'FRAMEWORK_SEARCH_PATHS'              =>  [
+#                                              "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking",
+#                                              "${PODS_CONFIGURATION_BUILD_DIR}/YYKit",
+                                            ]
+                                      }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAEventBus\" '
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAPing\" ' ]
+                                      }
 
-  spec.frameworks                   = ['Foundation', 'UIKit']
-
-  spec.xcconfig                     = {
-    'HEADER_SEARCH_PATHS'           =>
-                                        [
-#                                         "${PODS_TARGET_SRCROOT}/",
-#                                         "${PODS_TARGET_SRCROOT}/../",
-#                                         "${PODS_ROOT}/Headers/Public/**",
-#                                         "${PODS_ROOT}/Headers/Public/YYKit",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAUIKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAColor",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAFONT",
-#                                         "${PODS_ROOT}/Headers/Public/RTRootNavigationController",
-#                                         "${PODS_ROOT}/Headers/Public/IDEANightVersion",
-#                                         "${PODS_ROOT}/Headers/Public/MaterialComponents",
-                                        ],
-                                
-    'FRAMEWORK_SEARCH_PATHS'        =>
-                                        [
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/RTRootNavigationController",
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/MaterialComponents"
-                                        ]
-  }
-
-  spec.public_header_files          = 'IDEAEventBus/**/*.h'
-                              
-  spec.source_files                 = 'IDEAUIKitExtension/**/*.{h,m}',
-                                      'IDEAFoundationExtension/**/*.{h,m}',
-                                      'IDEAEventBus/**/*.{h,m}'
-  spec.requires_arc                 = true
-
-  if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
-  end # IDEA_YYKIT
+#  spec.dependency 'FoundationExtension'
+#  spec.dependency 'UIKitExtension'
   
-  spec.dependency   'RTRootNavigationController'
+  spec.dependency 'SimplePing'
+  
+#  spec.dependency 'AFNetworking'
+#  spec.dependency 'AFNetworking/Serialization'
+#  spec.dependency 'AFNetworking/Security'
+#  spec.dependency 'AFNetworking/Reachability'
+#  spec.dependency 'AFNetworking/NSURLSession'
+
+#  spec.dependency 'YYCategories'
+
+  spec.public_header_files        = 'IDEAPing.h',
+                                    'IDEAPing/*.h'
+
+#  spec.private_header_files       = 'IDEAPing/**/*.{h}',
+#                                    'IDEAExtension/**/*.{h}'
+  spec.source_files               = 'IDEAPing.h',
+                                    'IDEAPing/**/*.{h,m,mm,c,cpp}',
+                                    'IDEAFoundationExtension/**/*.{h,m,mm,c,cpp}',
+                                    'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
+
+#  spec.vendored_libraries   = 'libXG-SDK.a'
+#  spec.vendored_frameworks  = 'libXG-SDK.a'
+
+#  spec.subspec 'Debug' do |sub|
+#    sub.ios.deployment_target   = '10.0'
+#    sub.ios.source_files        = 'IDEAPing/IDEAPing/**/*.{h,m,mm}'
+#    sub.ios.public_header_files = 'IDEAPing/IDEAPing/**/*.{h}'
+#    sub.ios.header_dir          = 'IDEAPing'
+#    sub.ios.preserve_paths      = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
+#    sub.ios.vendored_libraries  = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
+#  end
 
   pch_app_kit = <<-EOS
 
@@ -139,7 +155,6 @@ Pod::Spec.new do |spec|
 #  warning "This project uses features only available in iOS SDK 10.0 and later."
 #endif
 
-#import <pthread.h>
 #import <objc/message.h>
 #import <objc/runtime.h>
 
@@ -154,32 +169,6 @@ Pod::Spec.new do |spec|
 #  import <stdio.h>
 #  import <string.h>
 #endif /* !__OBJC__ */
-
-/******************************************************************************************************/
-
-#ifdef __OBJC__
-
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  else
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
-#  endif
-
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
-#  endif
-
-#endif /* __OBJC__ */
 
 /******************************************************************************************************/
 
@@ -219,8 +208,6 @@ Pod::Spec.new do |spec|
 #  import <YYKit/YYKit.h>
 #elif (__has_include("YYKit/YYKit.h"))
 #  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
-#  import "YYKit.h"
 // #elif (__has_include("YYKit.h"))
 // #  import "YYKit.h"
 #else /* YY_KIT */
@@ -623,20 +610,7 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-#define TRANSITION_ANIMATION_BOUNCE                (30)
-
-/******************************************************************************************************/
-
-#define LAYER_FADE                                 (__ON__)
-
-#define DEBUG_COLOR                                (__OFF__)
-#define DEBUG_NAVIGATION_BAR                       (__OFF__)
-#define DEBUG_TRANSITION                           (__OFF__)
-
-/******************************************************************************************************/
-
-// #import "IDEAKit.h"
-// #import "IDEAUIKit.h"
+#import "IDEAPing/IDEAPing.h"
 
   EOS
   spec.prefix_header_contents = pch_app_kit

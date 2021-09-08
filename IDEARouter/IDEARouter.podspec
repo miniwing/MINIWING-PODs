@@ -1,74 +1,88 @@
 Pod::Spec.new do |spec|
-  spec.name                         = "IDEAEventBus"
-  spec.version                      = "0.4.1-IDEA"
-  spec.summary                      = "IDEAEventBus"
-  spec.description                  = "IDEANightVersion"
-  spec.homepage                     = "https://github.com/miniwing"
-  spec.license                      = "MIT"
-  spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }
+  spec.name                 = "IDEARouter"
+  spec.version              = "1.0.7"
+  spec.summary              = "IDEARouter"
+  spec.description          = "IDEARouter"
+  spec.homepage             = "https://github.com/Feghal/FGRoute.git"
+  spec.homepage             = "https://github.com/miniwing"
+  spec.license              = "MIT"
+  spec.author               = { "Harry" => "miniwing.hz@gmail.com" }
+#  spec.platform             = :ios, "10.0"
+  
+#  spec.requires_arc = true
+#  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']
+  
+  spec.source                     = { :path => "." }
+#  spec.source                     = { :git  => 'https://github.com/Feghal/FGRoute.git', :tag => spec.version.to_s }
+  
+  spec.ios.deployment_target      = '10.0'
+  spec.watchos.deployment_target  = '4.3'
+#  spec.osx.deployment_target      = '10.10'
+#  spec.tvos.deployment_target     = '10.0'
 
-#  spec.source                       = { :path => "." }
-  spec.source                       = { :git => 'https://github.com/miniwing/MINIWING-PODs.git', :tag => spec.version.to_s }
-
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
+  spec.ios.pod_target_xcconfig     = {
+                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARouter',
+                                        'ENABLE_BITCODE'            => 'NO',
+                                        'SWIFT_VERSION'             => '5.0',
+                                        'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
+                                        'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
+                                        'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+                                      }
+  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARouter' }
+  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARouter-watchOS' }
+  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARouter' }
+  
+  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
     
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
-
-  spec.ios.pod_target_xcconfig      = {
-                                      'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus',
-                                      'ENABLE_BITCODE'            => 'NO',
-                                      'SWIFT_VERSION'             => '5.0',
-                                      'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
-                                      'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
-                                      'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
-                                    }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAEventBus' }
+  spec.xcconfig                     = {
+    'HEADER_SEARCH_PATHS'               => [
+#                                            "${PODS_TARGET_SRCROOT}/",
+#                                            "${PODS_TARGET_SRCROOT}/../",
+#                                            "${PODS_ROOT}/Headers/Public/YYKit/",
+#                                            "${PODS_ROOT}/Headers/Public/AFNetworking",
+#                                            "${PODS_ROOT}/Headers/Public/IDEARouter/",
+#                                            "${PODS_ROOT}/Headers/Public/IDEAColor",
+                                            ],
+  'FRAMEWORK_SEARCH_PATHS'              =>  [
+#                                              "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking",
+#                                              "${PODS_CONFIGURATION_BUILD_DIR}/YYKit",
+                                            ]
+                                      }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAEventBus\" '
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEARouter\" ' ]
+                                      }
 
-  spec.frameworks                   = ['Foundation', 'UIKit']
-
-  spec.xcconfig                     = {
-    'HEADER_SEARCH_PATHS'           =>
-                                        [
-#                                         "${PODS_TARGET_SRCROOT}/",
-#                                         "${PODS_TARGET_SRCROOT}/../",
-#                                         "${PODS_ROOT}/Headers/Public/**",
-#                                         "${PODS_ROOT}/Headers/Public/YYKit",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAUIKit/",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAColor",
-#                                         "${PODS_ROOT}/Headers/Public/IDEAFONT",
-#                                         "${PODS_ROOT}/Headers/Public/RTRootNavigationController",
-#                                         "${PODS_ROOT}/Headers/Public/IDEANightVersion",
-#                                         "${PODS_ROOT}/Headers/Public/MaterialComponents",
-                                        ],
-                                
-    'FRAMEWORK_SEARCH_PATHS'        =>
-                                        [
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/RTRootNavigationController",
-#                                         "${PODS_CONFIGURATION_BUILD_DIR}/MaterialComponents"
-                                        ]
-  }
-
-  spec.public_header_files          = 'IDEAEventBus/**/*.h'
-                              
-  spec.source_files                 = 'IDEAUIKitExtension/**/*.{h,m}',
-                                      'IDEAFoundationExtension/**/*.{h,m}',
-                                      'IDEAEventBus/**/*.{h,m}'
-  spec.requires_arc                 = true
-
-  if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
-  end # IDEA_YYKIT
+#  spec.dependency 'FoundationExtension'
+#  spec.dependency 'UIKitExtension'
   
-  spec.dependency   'RTRootNavigationController'
+#  spec.dependency 'AFNetworking'
+#  spec.dependency 'AFNetworking/Serialization'
+#  spec.dependency 'AFNetworking/Security'
+#  spec.dependency 'AFNetworking/Reachability'
+#  spec.dependency 'AFNetworking/NSURLSession'
+
+  spec.public_header_files        = 'IDEARouter/IDEARouter.h',
+                                    'IDEAFoundationExtension/**/*.{h}',
+                                    'IDEAUIKitExtension/**/*.{h}'
+
+#  spec.private_header_files       = 'IDEARouter/**/*.{h}',
+#                                    'IDEAExtension/**/*.{h}'
+  spec.source_files               = 'IDEARouter/**/*.{h,m,mm,c,cpp}',
+                                    'IDEAFoundationExtension/**/*.{h,m,mm,c,cpp}',
+                                    'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
+
+#  spec.vendored_libraries   = 'libXG-SDK.a'
+#  spec.vendored_frameworks  = 'libXG-SDK.a'
+
+#  spec.subspec 'Debug' do |sub|
+#    sub.ios.deployment_target   = '10.0'
+#    sub.ios.source_files        = 'IDEARouter/IDEARouter/**/*.{h,m,mm}'
+#    sub.ios.public_header_files = 'IDEARouter/IDEARouter/**/*.{h}'
+#    sub.ios.header_dir          = 'IDEARouter'
+#    sub.ios.preserve_paths      = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
+#    sub.ios.vendored_libraries  = 'ios/lib/libcrypto.a', 'ios/lib/libssl.a'
+#  end
 
   pch_app_kit = <<-EOS
 
@@ -80,18 +94,13 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wformat"
 #  pragma clang diagnostic ignored                 "-Wswitch"
 #  pragma clang diagnostic ignored                 "-Wvarargs"
-#  pragma clang diagnostic ignored                 "-Wvarargs"
 #  pragma clang diagnostic ignored                 "-Wnonnull"
-#  pragma clang diagnostic ignored                 "-Wcomment"
-#  pragma clang diagnostic ignored                 "-Wprotocol"
 #  pragma clang diagnostic ignored                 "-Wpointer-sign"
 #  pragma clang diagnostic ignored                 "-Wdangling-else"
 #  pragma clang diagnostic ignored                 "-Wunused-result"
-#  pragma clang diagnostic ignored                 "-Wpch-date-time"
 #  pragma clang diagnostic ignored                 "-Wuninitialized"
 #  pragma clang diagnostic ignored                 "-Wdocumentation"
 #  pragma clang diagnostic ignored                 "-Wpch-date-time"
-#  pragma clang diagnostic ignored                 "-Wambiguous-macro"
 #  pragma clang diagnostic ignored                 "-Wenum-conversion"
 #  pragma clang diagnostic ignored                 "-Wunused-variable"
 #  pragma clang diagnostic ignored                 "-Wunused-function"
@@ -101,10 +110,8 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wshorten-64-to-32"
 #  pragma clang diagnostic ignored                 "-Wwritable-strings"
 #  pragma clang diagnostic ignored                 "-Wstrict-prototypes"
-#  pragma clang diagnostic ignored                 "-Wobjc-method-access"
 #  pragma clang diagnostic ignored                 "-Wdocumentation-html"
 #  pragma clang diagnostic ignored                 "-Wobjc-method-access"
-#  pragma clang diagnostic ignored                 "-Wincomplete-umbrella"
 #  pragma clang diagnostic ignored                 "-Wundeclared-selector"
 #  pragma clang diagnostic ignored                 "-Wimplicit-retain-self"
 #  pragma clang diagnostic ignored                 "-Wunguarded-availability"
@@ -115,11 +122,8 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wnullability-completeness"
 #  pragma clang diagnostic ignored                 "-Wobjc-missing-super-calls"
 #  pragma clang diagnostic ignored                 "-Wnonportable-include-path"
-#  pragma clang diagnostic ignored                 "-Warc-performSelector-leaks"
 #  pragma clang diagnostic ignored                 "-Wconditional-uninitialized"
-#  pragma clang diagnostic ignored                 "-Wincompatible-property-type"
 #  pragma clang diagnostic ignored                 "-Wincompatible-pointer-types"
-#  pragma clang diagnostic ignored                 "-Wunguarded-availability-new"
 #  pragma clang diagnostic ignored                 "-Wdeprecated-implementations"
 #  pragma clang diagnostic ignored                 "-Wmismatched-parameter-types"
 #  pragma clang diagnostic ignored                 "-Wobjc-redundant-literal-use"
@@ -139,7 +143,6 @@ Pod::Spec.new do |spec|
 #  warning "This project uses features only available in iOS SDK 10.0 and later."
 #endif
 
-#import <pthread.h>
 #import <objc/message.h>
 #import <objc/runtime.h>
 
@@ -154,32 +157,6 @@ Pod::Spec.new do |spec|
 #  import <stdio.h>
 #  import <string.h>
 #endif /* !__OBJC__ */
-
-/******************************************************************************************************/
-
-#ifdef __OBJC__
-
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  else
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
-#  endif
-
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
-#  endif
-
-#endif /* __OBJC__ */
 
 /******************************************************************************************************/
 
@@ -219,8 +196,6 @@ Pod::Spec.new do |spec|
 #  import <YYKit/YYKit.h>
 #elif (__has_include("YYKit/YYKit.h"))
 #  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
-#  import "YYKit.h"
 // #elif (__has_include("YYKit.h"))
 // #  import "YYKit.h"
 #else /* YY_KIT */
@@ -622,21 +597,6 @@ __END_DECLS
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
 
 /******************************************************************************************************/
-
-#define TRANSITION_ANIMATION_BOUNCE                (30)
-
-/******************************************************************************************************/
-
-#define LAYER_FADE                                 (__ON__)
-
-#define DEBUG_COLOR                                (__OFF__)
-#define DEBUG_NAVIGATION_BAR                       (__OFF__)
-#define DEBUG_TRANSITION                           (__OFF__)
-
-/******************************************************************************************************/
-
-// #import "IDEAKit.h"
-// #import "IDEAUIKit.h"
 
   EOS
   spec.prefix_header_contents = pch_app_kit
