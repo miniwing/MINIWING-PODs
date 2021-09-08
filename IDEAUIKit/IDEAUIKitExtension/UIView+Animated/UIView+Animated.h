@@ -9,7 +9,10 @@
 //  TEL :+(852)53054612
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 
 @interface UIView (Animated)
 

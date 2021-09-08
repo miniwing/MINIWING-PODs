@@ -7,14 +7,15 @@
 
 #import "UIView+Shortcut.h"
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h"))
+#if (__has_include(<UIKitExtension/UIKitExtension.h>))
+#import <UIKitExtension/UIKitExtension.h>
 #else
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 #endif
 
 @implementation UIView (Animated)
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h"))
+#if (__has_include(<UIKitExtension/UIKitExtension.h>))
 #else
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated {
    
