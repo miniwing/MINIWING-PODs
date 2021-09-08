@@ -1,12 +1,11 @@
 //
-//  UIView+Animated.m
+//  UIView+Shortcut.m
 //  UIView+Shortcut
 //
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.
 
-#import "UIView+Animated.h"
-
+#import "UIView+Shortcut.h"
 
 #if __has_include(<UIKitExtension/UIKitExtension.h>)
 #else

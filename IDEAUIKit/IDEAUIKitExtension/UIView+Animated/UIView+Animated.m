@@ -1,14 +1,14 @@
 //
-//  UIView+Shortcut.m
+//  UIView+Animated.m
 //  UIView+Animated
 //
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.
 
-#import "UIView+Shortcut.h"
+#import "UIView+Animated.h"
 
 #if (__has_include(<UIKitExtension/UIKitExtension.h>))
-#import <UIKitExtension/UIKitExtension.h>
+#  import <UIKitExtension/UIKitExtension.h>
 #else
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 #endif
