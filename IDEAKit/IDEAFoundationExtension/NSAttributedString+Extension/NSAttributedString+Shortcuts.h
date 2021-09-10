@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  *  @brief NSAttributedString common shortcuts
  */
-@interface NSAttributedString (Shortcuts)
+@interface NSAttributedString (IDEAKit)
 
 + (instancetype)attributedString;
 

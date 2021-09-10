@@ -22,16 +22,16 @@
    NSArray<NSTextCheckingResult *>*stMatch   = [stRegex matchesInString:self
                                                                 options:NSMatchingReportCompletion
                                                                   range:NSMakeRange(0, [self length])];
-
+   
    NSMutableArray<NSString *>    *stIPV4s    = [NSMutableArray<NSString *> array];
    
    for (NSTextCheckingResult *stResult in stMatch) {
-
+      
       LogDebug((@"-[NSString IPV4s] : ResultType : %ld", stResult.resultType));
-
+      
       NSString *szIPV4  = [self substringWithRange:stResult.range];
       LogDebug((@"-[NSString IPV4s] : IPV4 : %@", szIPV4));
-
+      
       if (NO == kStringIsEmpty(szIPV4)) {
          
          [stIPV4s addObject:szIPV4];
@@ -53,16 +53,16 @@
    NSArray<NSTextCheckingResult *>*stMatch   = [stRegex matchesInString:self
                                                                 options:NSMatchingReportCompletion
                                                                   range:NSMakeRange(0, [self length])];
-
+   
    NSMutableArray<NSString *>    *stDOMAINs  = [NSMutableArray<NSString *> array];
    
    for (NSTextCheckingResult *stResult in stMatch) {
-
+      
       LogDebug((@"-[NSString DOMAINs] : ResultType : %ld", stResult.resultType));
-
+      
       NSString *szDOMAIN  = [self substringWithRange:stResult.range];
       LogDebug((@"-[NSString DOMAINs] : DOMAIN : %@", szDOMAIN));
-
+      
       if (NO == kStringIsEmpty(szDOMAIN)) {
          
          [stDOMAINs addObject:szDOMAIN];

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 #else
 + (id)attributedString {
    
-    return [[self alloc] init];
+   return [[self alloc] init];
 }
 #endif /* !FOUNDATION_EXTENSION */
 

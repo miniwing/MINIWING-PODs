@@ -43,8 +43,8 @@
    return [array copy];
 }
 
-- (NSArray<NSString *> *)getAllIvarNames
-{
+- (NSArray<NSString *> *)getAllIvarNames {
+   
    NSMutableArray *stIvarNames   = [NSMutableArray array];
    unsigned int    nCount        = 0;
    Ivar           *stIvars       = class_copyIvarList([self class], &nCount);

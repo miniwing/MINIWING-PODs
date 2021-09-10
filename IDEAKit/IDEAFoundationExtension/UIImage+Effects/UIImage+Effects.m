@@ -257,17 +257,17 @@
 
 - (UIImage *)imageRenderWithTintColor:(UIColor *)tintColor {
    
-//   if (@available(iOS 13.0, *)) {
-//
-//      return [self imageWithTintColor:tintColor];
-//
-//   } /* End if () */
-//   else {
-//
-//      return [self imageWithTintColor:tintColor blendMode:kCGBlendModeDestinationIn];
-//
-//   } /* End else */
-
+   //   if (@available(iOS 13.0, *)) {
+   //
+   //      return [self imageWithTintColor:tintColor];
+   //
+   //   } /* End if () */
+   //   else {
+   //
+   //      return [self imageWithTintColor:tintColor blendMode:kCGBlendModeDestinationIn];
+   //
+   //   } /* End else */
+   
    return [self imageWithTintColor:tintColor blendMode:kCGBlendModeDestinationIn];
 }
 

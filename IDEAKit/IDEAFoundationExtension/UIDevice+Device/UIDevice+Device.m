@@ -159,25 +159,25 @@
    host_info(mach_host_self(), HOST_BASIC_INFO, (host_info_t)&hostInfo, &infoCount);
    
    switch (hostInfo.cpu_type) {
-   case CPU_TYPE_ARM:
-      return @"CPU_TYPE_ARM";
-//      break;
-      
-   case CPU_TYPE_ARM64:
-      return @"CPU_TYPE_ARM64";
-//      break;
-      
-   case CPU_TYPE_X86:
-      return @"CPU_TYPE_X86";
-//      break;
-      
-   case CPU_TYPE_X86_64:
-      return @"CPU_TYPE_X86_64";
-//      break;
-      
-   default:
-      return @"";
-//      break;
+      case CPU_TYPE_ARM:
+         return @"CPU_TYPE_ARM";
+         //      break;
+         
+      case CPU_TYPE_ARM64:
+         return @"CPU_TYPE_ARM64";
+         //      break;
+         
+      case CPU_TYPE_X86:
+         return @"CPU_TYPE_X86";
+         //      break;
+         
+      case CPU_TYPE_X86_64:
+         return @"CPU_TYPE_X86_64";
+         //      break;
+         
+      default:
+         return @"";
+         //      break;
    }
 }
 
