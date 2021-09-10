@@ -65,7 +65,7 @@ Pod::Spec.new do |spec|
 #  spec.dependency 'YYCategories'
 
   spec.public_header_files        = 'IDEAPing.h',
-                                    'IDEAPing/*.h'
+                                    'IDEAPing/**/*.h'
 
 #  spec.private_header_files       = 'IDEAPing/**/*.{h}',
 #                                    'IDEAExtension/**/*.{h}'
