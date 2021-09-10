@@ -17,27 +17,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//#if __has_include(<FoundationExtension/FoundationExtension.h>)
-//#elif __has_include("FoundationExtension/FoundationExtension.h")
-//#else
-
 /*!
  *  @brief NSAttributedString common shortcuts
  */
 @interface NSAttributedString (Shortcuts)
 
-#if __has_include(<FoundationExtension/FoundationExtension.h>)
-#elif __has_include("FoundationExtension/FoundationExtension.h")
-#else
 + (instancetype)attributedString;
-#endif /* !FOUNDATION_EXTENSION */
 
 + (instancetype)attributedStringWithString:(NSString *)str;
 + (instancetype)attributedStringWithString:(NSString *)str attributes:(nullable NSDictionary<NSAttributedStringKey, id> *)attrs;
 + (instancetype)attributedStringWithAttributedString:(NSAttributedString *)attrStr;
 
 @end
-
-//#endif
 
 NS_ASSUME_NONNULL_END

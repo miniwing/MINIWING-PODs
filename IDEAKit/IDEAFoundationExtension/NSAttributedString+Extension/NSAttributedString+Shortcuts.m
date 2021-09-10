@@ -6,14 +6,18 @@
 //  Copyright (c) 2012 youknowone.org. All rights reserved.
 //
 
+#if __has_include(<FoundationExtension/FoundationExtension.h>)
+#import <FoundationExtension/FoundationExtension.h>
+#else
+#endif /* !FOUNDATION_EXTENSION */
+
 #import "NSAttributedString+Shortcuts.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation NSAttributedString (Shortcuts)
+@implementation NSAttributedString (IDEAKit)
 
 #if __has_include(<FoundationExtension/FoundationExtension.h>)
-#elif __has_include("FoundationExtension/FoundationExtension.h")
 #else
 + (id)attributedString {
    
