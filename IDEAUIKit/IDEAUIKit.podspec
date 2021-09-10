@@ -58,8 +58,8 @@ Pod::Spec.new do |spec|
 
   if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
     spec.dependency 'UIKitExtension'
-  end # IDEA_FOUNDATION_EXTENSION
-  
+  end # IDEA_UIKIT_EXTENSION
+
 #  spec.dependency 'CocoaExtension'
 
   spec.dependency 'RTRootNavigationController'
