@@ -1,0 +1,1 @@
+IDEALanScan/IDEALanScan.podspec
