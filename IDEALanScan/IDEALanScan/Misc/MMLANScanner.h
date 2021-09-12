@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  @brief This delegate is called each time that MMLANSCanner discovers a new IP
  @param device The device object that contains the IP Address, MAC Address and hostname
  @code
- -(void)lanScanDidFindNewDevice:(Device*)device{
+ - (void)lanScanDidFindNewDevice:(Device*)device{
  
  //Check if the Device is already added
  if (![self.connectedDevices containsObject:device]) {
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
  @brief This delegate is called when the scan has finished
  
  @code
- -(void)lanScanDidFinishScanning{
+ - (void)lanScanDidFinishScanning{
  
  [[[UIAlertView alloc] initWithTitle:@"Scan Finished" message:[NSString stringWithFormat:@"Number of devices connected to the Local Area Network : %lu", (unsigned long)self.connectedDevices.count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
  
@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
  self.lanScanner = [[MMLANScanner alloc] initWithDelegate:self];
  @endcode
  */
--(instancetype)initWithDelegate:(id <MMLANScannerDelegate>)delegate;
+- (instancetype)initWithDelegate:(id <MMLANScannerDelegate>)delegate;
 /*!
  @brief A bool property that lets you know when the MMLANScanner is scanning. KVO compliant
  */

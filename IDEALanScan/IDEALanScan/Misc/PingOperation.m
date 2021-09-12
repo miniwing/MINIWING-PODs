@@ -36,7 +36,7 @@ static const float PING_TIMEOUT = 1;
     NSTimer *pingTimer;
 }
 
--(instancetype)initWithIPToPing:(NSString*)ip andCompletionHandler:(nullable void (^)(NSError  * _Nullable error, NSString  * _Nonnull ip))result;{
+- (instancetype)initWithIPToPing:(NSString*)ip andCompletionHandler:(nullable void (^)(NSError  * _Nullable error, NSString  * _Nonnull ip))result;{
 
     self = [super init];
     
@@ -53,7 +53,7 @@ static const float PING_TIMEOUT = 1;
     return self;
 };
 
--(void)start {
+- (void)start {
 
     if ([self isCancelled]) {
         [self willChangeValueForKey:@"isFinished"];
@@ -84,7 +84,7 @@ static const float PING_TIMEOUT = 1;
     }
 
 }
--(void)ping {
+- (void)ping {
     [self.simplePing start];
 }
 - (void)finishedPing {
@@ -104,7 +104,7 @@ static const float PING_TIMEOUT = 1;
     [self finishedPing];
 }
 
--(void)finish {
+- (void)finish {
 
     //Removes timer from the NSRunLoop
     [_keepAliveTimer invalidate];

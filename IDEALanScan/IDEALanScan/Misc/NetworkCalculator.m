@@ -11,7 +11,7 @@
 @implementation NetworkCalculator
 
 //Getting all the hosts to ping and returns them as array
-+(NSArray*)getAllHostsForIP:(NSString*)ipAddress andSubnet:(NSString*)subnetMask {
++ (NSArray*)getAllHostsForIP:(NSString*)ipAddress andSubnet:(NSString*)subnetMask {
     
     //Check if valid IP
     if (![self isValidIPAddress:ipAddress] || ![self isValidIPAddress:subnetMask]) {
@@ -43,7 +43,7 @@
 }
 
 #pragma mark - Helper Methods for Net Calc
-+(NSArray*)firstIPToPingForIPAddress:(NSArray*)ipArray subnetMask:(NSArray*)subnetArray{
++ (NSArray*)firstIPToPingForIPAddress:(NSArray*)ipArray subnetMask:(NSArray*)subnetArray{
     
     NSMutableArray *firstIPArray = [[NSMutableArray alloc]init];
     
@@ -62,7 +62,7 @@
     return firstIPArray;
 }
 
-+(NSArray*)lastIPToPingForIPAddress:(NSArray*)ipArray subnetMask:(NSArray*)subnetArray{
++ (NSArray*)lastIPToPingForIPAddress:(NSArray*)ipArray subnetMask:(NSArray*)subnetArray{
     
     NSMutableArray *lastIPArray = [[NSMutableArray alloc]init];
     
@@ -82,7 +82,7 @@
 }
 
 //Increasing by one the IP on binary representation and returns the IP on string
-+(NSString*)increaseBit:(NSArray*)ipArray {
++ (NSString*)increaseBit:(NSArray*)ipArray {
     
     NSMutableArray *ipArr = [[NSMutableArray alloc]initWithArray:ipArray];
     
@@ -109,7 +109,7 @@
 }
 
 //Increasing by one the IP on binary representation and returns the IP on NSArray (Binarry)
-+(NSArray*)increaseBitArray:(NSArray*)ipArray {
++ (NSArray*)increaseBitArray:(NSArray*)ipArray {
     
     NSMutableArray *ipArr = [[NSMutableArray alloc]initWithArray:ipArray];
     
@@ -135,7 +135,7 @@
     return ipArr;
 }
 //Checks if IP is valid
-+(BOOL)isValidIPAddress:(NSString*)ipAddress {
++ (BOOL)isValidIPAddress:(NSString*)ipAddress {
     
     NSArray *ipArray = [ipAddress componentsSeparatedByString:@"."];
     
@@ -157,7 +157,7 @@
 }
 
 //This function convert decimals to binary
-+(NSString *)print01:(int)int11{
++ (NSString *)print01:(int)int11{
     
     int n =128;
     char array12[8];
@@ -184,7 +184,7 @@
 };
 
 //Converts an IP NSString to binary
-+(NSArray*)ipToBinary:(NSString*)ipAddress {
++ (NSArray*)ipToBinary:(NSString*)ipAddress {
     
     NSArray *ipArray = [ipAddress componentsSeparatedByString:@"."];
     
@@ -228,7 +228,7 @@
 }
 
 //Converts binary IP to NSString
-+(NSString*)binaryToIP:(NSArray*)binaryArray {
++ (NSString*)binaryToIP:(NSArray*)binaryArray {
     
     int bits=128;
     
@@ -253,7 +253,7 @@
 }
 
 //Check if the binary IP is equal with another binary IP
-+(BOOL)isEqualBinary:(NSArray*)binArray1 :(NSArray*)binArray2{
++ (BOOL)isEqualBinary:(NSArray*)binArray1 :(NSArray*)binArray2{
     
     for (int i=0; i < [binArray1 count]; i++) {
         
@@ -267,7 +267,7 @@
 }
 
 //Converts Subnet to Wild Card
-+(NSArray*)subnetToWildCard:(NSArray*)subnetArray {
++ (NSArray*)subnetToWildCard:(NSArray*)subnetArray {
     
     NSMutableArray *subArray = [NSMutableArray arrayWithArray:subnetArray];
     

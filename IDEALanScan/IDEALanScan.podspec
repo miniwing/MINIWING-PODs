@@ -67,7 +67,7 @@ Pod::Spec.new do |spec|
   spec.resources                    = 'IDEALanScan/Data/data.plist'
   spec.resource_bundle              = {
          'IDEALanScan'  => [
-                                      'IDEALanScan/Data/data.plist',
+                                      'IDEALanScan/Data/BRAND.plist',
                            ]
                                       }
 

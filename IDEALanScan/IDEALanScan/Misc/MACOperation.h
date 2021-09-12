@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL _isExecuting;
 }
 
--(nullable instancetype)initWithIPToRetrieveMAC:(nonnull NSString*)ip andBrandDictionary:(nullable NSDictionary*)brandDictionary andCompletionHandler:(nullable void (^)(NSError  * _Nullable error, NSString  * _Nonnull ip,MMDevice * _Nonnull device))result;
+- (nullable instancetype)initWithIPToRetrieveMAC:(nonnull NSString*)ip andBrandDictionary:(nullable NSDictionary*)brandDictionary andCompletionHandler:(nullable void (^)(NSError  * _Nullable error, NSString  * _Nonnull ip,MMDevice * _Nonnull device))result;
+
 @end
 
 NS_ASSUME_NONNULL_END

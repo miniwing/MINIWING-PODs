@@ -26,7 +26,7 @@
 }
 
 
--(void)setContentInset:(UIEdgeInsets)aEdgeInsets {
+- (void)setContentInset:(UIEdgeInsets)aEdgeInsets {
 	
    [super setContentInset:aEdgeInsets];
    

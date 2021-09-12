@@ -19,49 +19,55 @@
 #pragma mark - Public methods
 + (MMDevice *)localIPAddress {
    
-   MMDevice *localDevice = [[MMDevice alloc] init];
+   MMDevice    *stLocalDevice = [[MMDevice alloc] init];
    
-   localDevice.ipAddress = @"error";
+   stLocalDevice.ipAddress       = @"error";
    
-   struct ifaddrs *interfaces = NULL;
-   struct ifaddrs *temp_addr = NULL;
-   int success = 0;
+   struct ifaddrs *stInterfaces  = NULL;
+   struct ifaddrs *stTempAddr    = NULL;
+   
+   int             success       = 0;
    
    // retrieve the current interfaces - returns 0 on success
-   success = getifaddrs(&interfaces);
+   success = getifaddrs(&stInterfaces);
    
    if (success == 0) {
       
-      temp_addr = interfaces;
+      stTempAddr = stInterfaces;
       
-      while(temp_addr != NULL) {
+      while (stTempAddr != NULL) {
          
          // check if interface is en0 which is the wifi connection on the iPhone
-         if(temp_addr->ifa_addr->sa_family == AF_INET) {
+         if (stTempAddr->ifa_addr->sa_family == AF_INET) {
             
-            if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+            if([[NSString stringWithUTF8String:stTempAddr->ifa_name] isEqualToString:@"en0"]) {
                
-               localDevice.ipAddress = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-               localDevice.subnetMask = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_netmask)->sin_addr)];
-               localDevice.hostname = [self getHostFromIPAddress:localDevice.ipAddress];
-            }
-         }
+               stLocalDevice.ipAddress = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)stTempAddr->ifa_addr)->sin_addr)];
+               stLocalDevice.subnetMask= [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)stTempAddr->ifa_netmask)->sin_addr)];
+               stLocalDevice.hostname  = [self getHostFromIPAddress:stLocalDevice.ipAddress];
+               
+            } /* End if () */
+            
+         } /* End if () */
          
-         temp_addr = temp_addr->ifa_next;
-      }
-   }
+         stTempAddr = stTempAddr->ifa_next;
+         
+      } /* End while () */
+      
+   } /* End if () */
    
-   freeifaddrs(interfaces);
+   freeifaddrs(stInterfaces);
    
    //In case we failed to fetch IP address
-   if ([localDevice.ipAddress isEqualToString:@"error"]) {
+   if ([stLocalDevice.ipAddress isEqualToString:@"error"]) {
+      
       return nil;
    }
    
    //Mark the device as the local IP
-   localDevice.isLocalDevice = YES;
+   stLocalDevice.isLocalDevice = YES;
    
-   return localDevice;
+   return stLocalDevice;
 }
 
 + (NSString *)fetchSSIDInfo {
@@ -84,33 +90,38 @@
    return @"No WiFi Available";
 }
 //Getting all the hosts to ping and returns them as array
-+ (NSArray *)getAllHostsForIP:(NSString *)ipAddress andSubnet:(NSString *)subnetMask {
++ (NSArray *)getAllHostsForIP:(NSString *)aIP andSubnet:(NSString *)aSubnetMask {
    
-   return [NetworkCalculator getAllHostsForIP:ipAddress andSubnet:subnetMask];
+   return [NetworkCalculator getAllHostsForIP:aIP andSubnet:aSubnetMask];
 }
 
 //Not working
 #pragma mark - Get Host from IP
-+ (NSString *)getHostFromIPAddress:(NSString *)ipAddress {
-   struct addrinfo *result = NULL;
-   struct addrinfo hints;
++ (NSString *)getHostFromIPAddress:(NSString *)aIP {
    
-   memset(&hints, 0, sizeof(hints));
-   hints.ai_flags = AI_NUMERICHOST;
-   hints.ai_family = PF_UNSPEC;
-   hints.ai_socktype = SOCK_STREAM;
-   hints.ai_protocol = 0;
+   struct addrinfo   *stResult   = NULL;
+   struct addrinfo    stHints    = {0};
    
-   int errorStatus = getaddrinfo([ipAddress cStringUsingEncoding:NSASCIIStringEncoding], NULL, &hints, &result);
-   if (errorStatus != 0) {
+   bzero(&stHints, sizeof(stHints));
+//   memset(&stHints, 0, sizeof(stHints));
+   
+   stHints.ai_flags     = AI_NUMERICHOST;
+   stHints.ai_family    = PF_UNSPEC;
+   stHints.ai_socktype  = SOCK_STREAM;
+   stHints.ai_protocol  = 0;
+   
+   int nErrorStatus = getaddrinfo([aIP cStringUsingEncoding:NSASCIIStringEncoding], NULL, &stHints, &stResult);
+   
+   if (nErrorStatus != 0) {
+      
       return nil;
    }
    
-   CFDataRef addressRef = CFDataCreate(NULL, (UInt8 *)result->ai_addr, result->ai_addrlen);
+   CFDataRef addressRef = CFDataCreate(NULL, (UInt8 *)stResult->ai_addr, stResult->ai_addrlen);
    if (addressRef == nil) {
       return nil;
    }
-   freeaddrinfo(result);
+   freeaddrinfo(stResult);
    
    CFHostRef hostRef = CFHostCreateWithAddress(kCFAllocatorDefault, addressRef);
    if (hostRef == nil) {
