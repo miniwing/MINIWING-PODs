@@ -19,7 +19,7 @@
 #pragma mark - Public methods
 + (MMDevice *)localIPAddress {
    
-   MMDevice *localDevice = [[MMDevice alloc]init];
+   MMDevice *localDevice = [[MMDevice alloc] init];
    
    localDevice.ipAddress = @"error";
    

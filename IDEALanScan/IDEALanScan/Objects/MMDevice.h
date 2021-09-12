@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)                NSString                            * brand;
 @property (nonatomic, assign)                BOOL                                  isLocalDevice;
 
+@end
+
+@interface MMDevice ()
+
 - (NSString *)macAddressLabel;
 
 @end
