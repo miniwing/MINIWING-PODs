@@ -57,7 +57,8 @@
       isFinished  = NO;
       isCancelled = NO;
       _isScanning = NO;
-   }
+      
+   } /* End if () */
    
    return self;
 }
