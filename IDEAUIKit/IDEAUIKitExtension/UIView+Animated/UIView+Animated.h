@@ -12,8 +12,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
-
 @interface UIView (Animated)
 
 #if __has_include(<UIKitExtension/UIKitExtension.h>)
@@ -25,3 +23,5 @@ FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated complete:(void(^)(void))aComplete;
 
 @end
+
+const NSTimeInterval UIViewAnimationDefaultDuraton(void);
