@@ -62,7 +62,9 @@ Pod::Spec.new do |spec|
 
 #  spec.dependency 'CocoaExtension'
 
-  spec.dependency 'RTRootNavigationController'
+  if ENV['RTRootNavigationController'] == 'YES'
+    spec.dependency 'RTRootNavigationController'
+  end # RTRootNavigationController
 
 #  spec.dependency 'pop'
 

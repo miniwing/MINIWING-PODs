@@ -7,11 +7,11 @@
 
 #import "IDEAUIKit/UIView+Animated.h"
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>))
-#  import <UIKitExtension/UIKitExtension.h>
-#else
+//#if (__has_include(<UIKitExtension/UIKitExtension.h>))
+//#  import <UIKitExtension/UIKitExtension.h>
+//#else
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
-#endif
+//#endif
 
 const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
    

@@ -89,7 +89,9 @@ Pod::Spec.new do |spec|
     spec.dependency 'UIKitExtension'
   end # IDEA_FOUNDATION_EXTENSION
 
-  spec.dependency 'RTRootNavigationController'
+  if ENV['RTRootNavigationController'] == 'YES'
+    spec.dependency 'RTRootNavigationController'
+  end # RTRootNavigationController
 
   if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
 #    spec.dependency 'MaterialComponents/ActivityIndicator'
