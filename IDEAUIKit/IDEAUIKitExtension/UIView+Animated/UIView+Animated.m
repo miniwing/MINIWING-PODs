@@ -53,7 +53,6 @@ const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
       }
    }];
 }
-
 #endif
 
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated duration:(NSTimeInterval)duration {
