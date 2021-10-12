@@ -114,6 +114,12 @@
     completeHandler:(NetPortScanHandler _Nonnull)handler;
 
 
+- (void)netPortScan:(NSString * _Nonnull)aHost
+          beginPort:(NSUInteger)aBeginPort
+            endPort:(NSUInteger)aEndPort
+        scanHandler:(NetPortScanHandler)aScanHandler
+    completeHandler:(CompletionHandler)aCompleteHandler;
+
 /**
  @description is doing port scan or not
 

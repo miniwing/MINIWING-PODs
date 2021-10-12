@@ -144,6 +144,29 @@ static PhoneNetManager *sdkManager_instance = nil;
     [[PNPortScan shareInstance] portScan:host beginPort:beginPort endPort:endPort completeHandler:handler];
 }
 
+#pragma mark - HARRY
+- (void)netPortScan:(NSString * _Nonnull)aHost
+          beginPort:(NSUInteger)aBeginPort
+            endPort:(NSUInteger)aEndPort
+        scanHandler:(NetPortScanHandler)aScanHandler
+    completeHandler:(CompletionHandler)aCompleteHandler {
+   
+   if (!aScanHandler) {
+      
+      @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"no port scan complete Handler" userInfo:nil];
+      
+      return;
+   }
+   
+   [[PNPortScan shareInstance] portScan:aHost
+                              beginPort:aBeginPort
+                                endPort:aEndPort
+                            scanHandler:aScanHandler
+                        completeHandler:aCompleteHandler];
+   
+   return;
+}
+
 - (BOOL)isDoingPortScan
 {
     return [[PNPortScan shareInstance] isDoingScanPort];
