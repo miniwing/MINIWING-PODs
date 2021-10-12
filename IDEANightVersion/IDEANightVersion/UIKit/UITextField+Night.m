@@ -71,9 +71,13 @@
 
 - (void)setPlaceholderColor:(UIColor *)aColor {
    
-   NSAttributedString   *stPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder
-                                                                         attributes:@{NSForegroundColorAttributeName:aColor}];
-   [self setAttributedPlaceholder:stPlaceholder];
+   if (nil != self.placeholder) {
+      
+      NSAttributedString   *stPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder
+                                                                            attributes:@{NSForegroundColorAttributeName:aColor}];
+      [self setAttributedPlaceholder:stPlaceholder];
+
+   } /* End if () */
 
    return;
 }

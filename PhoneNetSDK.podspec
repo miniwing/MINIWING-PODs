@@ -1,0 +1,1 @@
+PhoneNetSDK/PhoneNetSDK.podspec
