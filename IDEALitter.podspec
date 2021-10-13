@@ -1,0 +1,1 @@
+IDEALitter/IDEALitter.podspec
