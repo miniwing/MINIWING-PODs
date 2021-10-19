@@ -11,6 +11,7 @@
 #import <IDEALitter/IDEAUtils.h>
 #import <IDEALitter/NSObject+Notification.h>
 #import <IDEALitter/UIAlertController+Blocks.h>
+#import <IDEALitter/NSUserDefaults+Group.h>
 
 #ifdef __OBJC__
 #  define __bridge_cast(type, p)                                              (__bridge (type))(p)
