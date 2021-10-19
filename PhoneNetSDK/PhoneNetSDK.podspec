@@ -134,4 +134,60 @@ Pod::Spec.new do |spec|
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
 
+  pch_app_kit = <<-EOS
+  
+/******************************************************************************************************/
+
+#ifdef DEBUG
+#  pragma clang diagnostic ignored                 "-Wgnu"
+#  pragma clang diagnostic ignored                 "-Wcomma"
+#  pragma clang diagnostic ignored                 "-Wformat"
+#  pragma clang diagnostic ignored                 "-Wswitch"
+#  pragma clang diagnostic ignored                 "-Wvarargs"
+#  pragma clang diagnostic ignored                 "-Wnonnull"
+#  pragma clang diagnostic ignored                 "-Wpointer-sign"
+#  pragma clang diagnostic ignored                 "-Wdangling-else"
+#  pragma clang diagnostic ignored                 "-Wunused-result"
+#  pragma clang diagnostic ignored                 "-Wuninitialized"
+#  pragma clang diagnostic ignored                 "-Wdocumentation"
+#  pragma clang diagnostic ignored                 "-Wpch-date-time"
+#  pragma clang diagnostic ignored                 "-Wenum-conversion"
+#  pragma clang diagnostic ignored                 "-Wunused-variable"
+#  pragma clang diagnostic ignored                 "-Wunused-function"
+#  pragma clang diagnostic ignored                 "-Wmissing-noescape"
+#  pragma clang diagnostic ignored                 "-Wwritable-strings"
+#  pragma clang diagnostic ignored                 "-Wunreachable-code"
+#  pragma clang diagnostic ignored                 "-Wshorten-64-to-32"
+#  pragma clang diagnostic ignored                 "-Wwritable-strings"
+#  pragma clang diagnostic ignored                 "-Wstrict-prototypes"
+#  pragma clang diagnostic ignored                 "-Wdocumentation-html"
+#  pragma clang diagnostic ignored                 "-Wobjc-method-access"
+#  pragma clang diagnostic ignored                 "-Wundeclared-selector"
+#  pragma clang diagnostic ignored                 "-Wimplicit-retain-self"
+#  pragma clang diagnostic ignored                 "-Wunguarded-availability"
+#  pragma clang diagnostic ignored                 "-Wunknown-warning-option"
+#  pragma clang diagnostic ignored                 "-Wlogical-op-parentheses"
+#  pragma clang diagnostic ignored                 "-Wlogical-not-parentheses"
+#  pragma clang diagnostic ignored                 "-Wdeprecated-declarations"
+#  pragma clang diagnostic ignored                 "-Wnullability-completeness"
+#  pragma clang diagnostic ignored                 "-Wobjc-missing-super-calls"
+#  pragma clang diagnostic ignored                 "-Wnonportable-include-path"
+#  pragma clang diagnostic ignored                 "-Wconditional-uninitialized"
+#  pragma clang diagnostic ignored                 "-Wincompatible-pointer-types"
+#  pragma clang diagnostic ignored                 "-Wdeprecated-implementations"
+#  pragma clang diagnostic ignored                 "-Wmismatched-parameter-types"
+#  pragma clang diagnostic ignored                 "-Wobjc-redundant-literal-use"
+#  pragma clang diagnostic ignored                 "-Wno-nullability-completeness"
+#  pragma clang diagnostic ignored                 "-Wblock-capture-autoreleasing"
+#  pragma clang diagnostic ignored                 "-Wtautological-pointer-compare"
+#  pragma clang diagnostic ignored                 "-Wimplicit-function-declaration"
+#  pragma clang diagnostic ignored                 "-Wquoted-include-in-framework-header"
+#  pragma clang diagnostic ignored                 "-Wnullability-completeness-on-arrays"
+#endif /* DEBUG */
+
+/******************************************************************************************************/
+
+  EOS
+  spec.prefix_header_contents = pch_app_kit
+
 end
