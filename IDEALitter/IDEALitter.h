@@ -9,9 +9,11 @@
 #define IDEALitter_h
 
 #import <IDEALitter/IDEAUtils.h>
+#import <IDEALitter/NSObject+Null.h>
 #import <IDEALitter/NSObject+Notification.h>
 #import <IDEALitter/UIAlertController+Blocks.h>
 #import <IDEALitter/NSUserDefaults+Group.h>
+#import <IDEALitter/UIApplication+Kit.h>
 
 #ifdef __OBJC__
 #  define __bridge_cast(type, p)                                              (__bridge (type))(p)

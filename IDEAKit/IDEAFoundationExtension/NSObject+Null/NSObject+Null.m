@@ -1,13 +1,13 @@
 //
 //  NSObject+Null.m
-//  ReadFun
+//  IDEAKit
 //
 //  Created by Harry on 14-8-12.
 //  Copyright (c) 2014年 Idea.Mobi. All rights reserved.
 //
 
-#import "NSObject+Null.h"
-#import "NSString+Java.h"
+#import "IDEAKit/NSObject+Null.h"
+#import "IDEAKit/NSString+Java.h"
 
 @implementation NSObject (Null)
 

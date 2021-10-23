@@ -1,6 +1,6 @@
 //
 //  NSObject+Null.h
-//  Idea
+//  IDEALitter
 //
 //  Created by Harry on 14-8-12.
 //  Copyright (c) 2014年 Idea.Mobi. All rights reserved.
@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define IS_NULL(STR)                         ((!STR) || ([(STR) isNull]))
+#define kObjectIsNull(OBJ)                   ((!OBJ) || ([(OBJ) isNull]))
 
 @interface NSObject (Null)
 
@@ -19,7 +19,7 @@
 
 @end
 
-#define IS_EMPTY(STR)                         ((!STR) || ([(STR) isEmpty]))
+#define kStringIsEmpty(STR)                   ((!STR) || ([(STR) isEmpty]))
 
 @interface NSString (Empty)
 
@@ -27,3 +27,10 @@
 
 @end
 
+#define kStringIsBlank(STR)                   ((!STR) || ([(STR) isBlank]))
+
+@interface NSString (Blank)
+
+- (BOOL)isBlank;
+
+@end
