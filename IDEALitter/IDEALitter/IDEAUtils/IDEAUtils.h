@@ -42,7 +42,7 @@
 //   return [aSTRING stringByAppendingFormat:@"&%@=%@", aKEY, aVALUE];
 //}
 
-#if (__has_include(<YYCategories/YYCategories.h>) || __has_include("YYCategories/YYCategories.h") || __has_include("YYCategories.h"))
+#if (__has_include(<YYKit/YYKit.h>) || __has_include("YYKit/YYKit.h"))
 
 #else /* YY_KIT */
 
