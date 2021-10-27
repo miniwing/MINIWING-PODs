@@ -1,0 +1,1 @@
+IDEAPopController/IDEAPopController.podspec
