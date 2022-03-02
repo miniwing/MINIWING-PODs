@@ -1,0 +1,1 @@
+IDEAApplet/IDEAApplet.podspec

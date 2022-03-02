@@ -1,0 +1,1 @@
+IDEASwift/IDEASwift.podspec
