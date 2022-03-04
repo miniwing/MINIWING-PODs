@@ -18,24 +18,13 @@ Pod::Spec.new do |spec|
 #  spec.osx.deployment_target      = '10.10'
 #  spec.tvos.deployment_target     = '10.0'
 
-  spec.ios.pod_target_xcconfig     = {
-                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEALitter',
-                                        'ENABLE_BITCODE'            => 'NO',
-                                        'SWIFT_VERSION'             => '5.0',
-                                        'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
-                                        'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
-                                        'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
-                                      }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEALitter' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEALitter-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEALitter' }
   
-  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
+#  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
     
   spec.xcconfig                     = {
     'HEADER_SEARCH_PATHS'               => [
                                             "${PODS_TARGET_SRCROOT}/",
-                                            "${PODS_TARGET_SRCROOT}/../",
+                                            "${PODS_TARGET_SRCROOT}/../"
 #                                            "${PODS_ROOT}/Headers/Public/YYKit/",
 #                                            "${PODS_ROOT}/Headers/Public/AFNetworking",
 #                                            "${PODS_ROOT}/Headers/Public/IDEALitter/",
@@ -55,9 +44,6 @@ Pod::Spec.new do |spec|
 #  spec.dependency 'UIKitExtension'
   
 #  spec.dependency 'AFNetworking'
-#  spec.dependency 'AFNetworking/Serialization'
-#  spec.dependency 'AFNetworking/Security'
-#  spec.dependency 'AFNetworking/Reachability'
 #  spec.dependency 'AFNetworking/NSURLSession'
 
 #  spec.dependency 'YYCategories'
@@ -70,9 +56,9 @@ Pod::Spec.new do |spec|
 #  spec.private_header_files       = 'IDEALitter/**/*.{h}',
 #                                    'IDEAExtension/**/*.{h}'
   spec.source_files               = 'IDEALitter.h',
-                                    'IDEALitter/**/*.{h,m,mm,c,cpp}',
-                                    'IDEAFoundationExtension/**/*.{h,m,mm,c,cpp}',
-                                    'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
+                                    'IDEALitter/**/*.{h,m,mm}',
+                                    'IDEAFoundationExtension/**/*.{h,m,mm}',
+                                    'IDEAUIKitExtension/**/*.{h,m,mm}'
 
 #  spec.vendored_libraries   = 'libXG-SDK.a'
 #  spec.vendored_frameworks  = 'libXG-SDK.a'
