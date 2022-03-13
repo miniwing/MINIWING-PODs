@@ -1,0 +1,1 @@
+IDEATypeFace/IDEATypeFace.podspec

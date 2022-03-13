@@ -1,0 +1,1 @@
+IDEAServiceManager/IDEAServiceManager.podspec
