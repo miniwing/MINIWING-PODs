@@ -77,6 +77,32 @@
    return stView;
 }
 
++ (NSBundle *)bundleNamed:(NSString *)aBundleName Class:(Class)aClass
+{
+   NSBundle *stBaseBundle  = [NSBundle bundleForClass:aClass];
+   NSString *szBundlePath  = [stBaseBundle pathForResource:aBundleName ofType:@"bundle"];
+
+   return [NSBundle bundleWithPath:szBundlePath];
+}
+
++ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inBundle:(NSString *)aBundle
+{
+   NSBundle       *stBundle      = [NSBundle bundleForClass:aClass];
+   
+   UIStoryboard   *stStoryboard  = [UIStoryboard storyboardWithName:aStoryboard
+                                                             bundle:stBundle];
+   
+   NSString       *szIdentifier  = NSStringFromClass(aClass);
+   
+   NSArray        *stItems       = [szIdentifier split:@"."];
+   
+   szIdentifier   = stItems.lastObject;
+
+//   id stView   = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
+      
+   return [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
+}
+
 + (id)loadStoryboard:(NSString *)aStoryboard identifier:(NSString *)aIdentifier {
    
    NSString       *szStoryboard  = nil;

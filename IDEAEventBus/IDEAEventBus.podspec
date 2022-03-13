@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name                         = "IDEAEventBus"
   spec.version                      = "0.4.1-IDEA"
   spec.summary                      = "IDEAEventBus"
-  spec.description                  = "IDEANightVersion"
+  spec.description                  = "IDEAEventBus"
   spec.homepage                     = "https://github.com/miniwing"
   spec.license                      = "MIT"
   spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }

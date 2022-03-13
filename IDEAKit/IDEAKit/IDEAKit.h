@@ -58,6 +58,10 @@
 
 #import <IDEAKit/YYWebImageManager+Cache.h>
 #import <IDEAKit/YYWebImageManager+Operation.h>
+
+#import <IDEAKit/NSObject+Bundle.h>
+#import <IDEAKit/UIImage+Bundle.h>
+
 #endif /* __OBJC__ */
 
 #endif /* IDEAKit_H */

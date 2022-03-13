@@ -32,6 +32,8 @@
 
 #import <IDEAUIKit/UIStoryboard+Load.h>
 
+#import <IDEAUIKit/UIViewController+Keyboard.h>
+
 #import <IDEAUIKit/NSLayoutConstraint+Extension.h>
 
 #import <IDEAUIKit/UIViewController+Separator.h>

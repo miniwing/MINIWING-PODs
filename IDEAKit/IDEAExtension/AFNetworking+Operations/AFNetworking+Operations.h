@@ -30,12 +30,12 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
 @interface AFHTTPSessionManager (Operations)
 
 - (NSURLSessionDataTask * _Nullable)GET:(NSString *)aURL
-                       resume:(BOOL)aResume
-                      prepare:(nullable void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
-                      headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
-                   parameters:(nullable NSDictionary <NSString *, NSString *> *)aParams
-                      success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
-                      failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE;
+                                 resume:(BOOL)aResume
+                                prepare:(nullable void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                                headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
+                             parameters:(nullable NSDictionary <NSString *, NSString *> *)aParams
+                                success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
+                                failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE;
 
 /**
  Creates and runs an `NSURLSessionDataTask` with a `POST` request.

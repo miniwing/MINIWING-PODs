@@ -94,7 +94,9 @@ Pod::Spec.new do |spec|
   end # RTRootNavigationController
 
   if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
-#    spec.dependency 'MaterialComponents/ActivityIndicator'
+    spec.dependency 'MaterialComponents/Palettes'
+    spec.dependency 'MaterialComponents/AppBar'
+    spec.dependency 'MaterialComponents/ActivityIndicator'
   end # IDEA_MATERIAL_COMPONENTS
 
 #  spec.dependency 'pop'
@@ -218,21 +220,17 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-//#  if (__has_include(<MaterialComponents/MaterialAppBar.h>))
-//#     import <MaterialComponents/MDCAvailability.h>
-//#     import <MaterialComponents/MaterialAppBar.h>
-//#     define MATERIAL_APP_BAR                                              (1)
-//#  elif (__has_include("MaterialComponents/MaterialAppBar.h"))
-//#     import "MaterialComponents/MDCAvailability.h"
-//#     import "MaterialComponents/MaterialAppBar.h"
-//#     define MATERIAL_APP_BAR                                              (1)
-//#  elif (__has_include("MaterialAppBar.h"))
-//#     import "MDCAvailability.h"
-//#     import "MaterialAppBar.h"
-//#     define MATERIAL_APP_BAR                                              (1)
-//#  else
-//#     define MATERIAL_APP_BAR                                              (0)
-//#  endif
+#  if (__has_include(<MaterialComponents/MaterialAppBar.h>))
+#     import <MaterialComponents/MDCAvailability.h>
+#     import <MaterialComponents/MaterialAppBar.h>
+#     define MATERIAL_APP_BAR                                              (1)
+#  elif (__has_include("MaterialComponents/MaterialAppBar.h"))
+#     import "MaterialComponents/MDCAvailability.h"
+#     import "MaterialComponents/MaterialAppBar.h"
+#     define MATERIAL_APP_BAR                                              (1)
+#  else
+#     define MATERIAL_APP_BAR                                              (0)
+#  endif
 
 #  if __has_include(<IDEANightVersion/DKNightVersion.h>)
 #     import <IDEANightVersion/DKNightVersion.h>

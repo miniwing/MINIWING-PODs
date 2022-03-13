@@ -1,0 +1,1 @@
+IDEAStartUp/IDEAStartUp.podspec

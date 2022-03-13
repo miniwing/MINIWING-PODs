@@ -1,0 +1,1 @@
+IDEAUIRouter/IDEAUIRouter.podspec

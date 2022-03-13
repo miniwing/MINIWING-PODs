@@ -226,4 +226,13 @@ typedef signed   long                                       LONG;
 #define LOBYTE(w)                                           ((BYTE)((w) & 0xff))
 #define HIBYTE(w)                                           ((BYTE)((w) >> 8))
 
+/*********************************************************************************************
+ * HTTP Timeout                                                                              *
+ *********************************************************************************************/
+#if __Debug__
+#  define HTTP_TIME_OUT_INTERVAL                   (10)
+#else
+#  define HTTP_TIME_OUT_INTERVAL                   (30)
+#endif
+
 #endif /* IdeaDef_H */

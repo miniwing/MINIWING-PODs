@@ -18,6 +18,8 @@
 + (id)loadStoryboard:(NSString *)aStoryboard identifier:(NSString *)aIdentifier;
 + (id)loadStoryboardRoot:(NSString *)aStoryboard;
 
++ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inBundle:(NSString *)aBundle;
+
 - (id)loadViewController:(Class)aClass;
 
 @end
