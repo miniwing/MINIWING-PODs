@@ -10,8 +10,8 @@
 
 @implementation UIFont (TypeFace)
 
-+ (void)load
-{
++ (void)load {
+   
    //交换systemFontOfSize: 方法
    [[self class] runtimeReplaceMethodWithSelector:@selector(systemFontOfSize:)
                                   swizzleSelector:@selector(customSystemFontOfSize:)
@@ -25,8 +25,8 @@
 }
 
 //自定义的交换方法
-+ (UIFont *)customSystemFontOfSize:(CGFloat)fontSize
-{
++ (UIFont *)customSystemFontOfSize:(CGFloat)fontSize {
+   
    CGFloat size = [UIFont transSizeWithFontSize:fontSize];
    
    ///这里并不会引起递归，方法交换后，此时调用customSystemFontOfSize方法，其实是调用了原来的systemFontOfSize方法
@@ -34,16 +34,16 @@
 }
 
 //自定义的交换方法
-+ (UIFont *)customFontWithName:(NSString *)fontName size:(CGFloat)fontSize
-{
++ (UIFont *)customFontWithName:(NSString *)fontName size:(CGFloat)fontSize {
+   
    CGFloat size = [UIFont transSizeWithFontSize:fontSize];
    
    return [UIFont customFontWithName:fontName size:size];
 }
 
 ///屏幕宽度大于320的，字体加10。(此处可根据不同的需求设置字体大小)
-+ (CGFloat)transSizeWithFontSize:(CGFloat)fontSize
-{
++ (CGFloat)transSizeWithFontSize:(CGFloat)fontSize {
+   
    CGFloat size = fontSize;
 //   CGFloat width = [UIFont getWidth];
 //   

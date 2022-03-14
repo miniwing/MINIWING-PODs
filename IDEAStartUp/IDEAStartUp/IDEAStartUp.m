@@ -24,33 +24,33 @@
 
 static dispatch_once_t onceToken;
 
-+ (void)starUp
-{
-//   dispatch_once(&onceToken, ^(void)
-//                 {
-//      __init();
-//   });
++ (void)starUp {
+   
+   //   dispatch_once(&onceToken, ^(void)
+   //                 {
+   //      __init();
+   //   });
    
    return;
 }
 
-+ (void)load
-{
-   dispatch_once(&onceToken, ^(void)
-                 {
++ (void)load {
+   
+   dispatch_once(&onceToken, ^(void) {
+      
       __init();
    });
    
    return;
 }
 
-NS_INLINE void __init()
-{
+NS_INLINE void __init() {
+   
    _dyld_register_func_for_add_image(__dyld_callback);
 }
 
-NS_INLINE void __dyld_callback(const struct mach_header *_mach_header, intptr_t _vmaddr_slide)
-{
+NS_INLINE void __dyld_callback(const struct mach_header *_mach_header, intptr_t _vmaddr_slide) {
+   
    char           *psz_section_name = __STARTUP_KEY;
    unsigned long   ul_size          = 0;
 #ifndef __LP64__
@@ -63,12 +63,12 @@ NS_INLINE void __dyld_callback(const struct mach_header *_mach_header, intptr_t 
    unsigned long   ul_counter = ul_size / sizeof(St_StartUp);
    unsigned long   ul_offset  = sizeof(St_StartUp) / sizeof(void *);
    
-   for (int H = 0; H < ul_counter; ++H)
-   {
+   for (int H = 0; H < ul_counter; ++H) {
+      
       St_StartUp st_start_up = *(St_StartUp*)(pst_memory + ul_offset * (H));
       
-      if (st_start_up.key)
-      {
+      if (st_start_up.key) {
+         
          st_start_up.function();
          
       } /* End if () */

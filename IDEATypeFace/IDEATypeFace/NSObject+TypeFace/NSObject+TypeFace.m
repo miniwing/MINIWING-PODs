@@ -17,21 +17,24 @@
  */
 + (void)runtimeReplaceMethodWithSelector:(SEL)originselector
                          swizzleSelector:(SEL)swizzleSelector
-                           isClassMethod:(BOOL)isClassMethod
-{
+                           isClassMethod:(BOOL)isClassMethod {
+   
    Method originMethod;
    Method swizzleMethod;
-   if (isClassMethod == YES)
-   {
+   if (isClassMethod == YES) {
+      
       originMethod = class_getClassMethod([self class], originselector);
       swizzleMethod = class_getClassMethod([self class], swizzleSelector);
    }
-   else
-   {
+   else {
+      
       originMethod = class_getInstanceMethod([self class], originselector);
       swizzleMethod = class_getInstanceMethod([self class], swizzleSelector);
    }
+   
    method_exchangeImplementations(originMethod, swizzleMethod);
+   
+   return;
 }
 
 @end

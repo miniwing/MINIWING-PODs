@@ -39,11 +39,12 @@ Pod::Spec.new do |spec|
     'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEATypeFace\" '
   }
 
-#  spec.dynamic_frameworks   = true
-#  spec.build_as_static_framework  = true
+#  spec.dynamic_frameworks        = true
+#  spec.build_as_static_framework = true
 
   spec.public_header_files  = 'IDEATypeFace/**/*.h'
   spec.source_files         = 'IDEATypeFace/**/*.{h,m}'
+  spec.requires_arc         = true
 
   pch_app_kit = <<-EOS
 

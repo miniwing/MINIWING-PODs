@@ -10,19 +10,19 @@
 
 @implementation UIButton (Font)
 
-+ (void)load
-{
++ (void)load {
+   
    [[self class] runtimeReplaceMethodWithSelector:@selector(initWithCoder:) swizzleSelector:@selector(customInitWithCoder:) isClassMethod:NO];
    
    return;
 }
 
-- (instancetype)customInitWithCoder:(NSCoder *)coder
-{
-   if ([self customInitWithCoder:coder])
-   {
-      if (self.titleLabel != nil)
-      {
+- (instancetype)customInitWithCoder:(NSCoder *)coder {
+   
+   if ([self customInitWithCoder:coder]) {
+      
+      if (self.titleLabel != nil) {
+         
          self.titleLabel.font = [UIFont fontWithName:self.titleLabel.font.familyName size:self.titleLabel.font.pointSize];
          
       } /* End if () */

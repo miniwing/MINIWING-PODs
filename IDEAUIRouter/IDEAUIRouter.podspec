@@ -58,7 +58,6 @@ Pod::Spec.new do |spec|
   }
 
   spec.public_header_files          = 'IDEAUIRouter/**/*.h'
-                              
   spec.source_files                 = 'IDEAUIKitExtension/**/*.{h,m}',
                                       'IDEAFoundationExtension/**/*.{h,m}',
                                       'IDEAUIRouter/**/*.{h,m}'

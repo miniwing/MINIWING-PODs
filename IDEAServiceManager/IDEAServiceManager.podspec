@@ -57,15 +57,14 @@ Pod::Spec.new do |spec|
                                         ]
   }
 
-  spec.public_header_files          = 'IDEAServiceManager/**/*.h'
-                              
-  spec.source_files                 = 'IDEAServiceManager/**/*.{h,m}'
-  spec.requires_arc                 = true
-
   if ENV['IDEA_YYKIT'] == 'YES'
     spec.dependency 'YYKit'
   end # IDEA_YYKIT
-  
+
+  spec.public_header_files          = 'IDEAServiceManager/**/*.h'
+  spec.source_files                 = 'IDEAServiceManager/**/*.{h,m}'
+  spec.requires_arc                 = true
+
   pch_app_kit = <<-EOS
 
 /******************************************************************************************************/

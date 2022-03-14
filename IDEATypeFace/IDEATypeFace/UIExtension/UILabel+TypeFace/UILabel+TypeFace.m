@@ -10,8 +10,8 @@
 
 @implementation UILabel (TypeFace)
 
-+ (void)load
-{
++ (void)load {
+   
    [[self class] runtimeReplaceMethodWithSelector:@selector(initWithCoder:)
                                   swizzleSelector:@selector(customInitWithCoder:)
                                     isClassMethod:NO];
@@ -19,10 +19,10 @@
    return;
 }
 
-- (instancetype)customInitWithCoder:(NSCoder *)coder
-{
-   if ([self customInitWithCoder:coder])
-   {
+- (instancetype)customInitWithCoder:(NSCoder *)aCoder {
+   
+   if ([self customInitWithCoder:aCoder]) {
+      
       ///此时调用fontWithName:size:方法，实际上调用的是方法交换后的customFontWithName:size:
       self.font = [UIFont fontWithName:self.font.familyName size:self.font.pointSize];
    }

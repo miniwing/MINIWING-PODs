@@ -28,6 +28,8 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAColor-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAColor' }
 
+  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
+
   spec.xcconfig                     = {
     'HEADER_SEARCH_PATHS'               => [
 #                                            "${PODS_TARGET_SRCROOT}/",
@@ -62,9 +64,10 @@ Pod::Spec.new do |spec|
                               'UIColor+System/**/*.{h,m,mm,c,cpp}',
                               'UIColor+Dynamic/**/*.{h,m,mm,c,cpp}'
 
+  spec.requires_arc         = true
+
 #  spec.resources            = [ 'ColorTable.txt' ]
   spec.resources            = [ 'IDEAColorTable/ColorTable.txt' ]
-  spec.frameworks           = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
 
 #  spec.vendored_libraries   = 'libXG-SDK.a'
 #  spec.vendored_frameworks  = 'libXG-SDK.framework'

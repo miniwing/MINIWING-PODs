@@ -10,8 +10,8 @@
 
 @implementation UITextField (TypeFace)
 
-+ (void)load
-{
++ (void)load {
+   
    [[self class] runtimeReplaceMethodWithSelector:@selector(initWithCoder:)
                                   swizzleSelector:@selector(customInitWithCoder:)
                                     isClassMethod:NO];
@@ -19,10 +19,10 @@
    return;
 }
 
-- (instancetype)customInitWithCoder:(NSCoder *)coder
-{
-   if ([self customInitWithCoder:coder])
-   {
+- (instancetype)customInitWithCoder:(NSCoder *)aCoder {
+   
+   if ([self customInitWithCoder:aCoder]) {
+      
       self.font = [UIFont fontWithName:self.font.familyName size:self.font.pointSize];
    }
    

@@ -95,6 +95,8 @@ Pod::Spec.new do |spec|
                                 'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
                                 'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
 
+  spec.requires_arc           = true
+
 #  spec.subspec 'IDEAVendor' do |sub|
 #    sub.dependency 'UIKitExtension'
 #    sub.public_header_files   = 'IDEAUIKit/IDEAVendor/*.h'

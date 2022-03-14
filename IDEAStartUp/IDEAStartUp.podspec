@@ -60,10 +60,6 @@ Pod::Spec.new do |spec|
   spec.public_header_files          = 'IDEAStartUp/**/*.h'
   spec.source_files                 = 'IDEAStartUp/**/*.{h,m}'
   spec.requires_arc                 = true
-
-#  if ENV['IDEA_YYKIT'] == 'YES'
-#    spec.dependency 'YYKit'
-#  end # IDEA_YYKIT
   
   pch_app_kit = <<-EOS
 

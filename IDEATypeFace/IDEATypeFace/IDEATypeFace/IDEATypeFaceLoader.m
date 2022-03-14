@@ -18,19 +18,19 @@
 
 @implementation IDEATypeFaceLoader
 
-+ (void)loadFontFile:(NSString *)aFontFileName ofType:(NSString *)aType fromBundle:(NSString *)aBundleName
-{
++ (void)loadFontFile:(NSString *)aFontFileName ofType:(NSString *)aType fromBundle:(NSString *)aBundleName {
+   
    static   NSCache           *g_FONT_CACHE;
    static   dispatch_once_t    stOnceToken;
-   dispatch_once(&stOnceToken, ^ (void)
-                 {
+   dispatch_once(&stOnceToken, ^ (void) {
+      
       g_FONT_CACHE   = [[NSCache alloc] init];
    });
    
    NSURL *stBundleURL      = [g_FONT_CACHE objectForKey:aFontFileName];
    
-   if (nil == stBundleURL)
-   {
+   if (nil == stBundleURL) {
+      
       stBundleURL = [[NSBundle bundleForClass:[self class]] URLForResource:aBundleName withExtension:@"bundle"];
       
       NSBundle *stBundle   = [NSBundle bundleWithURL:stBundleURL];
@@ -40,11 +40,11 @@
       CGDataProviderRef  stProviderRef = CGDataProviderCreateWithCFData((CFDataRef)stFontData);
       CGFontRef          stFontRef     = CGFontCreateWithDataProvider(stProviderRef);
       
-      if (stFontRef)
-      {
+      if (stFontRef) {
+         
          CFErrorRef      stErrorRef    = NULL;
-         if (NO == CTFontManagerRegisterGraphicsFont(stFontRef, &stErrorRef))
-         {
+         if (NO == CTFontManagerRegisterGraphicsFont(stFontRef, &stErrorRef)) {
+            
             CFStringRef  szErrorDescriptionRef  = CFErrorCopyDescription(stErrorRef);
             @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                            reason:(__bridge NSString *)szErrorDescriptionRef
@@ -54,8 +54,8 @@
          
          CFRelease(stFontRef);
          
-         if (nil != stBundleURL)
-         {
+         if (nil != stBundleURL) {
+            
             [g_FONT_CACHE setObject:stBundleURL forKey:aFontFileName];
             
          } /* End if () */
@@ -72,10 +72,10 @@
 + (void)loadFontFile:(NSString *)fontFileName
               ofType:(NSString *)type
           fromBundle:(NSString *)bundleName
-           onceToken:(dispatch_once_t *)onceToken
-{
-   dispatch_once(onceToken, ^(void)
-                 {
+           onceToken:(dispatch_once_t *)onceToken {
+   
+   dispatch_once(onceToken, ^(void) {
+      
       [self loadFontFile:fontFileName ofType:type fromBundle:bundleName];
    });
    

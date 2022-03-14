@@ -115,6 +115,7 @@ Pod::Spec.new do |spec|
 
   spec.public_header_files    = 'IDEAUIVendor/**/*.{h}'
   spec.source_files           = 'IDEAUIVendor/**/*.{h,m,mm}'
+  spec.requires_arc           = true
 
 #  spec.vendored_libraries     = 'xxx.a'
 #  spec.vendored_frameworks    = 'xxx.framework'

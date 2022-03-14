@@ -19,25 +19,25 @@
 
 @implementation IDEATypeFaceSystemFont
 
-+ (instancetype)shareInstance
-{
++ (instancetype)shareInstance {
+   
    static   IDEATypeFaceSystemFont  *g_IDEA_FONT         = nil;
    dispatch_once_t                   stOnceToken;
    
-   dispatch_once(&stOnceToken, ^(void)
-                 {
+   dispatch_once(&stOnceToken, ^(void) {
+      
       g_IDEA_FONT = [[IDEATypeFaceSystemFont alloc] init];
    });
    
    return g_IDEA_FONT;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
+   
    self = [super init];
    
-   if (self)
-   {
+   if (self) {
+      
       _fontCache  = [[NSCache alloc] init];
       
       [[NSNotificationCenter defaultCenter] addObserver:self
@@ -49,63 +49,63 @@
    return self;
 }
 
-- (void)didChangeContentSize
-{
+- (void)didChangeContentSize {
+   
    [_fontCache removeAllObjects];
    
    return;
 }
 
 /** Asks the receiver to return a font with a light weight. FontSize must be larger tha 0. */
-+ (nullable UIFont *)lightFontOfSize:(CGFloat)fontSize
-{
++ (nullable UIFont *)lightFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] lightFontOfSize:fontSize];
 }
 
 /** Asks the receiver to return a font with a normal weight. FontSize must be larger tha 0. */
-+ (nonnull UIFont *)regularFontOfSize:(CGFloat)fontSize
-{
++ (nonnull UIFont *)regularFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] regularFontOfSize:fontSize];
 }
 
 /** Asks the receiver to return a font with a medium weight. FontSize must be larger tha 0. */
-+ (nullable UIFont *)mediumFontOfSize:(CGFloat)fontSize
-{
++ (nullable UIFont *)mediumFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] mediumFontOfSize:fontSize];
 }
 
 /** Asks the receiver to return a font with a bold weight. FontSize must be larger tha 0. */
-+ (nonnull UIFont *)boldFontOfSize:(CGFloat)fontSize
-{
++ (nonnull UIFont *)boldFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] boldFontOfSize:fontSize];
 }
 
 /** Asks the receiver to return an italic font. FontSize must be larger tha 0. */
-+ (nonnull UIFont *)italicFontOfSize:(CGFloat)fontSize
-{
++ (nonnull UIFont *)italicFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] italicFontOfSize:fontSize];
 }
 
 /** Asks the receiver to return a font with an italic bold weight. FontSize must be larger tha 0. */
-+ (nullable UIFont *)boldItalicFontOfSize:(CGFloat)fontSize
-{
++ (nullable UIFont *)boldItalicFontOfSize:(CGFloat)fontSize {
+   
    return [[IDEATypeFaceSystemFont shareInstance] boldItalicFontOfSize:fontSize];
 }
 
 #pragma mark - implementation
-- (nullable UIFont *)lightFontOfSize:(CGFloat)aFontSize
-{
+- (nullable UIFont *)lightFontOfSize:(CGFloat)aFontSize {
+   
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
    
    stFont = [UIFont systemFontOfSize:aFontSize weight:UIFontWeightLight];
-   if (stFont)
-   {
+   if (stFont) {
+      
       [self.fontCache setObject:stFont forKey:szCacheKey];
       
    } /* End if () */
@@ -118,8 +118,8 @@
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
    
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
@@ -136,15 +136,15 @@
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
    
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
    
    stFont = [UIFont systemFontOfSize:aFontSize weight:UIFontWeightMedium];
-   if (stFont)
-   {
+   if (stFont) {
+      
       [self.fontCache setObject:stFont forKey:szCacheKey];
       
    } /* End if () */
@@ -152,13 +152,13 @@
    return stFont;
 }
 
-- (UIFont *)boldFontOfSize:(CGFloat)aFontSize
-{
+- (UIFont *)boldFontOfSize:(CGFloat)aFontSize {
+   
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
    
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
@@ -170,13 +170,13 @@
    return stFont;
 }
 
-- (UIFont *)italicFontOfSize:(CGFloat)aFontSize
-{
+- (UIFont *)italicFontOfSize:(CGFloat)aFontSize {
+   
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
    
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
@@ -188,13 +188,13 @@
    return stFont;
 }
 
-- (nullable UIFont *)boldItalicFontOfSize:(CGFloat)aFontSize
-{
+- (nullable UIFont *)boldItalicFontOfSize:(CGFloat)aFontSize {
+   
    NSString *szCacheKey = [NSString stringWithFormat:@"%@-%06f", NSStringFromSelector(_cmd), aFontSize];
    UIFont   *stFont     = [self.fontCache objectForKey:szCacheKey];
    
-   if (stFont)
-   {
+   if (stFont) {
+      
       return stFont;
       
    } /* End if () */
@@ -202,8 +202,8 @@
    UIFont            *stRegular     = [self regularFontOfSize:aFontSize];
    UIFontDescriptor  *stDescriptor  = [stRegular.fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold | UIFontDescriptorTraitItalic];
    
-   if (!stDescriptor)
-   {
+   if (!stDescriptor) {
+      
       return nil;
       
    } /* End if () */
