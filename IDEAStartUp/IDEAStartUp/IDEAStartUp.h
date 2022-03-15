@@ -26,8 +26,12 @@ typedef struct __StartUp {
 
 #define IDEA_MAIN()              __STARTUP(__main)
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface IDEAStartUp : NSObject
 
 + (void)starUp;
 
 @end
+
+NS_ASSUME_NONNULL_END

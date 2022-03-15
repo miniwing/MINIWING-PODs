@@ -74,7 +74,7 @@
    static   dispatch_once_t stOnceToken;
    
    dispatch_once(&stOnceToken, ^{
-      g_APP_URL   = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld", @"APP_ID"];
+      g_APP_URL   = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld", APP_ID];
    });
    
    return g_APP_URL;

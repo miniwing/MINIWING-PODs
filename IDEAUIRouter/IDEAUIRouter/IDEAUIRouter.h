@@ -77,4 +77,5 @@ typedef void (^IDEAUIRouterHandler)(NSDictionary *routerParameters, IDEAUIRouter
  *  @return router
  */
 + (NSString *)generateURLWithPattern:(NSString *)pattern parameters:(NSArray *)parameters;
+
 @end

@@ -90,7 +90,7 @@
    
    } /* End for () */
    
-   return Nil;
+   return nil;
 }
 
 + (NSString *)getIPAddress {
