@@ -5,18 +5,20 @@
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.
 
+#  import <UIKitExtension/UIView.h>
+
 #import "IDEAUIKit/UIView+Animated.h"
 
-#if (__has_include(<UIKitExtension/UIView.h>))
-#  import <UIKitExtension/UIView.h>
-extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
-#else
-const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
-#endif
+//#if (__has_include(<UIKitExtension/UIView.h>))
+//#  import <UIKitExtension/UIView.h>
+//extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
+//#else
+static const NSTimeInterval __UIViewAnimationDefaultDuraton = 0.25f;
+//#endif
 
 const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
    
-   return UIAViewAnimationDefaultDuraton;
+   return __UIViewAnimationDefaultDuraton;
 }
 
 @implementation UIView (Animated)

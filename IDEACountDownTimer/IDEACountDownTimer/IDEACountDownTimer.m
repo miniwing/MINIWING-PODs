@@ -8,6 +8,24 @@
 
 #import "IDEACountDownTimer/IDEACountDownTimer.h"
 
+#undef  __DebugFunc__
+#define __DebugFunc__                              (__OFF__)
+
+#undef  __DebugDebug__
+#define __DebugDebug__                             (__OFF__)
+
+#undef  __DebugWarn__
+#define __DebugWarn__                              (__OFF__)
+
+#undef  __DebugError__
+#define __DebugError__                             (__OFF__)
+
+#undef  __DebugColor__
+#define __DebugColor__                             (__OFF__)
+
+#undef  __DebugColor__
+#define __DebugView__                              (__OFF__)
+
 @interface IDEACountDownTimer()
 
 @property (nonatomic, assign)                NSInteger                             secondInFuture;
@@ -49,8 +67,8 @@
       
       self.timer           = [NSTimer timerWithTimeInterval:aSecondInterval
                                                     repeats:YES
-                                                       tick:^(NSTimer * _Nonnull aTimer) {
-         
+                                                       block:^(NSTimer * _Nonnull aTimer) {
+         [self tick:aTimer];
       }];
       
       [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
@@ -71,16 +89,16 @@
    
    self.cancelled    = NO;
    
-   if (0 >= self.secondInFutur) {
+   if (0 >= self.secondInFuture) {
       
-      onFinish();
+      [self finish];
       
       nErr  = noErr;
       
       break;
-      
-   } /* End if () */
 
+   } /* End if () */
+   
    if (nil != _timer) {
       
       [_timer fire];
@@ -92,7 +110,7 @@
    return;
 }
 
-- (void)ticker:(NSTimer *)aTimer {
+- (void)tick:(NSTimer *)aTimer {
    
    int                            nErr                                     = EFAULT;
    
@@ -108,7 +126,7 @@
 
    if (0 >= self.secondInFuture) {
       
-      onFinish();
+      [self finish];
       
    } /* End if () */
    else {
@@ -126,7 +144,7 @@
    return;
 }
 
-- (void)onFinish {
+- (void)finish {
    
    int                            nErr                                     = EFAULT;
    
@@ -141,7 +159,7 @@
       
    } /* End if () */
    
-   if (nil != self.onFinish) {
+   if (self.onFinish) {
       
       self.onFinish();
       

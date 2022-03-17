@@ -10,13 +10,13 @@
 
 @implementation NSObject (Bundle)
 
-+ (BOOL)currentBundle
-{
++ (BOOL)currentBundle {
+   
    return [NSBundle bundleForClass:[self class]];
 }
 
-- (BOOL)currentBundle
-{
+- (BOOL)currentBundle {
+   
    return [NSBundle bundleForClass:[self class]];
 }
 

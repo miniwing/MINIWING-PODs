@@ -648,10 +648,6 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
-
-#import <IDEAUIKit/IDEAUIKit.h>
-
   EOS
   spec.prefix_header_contents = pch_app_kit
       

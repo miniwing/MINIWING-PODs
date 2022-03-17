@@ -13,7 +13,6 @@
 
 + (UIColor *)colorWithColorLight:(UIColor *)aLight dark:(nullable UIColor *)aDark {
    
-#if __AVAILABLE_SDK_IOS(13_0)
    if (@available(iOS 13.0, *)) {
       
       return [self colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
@@ -30,9 +29,7 @@
          } /* End swich () */
       }];
    } /* End if () */
-   else
-#endif /* #if __AVAILABLE_SDK_IOS(13_0) */
-   {
+   else {
       return aLight;
       
    } /* End else */
