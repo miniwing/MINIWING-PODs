@@ -11,6 +11,7 @@
 
 @interface IDEATypeFace : NSObject
 
-+ (CGFloat)appFontTabTitleSize;
++ (CGFloat)tabTitleSize;
++ (CGFloat)searchBarSize;
 
 @end

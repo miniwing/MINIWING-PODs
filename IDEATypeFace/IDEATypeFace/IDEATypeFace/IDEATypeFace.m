@@ -16,9 +16,14 @@
 
 @implementation IDEATypeFace
 
-+ (CGFloat)appFontTabTitleSize {
++ (CGFloat)tabTitleSize {
    
    return 12;
+}
+
++ (CGFloat)searchBarSize {
+   
+   return 14;
 }
 
 @end

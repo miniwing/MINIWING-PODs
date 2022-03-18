@@ -16,9 +16,7 @@
 
 @interface IDEAServiceManager : NSObject
 
-+ (instancetype)sharedManager;
-
-- (id)createService:(Protocol *)service;
++ (id)createService:(Protocol *)service;
 
 @end
 
@@ -28,3 +26,6 @@
 + (id<IDEAIService>)sharedInstance;
 
 @end
+
+
+#define SERVICE(service)                        ((id<service>)[IDEAServiceManager createService:@protocol(service)])

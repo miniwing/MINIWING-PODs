@@ -205,12 +205,12 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    return bOK;
 }
 
-- (id)createService:(Protocol *)service {
+- (id)createService:(Protocol *)aService {
    
    int                            nErr                                     = EFAULT;
    
    __block NSObject              *stInstanse                               = nil;;
-   NSString                      *szService                                = NSStringFromProtocol(service);
+   NSString                      *szService                                = NSStringFromProtocol(aService);
    
    __TRY;
    
@@ -247,6 +247,11 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    __CATCH(nErr);
    
    return stInstanse;
+}
+
++ (id)createService:(Protocol *)aService {
+   
+   return [[IDEAServiceManager sharedManager] createService:aService];
 }
 
 @end
