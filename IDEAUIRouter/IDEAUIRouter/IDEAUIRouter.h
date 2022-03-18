@@ -16,8 +16,8 @@ extern NSString *const IDEAUIRouterParameterUserInfo;
  *  routerParameters 里内置的几个参数会用到上面定义的 string
  */
 
-typedef void (^IDEAUIRouterCompletion)(NSError *error, id response);
-typedef void (^IDEAUIRouterHandler)(NSDictionary *routerParameters, IDEAUIRouterCompletion completion);
+typedef void (^IDEAUIRouterCompletion)(NSString *aURL, NSError *aError, id aResponse);
+typedef void (^IDEAUIRouterHandler)(NSString *aURL, NSDictionary *aRouterParameters, IDEAUIRouterCompletion aCompletion);
 
 @interface IDEAUIRouter : NSObject
 

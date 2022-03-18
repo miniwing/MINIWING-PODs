@@ -28,108 +28,114 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
 
 + (instancetype)sharedIsntance {
    
-   static IDEAUIRouter     *g_INSTANCE = nil;
-   static dispatch_once_t   onceToken;
-   dispatch_once(&onceToken, ^(void) {
+   static IDEAUIRouter     *g_INSTANCE    = nil;
+   static dispatch_once_t   stOnceToken;
+   dispatch_once(&stOnceToken, ^(void) {
       
       g_INSTANCE = [[self alloc] init];
    });
    return g_INSTANCE;
 }
 
-+ (void)registerURLPattern:(NSString *)URLPattern toHandler:(IDEAUIRouterHandler)handler {
++ (void)registerURLPattern:(NSString *)aURLPattern toHandler:(IDEAUIRouterHandler)aHandler {
    
-   [[self sharedIsntance] addURLPattern:URLPattern andHandler:handler];
+   [[self sharedIsntance] addURLPattern:aURLPattern andHandler:aHandler];
    
    return;
 }
 
-+ (void)openURL:(NSString *)URL {
++ (void)openURL:(NSString *)aURL {
    
-   [self openURL:URL completion:nil];
+   [self openURL:aURL completion:nil];
 }
 
-+ (void)openURL:(NSString *)URL completion:(IDEAUIRouterCompletion)completion {
++ (void)openURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion {
    
-   [self openURL:URL withUserInfo:nil completion:completion];
+   [self openURL:aURL withUserInfo:nil completion:aCompletion];
 }
 
-+ (void)openURL:(NSString *)URL withUserInfo:(NSDictionary *)userInfo completion:(IDEAUIRouterCompletion)completion {
++ (void)openURL:(NSString *)aURL withUserInfo:(NSDictionary *)aUserInfo completion:(IDEAUIRouterCompletion)aCompletion {
    
-   URL = [URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   NSMutableDictionary *parameters = [[self sharedIsntance] extractParametersFromURL:URL];
+   aURL = [aURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+   NSMutableDictionary *stParameters = [[self sharedIsntance] extractParametersFromURL:aURL];
    
-   [parameters enumerateKeysAndObjectsUsingBlock:^(id key, NSString *obj, BOOL *stop) {
+   [stParameters enumerateKeysAndObjectsUsingBlock:^(id aKey, NSString *aObj, BOOL *stop) {
       
-      if ([obj isKindOfClass:[NSString class]]) {
+      if ([aObj isKindOfClass:[NSString class]]) {
          
-         parameters[key] = [obj stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+         stParameters[aKey] = [aObj stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
       }
    }];
    
-   if (parameters) {
+   if (stParameters) {
       
-      IDEAUIRouterHandler handler = parameters[@"block"];
-      if (completion) {
+      IDEAUIRouterHandler stHandler = stParameters[@"block"];
+      if (aCompletion) {
          
-         parameters[IDEAUIRouterParameterCompletion] = completion;
+         stParameters[IDEAUIRouterParameterCompletion] = aCompletion;
       }
-      if (userInfo) {
+      if (aUserInfo) {
          
-         parameters[IDEAUIRouterParameterUserInfo] = userInfo;
+         stParameters[IDEAUIRouterParameterUserInfo] = aUserInfo;
       }
-      if (handler) {
+      if (stHandler) {
          
-         [parameters removeObjectForKey:@"block"];
-         handler(parameters, completion);
+         [stParameters removeObjectForKey:@"block"];
+         stHandler(aURL, stParameters, aCompletion);
       }
    }
+   
+   return;
 }
 
-+ (BOOL)canOpenURL:(NSString *)URL {
++ (BOOL)canOpenURL:(NSString *)aURL {
    
-   return [[self sharedIsntance] extractParametersFromURL:URL] ? YES : NO;
+   return [[self sharedIsntance] extractParametersFromURL:aURL] ? YES : NO;
 }
 
-+ (NSString *)generateURLWithPattern:(NSString *)aPattern parameters:(NSArray *)parameters {
++ (NSString *)generateURLWithPattern:(NSString *)aPattern parameters:(NSArray *)aParameters {
    
-   NSInteger startIndexOfColon = 0;
-   NSMutableArray *items = [[NSMutableArray alloc] init];
-   NSInteger parameterIndex = 0;
+   NSInteger       nStartIndexOfColon  = 0;
+   NSMutableArray *stItems             = [[NSMutableArray alloc] init];
+   NSInteger       nParameterIndex     = 0;
    
    for (int H = 0; H < aPattern.length; H++) {
       
-      NSString *character = [NSString stringWithFormat:@"%c", [aPattern characterAtIndex:H]];
-      if ([character isEqualToString:@":"]) {
+      NSString *szCharacter   = [NSString stringWithFormat:@"%c", [aPattern characterAtIndex:H]];
+      if ([szCharacter isEqualToString:@":"]) {
          
-         startIndexOfColon = H;
+         nStartIndexOfColon = H;
       }
       
-      if (([@[@"/", @"?", @"&"] containsObject:character] || (H == aPattern.length - 1 && startIndexOfColon) ) && startIndexOfColon) {
+      if (([@[@"/", @"?", @"&"] containsObject:szCharacter] || (H == aPattern.length - 1 && nStartIndexOfColon) ) && nStartIndexOfColon) {
          
-         if (H > (startIndexOfColon + 1)) {
+         if (H > (nStartIndexOfColon + 1)) {
             
-            [items addObject:[NSString stringWithFormat:@"%@%@", [aPattern substringWithRange:NSMakeRange(0, startIndexOfColon)], parameters[parameterIndex++]]];
+            [stItems addObject:[NSString stringWithFormat:@"%@%@", [aPattern substringWithRange:NSMakeRange(0, nStartIndexOfColon)], aParameters[nParameterIndex++]]];
             aPattern = [aPattern substringFromIndex:H];
             H = 0;
-         }
-         startIndexOfColon = 0;
-      }
-   }
+            
+         } /* End if () */
+         
+         nStartIndexOfColon = 0;
+         
+      } /* End if () */
+      
+   } /* End for () */
    
-   return [items componentsJoinedByString:@""];
+   return [stItems componentsJoinedByString:@""];
 }
 
 #pragma mark - Utils
 
-- (NSMutableDictionary *)extractParametersFromURL:(NSString *)url {
+- (NSMutableDictionary *)extractParametersFromURL:(NSString *)aURL {
    
    NSMutableDictionary  *stParameters     = [NSMutableDictionary dictionary];
    
-   stParameters[IDEAUIRouterParameterURL] = url;
+   stParameters[IDEAUIRouterParameterURL] = aURL;
    
    NSMutableDictionary  *stSubRoutes      = self.routes;
-   NSArray              *stPathComponents = [self pathComponentsFromURL:url];
+   NSArray              *stPathComponents = [self pathComponentsFromURL:aURL];
    
    // borrowed from HHRouter(https://github.com/Huohua/HHRouter)
    for (NSString *szPathComponent in stPathComponents) {
@@ -146,15 +152,17 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
          
          if ([szKey isEqualToString:szPathComponent] || [szKey isEqualToString:IDEA_ROUTER_WILDCARD_CHARACTER]) {
             
-            bFound = YES;
+            bFound      = YES;
             stSubRoutes = stSubRoutes[szKey];
+            
             break;
          }
          else if ([szKey hasPrefix:@":"]) {
             
-            bFound = YES;
+            bFound      = YES;
             stSubRoutes = stSubRoutes[szKey];
             stParameters[[szKey substringFromIndex:1]] = szPathComponent;
+            
             break;
          }
       }
@@ -166,7 +174,7 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
    }
    
    // Extract Params From Query.
-   NSArray* pathInfo = [url componentsSeparatedByString:@"?"];
+   NSArray* pathInfo = [aURL componentsSeparatedByString:@"?"];
    if (pathInfo.count > 1) {
       
       NSString* parametersString = [pathInfo objectAtIndex:1];
@@ -229,12 +237,13 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
    
    if ([aURL rangeOfString:@"://"].location != NSNotFound) {
       
-      NSArray *pathSegments = [aURL componentsSeparatedByString:@"://"];
+      NSArray  *stPathSegments   = [aURL componentsSeparatedByString:@"://"];
+      
       // 如果 URL 包含协议，那么把协议作为第一个元素放进去
-      [stPathComponents addObject:pathSegments[0]];
+      [stPathComponents addObject:stPathSegments[0]];
       
       // 如果只有协议，那么放一个占位符
-      if ((pathSegments.count == 2 && ((NSString *)pathSegments[1]).length) || pathSegments.count < 2) {
+      if ((stPathSegments.count == 2 && ((NSString *)stPathSegments[1]).length) || stPathSegments.count < 2) {
          
          [stPathComponents addObject:IDEA_ROUTER_WILDCARD_CHARACTER];
          

@@ -1,0 +1,1 @@
+IDEAEventKit/IDEAEventKit.podspec

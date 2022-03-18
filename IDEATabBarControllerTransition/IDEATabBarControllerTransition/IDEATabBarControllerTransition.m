@@ -154,11 +154,13 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    eDirection           = [IDEATabBarControllerTransition direction:nSelectedIndex shouldSelectIndex:nShouldSelectIndex];
    LogDebug((@"Direction : %d", eDirection));
 
-   dispatch_after(0.1, dispatch_get_main_queue(), ^{
+   dispatch_after(0.0, dispatch_get_main_queue(), ^{
       
       if ([aTabBarController isKindOfClass:[IDEATabBarControllerTransition class]]) {
 
-         [((IDEATabBarControllerTransition *)aTabBarController) animate:stLayerContext direction:eDirection tabbarController:aTabBarController];
+         [((IDEATabBarControllerTransition *)aTabBarController) animate:stLayerContext
+                                                              direction:eDirection
+                                                       tabbarController:aTabBarController];
 
       } /* End if () */
    });
@@ -170,7 +172,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    return bShouldSelect;
 }
 
-- (void)animate:(IDEATabBarControllerLayerContext *)aLayerContext direction:(IDEATabBarControllerTransitionDirection)aDirection tabbarController:(UITabBarController *)aTabbarController {
+- (void)animate:(IDEATabBarControllerLayerContext *)aLayerContext
+      direction:(IDEATabBarControllerTransitionDirection)aDirection tabbarController:(UITabBarController *)aTabbarController {
    
    int                            nErr                                     = EFAULT;
 
@@ -207,8 +210,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    [CATransaction setAnimationDuration:[self transitionDuration]];
    [CATransaction setAnimationTimingFunction:[self transitionTimingFunction]];
    [CATransaction setCompletionBlock:^{
-      [aLayerContext reset];
       
+      [aLayerContext reset];
       [[NSNotificationCenter defaultCenter] postNotificationName:IDEATabBarControllerTransitionEndNotification
                                                           object:nil];
    }];
@@ -221,13 +224,18 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
    aLayerContext.viewLayer.opacity  = 1;
 
-   [aLayerContext.fromLayer addAnimation:stFromAnimation forKey: IDEATabBarControllerTransitionAnimationKeyFromView];
-   [aLayerContext.toLayer addAnimation:stToAnimation forKey: IDEATabBarControllerTransitionAnimationKeyToView];
+   [aLayerContext.fromLayer addAnimation:stFromAnimation
+                                  forKey:IDEATabBarControllerTransitionAnimationKeyFromView];
+   [aLayerContext.toLayer addAnimation:stToAnimation
+                                forKey:IDEATabBarControllerTransitionAnimationKeyToView];
 
-   [aLayerContext.fromNavigationBarLayer addAnimation:stFromNavigationBarAnimation forKey:IDEATabBarControllerTransitionAnimationKeyFromNavigationBar];
-   [aLayerContext.toNavigationBarLayer addAnimation:stToNavigationBarAnimation forKey:IDEATabBarControllerTransitionAnimationKeyToNavigationBar];
+   [aLayerContext.fromNavigationBarLayer addAnimation:stFromNavigationBarAnimation
+                                               forKey:IDEATabBarControllerTransitionAnimationKeyFromNavigationBar];
+   [aLayerContext.toNavigationBarLayer addAnimation:stToNavigationBarAnimation
+                                             forKey:IDEATabBarControllerTransitionAnimationKeyToNavigationBar];
 
-   [aLayerContext.viewLayer addAnimation:stViewLayerAnimation forKey:IDEATabBarControllerTransitionAnimationKeyView];
+   [aLayerContext.viewLayer addAnimation:stViewLayerAnimation
+                                  forKey:IDEATabBarControllerTransitionAnimationKeyView];
 
    [CATransaction commit];
    
