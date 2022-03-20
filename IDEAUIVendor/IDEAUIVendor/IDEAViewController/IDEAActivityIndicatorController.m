@@ -209,30 +209,29 @@
 
 #pragma mark - UIStatusBar
 - (UIStatusBarStyle)preferredStatusBarStyle {
-
+   
    LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
    
 #if IDEA_NIGHT_VERSION_MANAGER
    if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
-
+      
       return UIStatusBarStyleLightContent;
       
    } /* End if () */
-   else // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
+   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
 #endif
-   {
-#ifdef __IPHONE_13_0
+      
       if (@available(iOS 13, *)) {
          
          // 系统版本高于 13.0
          return UIStatusBarStyleDarkContent;
          
       } /* End if () */
-#endif /* __IPHONE_13_0 */
       
       return UIStatusBarStyleDefault;
-
+#if IDEA_NIGHT_VERSION_MANAGER
    } /* End if () */
+#endif
 }
 
 #pragma mark - UIUserInterfaceStyle
