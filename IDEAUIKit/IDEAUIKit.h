@@ -46,4 +46,8 @@
 #import <IDEAUIKit/UISelectionFeedbackGenerator+Shortcut.h>
 #import <IDEAUIKit/UINotificationFeedbackGenerator+Shortcut.h>
 
+#import <IDEAUIKit/UITextFieldX.h>
+#import <IDEAUIKit/UITextViewX.h>
+#import <IDEAUIKit/UITableViewCellX.h>
+
 #endif /* IDEAUIKit_H */

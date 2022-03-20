@@ -59,9 +59,10 @@
    stMaskLayer.frame = self.bounds;
    stMaskLayer.path  = stBezierPath.CGPath;
    
-   self.layer.masksToBounds   = YES;
-   self.layer.mask            = stMaskLayer;
+   [self.layer setMasksToBounds:YES];
+   [self.layer setMask:stMaskLayer];
 
+   [self setNeedsLayout];
    [self layoutIfNeeded];
 
    return;

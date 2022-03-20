@@ -14,7 +14,7 @@
 #include <objc/message.h>
 #include <mach-o/ldsyms.h>
 
-#import "IDEAStartUp/IDEAStartUp.h"
+#import "IDEAStartUp.h"
 
 @interface IDEAStartUp()
 
@@ -54,7 +54,7 @@ NS_INLINE void __dyld_callback(const struct mach_header *_mach_header, intptr_t 
    char           *psz_section_name = __STARTUP_KEY;
    unsigned long   ul_size          = 0;
 #ifndef __LP64__
-   uintptr_t      *pst_memory       = (uintptr_t*)getsectiondata(_mach_header, gct_startup_sectionName, sectionName, &size);
+   uintptr_t      *pst_memory       = (uintptr_t*)getsectiondata(_mach_header, __STARTUP_SECTION_NAME, psz_section_name, &ul_size);
 #else
    const struct mach_header_64   *mhp64 = (const struct mach_header_64 *)_mach_header;
    uintptr_t      *pst_memory       = (uintptr_t*)getsectiondata(mhp64, __STARTUP_SECTION_NAME, psz_section_name, &ul_size);
