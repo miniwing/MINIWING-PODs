@@ -1,0 +1,1 @@
+IDEANavigationBar/IDEANavigationBar.podspec

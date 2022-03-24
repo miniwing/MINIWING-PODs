@@ -34,7 +34,7 @@
       UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
                                                             byRoundingCorners:self.rectCorner
                                                                   cornerRadii:CGSizeMake(8, 8)];
-      CAShapeLayer   *stMaskLayer   = [[CAShapeLayer alloc] init];
+      CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
       stMaskLayer.frame = self.containerView.bounds;
       stMaskLayer.path  = stBezierPath.CGPath;
       
@@ -42,6 +42,11 @@
       [self.containerView.layer setMask:stMaskLayer];
 
    } /* End if () */
+   else {
+      
+      [self.containerView.layer setMask:nil];
+
+   } /* End else */
    
    return;
 }

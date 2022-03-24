@@ -95,7 +95,7 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    NSMutableArray *st_services   = [NSMutableArray array];
    unsigned long   ul_size       = 0;
 #ifndef __LP64__
-   uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp, SEG_DATA, sectionName, &ul_size);
+   uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp, SEG_DATA, section_name, &ul_size);
 #else
    const struct mach_header_64 *mhp64  = (const struct mach_header_64 *)mhp;
    uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp64, SEG_DATA, section_name, &ul_size);
