@@ -66,6 +66,10 @@ Pod::Spec.new do |spec|
     spec.dependency 'RTRootNavigationController'
   end # RTRootNavigationController
 
+#  if ENV['MATERIAL_NAVIGATION_BAR'] == 'YES'
+  spec.dependency 'MaterialComponents/NavigationBar'
+#  end # MATERIAL_NAVIGATION_BAR
+
 #  spec.dependency 'pop'
 
 #  spec.dependency 'AFNetworking'
@@ -178,6 +182,7 @@ Pod::Spec.new do |spec|
 #endif /* __OBJC__ */
 
 #ifdef __OBJC__
+
 #  if __has_include(<FoundationExtension/FoundationExtension.h>)
 #     import <FoundationExtension/FoundationExtension.h>
 #     define FOUNDATION_EXTENSION                                          (1)
@@ -197,6 +202,17 @@ Pod::Spec.new do |spec|
 #  else
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
+
+#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
+#     import <MaterialComponents/MaterialNavigationBar.h>
+#     define MATERIAL_NAVIGATION_BAR                                       (1)
+#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
+#     import "MaterialComponents/MaterialNavigationBar.h"
+#     define MATERIAL_NAVIGATION_BAR                                       (1)
+#  else
+#     define MATERIAL_NAVIGATION_BAR                                       (0)
+#  endif
+
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/

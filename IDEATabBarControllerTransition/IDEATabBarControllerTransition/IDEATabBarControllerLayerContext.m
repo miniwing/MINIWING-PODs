@@ -100,7 +100,7 @@
    if (self) {
       
       bViewLoaded = [aToViewController pureViewController].isViewLoaded;
-
+      
       [aToViewController loadViewIfNeeded];
       [aToViewController.pureViewController loadViewIfNeeded];
       
@@ -109,7 +109,7 @@
          [[aToViewController pureViewController].view setNeedsLayout];
          
       } /* End if () */
-            
+      
       _viewLayer  = [aToViewController pureViewController].view.layer;
       
       _fromLayer  = [IDEATabBarControllerLayerContext makeLayer:aFromViewController.pureViewController];
@@ -117,7 +117,7 @@
       
       _fromNavigationBarLayer = [IDEATabBarControllerLayerContext makeNavigationBarLayer:aFromViewController.pureViewController];
       _toNavigationBarLayer   = [IDEATabBarControllerLayerContext makeNavigationBarLayer:aToViewController.pureViewController viewLoaded:bViewLoaded];
-
+      
       _fakeTabbarLayer        = nil;
       
    } /* End if () */
@@ -131,40 +131,40 @@
    
    [_toNavigationBarLayer removeFromSuperlayer];
    _toNavigationBarLayer   = nil;
-
+   
    [_toLayer removeFromSuperlayer];
    _toLayer = nil;
-      
+   
    [_fromNavigationBarLayer removeFromSuperlayer];
    _fromNavigationBarLayer = nil;
    
    [_fromLayer removeFromSuperlayer];
    _fromLayer  = nil;
-
+   
    return;
 }
 
 + (UIImage *)imageFromView:(UIView *)aSnapView {
    
-//    UIGraphicsBeginImageContext(snapView.frame.size);
+   //    UIGraphicsBeginImageContext(snapView.frame.size);
    UIGraphicsBeginImageContextWithOptions(aSnapView.frame.size, NO, [UIScreen mainScreen].scale);
    CGContextRef stContext = UIGraphicsGetCurrentContext();
    
-//   if ([aSnapView respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-//
-//      [aSnapView drawViewHierarchyInRect:aSnapView.bounds afterScreenUpdates:YES];
-//
-//   } /* End if () */
-//   else {
-//
-//      [aSnapView.layer renderInContext:stContext];
-//
-//   } /* End else */
-
+   //   if ([aSnapView respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+   //
+   //      [aSnapView drawViewHierarchyInRect:aSnapView.bounds afterScreenUpdates:YES];
+   //
+   //   } /* End if () */
+   //   else {
+   //
+   //      [aSnapView.layer renderInContext:stContext];
+   //
+   //   } /* End else */
+   
    [aSnapView.layer renderInContext:stContext];
-
-//   stSnapshotView = [aInputView drawViewHierarchyInRect:aInputView.bounds afterScreenUpdates:NO];
-
+   
+   //   stSnapshotView = [aInputView drawViewHierarchyInRect:aInputView.bounds afterScreenUpdates:NO];
+   
    UIImage *stTargetImage = UIGraphicsGetImageFromCurrentImageContext();
    UIGraphicsEndImageContext();
    
@@ -173,7 +173,7 @@
 
 + (UIImage *)imageFromViewEx:(UIView *)aSnapView {
    
-//    UIGraphicsBeginImageContext(snapView.frame.size);
+   //    UIGraphicsBeginImageContext(snapView.frame.size);
    UIGraphicsBeginImageContextWithOptions(aSnapView.frame.size, NO, [UIScreen mainScreen].scale);
    CGContextRef stContext = UIGraphicsGetCurrentContext();
    
@@ -185,23 +185,23 @@
                          -[aSnapView bounds].size.width * [[aSnapView layer] anchorPoint].x,
                          -[aSnapView bounds].size.height * [[aSnapView layer] anchorPoint].y);
    
-//   if ([aSnapView respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-//
-//      [aSnapView drawViewHierarchyInRect:aSnapView.bounds afterScreenUpdates:YES];
-//
-//   } /* End if () */
-//   else {
-//
-//      [aSnapView.layer renderInContext:stContext];
-//
-//   } /* End else */
-
+   //   if ([aSnapView respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+   //
+   //      [aSnapView drawViewHierarchyInRect:aSnapView.bounds afterScreenUpdates:YES];
+   //
+   //   } /* End if () */
+   //   else {
+   //
+   //      [aSnapView.layer renderInContext:stContext];
+   //
+   //   } /* End else */
+   
    [aSnapView.layer renderInContext:stContext];
-
+   
    CGContextRestoreGState(stContext);
    
-//   stSnapshotView = [aInputView drawViewHierarchyInRect:aInputView.bounds afterScreenUpdates:NO];
-
+   //   stSnapshotView = [aInputView drawViewHierarchyInRect:aInputView.bounds afterScreenUpdates:NO];
+   
    UIImage *stTargetImage = UIGraphicsGetImageFromCurrentImageContext();
    UIGraphicsEndImageContext();
    
@@ -209,7 +209,7 @@
 }
 
 + (UIView *)snapshotFromView:(UIView *)aInputView {
-
+   
    UIImage     *stImage                      = nil;
    UIView      *stTargetView                 = nil;
    UIView      *stSnapshotView               = nil;
@@ -217,24 +217,24 @@
    BOOL         bAfterUpdates                = YES;
    
    if (@available(iOS 11, *)) {
-
+      
 #if __Debug__
       if ([aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]) {
-
+         
          LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [aInputView viewController]));
          LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [[aInputView viewController] parentViewController]));
-
+         
       } /* End if () */
 #endif /* __Debug__ */
-//
-//      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
-//
-//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-//
-//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-//                                              afterScreenUpdates:YES
-//                                                   withCapInsets:UIEdgeInsetsZero];
-
+      //
+      //      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
+      //
+      //      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+      //
+      //      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+      //                                              afterScreenUpdates:YES
+      //                                                   withCapInsets:UIEdgeInsetsZero];
+      
       LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
       
       if ([aInputView viewController] && [[aInputView viewController] parentViewController] && ![[[aInputView viewController] parentViewController] isKindOfClass:[UINavigationController class]]) {
@@ -242,29 +242,29 @@
          bAfterUpdates  = NO;
          
       } /* End if () */
-
+      
       stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:bAfterUpdates];
-
-//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-
-//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-//                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
-//                                                   withCapInsets:UIEdgeInsetsZero];
-
+      
+      //      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+      
+      //      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+      //                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
+      //                                                   withCapInsets:UIEdgeInsetsZero];
+      
    } /* End if () */
    else {
-
+      
       stImage        = [self imageFromView:aInputView];
       stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
-
+      
    } /* End else */
-
-//   stImage        = [self imageFromView:aInputView];
-//   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
-
+   
+   //   stImage        = [self imageFromView:aInputView];
+   //   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+   
    [stSnapshotView.layer setMasksToBounds:YES];
    [stSnapshotView setClipsToBounds:YES];
-
+   
    return stSnapshotView;
 }
 
@@ -289,14 +289,14 @@
 + (CALayer *)makeNavigationBarLayer:(UIViewController *)aViewController viewLoaded:(BOOL)aViewLoaded {
    
    int                            nErr                                     = EFAULT;
-
+   
    CALayer                       *stLayer                                  = [CALayer layer];
-
+   
    CALayer                       *stNavigationBarLayer                     = nil;
    UIView                        *stNavigationBar                          = nil;
    
    CGFloat                        fTop                                     = 0;
-
+   
    __TRY;
    
 #if RT_ROOT_NAVIGATIONCONTROLLER
@@ -312,11 +312,11 @@
    } /* End else if () */
    else
 #endif /* RT_ROOT_NAVIGATIONCONTROLLER */
-   if ([aViewController isKindOfClass:[UINavigationController class]]) {
-      
-      NSAssert(NO, @"UINavigationController");
-      
-   } /* End else if () */
+      if ([aViewController isKindOfClass:[UINavigationController class]]) {
+         
+         NSAssert(NO, @"UINavigationController");
+         
+      } /* End else if () */
    
    if ([aViewController respondsToSelector:@selector(navigationBarOrHeadView)]) {
       
@@ -332,18 +332,18 @@
    } /* End if () */
    
    LogDebug((@"-[makeNavigationBarLayer:viewLoaded:] : NavigationBar : %@", stNavigationBar));
-
+   
    [stLayer setWidth:stNavigationBar.width];
    
    if ([stNavigationBar isKindOfClass:[UINavigationBar class]]) {
       
       [stLayer setHeight:[UIApplication sharedApplication].statusBarFrame.size.height + stNavigationBar.height];
-
+      
    } /* End if () */
    else {
-
+      
       [stLayer setHeight:stNavigationBar.top + stNavigationBar.height];
-
+      
    } /* End else */
    
    // 系统标准 NavigationBar
@@ -357,16 +357,16 @@
          if (((UINavigationBar *)stNavigationBar).isTranslucent) {
             
             fTop  = [UIApplication sharedApplication].statusBarFrame.size.height + stNavigationBar.height;
-
+            
          } /* End if () */
          else {
             
             fTop  = [UIApplication sharedApplication].statusBarFrame.size.height;
-
+            
          } /* End else */
-
+         
          fTop  = [UIApplication sharedApplication].statusBarFrame.size.height;
-
+         
       } /* End if () */
       else {
          
@@ -379,11 +379,11 @@
       
       // 非系统标准 NavigationBar
       stNavigationBarLayer  = [[self class] snapshotFromView:stNavigationBar].layer;
-
+      
       stLayer.backgroundColor = stNavigationBarLayer.backgroundColor;
       
       fTop  = 0;
-
+      
    } /* End else */
    
    [stNavigationBarLayer setTop:fTop];
@@ -408,19 +408,19 @@
 + (CALayer *)makeLayer:(UIViewController *)aViewController viewLoaded:(BOOL)aViewLoaded withNavigationBar:(BOOL)aNavigationBar tabbar:(BOOL)aTabbar {
    
    int                            nErr                                     = EFAULT;
-      
+   
    CALayer                       *stLayer                                  = [CALayer layer];
    CGFloat                        fTop                                     = 0;
    CGFloat                        fBottom                                  = 0;
-
+   
    UIView                        *stNavigationBar                          = nil;
    UITabBar                      *stTabbar                                 = nil;
    
    CALayer                       *stViewLayer                              = nil;
    CGFloat                        fViewLayerTop                            = 0;
-
+   
    __TRY;
-
+   
 #if RT_ROOT_NAVIGATIONCONTROLLER
    if ([aViewController isKindOfClass:[RTContainerNavigationController class]]) {
       
@@ -434,18 +434,18 @@
    } /* End else if () */
    else
 #endif /* RT_ROOT_NAVIGATIONCONTROLLER */
-   if ([aViewController isKindOfClass:[UINavigationController class]]) {
-      
-      NSAssert(NO, @"UINavigationController");
-      
-   } /* End else if () */
+      if ([aViewController isKindOfClass:[UINavigationController class]]) {
+         
+         NSAssert(NO, @"UINavigationController");
+         
+      } /* End else if () */
    
    if ([aViewController respondsToSelector:@selector(navigationBarOrHeadView)]) {
       
       stNavigationBar   = [aViewController performSelector:@selector(navigationBarOrHeadView)];
       
    } /* End if () */
-
+   
    if (NO == aViewLoaded) {
       
       [stNavigationBar setWidth:aViewController.view.width];
@@ -453,22 +453,22 @@
    } /* End if () */
    
    LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : NavigationBar : %@", stNavigationBar));
-
+   
    if (aViewController.tabBarController.tabBar) {
       
       stTabbar = aViewController.tabBarController.tabBar;
       
    } /* End if () */
-
+   
    LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : Tabbar : %@", stTabbar));
-
+   
    // 系统标准 NavigationBar
    if ([stNavigationBar isKindOfClass:[UINavigationBar class]]) {
       
       // 透明未隐藏, 需要偏移。
-//      if ((NO == stNavigationBar.isHidden) && ((UINavigationBar *)stNavigationBar).isTranslucent) {
+      //      if ((NO == stNavigationBar.isHidden) && ((UINavigationBar *)stNavigationBar).isTranslucent) {
       if (NO == stNavigationBar.isHidden) {
-
+         
          if (((UINavigationBar *)stNavigationBar).isTranslucent) {
             
             fTop  = stNavigationBar.top + stNavigationBar.height;
@@ -487,50 +487,50 @@
                   LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : SafeAreaInsets : (%.3f:%.3f)",
                             [[UIApplication sharedApplication].delegate.window safeAreaInsets].top,
                             [[UIApplication sharedApplication].delegate.window safeAreaInsets].bottom));
-
+                  
                   if (0 < [[UIApplication sharedApplication].delegate.window safeAreaInsets].top || 0 < [[UIApplication sharedApplication].delegate.window safeAreaInsets].bottom) {
                      
                      fViewLayerTop  = 0 + stNavigationBar.height + 0;
-
+                     
                   } /* End if () */
                   else {
-
+                     
                      fViewLayerTop  = 0 + stNavigationBar.height - 12;  // 非刘海屏
-
+                     
                   } /* End else */
-
+                  
                } /* End if () */
                else {
                   
                   fViewLayerTop  = 0 + stNavigationBar.height - 12;  // 非刘海屏
-
+                  
                } /* End else */
                
-//               LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : safeArea : (%.3f:%.3f)",
-//                         [[UIApplication sharedApplication].delegate.window safeArea].top,
-//                         [[UIApplication sharedApplication].delegate.window safeArea].bottom));
-//
-//               if (0 < [[UIApplication sharedApplication].delegate.window safeArea].top || 0 < [[UIApplication sharedApplication].delegate.window safeArea].bottom) {
-//
-//                  fViewLayerTop  = 0 + stNavigationBar.height + 0;
-//
-//               } /* End if () */
-//               else {
-//
-//                  fViewLayerTop  = 0 + stNavigationBar.height - 12;  // 非刘海屏
-//
-//               } /* End else */
-
+               //               LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : safeArea : (%.3f:%.3f)",
+               //                         [[UIApplication sharedApplication].delegate.window safeArea].top,
+               //                         [[UIApplication sharedApplication].delegate.window safeArea].bottom));
+               //
+               //               if (0 < [[UIApplication sharedApplication].delegate.window safeArea].top || 0 < [[UIApplication sharedApplication].delegate.window safeArea].bottom) {
+               //
+               //                  fViewLayerTop  = 0 + stNavigationBar.height + 0;
+               //
+               //               } /* End if () */
+               //               else {
+               //
+               //                  fViewLayerTop  = 0 + stNavigationBar.height - 12;  // 非刘海屏
+               //
+               //               } /* End else */
+               
             } /* End if () */
             else {
                
                fTop  = [UIApplication sharedApplication].statusBarFrame.size.height + stNavigationBar.height;
                fViewLayerTop  = 0;
-
+               
             } /* End else */
-
+            
          } /* End else */
-
+         
       } /* End if () */
       else {
          
@@ -544,42 +544,42 @@
       // 非系统标准 NavigationBar
       fTop           = stNavigationBar.top + stNavigationBar.height;
       fViewLayerTop  = stNavigationBar.top + stNavigationBar.height;
-
+      
    } /* End else */
    
    if (stTabbar.isTranslucent) {
       
       fBottom  = stTabbar.height;
-
+      
    } /* End if () */
    
    [stLayer setMasksToBounds:YES];
    [stLayer setWidth:aViewController.view.width];
    [stLayer setTop:fTop];
-
+   
    stViewLayer = [self snapshotFromView:aViewController.view].layer;
    
    if ([stNavigationBar isKindOfClass:[UINavigationBar class]]) {
-
+      
       if (NO == aViewLoaded) {
          
          [stLayer setHeight:aViewController.view.height - ([UIApplication sharedApplication].statusBarFrame.size.height + stNavigationBar.height + fBottom)];
-
+         
       } /* End if () */
       else {
          
          [stLayer setHeight:aViewController.view.height - (fViewLayerTop + fBottom)];
-
+         
       } /* End else */
-
+      
       [stViewLayer setTop:-fViewLayerTop];
-
+      
    } /* End if () */
    else {
-
+      
       [stLayer setHeight:aViewController.view.height - (fTop + fBottom)];
       [stViewLayer setTop:-fViewLayerTop];
-
+      
    } /* End else */
    
    if (aViewController.view.backgroundColor) {
@@ -590,7 +590,7 @@
    
    LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : Layer Height : %@", stLayer));
    LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : ViewLayer Height : %@", stViewLayer));
-
+   
    [stLayer addSublayer:stViewLayer];
    
    __CATCH(nErr);
@@ -601,22 +601,22 @@
 + (CALayer *)makeTabBarLayer:(UITabBarController *)aTabBarController {
    
    int                            nErr                                     = EFAULT;
-
+   
    UITabBar                      *stTabBar                                 = nil;
    CALayer                       *stLayer                                  = [CALayer layer];
-
+   
    UIView                        *stTabBarLayer                            = nil;
    
    CGFloat                        fTop                                     = 0;
-
+   
    __TRY;
-
+   
    stTabBar = aTabBarController.tabBar;
    LogDebug((@"-[makeNavigationBarLayer:viewLoaded:] : TabBar : %@", stTabBar));
-
+   
    [stLayer setWidth:aTabBarController.tabBar.width];
    [stLayer setHeight:aTabBarController.tabBar.height];
-      
+   
    [stLayer addSublayer:stTabBarLayer];
    
    __CATCH(nErr);

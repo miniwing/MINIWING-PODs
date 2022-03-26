@@ -93,12 +93,6 @@ Pod::Spec.new do |spec|
     spec.dependency 'RTRootNavigationController'
   end # RTRootNavigationController
 
-  if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
-    spec.dependency 'MaterialComponents/Palettes'
-    spec.dependency 'MaterialComponents/AppBar'
-    spec.dependency 'MaterialComponents/ActivityIndicator'
-  end # IDEA_MATERIAL_COMPONENTS
-
 #  spec.dependency 'pop'
 
 #  spec.dependency 'AFNetworking'
@@ -221,13 +215,13 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if (__has_include(<MaterialComponents/MaterialAppBar.h>))
-#     import <MaterialComponents/MDCAvailability.h>
+#  if __has_include(<MaterialComponents/MaterialAppBar.h>)
 #     import <MaterialComponents/MaterialAppBar.h>
+#     import <MaterialComponents/MaterialFlexibleHeader.h>
 #     define MATERIAL_APP_BAR                                              (1)
-#  elif (__has_include("MaterialComponents/MaterialAppBar.h"))
-#     import "MaterialComponents/MDCAvailability.h"
+#  elif __has_include("MaterialComponents/MaterialAppBar.h")
 #     import "MaterialComponents/MaterialAppBar.h"
+#     import "MaterialComponents/MaterialFlexibleHeader.h"
 #     define MATERIAL_APP_BAR                                              (1)
 #  else
 #     define MATERIAL_APP_BAR                                              (0)
@@ -264,9 +258,6 @@ Pod::Spec.new do |spec|
 #     define YY_KIT                                                        (1)
 #  elif __has_include("YYKit/YYKit.h")
 #     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit.h")
-#     import "YYKit.h"
 #     define YY_KIT                                                        (1)
 #  else
 #     define YY_KIT                                                        (0)

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIEdgeInsets)safeArea;
 - (UIEdgeInsets)safeArea;
 
++ (CGFloat)topSafeAreaInset;
+
 @end
 
 NS_ASSUME_NONNULL_END

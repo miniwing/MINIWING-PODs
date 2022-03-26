@@ -35,7 +35,7 @@
       szKeyPath   = @"transform.translation.x";
       
    } /* End else if () */
-
+   
    CABasicAnimation  *stBasicAnimation = [CABasicAnimation animationWithKeyPath:szKeyPath];
    
    stBasicAnimation.fromValue = @(aFrom);
