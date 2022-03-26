@@ -67,9 +67,7 @@
    //   [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage new]];
 #endif /* !RT_ROOT_NAVIGATIONCONTROLLER */
    
-#if MATERIAL_APP_BAR
    [self setNavigationBarHidden:YES];
-#endif /* MATERIAL_APP_BAR */
    
    __CATCH(nErr);
    

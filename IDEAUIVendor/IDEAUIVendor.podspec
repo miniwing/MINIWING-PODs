@@ -215,18 +215,6 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if __has_include(<MaterialComponents/MaterialAppBar.h>)
-#     import <MaterialComponents/MaterialAppBar.h>
-#     import <MaterialComponents/MaterialFlexibleHeader.h>
-#     define MATERIAL_APP_BAR                                              (1)
-#  elif __has_include("MaterialComponents/MaterialAppBar.h")
-#     import "MaterialComponents/MaterialAppBar.h"
-#     import "MaterialComponents/MaterialFlexibleHeader.h"
-#     define MATERIAL_APP_BAR                                              (1)
-#  else
-#     define MATERIAL_APP_BAR                                              (0)
-#  endif
-
 #  if __has_include(<IDEANightVersion/DKNightVersion.h>)
 #     import <IDEANightVersion/DKNightVersion.h>
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)

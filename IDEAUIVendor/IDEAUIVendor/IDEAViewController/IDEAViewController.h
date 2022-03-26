@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IDEAViewController : UIViewController
 
-#if MATERIAL_APP_BAR
-
-#endif /* MATERIAL_APP_BAR */
-
 @end
 
 @interface IDEAViewController (UIStoryboard)

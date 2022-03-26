@@ -203,16 +203,6 @@ Pod::Spec.new do |spec|
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  else
-#     define MATERIAL_NAVIGATION_BAR                                       (0)
-#  endif
-
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/
