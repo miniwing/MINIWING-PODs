@@ -1,0 +1,9 @@
+"IDEASearchSearchPlaceholderText"      = "Buscar contenido";
+"IDEASearchHotSearchText"              = "Búsquedas populares";
+"IDEASearchSearchHistoryText"          = "Buscar Historia";
+"IDEASearchEmptySearchHistoryText"     = "Borrar el historial de búsqueda";
+
+"IDEASearchEmptyButtonText"            = "Borrar";
+"IDEASearchEmptySearchHistoryLogText"  = "Borrar el historial de búsqueda";
+"IDEASearchCancelButtonText"           = "Cancelar";
+"IDEASearchBackButtonText"             = "Volver a";

@@ -44,6 +44,7 @@
 static const CGFloat __FixedStatusBarHeightOnPreiPhoneXDevices = 20;
 
 + (CGFloat)topSafeAreaInset {
+   
    CGFloat topInset = __FixedStatusBarHeightOnPreiPhoneXDevices;
    
    if (@available(iOS 11.0, *)) {

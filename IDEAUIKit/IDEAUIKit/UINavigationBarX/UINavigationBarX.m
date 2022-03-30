@@ -214,9 +214,28 @@
 
 - (void)setNavigationBarTopInset:(CGFloat)aTopInset {
    
+   _navigationBarTopInset  = aTopInset;
+   
+   for (NSLayoutConstraint *stConstraint in self.constraints) {
+      
+      if (([stConstraint.firstItem isEqual:self.navigationBar] && [stConstraint.secondItem isEqual:self])
+          || ([stConstraint.secondItem isEqual:self.navigationBar] && [stConstraint.firstItem isEqual:self])) {
+         
+         if (NSLayoutAttributeTop == stConstraint.firstAttribute && NSLayoutAttributeTop == stConstraint.secondAttribute) {
+            
+            self.navigationBarT  = stConstraint;
+
+            break;
+            
+         } /* End if () */
+         
+      } /* End if () */
+      
+   } /* End for () */
+   
    self.navigationBarT.constant  = aTopInset;
    
-   [self layoutIfNeeded];
+   [self setNeedsUpdateConstraints];
    [self updateConstraintsIfNeeded];
    
    return;
@@ -224,9 +243,28 @@
 
 - (void)setNavigationBarBottomInset:(CGFloat)aBottomInset {
    
+   _navigationBarBottomInset  = aBottomInset;
+
+   for (NSLayoutConstraint *stConstraint in self.constraints) {
+      
+      if (([stConstraint.firstItem isEqual:self.navigationBar] && [stConstraint.secondItem isEqual:self])
+          || ([stConstraint.secondItem isEqual:self.navigationBar] && [stConstraint.firstItem isEqual:self])) {
+         
+         if (NSLayoutAttributeBottom == stConstraint.firstAttribute && NSLayoutAttributeBottom == stConstraint.secondAttribute) {
+            
+            self.navigationBarB  = stConstraint;
+
+            break;
+            
+         } /* End if () */
+         
+      } /* End if () */
+      
+   } /* End for () */
+   
    self.navigationBarB.constant  = aBottomInset;
 
-   [self layoutIfNeeded];
+   [self setNeedsUpdateConstraints];
    [self updateConstraintsIfNeeded];
 
    return;
@@ -234,9 +272,28 @@
 
 - (void)setNavigationBarLeftInset:(CGFloat)aLeftInset {
    
+   _navigationBarLeftInset = aLeftInset;
+
+   for (NSLayoutConstraint *stConstraint in self.constraints) {
+      
+      if (([stConstraint.firstItem isEqual:self.navigationBar] && [stConstraint.secondItem isEqual:self])
+          || ([stConstraint.secondItem isEqual:self.navigationBar] && [stConstraint.firstItem isEqual:self])) {
+         
+         if (NSLayoutAttributeLeading == stConstraint.firstAttribute && NSLayoutAttributeLeading == stConstraint.secondAttribute) {
+            
+            self.navigationBarL  = stConstraint;
+
+            break;
+            
+         } /* End if () */
+         
+      } /* End if () */
+      
+   } /* End for () */
+   
    self.navigationBarL.constant  = aLeftInset;
 
-   [self layoutIfNeeded];
+   [self setNeedsUpdateConstraints];
    [self updateConstraintsIfNeeded];
 
    return;
@@ -244,9 +301,27 @@
 
 - (void)setNavigationBarRightInset:(CGFloat)aRightInset {
    
+   _navigationBarRightInset   = aRightInset;
+
+   for (NSLayoutConstraint *stConstraint in self.constraints) {
+      
+      if (([stConstraint.firstItem isEqual:self.navigationBar] && [stConstraint.secondItem isEqual:self])
+          || ([stConstraint.secondItem isEqual:self.navigationBar] && [stConstraint.firstItem isEqual:self])) {
+         
+         if (NSLayoutAttributeTrailing == stConstraint.firstAttribute && NSLayoutAttributeTrailing == stConstraint.secondAttribute) {
+            
+            self.navigationBarR  = stConstraint;
+         
+            break;
+         } /* End if () */
+         
+      } /* End if () */
+      
+   } /* End for () */
+
    self.navigationBarR.constant  = aRightInset;
 
-   [self layoutIfNeeded];
+   [self setNeedsUpdateConstraints];
    [self updateConstraintsIfNeeded];
 
    return;

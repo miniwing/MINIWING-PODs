@@ -14,13 +14,4 @@
 
 @implementation IDEAView
 
-- (void)setFrame:(CGRect)aFrame {
-	
-   [super setFrame:aFrame];
-
-//   __LOG_RECT(aFrame);
-
-   return;
-}
-
 @end

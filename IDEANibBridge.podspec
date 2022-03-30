@@ -1,0 +1,1 @@
+IDEANibBridge/IDEANibBridge.podspec

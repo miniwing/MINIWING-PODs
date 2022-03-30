@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IDEAView ()
 
-- (void)setFrame:(CGRect)aFrame;
-
 @end
 
 NS_ASSUME_NONNULL_END

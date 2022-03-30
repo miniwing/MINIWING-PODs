@@ -1,0 +1,11 @@
+"IDEASearchSearchPlaceholderText"      = "搜索內容";
+"IDEASearchHotSearchText"              = "熱門搜索";
+"IDEASearchSearchHistoryText"          = "搜索歷史";
+"IDEASearchEmptySearchHistoryText"     = "清空搜索歷史";
+
+"IDEASearchHotSearchRefresh"           = "換一換";
+
+"IDEASearchEmptyButtonText"            = "清空";
+"IDEASearchEmptySearchHistoryLogText"  = "清空搜索歷史";
+"IDEASearchCancelButtonText"           = "取消";
+"IDEASearchBackButtonText"             = "返回";

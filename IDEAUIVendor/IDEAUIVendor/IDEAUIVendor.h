@@ -25,6 +25,8 @@
 #import <IDEAUIVendor/IDEAPresentationController.h>
 #import <IDEAUIVendor/IDEAPageViewController.h>
 
+#import <IDEAUIVendor/IDEAView.h>
+
 //#import <IDEAUIVendor/IDEATabBarController.h>
 //#import <IDEAUIVendor/IDEATableViewController.h>
 //#import <IDEAUIVendor/IDEACollectionViewController.h>

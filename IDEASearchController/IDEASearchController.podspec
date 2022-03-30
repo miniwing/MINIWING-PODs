@@ -1,120 +1,66 @@
 Pod::Spec.new do |spec|
-  spec.name           = "IDEAUIKit"
-  spec.version        = "1.0.1"
-  spec.summary        = "IDEAUIKit"
-  spec.description    = "IDEAUIKit"
-  spec.homepage       = "https://github.com/miniwing"
-  spec.license        = "MIT"
-  spec.author         = { "Harry" => "miniwing.hz@gmail.com" }
-  spec.platform       = :ios, "10.0"
+  spec.name         = 'IDEASearchController'
+  spec.version      = '0.9.1'
+  spec.summary      = 'An elegant search controller which replaces the UISearchController for iOS.'
+  spec.homepage     = 'https://github.com/ko1o/PYSearch'
+  spec.license      = 'MIT'
+  spec.authors      = {'CoderKo1o' => '499491531@qq.com'}
+  spec.platform     = :ios, '10.0'
+#  spec.source       = {:git => 'https://github.com/ko1o/PYSearch.git', :tag => spec.version}
+  spec.source       = { :path => "." }
   
-  spec.ios.pod_target_xcconfig     = {
-                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit',
-                                        'ENABLE_BITCODE'            => 'NO',
-                                        'SWIFT_VERSION'             => '5.0',
-                                        'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
-                                        'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
-                                        'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+  spec.requires_arc = true
+  
+  spec.ios.pod_target_xcconfig      = {
+                                      'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.SearchController',
+                                      'ENABLE_BITCODE'            => 'NO',
+                                      'SWIFT_VERSION'             => '5.0',
+                                      'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
+                                      'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
+                                      'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
                                       }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit' }
+  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.SearchController' }
+  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.SearchController-watchOS' }
+  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.SearchController' }
+    
+  spec.xcconfig                     = {
+    'HEADER_SEARCH_PATHS'               => [
+                                            "${PODS_TARGET_SRCROOT}/",
+                                            "${PODS_TARGET_SRCROOT}/../",
+                                            "${PODS_ROOT}/Headers/Public/YYKit/",
+                                            "${PODS_ROOT}/Headers/Public/IDEAKit/",
+                                            "${PODS_ROOT}/Headers/Public/IDEAUIKit/",
+                                            "${PODS_ROOT}/Headers/Public/IDEAUIVendor/",
+                                            "${PODS_ROOT}/Headers/Public/IDEAFONT/",
+                                            "${PODS_ROOT}/Headers/Public/IDEAColor/",
+                                            "${PODS_ROOT}/Headers/Public/IDEANightVersion"
+                                           ]
+                                      }
 
-#  spec.requires_arc = true
-#  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']
+  spec.pod_target_xcconfig          = {
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEASearchController\" ', ' BUNDLE=\"IDEASearchController\" ' ]
+                                      }
 
-#  spec.frameworks     = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
+  spec.dependency  'FoundationExtension'
+  spec.dependency  'UIKitExtension'
+#  spec.dependency  'MaterialComponents'
 
-  spec.source         = { :path => "." }
-  
-  spec.xcconfig       = {
-    'HEADER_SEARCH_PATHS'   => [
-#                                  "${PODS_TARGET_SRCROOT}/",
-#                                  "${PODS_TARGET_SRCROOT}/../",
-#                                  "${PODS_ROOT}/Headers/Public/FoundationExtension",
-#                                  "${PODS_ROOT}/Headers/Public/UIKitExtension",
-#                                  "${PODS_ROOT}/Headers/Public/IDEAKit/",
-#                                  "${PODS_ROOT}/Headers/Public/IDEAColor",
-#                                  "${PODS_ROOT}/Headers/Public/YYKit/",
-#                                  "${PODS_ROOT}/Headers/Public/RTRootNavigationController",
-#                                  "${PODS_ROOT}/Headers/Public/IDEANightVersion"
-                               ],
-#  'FRAMEWORK_SEARCH_PATHS'  => [
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/RTRootNavigationController",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/YYKit",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEAKit",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEAColor",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEANightVersion",
-#                               ]
-  }
+  spec.dependency  'IDEAKit'
+  spec.dependency  'IDEAUIKit'
+  spec.dependency  'IDEAUIVendor'
+  spec.dependency  'IDEAColor'
+  spec.dependency  'IDEANightVersion'
 
-  spec.pod_target_xcconfig  = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAUIKit\" '
-  }
+  spec.source_files         = 'IDEASearchController/**/*.{h,m}'
 
-  if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
-    spec.dependency 'FoundationExtension'
-  end # IDEA_FOUNDATION_EXTENSION
+  spec.resource_bundles     = {
+                                'IDEASearch' => [
+                                                  'IDEASearchController/**/*.lproj',
+                                                  'IDEASearchController/**/*.xcassets'
+                                                ]
+                              }
 
-  if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
-    spec.dependency 'UIKitExtension'
-  end # IDEA_UIKIT_EXTENSION
-
-#  spec.dependency 'CocoaExtension'
-
-  if ENV['RTRootNavigationController'] == 'YES'
-    spec.dependency 'RTRootNavigationController'
-  end # RTRootNavigationController
-
-#  if ENV['MATERIAL_NAVIGATION_BAR'] == 'YES'
-  spec.dependency 'MaterialComponents/NavigationBar'
-#  end # MATERIAL_NAVIGATION_BAR
-
-#  spec.dependency 'pop'
-
-#  spec.dependency 'AFNetworking'
-#  spec.dependency 'AFNetworking/Serialization'
-#  spec.dependency 'AFNetworking/Security'
-#  spec.dependency 'AFNetworking/Reachability'
-#  spec.dependency 'AFNetworking/NSURLSession'
-
-#  spec.dependency 'Masonry'
-#  spec.dependency 'MBProgressHUD',              '~> 0.9.2'
-
-  spec.dependency 'MBProgressHUD'
-
-  if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
-  end # IDEA_YYKIT
-  
-  spec.dependency 'IDEAKit'
-  spec.dependency 'IDEAColor'
-  spec.dependency 'IDEANightVersion'
-
-  spec.public_header_files    = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h}',
-                                'IDEAUIKitExtension/**/*.{h}'
-
-  spec.source_files           = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
-                                'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
-
-  spec.requires_arc           = true
-
-#  spec.subspec 'IDEAVendor' do |sub|
-#    sub.dependency 'UIKitExtension'
-#    sub.public_header_files   = 'IDEAUIKit/IDEAVendor/*.h'
-#    sub.source_files          = 'IDEAUIKit/IDEAVendor/*.{h,m}'
-##    sub.resource_bundle       = { 'IDEAFONTSFUI'    => [ 'FONTs/SF-UI/SF-UI-Text-Light.otf', 'FONTs/SF-UI/SF-UI-Text-Regular.otf', 'FONTs/SF-UI/SF-UI-Text-Semibold.otf' ] }
-#  end
-
-#  spec.vendored_libraries     = 'libXG-SDK.a'
-#  spec.vendored_frameworks    = 'libXG-SDK.a'
-
-   pch_app_kit = <<-EOS
-   
-/******************************************************************************************************/
-
+    pch_app_kit = <<-EOS
 #ifdef DEBUG
 #  pragma clang diagnostic ignored                 "-Wgnu"
 #  pragma clang diagnostic ignored                 "-Wcomma"
@@ -154,15 +100,12 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wdeprecated-implementations"
 #  pragma clang diagnostic ignored                 "-Wmismatched-parameter-types"
 #  pragma clang diagnostic ignored                 "-Wobjc-redundant-literal-use"
-#  pragma clang diagnostic ignored                 "-Wno-nullability-completeness"
 #  pragma clang diagnostic ignored                 "-Wblock-capture-autoreleasing"
 #  pragma clang diagnostic ignored                 "-Wtautological-pointer-compare"
 #  pragma clang diagnostic ignored                 "-Wimplicit-function-declaration"
 #  pragma clang diagnostic ignored                 "-Wquoted-include-in-framework-header"
 #  pragma clang diagnostic ignored                 "-Wnullability-completeness-on-arrays"
 #endif /* DEBUG */
-
-/******************************************************************************************************/
 
 #import <Availability.h>
 
@@ -179,43 +122,111 @@ Pod::Spec.new do |spec|
 #  import <QuartzCore/QuartzCore.h>
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
-#endif /* __OBJC__ */
-
-#ifdef __OBJC__
 
 #  if __has_include(<FoundationExtension/FoundationExtension.h>)
+#     define FOUNDATION_EXTENSION                                          (1)
 #     import <FoundationExtension/FoundationExtension.h>
-#     define FOUNDATION_EXTENSION                                          (1)
 #  elif __has_include("FoundationExtension/FoundationExtension.h")
-#     import "FoundationExtension/FoundationExtension.h"
 #     define FOUNDATION_EXTENSION                                          (1)
+#     import "FoundationExtension/FoundationExtension.h"
+#  elif __has_include("FoundationExtension.h")
+#     define FOUNDATION_EXTENSION                                          (1)
+#     import "FoundationExtension.h"
 #  else
 #     define FOUNDATION_EXTENSION                                          (0)
 #  endif
 
 #  if __has_include(<UIKitExtension/UIKitExtension.h>)
+#     define UIKIT_EXTENSION                                               (1)
 #     import <UIKitExtension/UIKitExtension.h>
-#     define UIKIT_EXTENSION                                               (1)
 #  elif __has_include("UIKitExtension/UIKitExtension.h")
-#     import "UIKitExtension/UIKitExtension.h"
 #     define UIKIT_EXTENSION                                               (1)
+#     import "UIKitExtension/UIKitExtension.h"
+#  elif __has_include("UIKitExtension.h")
+#     define UIKIT_EXTENSION                                               (1)
+#     import "UIKitExtension.h"
 #  else
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
+#  if __has_include(<IDEANightVersion/DKNightVersion.h>)
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#     import <IDEANightVersion/DKNightVersion.h>
+#  elif __has_include("IDEANightVersion/DKNightVersion.h")
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#     import "IDEANightVersion/DKNightVersion.h"
+#  elif __has_include("DKNightVersion.h")
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#     import "DKNightVersion.h"
 #  else
-#     define MATERIAL_NAVIGATION_BAR                                       (0)
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
+#  endif
+
+#  if __has_include(<IDEAUIVendor/IDEAUIVendor.h>)
+#     define IDEA_UI_VENDOR                                                (1)
+#     import <IDEAUIVendor/IDEAUIVendor.h>
+#  elif __has_include("IDEAUIVendor/IDEAUIVendor.h")
+#     define IDEA_UI_VENDOR                                                (1)
+#     import "IDEAUIVendor/IDEAUIVendor.h"
+#  elif __has_include("IDEAUIVendor.h")
+#     define IDEA_UI_VENDOR                                                (1)
+#     import "IDEAUIVendor.h"
+#  else
+#     define IDEA_UI_VENDOR                                                (0)
+#  endif
+
+#  if __has_include(<IDEAColor/IDEAColor.h>)
+#     define IDEA_COLOR                                                    (1)
+#     import <IDEAColor/IDEAColor.h>
+#  elif __has_include("IDEAColor/IDEAColor.h")
+#     define IDEA_COLOR                                                    (1)
+#     import "IDEAColor/IDEAColor.h"
+#  elif __has_include("IDEAColor.h")
+#     define IDEA_COLOR                                                    (1)
+#     import "IDEAColor.h"
+#  else
+#     define IDEA_COLOR                                                    (0)
+#  endif
+
+#  if __has_include(<IDEAFONT/IDEAFONT.h>)
+#     define IDEA_FONT                                                     (1)
+#     import <IDEAFONT/IDEAFONT.h>
+#  elif __has_include("IDEAFONT/IDEAFONT.h")
+#     define IDEA_FONT                                                     (1)
+#     import "IDEAFONT/IDEAFONT.h"
+#  elif __has_include("IDEAFONT.h")
+#     define IDEA_FONT                                                     (1)
+#     import "IDEAFONT.h"
+#  else
+#     define IDEA_FONT                                                     (0)
+#  endif
+
+#  if __has_include(<YYKit/YYKit.h>)
+#     import <YYKit/YYKit.h>
+#     define YY_KIT                                                        (1)
+#  elif __has_include("YYKit/YYKit.h")
+#     import "YYKit/YYKit.h"
+#     define YY_KIT                                                        (1)
+#  elif __has_include("YYKit.h")
+#     import "YYKit.h"
+#     define YY_KIT                                                        (1)
+#  else
+#     define YY_KIT                                                        (0)
+#  endif
+
+#  if (__has_include(<MaterialComponents/MaterialAppBar.h>))
+#     define MATERIAL_APP_BAR                                              (1)
+#     import <MaterialComponents/MDCAvailability.h>
+#     import <MaterialComponents/MaterialPalettes.h>
+#     import <MaterialComponents/MaterialAppBar.h>
+#     import <MaterialComponents/MaterialFlexibleHeader.h>
+#  else
+#     define MATERIAL_APP_BAR                                              (0)
 #  endif
 
 #endif /* __OBJC__ */
 
-/******************************************************************************************************/
+ /******************************************************************************************************/
 
 #if __has_feature(objc_arc)
 #  define __AUTORELEASE(x)                         (x);
@@ -259,32 +270,32 @@ Pod::Spec.new do |spec|
 
 #  ifndef weakify
 #     if __has_feature(objc_arc)
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
+#        define weakify( x )                                                                       \\
+            _Pragma("clang diagnostic push")                                                       \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;                             \\
             _Pragma("clang diagnostic pop")
 #     else
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
+#        define weakify( x )                                                                       \\
+            _Pragma("clang diagnostic push")                                                       \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;                           \\
             _Pragma("clang diagnostic pop")
 #     endif
 #  endif /* !weakify */
 
 #  ifndef strongify
 #     if __has_feature(objc_arc)
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
+#        define strongify( x )                                                                     \\
+            _Pragma("clang diagnostic push")                                                       \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+            try{} @finally{} __typeof__(x) x = __weak_##x##__;                                     \\
             _Pragma("clang diagnostic pop")
 #     else
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
+#        define strongify( x )                                                                     \\
+            _Pragma("clang diagnostic push")                                                       \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+            try{} @finally{} __typeof__(x) x = __block_##x##__;                                    \\
             _Pragma("clang diagnostic pop")
 #     endif
 #  endif /* !strongify */
@@ -295,168 +306,124 @@ Pod::Spec.new do |spec|
 
 #define LOG_BUG_SIZE                               (1024 * 1)
 
-#ifdef __OBJC__
-
-typedef NS_ENUM(NSInteger, __LogLevel) {
-
-   __LogLevelFatal   = 0,
-   __LogLevelError,
-   __LogLevelWarn,
-   __LogLevelInfo,
-   __LogLevelDebug
+enum {
+ 
+ __LogLevelFatal   = 0,
+ __LogLevelError,
+ __LogLevelWarn,
+ __LogLevelInfo,
+ __LogLevelDebug
 };
 
-NS_INLINE const char* ____LogLevelToString(__LogLevel _eLevel) {
-   
-   switch (_eLevel) {
-         
-      case __LogLevelFatal:
-         return ("Fatal");
-      case __LogLevelError:
-         return ("Error");
-      case __LogLevelWarn:
-         return (" Warn");
-      case __LogLevelInfo:
-         return (" Info");
-      case __LogLevelDebug:
-         return ("Debug");
-      default:
-         break;
-         
-   } /* End switch (); */
-   
-   return ("Unknown");
+#ifdef __OBJC__
+
+NS_INLINE const char* ____LogLevelToString(int _eLevel) {
+ 
+  switch (_eLevel)
+  {
+     case __LogLevelFatal:
+        return ("Fatal");
+     case __LogLevelError:
+        return ("Error");
+     case __LogLevelWarn:
+        return (" Warn");
+     case __LogLevelInfo:
+        return (" Info");
+     case __LogLevelDebug:
+        return ("Debug");
+     default:
+        break;
+        
+  } /* End switch (); */
+  
+  return ("Unknown");
 }
 
-NS_INLINE void ____Log(__LogLevel _eLevel, const NSString *_aMsg) {
-   
-   if (LOG_BUG_SIZE >= _aMsg.length) {
-      
-      printf("[%s] %s :: %s\\n", MODULE, ____LogLevelToString(_eLevel), [_aMsg UTF8String]);
-      
-   }
-   else {
-
-      printf("####################################################################################\\n");
-      printf("[%s] %s :: ", MODULE, ____LogLevelToString(_eLevel));
-
-      // 在数组范围内，则循环分段
-      while (LOG_BUG_SIZE < _aMsg.length) {
-         
-         // 按字节长度截取字符串
-         NSString *szSubStr   = [_aMsg substringToIndex:LOG_BUG_SIZE]; // cutStr(bytes, maxByteNum);
-         
-         // 打印日志
-         printf("%s\\n", [szSubStr UTF8String]);
-         
-         // 截取出尚未打印字节数组
-         _aMsg = [_aMsg substringFromIndex:LOG_BUG_SIZE];
-         
-      } /* End while () */
-
-      // 打印剩余部分
-      printf("%s\\n", [_aMsg UTF8String]);
-      printf("####################################################################################\\n");
-
-   } /* End else */
-
-//   printf("[%s] %s :: %s\\n", MODULE, ____LogLevelToString(_eLevel), _cpszMsg);
-      
-   return;
+NS_INLINE void ____Log(int _eLevel, const char *_cpszMsg) {
+ 
+ printf("[%s] %s :: %s\\n", MODULE, ____LogLevelToString(_eLevel), _cpszMsg);
+  
+  return;
 }
 
 NS_INLINE void ____LoggerFatal(NSString *aFormat, ...) {
-   
-   va_list      args;
-   NSString    *szMSG   = nil;
-   
-   va_start (args, aFormat);
-   szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
-   va_end (args);
-   
-   ____Log(__LogLevelFatal, szMSG);
-   
-   __RELEASE(szMSG);
-   
-   return;
+ 
+  va_list      args;
+  NSString    *szMSG   = nil;
+  
+  va_start (args, aFormat);
+  szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
+  va_end (args);
+  
+  ____Log(__LogLevelFatal, [szMSG UTF8String]);
+  
+  __RELEASE(szMSG);
+  
+  return;
 }
 
 NS_INLINE void ____LoggerError(NSString *aFormat, ...) {
-   
-   va_list      args;
-   NSString    *szMSG   = nil;
-   
-   va_start (args, aFormat);
-   szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
-   va_end (args);
-   
-   ____Log(__LogLevelError, szMSG);
-   
-   __RELEASE(szMSG);
-   
-   return;
+ 
+  va_list      args;
+  NSString    *szMSG   = nil;
+  
+  va_start (args, aFormat);
+  szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
+  va_end (args);
+  
+  ____Log(__LogLevelError, [szMSG UTF8String]);
+  
+  __RELEASE(szMSG);
+  
+  return;
 }
 
 NS_INLINE void ____LoggerWarn(NSString *aFormat, ...) {
-   
-   va_list      args;
-   NSString    *szMSG   = nil;
-   
-   va_start (args, aFormat);
-   szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
-   va_end (args);
-   
-   ____Log(__LogLevelWarn, szMSG);
-   
-   __RELEASE(szMSG);
-   
-   return;
+ 
+  va_list      args;
+  NSString    *szMSG   = nil;
+  
+  va_start (args, aFormat);
+  szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
+  va_end (args);
+  
+  ____Log(__LogLevelWarn, [szMSG UTF8String]);
+  
+  __RELEASE(szMSG);
+  
+  return;
 }
 
 NS_INLINE void ____LoggerInfo(NSString *aFormat, ...) {
-   
-   va_list      args;
-   NSString    *szMSG   = nil;
-   
-   va_start (args, aFormat);
-   szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
-   va_end (args);
-   
-   ____Log(__LogLevelInfo, szMSG);
-   
-   __RELEASE(szMSG);
-   
-   return;
+ 
+  va_list      args;
+  NSString    *szMSG   = nil;
+  
+  va_start (args, aFormat);
+  szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
+  va_end (args);
+  
+  ____Log(__LogLevelInfo, [szMSG UTF8String]);
+  
+  __RELEASE(szMSG);
+  
+  return;
 }
 
 NS_INLINE void ____LoggerDebug(NSString *aFormat, ...) {
-   
-   va_list      args;
-   NSString    *szMSG   = nil;
-   
-   va_start (args, aFormat);
-   szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
-   va_end (args);
-   
-   ____Log(__LogLevelDebug, szMSG);
-   
-   __RELEASE(szMSG);
-   
-   return;
-}
-
-NS_INLINE void ____LoggerClass(Class aClass) {
-   
-   unsigned int    nMethodCount  = 0;
-   Method         *stMethods     = class_copyMethodList(aClass, &nMethodCount);
-   
-   for (int H = 0; H< nMethodCount; H++) {
-      
-      NSLog(@\"    method name = %@ type = %s\", NSStringFromSelector(method_getName(stMethods[H])), method_getTypeEncoding(stMethods[H]));
-      
-   } /* End for () */
-   
-   return;
+ 
+  va_list      args;
+  NSString    *szMSG   = nil;
+  
+  va_start (args, aFormat);
+  szMSG = [[NSString alloc] initWithFormat:aFormat  arguments:args];
+  va_end (args);
+  
+  ____Log(__LogLevelDebug, [szMSG UTF8String]);
+  
+  __RELEASE(szMSG);
+  
+  return;
 }
 
 #else
@@ -464,83 +431,83 @@ NS_INLINE void ____LoggerClass(Class aClass) {
 __BEGIN_DECLS
 
 static __inline void ____LoggerFatal(char *_Format, ...) {
-   
-   va_list      args;
-   static char s_MSG[LOG_BUG_SIZE]  = {0};
-   
-   bzero(s_MSG, sizeof(s_MSG));
-   
-   va_start (args, _Format);
-   vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
-   va_end (args);
-   
-   printf("[%s] %s :: %s\\n", MODULE, "Fatal", s_MSG);
-   
-   return;
+ 
+  va_list      args;
+  static char s_MSG[LOG_BUG_SIZE]  = {0};
+  
+  bzero(s_MSG, sizeof(s_MSG));
+  
+  va_start (args, _Format);
+  vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
+  va_end (args);
+  
+  printf("[%s] %s :: %s\\n", MODULE, "Fatal", s_MSG);
+  
+  return;
 }
 
 static __inline void ____LoggerError(char *_Format, ...) {
-   
-   va_list      args;
-   static char s_MSG[LOG_BUG_SIZE]  = {0};
-   
-   bzero(s_MSG, sizeof(s_MSG));
-   
-   va_start (args, _Format);
-   vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
-   va_end (args);
-   
-   printf("[%s] %s :: %s\\n", MODULE, "Error", s_MSG);
-   
-   return;
+ 
+  va_list      args;
+  static char s_MSG[LOG_BUG_SIZE]  = {0};
+  
+  bzero(s_MSG, sizeof(s_MSG));
+  
+  va_start (args, _Format);
+  vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
+  va_end (args);
+  
+  printf("[%s] %s :: %s\\n", MODULE, "Error", s_MSG);
+  
+  return;
 }
 
 static __inline void ____LoggerWarn(char *_Format, ...) {
-   
-   va_list      args;
-   static char s_MSG[LOG_BUG_SIZE]  = {0};
-   
-   bzero(s_MSG, sizeof(s_MSG));
-   
-   va_start (args, _Format);
-   vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
-   va_end (args);
-   
-   printf("[%s] %s :: %s\\n", MODULE, "Warning", s_MSG);
-   
-   return;
+ 
+  va_list      args;
+  static char s_MSG[LOG_BUG_SIZE]  = {0};
+  
+  bzero(s_MSG, sizeof(s_MSG));
+  
+  va_start (args, _Format);
+  vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
+  va_end (args);
+  
+  printf("[%s] %s :: %s\\n", MODULE, "Warning", s_MSG);
+  
+  return;
 }
 
 static __inline void ____LoggerInfo(char *_Format, ...) {
-   
-   va_list      args;
-   static char s_MSG[LOG_BUG_SIZE]  = {0};
-   
-   bzero(s_MSG, sizeof(s_MSG));
-   
-   va_start (args, _Format);
-   vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
-   va_end (args);
-   
-   printf("[%s] %s :: %s\\n", MODULE, "Info", s_MSG);
-   
-   return;
+ 
+  va_list      args;
+  static char s_MSG[LOG_BUG_SIZE]  = {0};
+  
+  bzero(s_MSG, sizeof(s_MSG));
+  
+  va_start (args, _Format);
+  vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
+  va_end (args);
+  
+  printf("[%s] %s :: %s\\n", MODULE, "Info", s_MSG);
+  
+  return;
 }
 
 static __inline void ____LoggerDebug(char *_Format, ...) {
-   
-   va_list      args;
-   static char s_MSG[LOG_BUG_SIZE]  = {0};
-   
-   bzero(s_MSG, sizeof(s_MSG));
-   
-   va_start (args, _Format);
-   vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
-   va_end (args);
-   
-   printf("[%s] %s :: %s\\n", MODULE, "Debug", s_MSG);
-   
-   return;
+ 
+  va_list      args;
+  static char s_MSG[LOG_BUG_SIZE]  = {0};
+  
+  bzero(s_MSG, sizeof(s_MSG));
+  
+  va_start (args, _Format);
+  vsnprintf(s_MSG, sizeof(s_MSG), _Format, args);
+  va_end (args);
+  
+  printf("[%s] %s :: %s\\n", MODULE, "Debug", s_MSG);
+  
+  return;
 }
 
 __END_DECLS
@@ -574,10 +541,8 @@ __END_DECLS
 
 #if __DebugDebug__
 #  define LogDebug(x)                              ____LoggerDebug x
-#  define LoggerClass(x)                           ____LoggerClass x
 #else
 #  define LogDebug(x)
-#  define LoggerClass(x)
 #endif
 
 #if __DebugWarn__
@@ -642,15 +607,6 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-#define __DebugRegex__                             (__AUTO__)
-#if __DebugRegex__
-#  define LogRegex(x)                              ____LoggerDebug x
-#else
-#  define LogRegex(x)
-#endif
-
-/******************************************************************************************************/
-
 #ifndef __DUMMY_CLASS
 # define __DUMMY_CLASS(_name_)                     @interface __DUMMY_CLASS_ ## _name_ : NSObject                             \\
                                                    @end                                                                       \\
@@ -664,7 +620,12 @@ __END_DECLS
 
 /******************************************************************************************************/
 
+#import <IDEAKit/IDEAKit.h>
+#import <IDEAUIKit/IDEAUIKit.h>
+
+#import "UIFont+IDEASearchController.h"
+
   EOS
-  spec.prefix_header_contents = pch_app_kit
-      
+                                                   spec.prefix_header_contents = pch_app_kit
+     
 end
