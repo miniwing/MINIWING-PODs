@@ -22,31 +22,42 @@
 
 @implementation IDEAStartUp
 
-static dispatch_once_t onceToken;
-
 + (void)starUp {
    
-   //   dispatch_once(&onceToken, ^(void)
-   //                 {
-   //      __init();
-   //   });
-   
+//   dispatch_once(&onceToken, ^(void)
+//                 {
+//   });
+
+   __init();
+
    return;
 }
 
 + (void)load {
    
-   dispatch_once(&onceToken, ^(void) {
-      
-      __init();
-   });
-   
+//   dispatch_once(&onceToken, ^(void) {
+//
+//   });
+
+   __init();
+
    return;
 }
 
 NS_INLINE void __init() {
    
-   _dyld_register_func_for_add_image(__dyld_callback);
+   @synchronized (IDEAStartUp.class) {
+      
+      static dispatch_once_t onceToken;
+
+      dispatch_once(&onceToken, ^(void) {
+         
+         _dyld_register_func_for_add_image(__dyld_callback);
+      });
+
+   } /* synchronized */
+   
+   return;
 }
 
 NS_INLINE void __dyld_callback(const struct mach_header *_mach_header, intptr_t _vmaddr_slide) {
