@@ -94,6 +94,7 @@
 #define __OFF__                                             (0)
 
 #undef  __AUTO__
+#undef  __Debug__
 
 #if (defined(DEBUG) && (DEBUG == 1))
 #  define __AUTO__                                          __ON__

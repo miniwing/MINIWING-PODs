@@ -12,8 +12,12 @@
 
 + (void)load {
    
-   [[self class] runtimeReplaceMethodWithSelector:@selector(initWithCoder:) swizzleSelector:@selector(customInitWithCoder:) isClassMethod:NO];
-   
+   static dispatch_once_t onceToken;
+   dispatch_once(&onceToken, ^{
+
+      [[self class] runtimeReplaceMethodWithSelector:@selector(initWithCoder:) swizzleSelector:@selector(customInitWithCoder:) isClassMethod:NO];
+   });
+      
    return;
 }
 

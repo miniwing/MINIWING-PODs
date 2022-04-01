@@ -12,14 +12,18 @@
 
 + (void)load {
    
-   //交换systemFontOfSize: 方法
-   [[self class] runtimeReplaceMethodWithSelector:@selector(systemFontOfSize:)
-                                  swizzleSelector:@selector(customSystemFontOfSize:)
-                                    isClassMethod:YES];
-   //交换fontWithName:size:方法
-   [[self class] runtimeReplaceMethodWithSelector:@selector(fontWithName:size:)
-                                  swizzleSelector:@selector(customFontWithName:size:)
-                                    isClassMethod:YES];
+   static dispatch_once_t onceToken;
+   dispatch_once(&onceToken, ^{
+
+      //交换systemFontOfSize: 方法
+      [[self class] runtimeReplaceMethodWithSelector:@selector(systemFontOfSize:)
+                                     swizzleSelector:@selector(customSystemFontOfSize:)
+                                       isClassMethod:YES];
+      //交换fontWithName:size:方法
+      [[self class] runtimeReplaceMethodWithSelector:@selector(fontWithName:size:)
+                                     swizzleSelector:@selector(customFontWithName:size:)
+                                       isClassMethod:YES];
+   });
    
    return;
 }
