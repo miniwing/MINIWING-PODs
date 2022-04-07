@@ -54,15 +54,17 @@
                        animations:^{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                          if ([selector isEqualToString:NSStringFromSelector(@selector(setShadowColor:))]) {
-                             [self setShadowColor:result];
-                          } else if ([selector isEqualToString:NSStringFromSelector(@selector(setBorderColor:))]) {
-                             [self setBorderColor:result];
-                          } else if ([selector isEqualToString:NSStringFromSelector(@selector(setBackgroundColor:)) ]) {
-                             [self setBackgroundColor:result];
-                          }
+         if ([selector isEqualToString:NSStringFromSelector(@selector(setShadowColor:))]) {
+            [self setShadowColor:result];
+         }
+         else if ([selector isEqualToString:NSStringFromSelector(@selector(setBorderColor:))]) {
+            [self setBorderColor:result];
+         }
+         else if ([selector isEqualToString:NSStringFromSelector(@selector(setBackgroundColor:)) ]) {
+            [self setBackgroundColor:result];
+         }
 #pragma clang diagnostic pop
-                       }];
+      }];
    }];
 }
 

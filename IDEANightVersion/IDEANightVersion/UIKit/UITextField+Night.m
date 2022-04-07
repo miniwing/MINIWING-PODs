@@ -83,19 +83,22 @@
 }
 
 // Harry FIXED
-//- (void)night_updateColor {
-//   
-//   [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
-//      
+- (void)night_updateColor {
+   
+   [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
+
 //      if ([aSelector isEqualToString:NSStringFromSelector(@selector(setBackgroundColor:))]) {
+//
 //         UIColor *stColor = ((DKColorPicker)aPicker)(self.themeManager.themeVersion);
+//
 //         [self setBackgroundColor:stColor];
+//
 //      }
 //      else {
-//         
+//
 //         SEL stSEL      = NSSelectorFromString(aSelector);
 //         id  stResult   = aPicker(self.themeManager.themeVersion);
-//         
+//
 //         [UIView animateWithDuration:DKNightVersionAnimationDuration
 //                          animations:^{
 //#pragma clang diagnostic push
@@ -103,27 +106,39 @@
 //            [self performSelector:stSEL withObject:stResult];
 //#pragma clang diagnostic pop
 //         }];
-//         
+//
 //      } /* End else */
-//   }];
-//   
-//   if (self.themeManager.supportsKeyboard && [self.themeManager.themeVersion isEqualToString:DKThemeVersionNight]) {
-//      
-//#ifdef __IPHONE_7_0
-//      self.keyboardAppearance = UIKeyboardAppearanceDark;
-//#else
-//      self.keyboardAppearance = UIKeyboardAppearanceDefault;
-//#endif
-//   }
-//   else {
-//#ifdef __IPHONE_7_0
-//      self.keyboardAppearance = UIKeyboardAppearanceLight;
-//#else
-//      self.keyboardAppearance = UIKeyboardAppearanceDefault;
-//#endif
-//   }
-//   
-//   return;
-//}
+
+      SEL stSEL      = NSSelectorFromString(aSelector);
+      id  stResult   = aPicker(self.themeManager.themeVersion);
+
+      [UIView animateWithDuration:DKNightVersionAnimationDuration
+                       animations:^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+         [self performSelector:stSEL withObject:stResult];
+#pragma clang diagnostic pop
+      }];
+
+   }];
+   
+   if (self.themeManager.supportsKeyboard && [self.themeManager.themeVersion isEqualToString:DKThemeVersionNight]) {
+      
+#ifdef __IPHONE_7_0
+      self.keyboardAppearance = UIKeyboardAppearanceDark;
+#else
+      self.keyboardAppearance = UIKeyboardAppearanceDefault;
+#endif
+   }
+   else {
+#ifdef __IPHONE_7_0
+      self.keyboardAppearance = UIKeyboardAppearanceLight;
+#else
+      self.keyboardAppearance = UIKeyboardAppearanceDefault;
+#endif
+   }
+   
+   return;
+}
 
 @end

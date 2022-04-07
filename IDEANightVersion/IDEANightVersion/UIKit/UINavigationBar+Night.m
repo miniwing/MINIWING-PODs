@@ -136,9 +136,10 @@
                               duration:DKNightVersionAnimationDuration
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:^{
+               
                if ([aSelector isEqualToString:NSStringFromSelector(@selector(setBackgroundImage:forBarMetrics:))]) {
                   UIImage  *stImage = aPicker(self.themeManager.themeVersion);
-
+                  
                   [self setBackgroundImage:stImage forBarMetrics:eMetrics];
                   
                } /* End if () */
