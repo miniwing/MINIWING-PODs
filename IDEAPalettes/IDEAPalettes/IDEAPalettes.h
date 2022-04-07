@@ -15,7 +15,7 @@
 #import <UIKit/UIKit.h>
 
 /** Tint color name. */
-typedef NSString *IDEAPaletteTint NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString * IDEAPaletteTint NS_EXTENSIBLE_STRING_ENUM;
 
 /** The name of the tint 50 color when creating a custom palette. */
 CG_EXTERN const IDEAPaletteTint _Nonnull IDEAPaletteTint50Name;
@@ -48,7 +48,7 @@ CG_EXTERN const IDEAPaletteTint _Nonnull IDEAPaletteTint800Name;
 CG_EXTERN const IDEAPaletteTint _Nonnull IDEAPaletteTint900Name;
 
 /** Accent color name. */
-typedef NSString *IDEAPaletteAccent NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString * IDEAPaletteAccent NS_EXTENSIBLE_STRING_ENUM;
 
 /** The name of the accent 100 color when creating a custom palette. */
 CG_EXTERN const IDEAPaletteAccent _Nonnull IDEAPaletteAccent100Name;

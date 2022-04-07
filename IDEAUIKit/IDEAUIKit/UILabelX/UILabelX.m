@@ -17,13 +17,13 @@
 @implementation UILabelX
 
 - (void)dealloc {
-
+   
    __LOG_FUNCTION;
-
+   
    // Custom dealloc
-
+   
    __SUPER_DEALLOC;
-
+   
    return;
 }
 
@@ -91,6 +91,7 @@
     stRect.origin.y     -= self.edgeInsets.top;
     stRect.size.width   += self.edgeInsets.left + self.edgeInsets.right;
     stRect.size.height  += self.edgeInsets.top + self.edgeInsets.bottom;
+   
     return stRect;
 }
 

@@ -23,14 +23,14 @@ Pod::Spec.new do |spec|
                                       'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
                                       'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                       'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
-                                    }
+                                      }
   spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAServiceManager' }
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAServiceManager-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAServiceManager' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAServiceManager\" '
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAServiceManager\" ', ' BUNDLE=\"IDEAServiceManager\" ' ]
+                                      }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
 

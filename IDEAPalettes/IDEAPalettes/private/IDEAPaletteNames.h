@@ -27,7 +27,7 @@
  following would still not work because the initialization doesn't use compile-time constants.
  
  ```objective-c
- static const NSString *IDEAPaletteTint500Name = IDEAPaletteTint500InternalName;
+ static const NSString * IDEAPaletteTint500Name = IDEAPaletteTint500InternalName;
  ```
  
  To get around this, we instead drop down a level and define the strings in the preprocessor, so
