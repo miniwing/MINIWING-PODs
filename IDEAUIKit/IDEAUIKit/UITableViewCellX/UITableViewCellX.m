@@ -32,6 +32,8 @@
    
    [super awakeFromNib];
    // Initialization code
+   
+   [self.containerView setClipsToBounds:YES];
 
    self.layoutConstraintLeftInset   = 15;
    self.layoutConstraintRightInset  = 15;
@@ -119,6 +121,11 @@
    return;
 }
 
++ (CGFloat)cornerRadii {
+   
+   return 8.0f;
+}
+
 - (void)drawRect:(CGRect)aRect {
    
    [super drawRect:aRect];
@@ -132,7 +139,7 @@
          
          UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
                                                                byRoundingCorners:self.rectCorner
-                                                                     cornerRadii:CGSizeMake(8, 8)];
+                                                                     cornerRadii:CGSizeMake([UITableViewCellX cornerRadii], [UITableViewCellX cornerRadii])];
          CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
          stMaskLayer.frame = self.containerView.bounds;
          stMaskLayer.path  = stBezierPath.CGPath;

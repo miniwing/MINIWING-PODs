@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableViewCellX ()
 
++ (CGFloat)cornerRadii;
+
 - (void)setRectCorner:(UIRectCorner)aRectCorner API_DEPRECATED("", ios(2.0, 12.0));
 
 @end
