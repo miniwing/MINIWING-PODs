@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableViewCellX ()
 
-- (void)setRectCorner:(UIRectCorner)aRectCorner;
+- (void)setRectCorner:(UIRectCorner)aRectCorner API_DEPRECATED("", ios(2.0, 14.0));
 
 @end
 

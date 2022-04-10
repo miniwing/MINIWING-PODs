@@ -29,25 +29,32 @@
    
    [super drawRect:aRect];
    
-   if (0 != self.rectCorner) {
+//   if (@available(iOS 15, *)) {
+//      
+//   } /* End if () */
+//   else {
+//      
+//      if (0 != self.rectCorner) {
+//         
+//         UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
+//                                                               byRoundingCorners:self.rectCorner
+//                                                                     cornerRadii:CGSizeMake(8, 8)];
+//         CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
+//         stMaskLayer.frame = self.containerView.bounds;
+//         stMaskLayer.path  = stBezierPath.CGPath;
+//         
+//         [self.containerView.layer setMasksToBounds:YES];
+//         [self.containerView.layer setMask:stMaskLayer];
+//
+//      } /* End if () */
+//      else {
+//         
+//         [self.containerView.layer setMask:nil];
+//
+//      } /* End else */
+//
+//   } /* End else */
       
-      UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
-                                                            byRoundingCorners:self.rectCorner
-                                                                  cornerRadii:CGSizeMake(8, 8)];
-      CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
-      stMaskLayer.frame = self.containerView.bounds;
-      stMaskLayer.path  = stBezierPath.CGPath;
-      
-      [self.containerView.layer setMasksToBounds:YES];
-      [self.containerView.layer setMask:stMaskLayer];
-
-   } /* End if () */
-   else {
-      
-      [self.containerView.layer setMask:nil];
-
-   } /* End else */
-   
    return;
 }
 
