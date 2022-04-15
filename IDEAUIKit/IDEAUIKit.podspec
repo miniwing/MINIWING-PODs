@@ -49,7 +49,7 @@ Pod::Spec.new do |spec|
   }
 
   spec.pod_target_xcconfig  = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAUIKit\" '
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAUIKit\" ', ' BUNDLE=\"IDEAUIKit\" ' ]
   }
 
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
@@ -69,6 +69,8 @@ Pod::Spec.new do |spec|
 #  if ENV['MATERIAL_NAVIGATION_BAR'] == 'YES'
   spec.dependency 'MaterialComponents/NavigationBar'
 #  end # MATERIAL_NAVIGATION_BAR
+
+  spec.dependency 'IDEANibBridge'
 
 #  spec.dependency 'pop'
 
@@ -108,6 +110,13 @@ Pod::Spec.new do |spec|
 ##    sub.resource_bundle       = { 'IDEAFONTSFUI'    => [ 'FONTs/SF-UI/SF-UI-Text-Light.otf', 'FONTs/SF-UI/SF-UI-Text-Regular.otf', 'FONTs/SF-UI/SF-UI-Text-Semibold.otf' ] }
 #  end
 
+#  spec.resource_bundles     = {
+#                                'UINavigationBarX' => [
+#                                                'IDEAUIKit/UINavigationBarX/*.xib'
+#                                               ]
+#                              }
+  spec.resources            = 'IDEAUIKit/UINavigationBarX/*.xib'
+  
 #  spec.vendored_libraries     = 'libXG-SDK.a'
 #  spec.vendored_frameworks    = 'libXG-SDK.a'
 
@@ -211,6 +220,16 @@ Pod::Spec.new do |spec|
 #     define MATERIAL_NAVIGATION_BAR                                       (1)
 #  else
 #     define MATERIAL_NAVIGATION_BAR                                       (0)
+#  endif
+
+#  if __has_include(<IDEANibBridge/IDEANibBridge.h>)
+#     import <IDEANibBridge/IDEANibBridge.h>
+#     define IDEA_NIB_BRIDGE                                               (1)
+#  elif __has_include("IDEANibBridge/IDEANibBridge.h")
+#     import "IDEANibBridge/IDEANibBridge.h"
+#     define IDEA_NIB_BRIDGE                                               (1)
+#  else
+#     define IDEA_NIB_BRIDGE                                               (0)
 #  endif
 
 #endif /* __OBJC__ */

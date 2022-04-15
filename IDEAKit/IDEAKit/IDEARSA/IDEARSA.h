@@ -57,7 +57,7 @@ typedef enum
 
 @interface IDEARSA ()
 
-+ (id)shareInstance;
++ (id)sharedInstance;
 
 @end
 

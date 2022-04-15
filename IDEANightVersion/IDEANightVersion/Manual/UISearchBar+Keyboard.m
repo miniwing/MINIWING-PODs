@@ -279,24 +279,27 @@
    
    [super night_updateColor];
    
-   if (self.themeManager.supportsKeyboard && [self.themeManager.themeVersion isEqualToString:DKThemeVersionNight]) {
+   UITextField *stTextField   = nil;
+
+   if (@available(iOS 13.0, *)) {
       
-#ifdef __IPHONE_7_0
-      UITextField *searchField = [self valueForKey:@"_searchField"];
-      searchField.keyboardAppearance = UIKeyboardAppearanceDark;
-#else
-      self.keyboardAppearance = UIKeyboardAppearanceAlert;
-#endif
+      stTextField = self.searchTextField;
       
    } /* End if () */
    else {
       
-#ifdef __IPHONE_7_0
-      UITextField *searchField = [self valueForKey:@"_searchField"];
-      searchField.keyboardAppearance = UIKeyboardAppearanceDefault;
-#else
-      self.keyboardAppearance = UIKeyboardAppearanceDefault;
-#endif
+      stTextField = [self valueForKey:@"_searchField"];
+
+   } /* End else */
+
+   if (self.themeManager.supportsKeyboard && [self.themeManager.themeVersion isEqualToString:DKThemeVersionNight]) {
+
+      stTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+
+   } /* End if () */
+   else {
+      
+      stTextField.keyboardAppearance = UIKeyboardAppearanceDefault;
       
    } /* End else */
    

@@ -13,10 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBarX ()
 
-@property (nonatomic, strong)                NSLayoutConstraint                  * navigationBarT;
-@property (nonatomic, strong)                NSLayoutConstraint                  * navigationBarB;
-@property (nonatomic, strong)                NSLayoutConstraint                  * navigationBarL;
-@property (nonatomic, strong)                NSLayoutConstraint                  * navigationBarR;
+@end
+
+@interface UINavigationBarX ()
+
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarT;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarB;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarL;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarR;
+
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * splitViewB;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * splitViewL;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * splitViewR;
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * splitViewH;
 
 @end
 

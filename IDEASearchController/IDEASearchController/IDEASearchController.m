@@ -16,10 +16,6 @@
    id <UIGestureRecognizerDelegate> _previousInteractivePopGestureRecognizerDelegate;
 }
 
-#if MATERIAL_APP_BAR
-//@property (nonatomic, strong)    MDCAppBar            * appBar;
-#endif /* MATERIAL_APP_BAR */
-
 /**
  The header view of search view
  */

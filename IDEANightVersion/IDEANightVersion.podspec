@@ -45,6 +45,9 @@ Pod::Spec.new do |spec|
                                         ]
                                       }
 
+#  spec.dependency 'IDEAApplet',         :configurations => ['Debug']
+#  spec.dependency 'IDEAAppletDebugger', :configurations => ['Debug']
+
   spec.public_header_files          = 'IDEANightVersion/**/*.{h}'
   spec.source_files                 = 'IDEANightVersion/**/*.{h,m,mm,c,cpp}'
 
@@ -133,6 +136,25 @@ Pod::Spec.new do |spec|
 #  import <stdlib.h>
 #  import <stdio.h>
 #  import <string.h>
+#endif /* !__OBJC__ */
+
+/******************************************************************************************************/
+#ifdef __OBJC__
+
+#  if __has_include(<IDEAApplet/IDEAApplet.h>)
+#     import <IDEAApplet/IDEAApplet.h>
+#     import <IDEAApplet/IDEAAppletCore.h>
+#     import <IDEAApplet/IDEAAppletModel.h>
+#     import <IDEAApplet/IDEAAppletEvent.h>
+#     import <IDEAApplet/IDEAAppletService.h>
+#     import <IDEAApplet/IDEAAppletNotificationBus.h>
+#     import <IDEAApplet/IDEAAppletSignalBus.h>
+#  endif // __has_include(<IDEAApplet/IDEAApplet.h>)
+
+#  if __has_include(<IDEAApplet/IDEAAppletDebug.h>)
+#     import <IDEAApplet/IDEAAppletDebug.h>
+#  endif // __has_include(<IDEAApplet/IDEAAppletDebug.h>)
+
 #endif /* !__OBJC__ */
 
 /******************************************************************************************************/
@@ -574,6 +596,26 @@ __END_DECLS
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
 
 /******************************************************************************************************/
+
+#ifdef __OBJC__
+NS_INLINE void __DISPATCH_ASYNC_ON_MAIN_QUEUE(void (^block)(void)) {
+   
+   if (pthread_main_np()) {
+      
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+         dispatch_async(dispatch_get_main_queue(), block);
+      });
+      
+   } /* End if () */
+   else {
+      
+      dispatch_async(dispatch_get_main_queue(), block);
+      
+   } /* End else */
+   
+   return;
+}
+#endif // __OBJC__
 
   EOS
   spec.prefix_header_contents = pch_app_kit

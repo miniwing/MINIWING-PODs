@@ -1,0 +1,1 @@
+IDEATableExcel/IDEATableExcel.podspec

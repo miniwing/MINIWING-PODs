@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Draveness. All rights reserved.
 //
 
+#import <objc/runtime.h>
+
 #import "DKNightVersionManager.h"
 
 NSString *  const DKThemeVersionNormal                      = @"NORMAL";
@@ -35,23 +37,78 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
 @implementation DKNightVersionManager
 
 + (DKNightVersionManager *)sharedManager {
+      
+   static DKNightVersionManager  *g_INSTANCE = nil;
    static dispatch_once_t         onceToken;
-   static DKNightVersionManager  *instance;
+   
    dispatch_once(&onceToken, ^{
-      instance = [self new];
-      instance.changeStatusBar      = YES;
-      NSUserDefaults *userDefaults  = [NSUserDefaults standardUserDefaults];
-      DKThemeVersion *themeVersion  = [userDefaults valueForKey:DKNightVersionCurrentThemeVersionKey];
-      themeVersion = themeVersion ?: DKThemeVersionNormal;
-      instance.themeVersion         = themeVersion;
-      instance.supportsKeyboard     = YES;
+      
+      LogDebug((@"+[DKNightVersionManager sharedManager] : NSUserDefaults           : %@", [NSUserDefaults standardUserDefaults]));
+      
+      DKNightVersionManager   *stInstance = (DKNightVersionManager *)objc_getAssociatedObject([NSUserDefaults standardUserDefaults],
+                                                                                              (__bridge const void *)([NSUserDefaults standardUserDefaults]) + 0xFFFF);
+
+      if (nil != stInstance) {
+         
+         g_INSTANCE = stInstance;
+         
+      } /* End if () */
+      else {
+       
+         g_INSTANCE = [self new];
+         
+         objc_setAssociatedObject([NSUserDefaults standardUserDefaults],
+                                  (__bridge const void *)([NSUserDefaults standardUserDefaults]) + 0xFFFF,
+                                  g_INSTANCE,
+                                  OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+         [[NSNotificationCenter defaultCenter] addObserver:g_INSTANCE
+                                                  selector:@selector(__onApplicationWillTerminate:)
+                                                      name:UIApplicationWillTerminateNotification
+                                                    object:nil];
+
+         LogDebug((@"+[DKNightVersionManager sharedManager] : instance  : %@", g_INSTANCE));
+
+         g_INSTANCE.changeStatusBar       = YES;
+         g_INSTANCE.supportsKeyboard      = YES;
+
+         NSUserDefaults *stUserDefaults   = [NSUserDefaults standardUserDefaults];
+         DKThemeVersion *szThemeVersion   = [stUserDefaults valueForKey:DKNightVersionCurrentThemeVersionKey];
+         szThemeVersion = szThemeVersion ?: DKThemeVersionNormal;
+         
+         /**
+          防止死锁
+          */
+//         instance.themeVersion            = themeVersion;
+         __DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
+            
+            g_INSTANCE.themeVersion       = szThemeVersion;
+         });
+
+      } /* End else */
    });
-   return instance;
+   return g_INSTANCE;
 }
 
 + (DKNightVersionManager *)sharedNightVersionManager {
    
    return [self sharedManager];
+}
+
+- (void)__onApplicationWillTerminate:(NSNotification *)aNotification {
+   
+   int                            nErr                                     = EFAULT;
+   
+   __TRY;
+      
+   objc_setAssociatedObject([NSUserDefaults standardUserDefaults],
+                            (__bridge const void *)[NSUserDefaults standardUserDefaults] + 0xFFFF,
+                            nil,
+                            OBJC_ASSOCIATION_RETAIN_NONATOMIC );
+
+   __CATCH(nErr);
+   
+   return;
 }
 
 - (void)nightFalling {
@@ -75,6 +132,7 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
       // if type does not change, don't execute code below to enhance performance.
       return;
    }
+   
    _themeVersion = aThemeVersion;
    
    // Save current theme version to user default
@@ -122,6 +180,38 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
    } /* End if () */
    
    return;
+}
+
++ (BOOL)isAppExtension {
+   static   BOOL            isAppExtension = NO;
+   static   dispatch_once_t onceToken;
+   
+   dispatch_once(&onceToken, ^{
+      
+      Class  stClass    = NSClassFromString(@"UIApplication");
+      
+      if(!stClass || ![stClass respondsToSelector:@selector(sharedApplication)]) {
+         
+         isAppExtension = YES;
+         
+      } /* End if () */
+      
+      if ([[[NSBundle mainBundle] bundlePath] hasSuffix:@".appex"]) {
+         
+         isAppExtension = YES;
+         
+      } /* End if () */
+   });
+   
+   return isAppExtension;
+}
+
++ (UIApplication *)sharedExtensionApplication {
+   
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+   return [self isAppExtension] ? nil : [UIApplication performSelector:@selector(sharedApplication)];
+#pragma clang diagnostic pop
 }
 
 @end

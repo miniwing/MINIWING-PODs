@@ -8,8 +8,10 @@
 
 #import "DKColorTable.h"
 
-#if __has_include("IDEANightVersion/IDEAColorTable.h")
-#     import "IDEANightVersion/IDEAColorTable.h"
+#if __has_include("IDEAColor/IDEAColorTable.h")
+#  import "IDEAColor/IDEAColorTable.h"
+#elif __has_include("IDEAColorTable.h")
+#  import "IDEAColorTable.h"
 #endif
 
 @interface NSString (Trimming)
@@ -70,10 +72,9 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
       
       sharedInstance = [[DKColorTable alloc] init];
       
-#if __has_include("IDEANightVersion/IDEAColorTable.h")
+#if __has_include("IDEAColor/IDEAColorTable.h") || __has_include("IDEAColorTable.h")
       sharedInstance.file = [IDEAColorTable pathForColorTable:@"ColorTable"
-                                                       ofType:@"txt"
-                                                   fromBundle:IDEAColorTable.bundle];
+                                                       ofType:@"txt"];
 #else
       sharedInstance.file = @"ColorTable.txt";
 #endif

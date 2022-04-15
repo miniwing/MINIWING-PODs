@@ -35,7 +35,7 @@
    return;
 }
 
-+ (id)shareInstance {
++ (id)sharedInstance {
    
    static IDEARSA *_IDEARSA = nil;
    static dispatch_once_t onceToken;

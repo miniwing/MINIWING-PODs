@@ -29,7 +29,7 @@
 #define __DebugVideo__                             __OFF__
 #define __DebugView__                              __OFF__
 
-// #define __DebugColor__                             __AUTO__
+#define __DebugColor__                             __AUTO__
 
 #if __DebugVideo__
 #  define LogVideo(x)                              LoggerDebug x

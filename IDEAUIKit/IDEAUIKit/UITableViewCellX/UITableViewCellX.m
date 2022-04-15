@@ -127,9 +127,7 @@
 }
 
 - (void)drawRect:(CGRect)aRect {
-   
-   [super drawRect:aRect];
-   
+      
    if (@available(iOS 13, *)) {
       
    } /* End if () */
@@ -155,7 +153,9 @@
       } /* End else */
 
    } /* End else */
-      
+
+   [super drawRect:aRect];
+
    return;
 }
 

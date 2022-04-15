@@ -18,14 +18,16 @@
 + (id)loadStoryboard:(NSString *)aStoryboard identifier:(NSString *)aIdentifier;
 + (id)loadStoryboardRoot:(NSString *)aStoryboard;
 
-+ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inBundle:(NSString *)aBundle;
-
 - (id)loadViewController:(Class)aClass;
 
 @end
 
+@interface UIStoryboard (Bundle)
++ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inBundle:(NSString *)aBundle;
+@end
+
 @interface UIStoryboard (Framework)
-+ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass framework:(NSString *)aFramework;
++ (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inFramework:(NSString *)aFramework;
 @end
 
 

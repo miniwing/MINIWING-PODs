@@ -23,7 +23,7 @@
 
       UIApplication  *stApplication = [UIApplication performSelector:@selector(sharedApplication)];
       
-      return stApplication.keyWindow.safeAreaInsets;
+      return stApplication.delegate.window.safeAreaInsets;
 
    } /* End if () */
 

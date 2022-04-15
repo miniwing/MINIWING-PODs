@@ -16,8 +16,7 @@
 
 @interface IDEAColorTable ()
 
-//+ (NSString *)pathForColorTable:(NSString *)aColorTable
-//                         ofType:(NSString *)aType
-//                     fromBundle:(NSString *)aBundleName;
++ (NSString *)pathForColorTable:(NSString *)aColorTable
+                         ofType:(NSString *)aType;
 
 @end

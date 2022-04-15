@@ -20,8 +20,8 @@ static   NSString       *g_ColorTable        = nil;
 
 @implementation IDEAColorTable
 
-+ (void)load
-{
++ (void)load {
+   
    static   dispatch_once_t    stOnceToken;
 
    dispatch_once(&stOnceToken, ^{
@@ -37,30 +37,23 @@ static   NSString       *g_ColorTable        = nil;
    return;
 }
 
-//+ (NSString *)pathForColorTable:(NSString *)aColorTable
-//                         ofType:(NSString *)aType
-//                     fromBundle:(NSString *)aBundleName
-//{
-//   static   NSString          *g_COLOR_TABLE    = nil;
-//   static   dispatch_once_t    stOnceToken;
-//   
-//   dispatch_once(&stOnceToken, ^{
-//
-////      NSURL      *stBundleURL = [[NSBundle bundleForClass:[self class]] URLForResource:aBundleName withExtension:@"bundle"];
-//
-////      NSURL      *stBundleURL = [NSBundle bundleForClass:[self class]];
-//
-//      NSBundle   *stBundle    = [NSBundle bundleForClass:[self class]];
-//      
-//      NSURL      *stFontURL   = [stBundle URLForResource:aColorTable withExtension:aType];
-//
-//      g_COLOR_TABLE  = stFontURL.path;
-//      
-//   });
-//   
-//   return g_COLOR_TABLE;
-//}
-//
++ (NSString *)pathForColorTable:(NSString *)aColorTable
+                         ofType:(NSString *)aType {
+   
+   static   NSString          *g_COLOR_TABLE    = nil;
+   static   dispatch_once_t    stOnceToken;
+   
+   dispatch_once(&stOnceToken, ^{
+
+      NSBundle *stBundle   = [NSBundle bundleForClass:[self class]];
+      NSURL    *stURL      = [stBundle URLForResource:aColorTable withExtension:aType];
+
+      g_COLOR_TABLE  = stURL.path;
+   });
+   
+   return g_COLOR_TABLE;
+}
+
 //+ (NSString *)bundle
 //{
 //   return @"IDEANightVersion";

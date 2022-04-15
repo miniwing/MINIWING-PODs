@@ -15,7 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 //IB_DESIGNABLE
 @interface UINavigationBarX : UIView
 
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarXHeight;
+
 @property (nonatomic, weak)   IBOutlet       MDCNavigationBar                    * navigationBar;
+@property (nonatomic, weak)   IBOutlet       UILabel                             * subTitleLabel;
+
+@property (nonatomic, weak)   IBOutlet       UIView                              * splitView;
 
 @end
 
@@ -25,6 +30,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) IBInspectable  CGFloat                               navigationBarBottomInset;
 @property (nonatomic, assign) IBInspectable  CGFloat                               navigationBarLeftInset;
 @property (nonatomic, assign) IBInspectable  CGFloat                               navigationBarRightInset;
+
+@property (nonatomic, assign) IBInspectable  CGFloat                               splitViewTopInset;
+@property (nonatomic, assign) IBInspectable  CGFloat                               splitViewBottomInset;
+@property (nonatomic, assign) IBInspectable  CGFloat                               splitViewLeftInset;
+@property (nonatomic, assign) IBInspectable  CGFloat                               splitViewRightInset;
+
+@end
+
+@interface UINavigationBarX ()
+
+- (void)showLine;
+
+- (void)setSubTitle:(NSString *)aTitle;
 
 @end
 
