@@ -41,8 +41,7 @@
       } /* End else */
       
       return stViewController;
-      //      return stViewController.navigationController;
-      
+//      return stViewController.navigationController;
    } /* End if () */
 #endif /* RT_ROOT_NAVIGATIONCONTROLLER */
    

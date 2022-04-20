@@ -20,7 +20,7 @@
 
 + (CAAnimation *)fadeWithType:(IDEATabBarControllerTransitionViewType)aType {
    
-   return [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0];
+   return [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
 }
 
 + (CAAnimation *)fadeWithType:(IDEATabBarControllerTransitionViewType)aType min:(CGFloat)aMIN {
@@ -38,7 +38,7 @@
 
 + (CAAnimation *)scaleWithType:(IDEATabBarControllerTransitionViewType)aType {
    
-   return [IDEATabBarControllerTransitionAnimation scaleWithType:aType min:0];
+   return [IDEATabBarControllerTransitionAnimation scaleWithType:aType min:0 max:1];
 }
 
 + (CAAnimation *)scaleWithType:(IDEATabBarControllerTransitionViewType)aType min:(CGFloat)aMIN {
@@ -70,7 +70,9 @@
    CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
    
    CAAnimation *stOpacityAnimation        = [IDEATabBarControllerTransitionAnimation fadeWithType:aType];
-   CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom) ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX] : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
+   CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom)
+   ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX]
+   : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
       
    return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stOpacityAnimation, stTranslatationAnimation ]];
 }
@@ -82,20 +84,22 @@
    CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
 
    NSMutableArray<CAAnimation *> *stAnimations        = [NSMutableArray<CAAnimation *> array];
-   CAAnimation                   *stOpacityAnimation  = nil;
+   CAAnimation                   *stOpacityAnimation  = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
+   
+   [stAnimations addObject:stOpacityAnimation];
 
-   if (IDEATabBarControllerTransitionViewTypeFrom == aType) {
-
-      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
-
-   } /* End if () */
-   else if (IDEATabBarControllerTransitionViewTypeTo == aType) {
-
-      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:1 max:0];
-
-      [stAnimations addObject:stOpacityAnimation];
-
-   } /* End if () */
+//   if (IDEATabBarControllerTransitionViewTypeFrom == aType) {
+//
+//      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
+//
+//   } /* End if () */
+//   else if (IDEATabBarControllerTransitionViewTypeTo == aType) {
+//
+//      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
+//
+//      [stAnimations addObject:stOpacityAnimation];
+//
+//   } /* End if () */
 
    CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom)
    ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX]
