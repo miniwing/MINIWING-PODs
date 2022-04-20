@@ -64,8 +64,19 @@
                                                     bounceValue:TRANSITION_ANIMATION_BOUNCE];
 }
 
-+ (CAAnimation *)moveWithType:(IDEATabBarControllerTransitionViewType)aType
-                    direction:(IDEATabBarControllerTransitionDirection)aDirection bounceValue:(CGFloat)aBounceValue {
++ (CAAnimation *)moveWithType:(IDEATabBarControllerTransitionViewType)aType direction:(IDEATabBarControllerTransitionDirection)aDirection bounceValue:(CGFloat)aBounceValue {
+         
+   CGFloat      fFromX  = (aDirection == DirectionRight) ? aBounceValue : -aBounceValue;
+   CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
+   
+   CAAnimation *stOpacityAnimation        = [IDEATabBarControllerTransitionAnimation fadeWithType:aType];
+   CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom) ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX] : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
+      
+   return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stOpacityAnimation, stTranslatationAnimation ]];
+}
+
++ (CAAnimation *)moveWithTypeEx:(IDEATabBarControllerTransitionViewType)aType
+                    directionEx:(IDEATabBarControllerTransitionDirection)aDirection bounceValue:(CGFloat)aBounceValue {
          
    CGFloat      fFromX  = (aDirection == DirectionRight) ? aBounceValue : -aBounceValue;
    CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
@@ -75,7 +86,7 @@
 
    if (IDEATabBarControllerTransitionViewTypeFrom == aType) {
 
-//      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
+      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
 
    } /* End if () */
    else if (IDEATabBarControllerTransitionViewTypeTo == aType) {

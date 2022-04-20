@@ -8,6 +8,8 @@
 //  TEL : +(852)53054612
 //
 
+#import "IDEAKit/IDEAUtils.h"
+
 #import "SearchBarX+Inner.h"
 #import "SearchBarX+Signal.h"
 

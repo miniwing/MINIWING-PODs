@@ -45,7 +45,7 @@ Pod::Spec.new do |spec|
                                 "${PODS_TARGET_SRCROOT}/",
                                 "${PODS_TARGET_SRCROOT}/../",
                                 "${PODS_ROOT}/Headers/Public/IDEAKit",
-                                "${PODS_ROOT}/Headers/Public/IDEAUIKit",
+#                                "${PODS_ROOT}/Headers/Public/IDEAUIKit",
                                 "${PODS_ROOT}/Headers/Public/FoundationExtension",
                                 "${PODS_ROOT}/Headers/Public/UIKitExtension",
                                 "${PODS_ROOT}/Headers/Public/YYKit"

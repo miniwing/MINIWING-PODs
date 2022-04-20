@@ -116,7 +116,7 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
       
       [aTabBarController.view.layer addSublayer:stToLayer];
 
-      [stToLayer setLeft:(aTabBarController.view.layer.width - stToLayer.width) / 2];
+//      [stToLayer setLeft:(aTabBarController.view.layer.width - stToLayer.width) / 2];
 
    } /* End if () */
 
@@ -127,7 +127,7 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
       
       [aTabBarController.view.layer addSublayer:stFromLayer];
       
-      [stFromLayer setLeft:(aTabBarController.view.layer.width - stFromLayer.width) / 2];
+//      [stFromLayer setLeft:(aTabBarController.view.layer.width - stFromLayer.width) / 2];
 
    } /* End if () */
 
@@ -158,8 +158,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    eDirection           = [IDEATabBarControllerTransition direction:nSelectedIndex shouldSelectIndex:nShouldSelectIndex];
    LogDebug((@"Direction : %d", eDirection));
 
-//   dispatch_after(0.0, dispatch_get_main_queue(), ^{
-   dispatch_async(dispatch_get_main_queue(), ^{
+   dispatch_after(0.0, dispatch_get_main_queue(), ^{
+//   dispatch_async(dispatch_get_main_queue(), ^{
 
       if ([aTabBarController isKindOfClass:[IDEATabBarControllerTransition class]]) {
 
@@ -201,8 +201,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    stViewLayerAnimation = [IDEATabBarControllerAnimationFactory makeAnimationWithType: AnimationTypeOpacity from: 0 to: 1];
 
    aLayerContext.viewLayer.opacity  = 0;
-   aLayerContext.fromLayer.opacity  = 1;
-   aLayerContext.toLayer.opacity    = 0;
+//   aLayerContext.fromLayer.opacity  = 1;
+//   aLayerContext.toLayer.opacity    = 0;
 
    aLayerContext.fromNavigationBarLayer.opacity = 1;
    aLayerContext.toNavigationBarLayer.opacity   = 0;
@@ -225,12 +225,12 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
                                                           object:nil];
    }];
    
-   aLayerContext.viewLayer.opacity  = 0;
+   aLayerContext.viewLayer.opacity  = 1;
    aLayerContext.fromLayer.opacity  = 0;
    aLayerContext.toLayer.opacity    = 1;
    
-   aLayerContext.fromNavigationBarLayer.opacity = 1;
-   aLayerContext.toNavigationBarLayer.opacity   = 0;
+   aLayerContext.fromNavigationBarLayer.opacity = 0;
+   aLayerContext.toNavigationBarLayer.opacity   = 1;
 
    [aLayerContext.fromLayer addAnimation:stFromAnimation
                                   forKey:IDEATabBarControllerTransitionAnimationKeyFromView];

@@ -260,8 +260,8 @@
       
    } /* End else */
    
-   stImage        = [self imageFromView:aInputView];
-   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+//   stImage        = [self imageFromView:aInputView];
+//   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
    
    [stSnapshotView.layer setMasksToBounds:YES];
    [stSnapshotView setClipsToBounds:YES];
@@ -598,7 +598,7 @@
    LogDebug((@"-[makeLayer:viewLoaded:withNavigationBar:tabbar:] : ViewLayer Height : %@", stViewLayer));
    
    [stLayer addSublayer:stViewLayer];
-   [stViewLayer setLeft:(stLayer.width - stViewLayer.width) / 2];
+//   [stViewLayer setLeft:(stLayer.width - stViewLayer.width) / 2];
 //   [stViewLayer setCenterX:stLayer.width / 2];
    
    __CATCH(nErr);
