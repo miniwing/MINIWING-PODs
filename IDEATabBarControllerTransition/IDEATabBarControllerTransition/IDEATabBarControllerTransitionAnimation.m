@@ -59,20 +59,42 @@
 
 + (CAAnimation *)moveWithType:(IDEATabBarControllerTransitionViewType)aType direction:(IDEATabBarControllerTransitionDirection)aDirection {
    
-   return [IDEATabBarControllerTransitionAnimation moveWithType:aType direction:aDirection bounceValue:TRANSITION_ANIMATION_BOUNCE];
+   return [IDEATabBarControllerTransitionAnimation moveWithType:aType
+                                                      direction:aDirection
+                                                    bounceValue:TRANSITION_ANIMATION_BOUNCE];
 }
 
-+ (CAAnimation *)moveWithType:(IDEATabBarControllerTransitionViewType)aType direction:(IDEATabBarControllerTransitionDirection)aDirection bounceValue:(CGFloat)aBounceValue {
++ (CAAnimation *)moveWithType:(IDEATabBarControllerTransitionViewType)aType
+                    direction:(IDEATabBarControllerTransitionDirection)aDirection bounceValue:(CGFloat)aBounceValue {
          
    CGFloat      fFromX  = (aDirection == DirectionRight) ? aBounceValue : -aBounceValue;
    CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
-   
-   CAAnimation *stOpacityAnimation        = [IDEATabBarControllerTransitionAnimation fadeWithType:aType];
+
+   NSMutableArray<CAAnimation *> *stAnimations        = [NSMutableArray<CAAnimation *> array];
+   CAAnimation                   *stOpacityAnimation  = nil;
+
+   if (IDEATabBarControllerTransitionViewTypeFrom == aType) {
+
+//      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:0 max:1];
+
+   } /* End if () */
+   else if (IDEATabBarControllerTransitionViewTypeTo == aType) {
+
+      stOpacityAnimation   = [IDEATabBarControllerTransitionAnimation fadeWithType:aType min:1 max:0];
+
+      [stAnimations addObject:stOpacityAnimation];
+
+   } /* End if () */
+
    CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom)
    ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX]
    : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
-      
-   return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stOpacityAnimation, stTranslatationAnimation ]];
+
+   [stAnimations addObject:stTranslatationAnimation];
+
+   return [IDEATabBarControllerAnimationFactory makeGroupAnimation:stAnimations];
+//   return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stOpacityAnimation, stTranslatationAnimation ]];
+//   return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stTranslatationAnimation ]];
 }
 
 @end

@@ -201,8 +201,7 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    stViewLayerAnimation = [IDEATabBarControllerAnimationFactory makeAnimationWithType: AnimationTypeOpacity from: 0 to: 1];
 
    aLayerContext.viewLayer.opacity  = 0;
-   
-   aLayerContext.fromLayer.opacity  = 0;
+   aLayerContext.fromLayer.opacity  = 1;
    aLayerContext.toLayer.opacity    = 0;
 
    aLayerContext.fromNavigationBarLayer.opacity = 1;
@@ -218,19 +217,20 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    [CATransaction setAnimationDuration:[self transitionDuration]];
    [CATransaction setAnimationTimingFunction:[self transitionTimingFunction]];
    [CATransaction setCompletionBlock:^{
-      
+
+      aLayerContext.viewLayer.opacity  = 1;
+
       [aLayerContext reset];
       [[NSNotificationCenter defaultCenter] postNotificationName:IDEATabBarControllerTransitionEndNotification
                                                           object:nil];
    }];
    
-//   aLayerContext.fromLayer.opacity  = 1;
-//   aLayerContext.toLayer.opacity    = 0;
+   aLayerContext.viewLayer.opacity  = 0;
+   aLayerContext.fromLayer.opacity  = 0;
+   aLayerContext.toLayer.opacity    = 1;
    
    aLayerContext.fromNavigationBarLayer.opacity = 1;
    aLayerContext.toNavigationBarLayer.opacity   = 0;
-
-   aLayerContext.viewLayer.opacity  = 1;
 
    [aLayerContext.fromLayer addAnimation:stFromAnimation
                                   forKey:IDEATabBarControllerTransitionAnimationKeyFromView];

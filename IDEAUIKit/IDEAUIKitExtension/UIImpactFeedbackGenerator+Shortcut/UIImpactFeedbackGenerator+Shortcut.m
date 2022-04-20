@@ -38,9 +38,8 @@
    return;
 }
 
-#ifdef __IPHONE_13_0
 /// call when your UI element impacts something else with a specific intensity [0.0, 1.0]
-+ (void)impactOccurredWithStyle:(UIImpactFeedbackStyle)aStyle Intensity:(CGFloat)aIntensity {
++ (void)impactOccurredWithStyle:(UIImpactFeedbackStyle)aStyle intensity:(CGFloat)aIntensity {
    
    int                            nErr                                     = EFAULT;
    
@@ -67,7 +66,6 @@
    
    return;
 }
-#endif /* __IPHONE_13_0 */
 
 + (NSCache *)cache {
    

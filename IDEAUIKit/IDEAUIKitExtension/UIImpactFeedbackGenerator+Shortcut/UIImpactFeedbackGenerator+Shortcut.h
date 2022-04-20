@@ -20,10 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// call when your UI element impacts something else
 + (void)impactOccurredWithStyle:(UIImpactFeedbackStyle)aStyle API_AVAILABLE(ios(10.0));;
 
-#ifdef __IPHONE_13_0
 /// call when your UI element impacts something else with a specific intensity [0.0, 1.0]
-+ (void)impactOccurredWithStyle:(UIImpactFeedbackStyle)aStyle Intensity:(CGFloat)aIntensity API_AVAILABLE(ios(13.0));
-#endif /* __IPHONE_13_0 */
++ (void)impactOccurredWithStyle:(UIImpactFeedbackStyle)aStyle intensity:(CGFloat)aIntensity API_AVAILABLE(ios(13.0));
 
 @end
 
