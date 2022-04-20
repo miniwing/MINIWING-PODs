@@ -92,9 +92,7 @@
 }
 
 - (void)setBackgroundImagePicker:(DKImagePicker)aPicker forBarMetrics:(UIBarMetrics)aBarMetrics {
-   
-   [self setBackgroundImage:aPicker(self.themeManager.themeVersion) forBarMetrics:aBarMetrics];
-   
+      
    NSString             *szKey         = [NSString stringWithFormat:@"%@", @(aBarMetrics)];
 
    if (nil != aPicker) {
@@ -110,6 +108,8 @@
       [stDictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setBackgroundImage:forBarMetrics:))];
       [self.pickers setValue:stDictionary forKey:szKey];
 
+      [self setBackgroundImage:aPicker(self.themeManager.themeVersion) forBarMetrics:aBarMetrics];
+
    } /* End if () */
    else {
 
@@ -120,8 +120,28 @@
    return;
 }
 
-- (void)night_updateColor {
+- (void)setShadowImagePicker:(DKImagePicker)aPicker {
+
+//   objc_setAssociatedObject(self, @selector(setShadowImagePicker:), aPicker, OBJC_ASSOCIATION_COPY_NONATOMIC);
+
+   if (nil != aPicker) {
+            
+      [self.pickers setValue:[aPicker copy] forKey:@"setShadowImage:"];
+
+      self.shadowImage  = aPicker(self.themeManager.themeVersion);
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:@"setShadowImage:"];
+
+   } /* End else */
    
+   return;
+}
+
+- (void)night_updateColor:(NSNotification *)aNotification {
+
    [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aKey, id _Nonnull aObject, BOOL * _Nonnull aStop) {
       
       if ([aObject isKindOfClass:[NSDictionary class]]) {
@@ -150,7 +170,7 @@
       } /* End if () */
       else {
          SEL       stSEL      = NSSelectorFromString(aKey);
-         DKPicker  stPicker   = (DKColorPicker)aObject;
+         DKPicker  stPicker   = (DKPicker)aObject;
          id        stResult   = stPicker(self.themeManager.themeVersion);
          
          [UIView animateWithDuration:DKNightVersionAnimationDuration

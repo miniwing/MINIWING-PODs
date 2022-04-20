@@ -53,7 +53,7 @@ static void *DKViewDeallocHelperKey;
 //      [[NSNotificationCenter defaultCenter] removeObserver:self];
 
       [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(night_updateColor)
+                                               selector:@selector(night_updateColor:)
                                                    name:DKNightVersionThemeChangingNotification
                                                  object:nil];
 
@@ -67,7 +67,7 @@ static void *DKViewDeallocHelperKey;
    return [DKNightVersionManager sharedManager];
 }
 
-- (void)night_updateColor {
+- (void)night_updateColor:(NSNotification *)aNotification {
    
    [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
       

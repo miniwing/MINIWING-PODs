@@ -30,43 +30,54 @@
 
 @implementation UITableExcelViewHeaderView
 
-- (void)reloadDataFixed:(NSArray<UIColumnMode *> *)fixedColumn slide:(NSArray<UIColumnMode *> *)slideColumn{
-    _slideColumn = slideColumn;
-    _fixedColumn = fixedColumn;
-    [_collectionView reloadData];
-    for (int i = 0 ; i < _fixedColumn.count; i ++) {
-        UIColumnMode *columnModel = fixedColumn[i];
-        if (_config.columnStyle != UITableExcelViewColumnStyleBtn) {
-            UILabel *label = [self viewWithTag:100 + i];
-            label.text = columnModel.text;
-        }else{
-            UIButton *btn = [self viewWithTag:100 + i];
-            [btn setTitle:columnModel.text forState:UIControlStateNormal];
-        }
-    }
+- (void)reloadDataFixed:(NSArray<UIColumnMode *> *)fixedColumn slide:(NSArray<UIColumnMode *> *)slideColumn {
+   _slideColumn   = slideColumn;
+   _fixedColumn   = fixedColumn;
+      
+   for (int i = 0; i < _fixedColumn.count; i ++) {
+      
+      UIColumnMode *columnModel = fixedColumn[i];
+      if (_config.columnStyle != UITableExcelViewColumnStyleButton) {
+         UILabel *label = [self viewWithTag:100 + i];
+         label.text = columnModel.text;
+         label.textColor = columnModel.textColor;
+      }
+      else {
+         UIButton *btn = [self viewWithTag:100 + i];
+         [btn setTitle:columnModel.text forState:UIControlStateNormal];
+         [btn setTitleColor:columnModel.textColor forState:UIControlStateNormal];
+      }
+   }
+   
+   [_collectionView reloadData];
+
+   return;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return _slideColumn.count;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UITableExcelViewColl *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"defalutHeadCell"
+    UITableExcelViewColl *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UITableExcelViewColl.class)
                                                                            forIndexPath:indexPath];
     return cell;
 }
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UITableExcelViewColl *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    cell.menuLabel.borderWidth = _config.columnBorderWidth;
-    cell.menuLabel.borderColor = _config.columnBorderColor;
-    if (indexPath.row < _slideColumn.count) {
-        UIColumnMode *columnModel = _slideColumn[indexPath.row];
-        if (_config.columnStyle == UITableExcelViewColumnStyleBtn) {
-            cell.contentView.backgroundColor = columnModel.backgroundColor;
-        }
-        cell.menuLabel.textColor = columnModel.textColor;
-        cell.menuLabel.font = [UIFont systemFontOfSize:columnModel.fontSize];
-        cell.menuLabel.text = columnModel.text;
-    }
+   cell.menuLabel.borderWidth = _config.columnBorderWidth;
+   cell.menuLabel.borderColor = _config.columnBorderColor;
+   if (indexPath.row < _slideColumn.count) {
+      UIColumnMode *columnModel = _slideColumn[indexPath.row];
+      if (_config.columnStyle == UITableExcelViewColumnStyleButton) {
+         cell.contentView.backgroundColor = columnModel.backgroundColor;
+      }
+      cell.menuLabel.textColor = columnModel.textColor;
+      cell.menuLabel.font = [UIFont systemFontOfSize:columnModel.fontSize];
+      cell.menuLabel.text = columnModel.text;
+   }
 }
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row < _slideColumn.count) {
         UIColumnMode *model = _slideColumn[indexPath.row];
@@ -156,7 +167,7 @@
     NSInteger index = 0;
     for (UIColumnMode *column in fixedColumnList) {
         UIView *titleLbl = nil;
-        if (_config.columnStyle != UITableExcelViewColumnStyleBtn) {
+        if (_config.columnStyle != UITableExcelViewColumnStyleButton) {
             UIDrawLabel *lbl = [UIDrawLabel new];
             lbl.text = column.text;
             lbl.font = [UIFont systemFontOfSize:column.fontSize];
@@ -166,7 +177,8 @@
             lbl.borderWidth = _config.columnBorderWidth;
             lbl.borderColor = _config.columnBorderColor;
             titleLbl = lbl;
-        }else{
+        }
+        else {
             UIDrawButton *btn = [UIDrawButton buttonWithType:UIButtonTypeCustom];
             btn.titleLabel.font = [UIFont systemFontOfSize:column.fontSize];
             [btn setTitleColor:column.textColor forState:UIControlStateNormal];
@@ -184,7 +196,8 @@
             [titleLbl addConstraint:NSLayoutAttributeTop equalTo:self offset:padding];
             [titleLbl addConstraint:NSLayoutAttributeWidth equalTo:nil offset:column.width];
             [titleLbl addConstraint:NSLayoutAttributeBottom equalTo:self offset:-padding];
-        }else{
+        }
+        else {
             [titleLbl addConstraint:NSLayoutAttributeLeft equalTo:currentLabel toAttribute:NSLayoutAttributeRight offset:padding];
             [titleLbl addConstraint:NSLayoutAttributeTop equalTo:self offset:padding];
             [titleLbl addConstraint:NSLayoutAttributeWidth equalTo:nil offset:column.width];
@@ -206,7 +219,7 @@
         _collectionView.backgroundColor = self.backgroundColor;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.bounces = NO;
-        [_collectionView registerClass:[UITableExcelViewColl class] forCellWithReuseIdentifier:@"defalutHeadCell"];
+        [_collectionView registerClass:[UITableExcelViewColl class] forCellWithReuseIdentifier:NSStringFromClass(UITableExcelViewColl.class)];
         [self addSubview:_collectionView];
         if (currentLabel == nil) {
             [_collectionView addConstraint:NSLayoutAttributeLeft equalTo:self offset:padding];

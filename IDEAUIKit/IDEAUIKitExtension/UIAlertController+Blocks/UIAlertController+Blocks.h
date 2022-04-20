@@ -28,6 +28,9 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
+
 #if TARGET_OS_IOS
 typedef void (^UIAlertControllerPopoverPresentationControllerBlock) (UIPopoverPresentationController * aPopover);
 #endif
@@ -36,6 +39,7 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
 @interface UIAlertController (Blocks)
 
 + (instancetype)showInViewController:(UIViewController *)aViewController
+                  userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
                            withTitle:(NSString *)aTitle
                              message:(NSString *)aMessage
                       preferredStyle:(UIAlertControllerStyle)aPreferredStyle
@@ -48,6 +52,7 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
                             tapBlock:(UIAlertControllerCompletionBlock)aTapBlock;
 
 + (instancetype)showAlertInViewController:(UIViewController *)aViewController
+                       userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
                                 withTitle:(NSString *)aTitle
                                   message:(NSString *)aMessage
                         cancelButtonTitle:(NSString *)aCancelButtonTitle
@@ -57,20 +62,22 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
 
 
 + (instancetype)showActionSheetInViewController:(UIViewController *)aViewController
+                             userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
                                       withTitle:(NSString *)aTitle
                                         message:(NSString *)aMessage
                               cancelButtonTitle:(NSString *)aCancelButtonTitle
                          destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                              otherButtonTitles:(NSArray *)aOtherButtonTitles
+                              otherButtonTitles:(NSArray  *)aOtherButtonTitles
 #if TARGET_OS_IOS
              popoverPresentationControllerBlock:(UIAlertControllerPopoverPresentationControllerBlock)aPopoverPresentationControllerBlock
 #endif
                                        tapBlock:(UIAlertControllerCompletionBlock)aTapBlock;
 
-
-@property (readonly, nonatomic) BOOL visible;
+@property (readonly, nonatomic) BOOL      visible;
 @property (readonly, nonatomic) NSInteger cancelButtonIndex;
 @property (readonly, nonatomic) NSInteger firstOtherButtonIndex;
 @property (readonly, nonatomic) NSInteger destructiveButtonIndex;
 
 @end
+
+#pragma clang diagnostic pop

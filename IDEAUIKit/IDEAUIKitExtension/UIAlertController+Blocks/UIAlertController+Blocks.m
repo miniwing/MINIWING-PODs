@@ -28,138 +28,155 @@
 
 #import "UIAlertController+Blocks.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
+
 static NSInteger const UIAlertControllerBlocksCancelButtonIndex      = 0;
 static NSInteger const UIAlertControllerBlocksDestructiveButtonIndex = 1;
 static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @interface UIViewController (UACB_Topmost)
 
-- (UIViewController *)uacb_topmost;
+- (UIViewController *)__TopMost;
 
 @end
 
 @implementation UIAlertController (Blocks)
 
-+ (instancetype)showInViewController:(UIViewController *)viewController
-                           withTitle:(NSString *)title
-                             message:(NSString *)message
-                      preferredStyle:(UIAlertControllerStyle)preferredStyle
-                   cancelButtonTitle:(NSString *)cancelButtonTitle
-              destructiveButtonTitle:(NSString *)destructiveButtonTitle
-                   otherButtonTitles:(NSArray *)otherButtonTitles
++ (instancetype)showInViewController:(UIViewController *)aViewController
+                  userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
+                           withTitle:(NSString *)aTitle
+                             message:(NSString *)aMessage
+                      preferredStyle:(UIAlertControllerStyle)aPreferredStyle
+                   cancelButtonTitle:(NSString *)aCancelButtonTitle
+              destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
+                   otherButtonTitles:(NSArray *)aOtherButtonTitles
 #if TARGET_OS_IOS
-  popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *popover))popoverPresentationControllerBlock
+  popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *aPopover))aPopoverPresentationControllerBlock
 #endif
-                            tapBlock:(UIAlertControllerCompletionBlock)tapBlock {
+                            tapBlock:(UIAlertControllerCompletionBlock)aTapBlock {
    
-   UIAlertController *strongController = [self alertControllerWithTitle:title
-                                                                message:message
-                                                         preferredStyle:preferredStyle];
-      
-   __weak UIAlertController *controller = strongController;
+   UIAlertController          *stStrongController  = [self alertControllerWithTitle:aTitle
+                                                                            message:aMessage
+                                                                     preferredStyle:aPreferredStyle];
    
-   if (cancelButtonTitle) {
+   __weak UIAlertController   *stAlertController   = stStrongController;
+   
+   if (aCancelButtonTitle) {
       
-      UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle
-                                                             style:UIAlertActionStyleCancel
-                                                           handler:^(UIAlertAction *action) {
-         if (tapBlock) {
+      UIAlertAction  *stCancelAction   = [UIAlertAction actionWithTitle:aCancelButtonTitle
+                                                                  style:UIAlertActionStyleCancel
+                                                                handler:^(UIAlertAction *action) {
+         if (aTapBlock) {
             
-            tapBlock(controller, action, UIAlertControllerBlocksCancelButtonIndex);
+            aTapBlock(stAlertController, action, UIAlertControllerBlocksCancelButtonIndex);
             
          } /* End if () */
       }];
       
-      [controller addAction:cancelAction];
+      [stAlertController addAction:stCancelAction];
       
    } /* End if () */
    
-   for (NSUInteger H = 0; H < otherButtonTitles.count; H++) {
+   for (NSUInteger H = 0; H < aOtherButtonTitles.count; H++) {
       
-      NSString *otherButtonTitle = otherButtonTitles[H];
+      NSString       *szOtherButtonTitle  = aOtherButtonTitles[H];
       
-      UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action) {
-         if (tapBlock) {
+      UIAlertAction  *stOtherAction       = [UIAlertAction actionWithTitle:szOtherButtonTitle
+                                                                     style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction *action) {
+         if (aTapBlock) {
             
-            tapBlock(controller, action, UIAlertControllerBlocksFirstOtherButtonIndex + H);
+            aTapBlock(stAlertController, action, UIAlertControllerBlocksFirstOtherButtonIndex + H);
             
          } /* End if () */
       }];
       
-      [controller addAction:otherAction];
+      [stAlertController addAction:stOtherAction];
       
    } /* End for () */
    
 #if TARGET_OS_IOS
-   if (popoverPresentationControllerBlock) {
+   if (aPopoverPresentationControllerBlock) {
       
-      popoverPresentationControllerBlock(controller.popoverPresentationController);
-   }
+      aPopoverPresentationControllerBlock(stAlertController.popoverPresentationController);
+      
+   } /* End if () */
 #endif
    
-   if (destructiveButtonTitle) {
+   if (aDestructiveButtonTitle) {
       
-      UIAlertAction *destructiveAction = [UIAlertAction actionWithTitle:destructiveButtonTitle
-                                                                  style:UIAlertActionStyleDestructive
-                                                                handler:^(UIAlertAction *action) {
+      UIAlertAction  *stDestructiveAction = [UIAlertAction actionWithTitle:aDestructiveButtonTitle
+                                                                     style:UIAlertActionStyleDestructive
+                                                                   handler:^(UIAlertAction *action) {
          
-         if (tapBlock) {
+         if (aTapBlock) {
             
-            tapBlock(controller, action, UIAlertControllerBlocksDestructiveButtonIndex);
-         }
+            aTapBlock(stAlertController, action, UIAlertControllerBlocksDestructiveButtonIndex);
+         
+         } /* End if () */
       }];
       
-      [controller addAction:destructiveAction];
-   }
+      [stAlertController addAction:stDestructiveAction];
    
-   [viewController.uacb_topmost presentViewController:controller animated:YES completion:nil];
+   } /* End if () */
    
-   return controller;
+   [aViewController.__TopMost presentViewController:stAlertController animated:YES completion:nil];
+   
+   if (@available(iOS 13, *)) {
+      
+      stAlertController.overrideUserInterfaceStyle  = aUserInterfaceStyle;
+
+   } /* End if () */
+      
+   return stAlertController;
 }
 
-+ (instancetype)showAlertInViewController:(UIViewController *)viewController
-                                withTitle:(NSString *)title
-                                  message:(NSString *)message
-                        cancelButtonTitle:(NSString *)cancelButtonTitle
-                   destructiveButtonTitle:(NSString *)destructiveButtonTitle
-                        otherButtonTitles:(NSArray *)otherButtonTitles
-                                 tapBlock:(UIAlertControllerCompletionBlock)tapBlock {
++ (instancetype)showAlertInViewController:(UIViewController *)aViewController
+                       userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
+                                withTitle:(NSString *)aTitle
+                                  message:(NSString *)aMessage
+                        cancelButtonTitle:(NSString *)aCancelButtonTitle
+                   destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
+                        otherButtonTitles:(NSArray *)aOtherButtonTitles
+                                 tapBlock:(UIAlertControllerCompletionBlock)aTapBlock {
    
-   return [self showInViewController:viewController
-                           withTitle:title
-                             message:message
+   return [self showInViewController:aViewController
+                  userInterfaceStyle:aUserInterfaceStyle
+                           withTitle:aTitle
+                             message:aMessage
                       preferredStyle:UIAlertControllerStyleAlert
-                   cancelButtonTitle:cancelButtonTitle
-              destructiveButtonTitle:destructiveButtonTitle
-                   otherButtonTitles:otherButtonTitles
+                   cancelButtonTitle:aCancelButtonTitle
+              destructiveButtonTitle:aDestructiveButtonTitle
+                   otherButtonTitles:aOtherButtonTitles
 #if TARGET_OS_IOS
   popoverPresentationControllerBlock:nil
 #endif
-                            tapBlock:tapBlock];
+                            tapBlock:aTapBlock];
 }
 
-+ (instancetype)showActionSheetInViewController:(UIViewController *)viewController
-                                      withTitle:(NSString *)title
-                                        message:(NSString *)message
-                              cancelButtonTitle:(NSString *)cancelButtonTitle
-                         destructiveButtonTitle:(NSString *)destructiveButtonTitle
-                              otherButtonTitles:(NSArray *)otherButtonTitles
++ (instancetype)showActionSheetInViewController:(UIViewController *)aViewController
+                             userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
+                                      withTitle:(NSString *)aTitle
+                                        message:(NSString *)aMessage
+                              cancelButtonTitle:(NSString *)aCancelButtonTitle
+                         destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
+                              otherButtonTitles:(NSArray *)aOtherButtonTitles
 #if TARGET_OS_IOS
-             popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *popover))popoverPresentationControllerBlock
+             popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *aPopover))aPopoverPresentationControllerBlock
 #endif
                                        tapBlock:(UIAlertControllerCompletionBlock)tapBlock {
    
-   return [self showInViewController:viewController
-                           withTitle:title
-                             message:message
+   return [self showInViewController:aViewController
+                  userInterfaceStyle:aUserInterfaceStyle
+                           withTitle:aTitle
+                             message:aMessage
                       preferredStyle:UIAlertControllerStyleActionSheet
-                   cancelButtonTitle:cancelButtonTitle
-              destructiveButtonTitle:destructiveButtonTitle
-                   otherButtonTitles:otherButtonTitles
+                   cancelButtonTitle:aCancelButtonTitle
+              destructiveButtonTitle:aDestructiveButtonTitle
+                   otherButtonTitles:aOtherButtonTitles
 #if TARGET_OS_IOS
-  popoverPresentationControllerBlock:popoverPresentationControllerBlock
+  popoverPresentationControllerBlock:aPopoverPresentationControllerBlock
 #endif
                             tapBlock:tapBlock];
 }
@@ -190,17 +207,20 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @implementation UIViewController (UACB_Topmost)
 
-- (UIViewController *)uacb_topmost {
+- (UIViewController *)__TopMost {
    
-   UIViewController *topmost = self;
+   UIViewController  *stTopMost  = self;
+   UIViewController  *stAbove    = nil;
    
-   UIViewController *above;
-   while ((above = topmost.presentedViewController)) {
+   while ((stAbove = stTopMost.presentedViewController)) {
       
-      topmost = above;
-   }
+      stTopMost = stAbove;
+      
+   } /* End while () */
    
-   return topmost;
+   return stTopMost;
 }
 
 @end
+
+#pragma clang diagnostic pop

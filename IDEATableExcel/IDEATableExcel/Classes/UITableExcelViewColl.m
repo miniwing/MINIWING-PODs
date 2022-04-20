@@ -15,21 +15,48 @@
 
 @implementation UITableExcelViewColl
 
-- (instancetype)initWithFrame:(CGRect)frame{
-   self = [super initWithFrame:frame];
-    if (self) {
-        UIDrawLabel *menuLabel = [UIDrawLabel new];
-        menuLabel.font = [UIFont systemFontOfSize:15];
-        menuLabel.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:menuLabel];
-        _menuLabel = menuLabel;
-        
-        [_menuLabel addConstraint:NSLayoutAttributeLeft equalTo:self.contentView offset:0];
-        [_menuLabel addConstraint:NSLayoutAttributeTop equalTo:self.contentView offset:0];
-        [_menuLabel addConstraint:NSLayoutAttributeWidth equalTo:self.contentView offset:0];
-        [_menuLabel addConstraint:NSLayoutAttributeBottom equalTo:self.contentView offset:0];
-    }
-    return self;
+- (instancetype)initWithFrame:(CGRect)aFrame {
+   
+   self = [super initWithFrame:aFrame];
+   
+   if (self) {
+      
+      UIDrawLabel *stMenuLabel   = [[UIDrawLabel alloc] initWithFrame:aFrame];
+      stMenuLabel.font = [UIFont systemFontOfSize:15];
+      stMenuLabel.textAlignment = NSTextAlignmentCenter;
+
+//      [self.contentView setTranslatesAutoresizingMaskIntoConstraints:YES];
+      [self.contentView addSubview:stMenuLabel];
+      _menuLabel = stMenuLabel;
+
+      [_menuLabel addConstraint:NSLayoutAttributeLeft    equalTo:self.contentView offset:0];
+      [_menuLabel addConstraint:NSLayoutAttributeTop     equalTo:self.contentView offset:0];
+      [_menuLabel addConstraint:NSLayoutAttributeWidth   equalTo:self.contentView offset:0];
+      [_menuLabel addConstraint:NSLayoutAttributeBottom  equalTo:self.contentView offset:0];
+   }
+   
+   return self;
 }
+
+//- (void)awakeFromNib {
+//
+//   [super awakeFromNib];
+//
+//   UIDrawLabel *stMenuLabel   = [UIDrawLabel new];
+//   stMenuLabel.font = [UIFont systemFontOfSize:15];
+//   stMenuLabel.textAlignment = NSTextAlignmentCenter;
+//
+//   [self.contentView setTranslatesAutoresizingMaskIntoConstraints:YES];
+//   [self.contentView addSubview:stMenuLabel];
+//   _menuLabel = stMenuLabel;
+//
+//   [_menuLabel addConstraint:NSLayoutAttributeLeft    equalTo:self.contentView offset:0];
+//   [_menuLabel addConstraint:NSLayoutAttributeTop     equalTo:self.contentView offset:0];
+//   [_menuLabel addConstraint:NSLayoutAttributeWidth   equalTo:self.contentView offset:0];
+//   [_menuLabel addConstraint:NSLayoutAttributeBottom  equalTo:self.contentView offset:0];
+//
+//
+//   return;
+//}
 
 @end

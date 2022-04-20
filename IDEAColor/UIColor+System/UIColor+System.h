@@ -142,5 +142,9 @@
 @property(class, nonatomic, readonly) UIColor *appNavigationBarTintColor;
 @property(class, nonatomic, readonly) UIColor *appNavigationBarTitleColor;
 
+@property(class, nonatomic, readonly) UIColor *appTabbarBackgroundColor;
+@property(class, nonatomic, readonly) UIColor *appTabbarTintColor;
+@property(class, nonatomic, readonly) UIColor *appTabbarUnselectedColor;
+
 @end
 //#endif /* !__IPHONE_13_0 */

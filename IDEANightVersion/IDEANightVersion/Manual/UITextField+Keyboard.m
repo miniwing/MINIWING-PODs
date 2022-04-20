@@ -12,10 +12,9 @@
 
 @interface NSObject ()
 
-- (void)night_updateColor;
+- (void)night_updateColor:(NSNotification *)aNotification;
 
 @end
-
 
 @implementation UITextField (Keyboard)
 
@@ -197,9 +196,9 @@
    return stTextField;
 }
 
-- (void)night_updateColor {
-   
-   [super night_updateColor];
+- (void)night_updateColor:(NSNotification *)aNotification {
+
+   [super night_updateColor:aNotification];
    
    if (self.themeManager.supportsKeyboard) {
       

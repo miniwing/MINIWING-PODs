@@ -16,6 +16,20 @@
 
 #import "IDEAStartUp.h"
 
+__attribute__((constructor)) void __constructor() {
+   
+   LogDebug((@"--[IDEAStartUp __constructor]"));
+   
+   return;
+}
+
+__attribute__((destructor)) void __destructor() {
+
+   LogDebug((@"--[IDEAStartUp __destructor]"));
+
+   return;
+}
+
 @interface IDEAStartUp()
 
 @end

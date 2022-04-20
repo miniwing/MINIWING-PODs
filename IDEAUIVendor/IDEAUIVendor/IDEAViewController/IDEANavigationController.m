@@ -21,11 +21,37 @@
                          object:nil];
 #endif /* IDEA_NIGHT_VERSION_MANAGER */
 
-   [self removeAllNotification];
+   [self removeAllNotifications];
    
    __SUPER_DEALLOC;
    
    return;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aCoder {
+   
+   int                            nErr                                     = EFAULT;
+   
+   __TRY;
+   
+   self  = [super initWithCoder:aCoder];
+   
+   if (self) {
+
+#if IDEA_NIGHT_VERSION_MANAGER
+#  pragma clang diagnostic push
+#  pragma clang diagnostic ignored "-Wundeclared-selector"
+   [self addNotificationName:DKNightVersionThemeChangingNotification
+                    selector:@selector(onThemeUpdate:)
+                      object:nil];
+#  pragma clang diagnostic pop
+#endif /* IDEA_NIGHT_VERSION_MANAGER */
+
+   } /* End if () */
+   
+   __CATCH(nErr);
+   
+   return self;
 }
 
 - (void)viewDidLoad {
@@ -37,15 +63,6 @@
    [super viewDidLoad];
    // Do any additional setup after loading the view.
    
-#if IDEA_NIGHT_VERSION_MANAGER
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wundeclared-selector"
-   [self addNotificationName:DKNightVersionThemeChangingNotification
-                    selector:@selector(onThemeUpdate:)
-                      object:nil];
-#  pragma clang diagnostic pop
-#endif // #if IDEA_NIGHT_VERSION_MANAGER
-
 #if RT_ROOT_NAVIGATIONCONTROLLER
    self.useSystemBackBarButtonItem  = NO;
 #endif /* !RT_ROOT_NAVIGATIONCONTROLLER */
@@ -172,33 +189,56 @@
 //   return;
 //}
 //
-//#pragma mark - UIStatusBarStyle
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//   
-//   LogView((@"[%@ preferredStatusBarStyle]", [self class]));
-//   
-//#if RT_ROOT_NAVIGATIONCONTROLLER
-//   if ([self isKindOfClass:[RTRootNavigationController class]]) {
-//      
-//      if (nil != self.rt_visibleViewController) {
-//         
-//         return self.rt_visibleViewController.preferredStatusBarStyle;
-//         
-//      } /* End if () */
-//      
-//      return self.rt_topViewController.preferredStatusBarStyle;
-//      
-//   } /* End if () */
-//#endif /* RT_ROOT_NAVIGATIONCONTROLLER */
-//   
-//   if (self.visibleViewController) {
-//      
-//      return [self.visibleViewController preferredStatusBarStyle];
-//      
-//   } /* End if () */
-//   
-//   return [self.topViewController preferredStatusBarStyle];
-//}
+#pragma mark - UIStatusBarStyle
+- (UIStatusBarStyle)preferredStatusBarStyle {
+   
+   LogView((@"[%@ preferredStatusBarStyle]", [self class]));
+   
+#if RT_ROOT_NAVIGATIONCONTROLLER
+   if ([self isKindOfClass:[RTRootNavigationController class]]) {
+      
+      if (nil != self.rt_visibleViewController) {
+         
+         return self.rt_visibleViewController.preferredStatusBarStyle;
+         
+      } /* End if () */
+      
+      return self.rt_topViewController.preferredStatusBarStyle;
+      
+   } /* End if () */
+#endif /* RT_ROOT_NAVIGATIONCONTROLLER */
+   
+   if (self.visibleViewController) {
+      
+      return [self.visibleViewController preferredStatusBarStyle];
+      
+   } /* End if () */
+   
+   if (self.topViewController) {
+      
+      return [self.topViewController preferredStatusBarStyle];
+
+   } /* End if () */
+   
+   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+
+      return UIStatusBarStyleLightContent;
+      
+   } /* End if () */
+   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
+
+      if (@available(iOS 13, *)) {
+
+         // 系统版本高于 13.0
+         return UIStatusBarStyleDarkContent;
+         
+      } /* End if () */
+      
+      return UIStatusBarStyleDefault;
+
+   } /* End if () */
+
+}
 //
 //- (BOOL)prefersStatusBarHidden {
 //   

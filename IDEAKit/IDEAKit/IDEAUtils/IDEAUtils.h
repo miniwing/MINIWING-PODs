@@ -181,7 +181,7 @@ NS_INLINE dispatch_queue_global_t DISPATCH_GET_GLOBAL_QUEUE_HIGH(void) {
 //   return NSLocalizedStringFromTableInBundle(aKey, nil, IDEA_BUNDLE_FROM(aBundle, aClass), nil);
 //}
 //
-//NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString * aName, Class aClass) {
+//NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString *aName, Class aClass) {
 //
 //   return [UIImage imageNamed:aName inBundle:IDEA_BUNDLE_FROM(aBundle, aClass) compatibleWithTraitCollection:nil];
 //}
@@ -218,7 +218,7 @@ NS_INLINE NSString * IDEA_LOCALIZED_STRING(NSString *aBundle, Class aClass, NSSt
 //   return NSLocalizedStringFromTableInBundle(aKey, nil, IDEA_BUNDLE_FROM(aBundle, aClass), nil);
 }
 
-NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString * aName, Class aClass) {
+NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString *aName, Class aClass) {
    
    return [UIImage imageNamed:aName inBundle:IDEA_BUNDLE_FROM(aBundle, aClass) compatibleWithTraitCollection:nil];
 }

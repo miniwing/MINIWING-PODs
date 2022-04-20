@@ -220,16 +220,13 @@ Pod::Spec.new do |spec|
 #  define __dispatch_release(x)                    dispatch_release((x))
 #endif
 
+#undef __ON__
+#undef __OFF__
+#undef __AUTO__
+#undef __Debug__
+
 #define __ON__                                     (1)
 #define __OFF__                                    (0)
-
-#ifdef __AUTO__
-#undef __AUTO__
-#endif
-
-#ifdef __Debug__
-#undef __Debug__
-#endif
 
 #if defined(DEBUG) && (1==DEBUG)
 #  define __AUTO__                                 (1)
@@ -610,9 +607,33 @@ NS_INLINE NSString * __LOCALIZED_STRING(Class aClass, NSString *aKey) {
    return NSLocalizedStringWithDefaultValue(aKey, nil, __BUNDLE_FROM(aClass), aKey, aKey);
 }
 
-NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(NSString * aName, Class aClass) {
+NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(NSString *aName, Class aClass) {
    
    return [UIImage imageNamed:aName inBundle:__BUNDLE_FROM(aClass) compatibleWithTraitCollection:nil];
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED_IN_FRAMEWORK(NSString *aName) {
+   
+   NSString *szPath     = [[NSBundle mainBundle] pathForResource:@(MODULE)
+                                                      ofType:@"framework"
+                                                 inDirectory:@"Frameworks"];
+   
+   NSBundle *stBundle   = [NSBundle bundleWithPath:szPath];
+   
+   return [UIImage imageNamed:aName inBundle:stBundle compatibleWithTraitCollection:nil];
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED(NSString *aName, Class aClass) {
+   
+   UIImage  *stImage    = __IMAGE_NAMED_IN_BUNDLE(aName, aClass);
+   
+   if (nil == stImage) {
+      
+      stImage  = __IMAGE_NAMED_IN_FRAMEWORK(aName);
+      
+   } /* End if () */
+   
+   return stImage;
 }
 
 /******************************************************************************************************/

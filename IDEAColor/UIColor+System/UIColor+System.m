@@ -204,6 +204,21 @@
    return rgba(0x1C, 0x1C, 0x1E, 1.0);
 }
 
++ (UIColor *)appTabbarBackgroundColor {
+   
+   return rgba(0xFF, 0xFF, 0xFF, 1.0);
+}
+
++ (UIColor *)appTabbarTintColor {
+   
+   return rgba(0x00, 0x5F, 0x81, 1.0);
+}
+
++ (UIColor *)appTabbarUnselectedColor {
+   
+   return rgba(0x40, 0x9C, 0xC8, 1.0);
+}
+
 @end
 
 //#endif /* !__IPHONE_13_0 */

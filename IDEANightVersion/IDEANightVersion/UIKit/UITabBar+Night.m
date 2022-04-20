@@ -117,8 +117,8 @@
 }
 
 //// Harry FIXED
-//- (void)night_updateColor {
-//   
+//- (void)night_updateColor:(NSNotification *)aNotification {
+//
 //   [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
 //      
 //      if ([aSelector isEqualToString:NSStringFromSelector(@selector(setShadowImage:))]) {

@@ -25,11 +25,37 @@
                          object:nil];
 #endif /* IDEA_NIGHT_VERSION_MANAGER */
    
-   [self removeAllNotification];
+   [self removeAllNotifications];
    
    __SUPER_DEALLOC;
    
    return;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aCoder {
+   
+   int                            nErr                                     = EFAULT;
+   
+   __TRY;
+   
+   self  = [super initWithCoder:aCoder];
+   
+   if (self) {
+
+#if IDEA_NIGHT_VERSION_MANAGER
+#  pragma clang diagnostic push
+#  pragma clang diagnostic ignored "-Wundeclared-selector"
+   [self addNotificationName:DKNightVersionThemeChangingNotification
+                    selector:@selector(onThemeUpdate:)
+                      object:nil];
+#  pragma clang diagnostic pop
+#endif /* IDEA_NIGHT_VERSION_MANAGER */
+
+   } /* End if () */
+   
+   __CATCH(nErr);
+   
+   return self;
 }
 
 - (void)viewDidLoad {
@@ -43,13 +69,7 @@
 
 #if IDEA_NIGHT_VERSION_MANAGER
    [self.view setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wundeclared-selector"
-   [self addNotificationName:DKNightVersionThemeChangingNotification
-                    selector:@selector(onThemeUpdate:)
-                      object:nil];
-#  pragma clang diagnostic pop
-#endif // #if IDEA_NIGHT_VERSION_MANAGER
+#endif /* if IDEA_NIGHT_VERSION_MANAGER */
    
 #if IDEA_NAVIGATION_BAR
    [self wr_setNavBarTitleColor:[IDEAColor colorWithKey:[IDEAColor appNavigationBarTitle]]];

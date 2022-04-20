@@ -50,8 +50,8 @@
    return;
 }
 
-- (void)night_updateColor {
-   
+- (void)night_updateColor:(NSNotification *)aNotification {
+
    [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aKey, id  _Nonnull aObject, BOOL * _Nonnull aStop) {
       
       if ([aKey isEqualToString:@"setAlpha:"]) {

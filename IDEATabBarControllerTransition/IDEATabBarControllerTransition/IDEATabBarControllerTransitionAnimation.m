@@ -68,7 +68,9 @@
    CGFloat      fToX    = (aDirection == DirectionLeft)  ? aBounceValue : -aBounceValue;
    
    CAAnimation *stOpacityAnimation        = [IDEATabBarControllerTransitionAnimation fadeWithType:aType];
-   CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom) ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX] : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
+   CAAnimation *stTranslatationAnimation  = (aType == IDEATabBarControllerTransitionViewTypeFrom)
+   ? [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:0 to:fToX]
+   : [IDEATabBarControllerAnimationFactory makeAnimationWithType:AnimationTypeTranslation from:fFromX to: 0];
       
    return [IDEATabBarControllerAnimationFactory makeGroupAnimation:@[ stOpacityAnimation, stTranslatationAnimation ]];
 }

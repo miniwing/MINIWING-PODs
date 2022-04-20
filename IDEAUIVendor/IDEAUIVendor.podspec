@@ -208,10 +208,11 @@ Pod::Spec.new do |spec|
 #  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
 #     import "RTRootNavigationController/RTRootNavigationController.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController.h")
-#     import "RTRootNavigationController.h"
-#     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
+#     define rt_topViewController                                          topViewController
+#     define rt_visibleViewController                                      visibleViewController
+#     define rt_viewControllers                                            viewControllers
+#     define rt_navigationController                                       navigationController
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
@@ -220,9 +221,6 @@ Pod::Spec.new do |spec|
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  elif __has_include("IDEANightVersion/DKNightVersion.h")
 #     import "IDEANightVersion/DKNightVersion.h"
-#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#  elif __has_include("DKNightVersion.h")
-#     import "DKNightVersion.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  else
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)

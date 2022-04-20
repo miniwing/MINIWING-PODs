@@ -116,6 +116,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
       
       [aTabBarController.view.layer addSublayer:stToLayer];
 
+      [stToLayer setLeft:(aTabBarController.view.layer.width - stToLayer.width) / 2];
+
    } /* End if () */
 
    stFromLayer = stLayerContext.fromLayer;
@@ -124,6 +126,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    if (stFromLayer) {
       
       [aTabBarController.view.layer addSublayer:stFromLayer];
+      
+      [stFromLayer setLeft:(aTabBarController.view.layer.width - stFromLayer.width) / 2];
 
    } /* End if () */
 
@@ -154,8 +158,9 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    eDirection           = [IDEATabBarControllerTransition direction:nSelectedIndex shouldSelectIndex:nShouldSelectIndex];
    LogDebug((@"Direction : %d", eDirection));
 
-   dispatch_after(0.0, dispatch_get_main_queue(), ^{
-      
+//   dispatch_after(0.0, dispatch_get_main_queue(), ^{
+   dispatch_async(dispatch_get_main_queue(), ^{
+
       if ([aTabBarController isKindOfClass:[IDEATabBarControllerTransition class]]) {
 
          [((IDEATabBarControllerTransition *)aTabBarController) animate:stLayerContext
@@ -195,13 +200,16 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
    stViewLayerAnimation = [IDEATabBarControllerAnimationFactory makeAnimationWithType: AnimationTypeOpacity from: 0 to: 1];
 
-   aLayerContext.viewLayer.opacity              = 0;
+   aLayerContext.viewLayer.opacity  = 0;
    
-   aLayerContext.fromNavigationBarLayer.opacity = 1;
-   aLayerContext.toNavigationBarLayer.opacity   = 0.1;
+   aLayerContext.fromLayer.opacity  = 0;
+   aLayerContext.toLayer.opacity    = 0;
 
-//   NSString *  const IDEATabBarControllerTransitionBeginNotification = @"DKNightVersionThemeChangingNotification";
-//   NSString *  const IDEATabBarControllerTransitionEndNotification   = @"DKNightVersionThemeChangingNotification";
+   aLayerContext.fromNavigationBarLayer.opacity = 1;
+   aLayerContext.toNavigationBarLayer.opacity   = 0;
+
+//   NSString *  const IDEATabBarControllerTransitionBeginNotification = @"NightVersionThemeChangingNotification";
+//   NSString *  const IDEATabBarControllerTransitionEndNotification   = @"NightVersionThemeChangingNotification";
 
    [[NSNotificationCenter defaultCenter] postNotificationName:IDEATabBarControllerTransitionBeginNotification
                                                        object:nil];
@@ -216,11 +224,11 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
                                                           object:nil];
    }];
    
-   aLayerContext.fromLayer.opacity  = 0;
-   aLayerContext.toLayer.opacity    = 1;
+//   aLayerContext.fromLayer.opacity  = 1;
+//   aLayerContext.toLayer.opacity    = 0;
    
-   aLayerContext.fromNavigationBarLayer.opacity = 0;
-   aLayerContext.toNavigationBarLayer.opacity   = 1;
+   aLayerContext.fromNavigationBarLayer.opacity = 1;
+   aLayerContext.toNavigationBarLayer.opacity   = 0;
 
    aLayerContext.viewLayer.opacity  = 1;
 

@@ -18,6 +18,7 @@
 
 @property (nonatomic, copy, setter = setTitleTextAttributesPicker:)  DKAttributesPicker titleTextAttributesPicker;
 
-- (void)setBackgroundImagePicker:(DKImagePicker)picker forBarMetrics:(UIBarMetrics)barMetrics;
+- (void)setBackgroundImagePicker:(DKImagePicker)aPicker forBarMetrics:(UIBarMetrics)barMetrics;
+- (void)setShadowImagePicker:(DKImagePicker)aPicker;
 
 @end

@@ -28,26 +28,25 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-
-
 @interface UIView (Layout)
 
 @property (nonatomic, strong) UIColumnMode * mode;
 
-
-- (void)addConstraint:(NSLayoutAttribute)attribute equalTo:(nullable UIView *)to offset:(CGFloat)offset;
-- (void)addConstraint:(NSLayoutAttribute)attribute equalTo:(nullable UIView *)to toAttribute:(NSLayoutAttribute)toAttribute offset:(CGFloat)offset;
+- (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attribute equalTo:(nullable UIView *)to offset:(CGFloat)offset;
+- (NSLayoutConstraint *)addConstraint:(NSLayoutAttribute)attribute equalTo:(nullable UIView *)to toAttribute:(NSLayoutAttribute)toAttribute offset:(CGFloat)offset;
 - (void)addLayoutConstraint:(NSLayoutConstraint *)constraint;
+
 @end
 
 @interface UIView (UI_Draw)
 
 @property (nonatomic, strong ,nullable) CALayer *yw_Layer;
 
-- (void)drawStroke:(CGRect)rect
-       strokeColor:(UIColor *)strokeColor
-         fillColor:(UIColor *)fillColor
-         lineWidth:(CGFloat)lineWidth;
+- (void)__drawStroke:(CGRect)rect
+         strokeColor:(UIColor *)strokeColor
+           fillColor:(UIColor *)fillColor
+           lineWidth:(CGFloat)lineWidth;
+
 @end
 
 

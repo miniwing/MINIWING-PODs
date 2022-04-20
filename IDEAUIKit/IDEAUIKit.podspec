@@ -222,6 +222,16 @@ Pod::Spec.new do |spec|
 #     define MATERIAL_NAVIGATION_BAR                                       (0)
 #  endif
 
+#  if __has_include(<IDEANightVersion/DKNightVersion.h>)
+#     import <IDEANightVersion/DKNightVersion.h>
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#  elif __has_include("IDEANightVersion/DKNightVersion.h")
+#     import "IDEANightVersion/DKNightVersion.h"
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#  else
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
+#  endif
+
 #  if __has_include(<IDEANibBridge/IDEANibBridge.h>)
 #     import <IDEANibBridge/IDEANibBridge.h>
 #     define IDEA_NIB_BRIDGE                                               (1)

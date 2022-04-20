@@ -22,7 +22,7 @@
    __LOG_FUNCTION;
    
    // Custom dealloc
-   [self removeAllNotification];
+   [self removeAllNotifications];
    
    __SUPER_DEALLOC;
    

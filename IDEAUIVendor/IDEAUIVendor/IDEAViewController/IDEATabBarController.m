@@ -24,11 +24,37 @@
                          object:nil];
 #endif /* IDEA_NIGHT_VERSION_MANAGER */
 
-   [self removeAllNotification];
+   [self removeAllNotifications];
 
    __SUPER_DEALLOC;
    
    return;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aCoder {
+   
+   int                            nErr                                     = EFAULT;
+   
+   __TRY;
+   
+   self  = [super initWithCoder:aCoder];
+   
+   if (self) {
+
+#if IDEA_NIGHT_VERSION_MANAGER
+#  pragma clang diagnostic push
+#  pragma clang diagnostic ignored "-Wundeclared-selector"
+   [self addNotificationName:DKNightVersionThemeChangingNotification
+                    selector:@selector(onThemeUpdate:)
+                      object:nil];
+#  pragma clang diagnostic pop
+#endif /* IDEA_NIGHT_VERSION_MANAGER */
+
+   } /* End if () */
+   
+   __CATCH(nErr);
+   
+   return self;
 }
 
 - (void)viewDidLoad {
@@ -39,17 +65,7 @@
    
    [super viewDidLoad];
    
-#if IDEA_NIGHT_VERSION_MANAGER
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wundeclared-selector"
-   [self addNotificationName:DKNightVersionThemeChangingNotification
-                    selector:@selector(onThemeUpdate:)
-                      object:nil];
-#  pragma clang diagnostic pop
-#endif // #if IDEA_NIGHT_VERSION_MANAGER
-
    // Do any additional setup after loading the view.
-   
 #if IDEA_NIGHT_VERSION_MANAGER
    [self.tabBar setTintColorPicker:DKColorPickerWithKey([IDEAColor appTabbarTint])];
    [self.tabBar setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor appTabbarBackground])];
@@ -61,6 +77,12 @@
       return [UIImage imageWithColor:[IDEAColor colorWithKey:[IDEAColor separator]] size:CGSizeMake(1, 0.5)];
    }];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
+   [self.tabBar setTintColor:UIColor.appTabbarTintColor];
+   [self.tabBar setBackgroundColor:UIColor.appTabbarBackgroundColor];
+   [self.tabBar setBarTintColor:UIColor.appTabbarBackgroundColor];
+   
+   [self.tabBar setBackgroundImage:[UIImage new]];
+   [self.tabBar setShadowImage:[UIImage imageWithColor:[IDEAColor colorWithKey:[IDEAColor separator]] size:CGSizeMake(1, 0.5)]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
    
    __CATCH(nErr);
@@ -207,6 +229,11 @@
 @implementation IDEATabBarController (UIStoryboard)
 
 + (NSString *)storyboard {
+   
+   return @"";
+}
+
++ (NSString *)bundle {
    
    return @"";
 }

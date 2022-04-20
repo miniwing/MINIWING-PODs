@@ -50,8 +50,8 @@
    [self.pickers setValue:dictionary forKey:key];
 }
 
-- (void)night_updateColor {
-   
+- (void)night_updateColor:(NSNotification *)aNotification {
+
    [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aKey, id  _Nonnull aObj, BOOL * _Nonnull aStop) {
       
       if ([aObj isKindOfClass:[NSDictionary class]]) {

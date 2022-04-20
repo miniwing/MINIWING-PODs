@@ -19,6 +19,7 @@
       
       _defalutHeight = 40;
    }
+   
    return self;
 }
 @end
@@ -30,10 +31,12 @@
    self = [super init];
    
    if (self) {
-      _textColor = [UIColor darkGrayColor];
-      _fontSize = 14;
+      
+      _textColor  = [UIColor darkGrayColor];
+      _fontSize   = 14;
       _selectedBackgroundColor = [UIColor systemGrayColor];
    }
+   
    return self;
 }
 

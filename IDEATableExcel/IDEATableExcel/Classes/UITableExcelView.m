@@ -74,6 +74,7 @@
 - (void)reloadHeadData {
    _fixedColumnList = [self getFixedColumn:0];
    _slideColumnList = [self getSlideColumn:0];
+   
    [_headView reloadDataFixed:_fixedColumnList slide:_slideColumnList];
    
    return;
@@ -107,6 +108,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
    UITableExcelCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" ];
+   
    if (!cell) {
       cell = [[_registerCellClass alloc] initWithStyle:UITableViewCellStyleDefault
                                        reuseIdentifier:@"cell"
@@ -116,6 +118,10 @@
       cell.selectionStyle = _mode.columnStyle == UITableExcelViewLineStyleText ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
       cell.delegate = self;
    }
+   
+   cell.backgroundColor = UIColor.clearColor;
+   cell.contentView.backgroundColor = UIColor.clearColor;
+   
    _excelCell = cell;
    
    return cell;
@@ -162,7 +168,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    if (_delegateHas.excelViewForHeaderInSectionMode) {
       UITableExcelViewHeaderInSectionMode mode = [_delegate tableExcelView:self
                                                     modeForHeaderInSection:section];
-      if (mode == UITableExcelViewHeaderInSectionModeCustom){
+      if (mode == UITableExcelViewHeaderInSectionModeCustom) {
          if (_delegateHas.viewForHeaderInSection) {
             return [_delegate tableExcelView:self viewForHeaderInSection:section];
          }
@@ -170,11 +176,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    }
    return nil;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
    if (_delegateHas.excelViewForHeaderInSectionMode) {
       UITableExcelViewHeaderInSectionMode mode = [_delegate tableExcelView:self
                                                     modeForHeaderInSection:section];
-      if (mode == UITableExcelViewHeaderInSectionModeCustom){
+      if (mode == UITableExcelViewHeaderInSectionModeCustom) {
          if (_delegateHas.heightForHeaderInSection) {
             return [_delegate tableExcelView:self heightForHeaderInSection:section];
          }
@@ -182,19 +188,26 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    }
    return 0.0001f;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+   
    if (_delegateHas.heightForRowAtIndexPath) {
       return [_delegate tableExcelView:self heightForRowAtIndexPath:indexPath];
    }
+   
    return _cellConfig.defalutHeight;
 }
-//UITableExcelViewColumnStyleBtn
-- (void)clickExcel:(UITableExcelCell *)cell collectionViewForIndexPath:(NSIndexPath *)indexPath column:(NSInteger)column{
-   if (indexPath.row == -1) {//固定的列
+
+//UITableExcelViewColumnStyleButton
+- (void)clickExcel:(UITableExcelCell *)cell collectionViewForIndexPath:(NSIndexPath *)indexPath column:(NSInteger)column {
+   
+   if (indexPath.row == -1) {
+      // 固定的列
       [self clickExcelWhenFixed:cell column:column];
-   }else{
+   }
+   else {
       [self clickExcelWhenSlide:cell collectionViewForIndexPath:indexPath column:column];
    }
+   
    NSIndexPath *cell_indexPath = [_tableView indexPathForCell:cell];
    cell_indexPath.colunmn = column;
    if (_delegateHas.didSelectColumnAtIndexPath) {
@@ -202,30 +215,35 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    }
    _lastSelectedTableViewIndexPath = cell_indexPath;
 }
-- (void)clickExcelWhenFixed:(UITableExcelCell *)cell column:(NSInteger)column{
+
+- (void)clickExcelWhenFixed:(UITableExcelCell *)cell column:(NSInteger)column {
    //单元格选中颜色与否操作
    [self clickExcelCommonAction];
    [cell selectedItemAtIndexPath:nil fixedItem:column];
    _lastSelectedIndexPath = nil;
    _lastColumn = column;
 }
-- (void)clickExcelWhenSlide:(UITableExcelCell *)cell collectionViewForIndexPath:(NSIndexPath *)indexPath column:(NSInteger)column{
+
+- (void)clickExcelWhenSlide:(UITableExcelCell *)cell collectionViewForIndexPath:(NSIndexPath *)indexPath column:(NSInteger)column {
    //单元格选中颜色与否操作
    [self clickExcelCommonAction];
    [cell selectedItemAtIndexPath:indexPath fixedItem:0];
    _lastSelectedIndexPath = indexPath;
    _lastColumn = -100;
 }
-- (void)clickExcelCommonAction{
+
+- (void)clickExcelCommonAction {
    if ( _lastSelectedTableViewIndexPath) {
       UITableExcelCell *lastSelectedCell = [_tableView cellForRowAtIndexPath:_lastSelectedTableViewIndexPath];
       if (lastSelectedCell) {
          if (_lastColumn == -100) {
             [lastSelectedCell deselectItemAtIndexPath:_lastSelectedIndexPath fixedItem:0];
-         }else{
+         }
+         else {
             [lastSelectedCell deselectItemAtIndexPath:nil fixedItem:_lastColumn];
          }
-      }else{
+      }
+      else {
          if (_lastColumn != -100) {
             if (_dataSourceHas.fixedCellForRowAtIndexPathForMode) {
                NSArray *fixedList = [_dataSource
@@ -234,7 +252,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                UIColumnMode *model = fixedList.count > _lastColumn ? fixedList[_lastColumn]:nil;
                model.selected = NO;
             }
-         }else{
+         }
+         else {
             if (_dataSourceHas.slideCellForRowAtIndexPathForMode) {
                NSArray *slideList = [_dataSource
                                      tableExcelView:self
@@ -315,23 +334,32 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)createUIWithDefalut {
+   
    _bounces = NO;
+   
    if (_mode.sectionStyle == UITableExcelViewSectionStylePlain) {
+      
       _tableView = [[UITableView alloc] initWithFrame:CGRectZero
                                                 style:UITableViewStylePlain];
-   }else if (_mode.sectionStyle == UITableExcelViewSectionStyleGrouped){
+   }
+   else if (_mode.sectionStyle == UITableExcelViewSectionStyleGrouped) {
       _tableView = [[UITableView alloc] initWithFrame:CGRectZero
                                                 style:UITableViewStyleGrouped];
-   }else{
+   }
+   else {
       if (@available(iOS 13.0, *)) {
-         if (_mode.sectionStyle == UITableExcelViewSectionStyleInsetGrouped){
+         if (_mode.sectionStyle == UITableExcelViewSectionStyleInsetGrouped) {
             _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleInsetGrouped];
          }
-      } else {
+      }
+      else {
          _tableView = [[UITableView alloc] initWithFrame:CGRectZero
                                                    style:UITableViewStyleGrouped];
       }
    }
+   
+   _tableView.backgroundColor = UIColor.clearColor;
+   
    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
    _headView = [[UITableExcelViewHeaderView alloc] initWithReuseIdentifier:nil cellConfig:_cellConfig];
    _headView.contentView.backgroundColor = self.backgroundColor;
@@ -355,7 +383,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    
 }
 
-- (void)createUIHeadViewWithDefalut{
+- (void)createUIHeadViewWithDefalut {
+   
    if (_isAddheadView) {
       return;
    }
@@ -426,13 +455,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    noticeInfo = nil;
 }
 
-- (NSArray <UIColumnMode *>*)getFixedColumn:(NSInteger)section{
+- (NSArray <UIColumnMode *>*)getFixedColumn:(NSInteger)section {
    if (_dataSource) {
       return [_dataSource tableExcelView:self titleForFixedHeaderInSection:section];
    }
    return @[];
 }
-- (NSArray <UIColumnMode *>*)getSlideColumn:(NSInteger)section{
+- (NSArray <UIColumnMode *>*)getSlideColumn:(NSInteger)section {
    if (_dataSource) {
       return [_dataSource tableExcelView:self titleForSlideHeaderInSection:section];
    }

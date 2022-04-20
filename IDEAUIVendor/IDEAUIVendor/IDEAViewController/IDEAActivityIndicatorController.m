@@ -205,7 +205,7 @@
 
    return;
 }
-#endif // #if IDEA_NIGHT_VERSION_MANAGER
+#endif /* if IDEA_NIGHT_VERSION_MANAGER */
 
 #pragma mark - UIStatusBar
 - (UIStatusBarStyle)preferredStatusBarStyle {

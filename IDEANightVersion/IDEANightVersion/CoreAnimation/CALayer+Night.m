@@ -47,7 +47,8 @@
    [self.pickers setValue:[picker copy] forKey:NSStringFromSelector(@selector(setBackgroundColor:))];
 }
 
-- (void)night_updateColor {
+- (void)night_updateColor:(NSNotification *)aNotification {
+
    [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull selector, DKColorPicker  _Nonnull picker, BOOL * _Nonnull stop) {
       CGColorRef result = picker(self.themeManager.themeVersion).CGColor;
       [UIView animateWithDuration:DKNightVersionAnimationDuration

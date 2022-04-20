@@ -122,7 +122,7 @@ NS_INLINE NSString * getAppInfo(void);
 }
 #pragma clang diagnostic pop
 
-//处理报错信息
+// 处理报错信息
 - (void)validateAndSaveCriticalApplicationData:(NSException *)exception {
    
    NSString *exceptionInfo = [NSString stringWithFormat:@"\n--------Log Exception---------\nappInfo             :\n%@\n\nexception name      :%@\nexception reason    :%@\nexception userInfo  :%@\ncallStackSymbols    :%@\n\n--------End Log Exception-----", getAppInfo(),exception.name, exception.reason, exception.userInfo ? : @"no user info", [exception callStackSymbols]];
@@ -176,12 +176,15 @@ NS_INLINE NSString * getAppInfo(void);
       
       UIApplication  *stApplication = [UIApplication performSelector:@selector(sharedApplication)];
       
-      [stApplication.delegate.window.rootViewController presentViewController:stAlertController animated:YES completion:nil];
-      
+//      [stApplication.delegate.window.rootViewController presentViewController:stAlertController animated:YES completion:nil];
+      [stApplication.keyWindow.rootViewController presentViewController:stAlertController
+                                                               animated:YES
+                                                             completion:nil];
+
    } /* End if () */
    
-   CFRunLoopRef runLoop = CFRunLoopGetCurrent();
-   CFArrayRef allModes = CFRunLoopCopyAllModes(runLoop);
+   CFRunLoopRef    runLoop    = CFRunLoopGetCurrent();
+   CFArrayRef      allModes   = CFRunLoopCopyAllModes(runLoop);
    
    while (!self.dismissed) {
       
@@ -199,12 +202,12 @@ NS_INLINE NSString * getAppInfo(void);
    CFRelease(allModes);
    
    NSSetUncaughtExceptionHandler(NULL);
-   signal(SIGABRT, SIG_DFL);
-   signal(SIGILL, SIG_DFL);
-   signal(SIGSEGV, SIG_DFL);
-   signal(SIGFPE, SIG_DFL);
-   signal(SIGBUS, SIG_DFL);
-   signal(SIGPIPE, SIG_DFL);
+   signal(SIGABRT,   SIG_DFL);
+   signal(SIGILL,    SIG_DFL);
+   signal(SIGSEGV,   SIG_DFL);
+   signal(SIGFPE,    SIG_DFL);
+   signal(SIGBUS,    SIG_DFL);
+   signal(SIGPIPE,   SIG_DFL);
    
    if ([[aException name] isEqual:UncaughtExceptionHandlerSignalExceptionName]) {
       
@@ -237,8 +240,8 @@ void HandleException(NSException *aException) {
    } /* End if () */
    
    //获取调用堆栈
-   NSArray *callStack = [aException callStackSymbols];
-   NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[aException userInfo]];
+   NSArray              *callStack  = [aException callStackSymbols];
+   NSMutableDictionary  *userInfo   = [NSMutableDictionary dictionaryWithDictionary:[aException userInfo]];
    [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
    
    //在主线程中，执行制定的方法, withObject是执行方法传入的参数
@@ -291,8 +294,8 @@ void SignalHandler(int signal) {
       
    } /* End switch () */
    
-   NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-   NSArray *callStack = [UncaughtExceptionHandler backtrace];
+   NSMutableDictionary  *userInfo   = [NSMutableDictionary dictionary];
+   NSArray              *callStack  = [UncaughtExceptionHandler backtrace];
    [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
    [userInfo setObject:[NSNumber numberWithInt:signal] forKey:UncaughtExceptionHandlerSignalKey];
    

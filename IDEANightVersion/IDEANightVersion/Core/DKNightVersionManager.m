@@ -24,7 +24,7 @@ NSString *  const DKThemeVersionNight                       = @"NIGHT";
 ////CGFloat     const DKNightVersionAnimationDuration           = 0.3f;
 //#endif
 
-NSNotificationName   const DKNightVersionThemeChangingNotification   = @"DKNightVersionThemeChangingNotification";
+NSNotificationName   const DKNightVersionThemeChangingNotification   = @"NightVersionThemeChangingNotification";
 
 CGFloat              const DKNightVersionAnimationDuration           = 0.25f;
 
@@ -79,7 +79,8 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
          /**
           防止死锁
           */
-//         instance.themeVersion            = themeVersion;
+//         instance.themeVersion            = szThemeVersion;
+         g_INSTANCE->_themeVersion        = szThemeVersion;
          __DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
             
             g_INSTANCE.themeVersion       = szThemeVersion;
@@ -139,8 +140,12 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
    [[NSUserDefaults standardUserDefaults] setValue:aThemeVersion forKey:DKNightVersionCurrentThemeVersionKey];
    [[NSUserDefaults standardUserDefaults] synchronize];
    
-   [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionThemeChangingNotification
-                                                       object:aThemeVersion];
+   __DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
+
+      [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionThemeChangingNotification
+                                                          object:nil
+                                                        userInfo:@{DKNightVersionThemeChangingNotification:aThemeVersion}];
+   });
    
    if (self.shouldChangeStatusBar) {
       

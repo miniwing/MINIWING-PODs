@@ -8,10 +8,29 @@
 
 #import "IDEAView.h"
 
+@interface NSObject ()
+
+- (void)night_updateColor:(NSNotification *)aNotification;
+
+@end
+
 @interface IDEAView ()
 
 @end
 
 @implementation IDEAView
+
+- (void)night_updateColor:(NSNotification *)aNotification {
+      
+   [super night_updateColor:aNotification];
+   
+   if ([self respondsToSelector:@selector(onThemeUpdate:)]) {
+      
+      [self performSelector:@selector(onThemeUpdate:) withObject:aNotification];
+      
+   } /* End if () */
+   
+   return;
+}
 
 @end

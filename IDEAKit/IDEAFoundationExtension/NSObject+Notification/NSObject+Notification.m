@@ -25,7 +25,7 @@
    return;
 }
 
-- (void)removeAllNotification {
+- (void)removeAllNotifications {
    
    [[NSNotificationCenter defaultCenter] removeObserver:self];
    

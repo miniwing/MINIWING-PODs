@@ -16,7 +16,7 @@
 + (NSString *)notificationName:(NSString *)aName;
 
 - (void)addNotificationName:(NSString *)aName  selector:(SEL)aSelector object:(id)aObject;
-- (void)removeAllNotification;
+- (void)removeAllNotifications;
 - (void)removeNotificationName:(NSString *)aName object:(id)aObject;
 
 - (void)postNotification:(NSNotification *)aNotification;
