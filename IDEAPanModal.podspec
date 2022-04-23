@@ -1,0 +1,1 @@
+IDEAPanModal/IDEAPanModal.podspec

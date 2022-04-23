@@ -7,13 +7,16 @@
 //
 
 #import <objc/runtime.h>
+
+
+
 #import "UINavigationController+CATransition.h"
 
 //#define kTransitionDuration 0.8
 
 //#define kTransitionDuration               0.25 /* UIAViewAnimationDefaultDuraton */
 
-#define kTransitionDuration               UIViewAnimationDefaultDuraton()
+#define kTransitionDuration               UIAViewAnimationDefaultDuraton
 
 NSString *getCATransitionTypeStringWithCATransitionType(UICATransitionType type) {
    switch (type) {

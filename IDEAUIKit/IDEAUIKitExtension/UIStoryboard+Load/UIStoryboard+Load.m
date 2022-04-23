@@ -162,6 +162,8 @@
    
    int                            nErr                                     = EFAULT;
    
+   UIViewController              *stViewController                         = nil;
+   
    UIStoryboard                  *stStoryboard                             = nil;
    
    NSString                      *szBundle                                 = nil;
@@ -206,9 +208,12 @@
    
    LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : %@ in %@", szIdentifier, stBundle));
 
+   stViewController  = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
+   LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : ViewController : %@", stViewController));
+
    __CATCH(nErr);
    
-   return [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
+   return stViewController;
 }
 
 @end

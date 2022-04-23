@@ -1,0 +1,1 @@
+IDEAGeigerCounter/IDEAGeigerCounter.podspec

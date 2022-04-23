@@ -6,6 +6,8 @@
 //  Copyright © 2021 Harry. All rights reserved.
 //
 
+#import <UIKitExtension/UIKitExtension.h>
+
 #import "IDEAPresentationController.h"
 
 @interface IDEAPresentationController ()
@@ -65,7 +67,7 @@
    [self.backgroundView setFrame:self.presentedView.frame];
    [self.containerView addSubview:self.backgroundView];
    
-   [UIView animateWithDuration:UIViewAnimationDefaultDuraton()
+   [UIView animateWithDuration:UIAViewAnimationDefaultDuraton
                     animations:^{
 
       [self.backgroundView setAlpha:1];
@@ -95,7 +97,7 @@
    
    __TRY;
    
-   [UIView animateWithDuration:UIViewAnimationDefaultDuraton()
+   [UIView animateWithDuration:UIAViewAnimationDefaultDuraton
                     animations:^{
       
       [self.backgroundView setAlpha:0];

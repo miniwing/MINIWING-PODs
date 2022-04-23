@@ -5,7 +5,7 @@
 //  Created by Harry on 15/11/26.
 //  Copyright © 2015年 Harry. All rights reserved.
 
-#  import <UIKitExtension/UIView.h>
+#import <UIKitExtension/UIKitExtension.h>
 
 #import "IDEAUIKit/UIView+Animated.h"
 
@@ -13,13 +13,13 @@
 //#  import <UIKitExtension/UIView.h>
 //extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
 //#else
-static const NSTimeInterval __UIViewAnimationDefaultDuraton = 0.25f;
+//static const NSTimeInterval __UIViewAnimationDefaultDuraton = 0.25f;
 //#endif
 
-const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
-   
-   return __UIViewAnimationDefaultDuraton;
-}
+//const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
+//   
+//   return __UIViewAnimationDefaultDuraton;
+//}
 
 @implementation UIView (Animated)
 
@@ -45,7 +45,7 @@ const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:UIViewAnimationDefaultDuraton()
+   [[self class] animateWithDuration:UIAViewAnimationDefaultDuraton
                           animations:^(void) {
       self.alpha = endAlpha;
    }
@@ -115,7 +115,7 @@ const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:UIViewAnimationDefaultDuraton()
+   [[self class] animateWithDuration:UIAViewAnimationDefaultDuraton
                           animations:^(void) {
       self.alpha = endAlpha;
    }

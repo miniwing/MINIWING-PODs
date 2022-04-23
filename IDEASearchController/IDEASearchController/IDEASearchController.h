@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, IDEASearchResultShowMode) {
  mode of search view controller display
  */
 typedef NS_ENUM(NSInteger, IDEASearchControllerShowMode) {
-   IDEASearchControllerShowModeModal,    // modal, dispaly the view of searchController by modal
+   IDEASearchControllerShowModeModal,  // modal, dispaly the view of searchController by modal
    IDEASearchControllerShowModePush,   // push, dispaly the view of searchController by push
    IDEASearchControllerShowDefault = IDEASearchControllerShowModeModal // defualt is `IDEASearchControllerShowModeModal`
 };

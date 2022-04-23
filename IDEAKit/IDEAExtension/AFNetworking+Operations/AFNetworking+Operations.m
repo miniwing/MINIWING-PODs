@@ -14,7 +14,7 @@
 
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)aMethod
                                        URLString:(NSString *)aURL
-                                         prepare:(void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                                         prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
                                          headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                                       parameters:(id)aParameters
                                   uploadProgress:(void (^)(NSProgress *uploadProgress)) aUploadProgress
@@ -23,13 +23,7 @@
                                          failure:(void (^)(NSURLSessionDataTask *, NSError *))aFAILURE {
    
    NSError              *stError       = nil;
-   
-   if (aPrepare) {
       
-      aPrepare(self);
-      
-   } /* End if () */
-   
    NSMutableURLRequest  *stRequest     = [self.requestSerializer requestWithMethod:aMethod
                                                                          URLString:aURL
                                                                         parameters:aParameters
@@ -48,6 +42,12 @@
       
    } /* End if () */
    
+   if (aPrepare) {
+      
+      aPrepare(stRequest);
+      
+   } /* End if () */
+
    for (NSString *szHeaderField in aHeaders.keyEnumerator) {
       
       [stRequest setValue:aHeaders[szHeaderField] forHTTPHeaderField:szHeaderField];
@@ -83,7 +83,7 @@
 
 - (NSURLSessionDataTask *)GET:(NSString *)aURL
                        resume:(BOOL)aResume
-                      prepare:(nullable void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                      prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPrepare
                       headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                    parameters:(nullable NSDictionary <NSString *, NSString *> *)aParams
                       success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -109,7 +109,7 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)aURL
                         resume:(BOOL)aResume
-                       prepare:(void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                       prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aParameters
                        success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -136,7 +136,7 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)aURL
                         resume:(BOOL)aResume
-                       prepare:(void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                       prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aPARAMETERs
               constructingBody:(void (^)(id <AFMultipartFormData> aFormData))aBlock
@@ -224,7 +224,7 @@
 
 - (NSURLSessionDataTask *)PATCH:(NSString *)aURL
                          resume:(BOOL)aResume
-                        prepare:(nullable void (^)(AFHTTPSessionManager *aHttpManager))aPrepare
+                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPrepare
                         headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                      parameters:(id)aParameters
                         success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS

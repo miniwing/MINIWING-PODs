@@ -34,12 +34,12 @@
 
 - (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds {
    
-   if (0 == aRadius) {
-      
-      aRadius  = self.frame.size.height / 2;
-      
-   } /* End if () */
-   
+//   if (0 == aRadius) {
+//
+//      aRadius  = self.frame.size.height / 2;
+//
+//   } /* End if () */
+//   
 //   objc_setAssociatedObject(self, UIVIEW_ROUND_RADIUS, aRadius, OBJC_ASSOCIATION_RETAIN);
    
    [self setClipsToBounds:aClipsToBounds];

@@ -23,5 +23,3 @@
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated complete:(void(^)(void))aComplete;
 
 @end
-
-const NSTimeInterval UIViewAnimationDefaultDuraton(void);
