@@ -66,8 +66,6 @@
 
    [super awakeFromNib];
    // Initialization code
-
-   self.edgeInsets   = UIEdgeInsetsMake(0, 0, 0, 0);
    
    __CATCH(nErr);
 
