@@ -46,6 +46,8 @@
 #import <IDEAUIKit/UISelectionFeedbackGenerator+Shortcut.h>
 #import <IDEAUIKit/UINotificationFeedbackGenerator+Shortcut.h>
 
+#import <IDEAUIKit/UIGrowingTextView.h>
+
 #import <IDEAUIKit/UINavigationBarX.h>
 #import <IDEAUIKit/UILabelX.h>
 #import <IDEAUIKit/UITextFieldX.h>
