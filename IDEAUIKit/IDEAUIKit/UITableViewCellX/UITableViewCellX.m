@@ -114,6 +114,22 @@
    return;
 }
 
+- (void)prepareForReuse {
+   
+   int                            nErr                                     = EFAULT;
+
+   __TRY;
+
+   [super prepareForReuse];
+
+   // Configure the view for the selected state
+   _rectCorner = 0;
+
+   __CATCH(nErr);
+   
+   return;
+}
+
 - (void)setRectCorner:(UIRectCorner)aRectCorner {
    
    _rectCorner = aRectCorner;
@@ -125,6 +141,7 @@
    
    return 8.0f;
 }
+
 
 - (void)drawRect:(CGRect)aRect {
       

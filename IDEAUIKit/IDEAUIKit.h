@@ -51,5 +51,6 @@
 #import <IDEAUIKit/UITextFieldX.h>
 #import <IDEAUIKit/UITextViewX.h>
 #import <IDEAUIKit/UITableViewCellX.h>
+#import <IDEAUIKit/UIImageViewX.h>
 
 #endif /* IDEAUIKit_H */
