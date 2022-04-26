@@ -49,7 +49,7 @@
                           animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL finished) {
+                          completion:^(BOOL aFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.
@@ -80,7 +80,7 @@
    [[self class] animateWithDuration:duration animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL finished) {
+                          completion:^(BOOL aFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.
@@ -119,7 +119,7 @@
                           animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL finished) {
+                          completion:^(BOOL aFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.
