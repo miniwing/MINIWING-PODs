@@ -14,7 +14,7 @@
 @implementation SearchBarX (Theme)
 
 // #if DK_NIGHT_VERSION
-// #endif // #if DK_NIGHT_VERSION
+// #endif /* DK_NIGHT_VERSION */
 - (void)onThemeUpdate:(NSNotification *)aNotification {
    
    int                            nErr                                     = EFAULT;

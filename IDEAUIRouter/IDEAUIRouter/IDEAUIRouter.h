@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const IDEAUIRouterParameterURL;
-extern NSString *const IDEAUIRouterParameterCompletion;
-extern NSString *const IDEAUIRouterParameterUserInfo;
+FOUNDATION_EXTERN NSString *const IDEAUIRouterParameterURL;
+FOUNDATION_EXTERN NSString *const IDEAUIRouterParameterCompletion;
+FOUNDATION_EXTERN NSString *const IDEAUIRouterParameterUserInfo;
 
 /**
  *  routerParameters 里内置的几个参数会用到上面定义的 string

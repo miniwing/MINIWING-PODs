@@ -78,6 +78,7 @@
         
         // 2.格式化日期
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setLocale:[NSLocale currentLocale]];
         BOOL isToday = NO;
         if ([cmp1 day] == [cmp2 day]) { // 今天
             formatter.dateFormat = @" HH:mm";
