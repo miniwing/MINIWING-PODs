@@ -11,6 +11,6 @@
 
 @interface UIImage (Bundle)
 
-+ (nullable UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle;
++ (nullable UIImage *)imageNamed:(nonnull NSString *)name inBundle:(nullable NSBundle *)bundle;
 
 @end

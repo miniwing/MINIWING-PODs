@@ -48,6 +48,7 @@
 
 #import <IDEAUIKit/UIGrowingTextView.h>
 
+#import <IDEAUIKit/UIViewX.h>
 #import <IDEAUIKit/UINavigationBarX.h>
 #import <IDEAUIKit/UILabelX.h>
 #import <IDEAUIKit/UITextFieldX.h>

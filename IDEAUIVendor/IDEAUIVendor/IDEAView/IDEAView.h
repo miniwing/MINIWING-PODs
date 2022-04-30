@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <IDEAUIKit/UIViewX.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IDEAView : UIView
+@interface IDEAView : UIViewX
 
 @end
 

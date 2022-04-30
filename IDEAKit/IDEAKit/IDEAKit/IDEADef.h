@@ -97,11 +97,11 @@
 #undef  __Debug__
 
 #if (defined(DEBUG) && (DEBUG == 1))
-#  define __AUTO__                                          __ON__
-#  define __Debug__                                         __ON__
+#  define __AUTO__                                          (1)
+#  define __Debug__                                         (1)
 #else
-#  define __AUTO__                                          __OFF__
-#  define __Debug__                                         __OFF__
+#  define __AUTO__                                          (0)
+#  define __Debug__                                         (0)
 #endif /* (defined(DEBUG) && (DEBUG == 1)) */
 
 LOCAL void * MALLOC_EX(size_t aSize) {
