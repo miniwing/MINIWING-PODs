@@ -145,7 +145,7 @@ CG_EXTERN const IDEAPaletteAccent _Nonnull IDEAPaletteAccent700Name;
  
  The tints dictionary must have values for each key matching IDEAPaletteTint.*Name. The accents
  dictionary, if specified, may have entries for each key matching IDEAPaletteAccent.*Name. Missing
- accent values will cause an assert in debug mode and will return +[UIColor clearColor] in release
+ accent values will cause an assert in debug mode and will return +UIColor.clearColor in release
  mode when the corresponding property is acccessed.
  
  @param tints A dictionary mapping IDEAPaletteTint.*Name keys to UIColors.
@@ -161,7 +161,7 @@ CG_EXTERN const IDEAPaletteAccent _Nonnull IDEAPaletteAccent700Name;
  
  The tints dictionary must have values for each key matching IDEAPaletteTint.*Name. The accents
  dictionary, if specified, may have entries for each key matching IDEAPaletteAccent.*Name. Missing
- accent values will cause an assert in debug mode and will return +[UIColor clearColor] in release
+ accent values will cause an assert in debug mode and will return +UIColor.clearColor in release
  mode when the corresponding property is acccessed.
  
  @param tints A dictionary mapping IDEAPaletteTint.*Name keys to UIColors.

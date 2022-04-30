@@ -274,7 +274,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
    if (self) {
       _mode = mode;
       _list = @[].mutableCopy;
-      _dividerColor = [UIColor redColor];
+      _dividerColor = UIColor.redColor;
       _widthOrHeight = 1;
       _registerCellClass = [UITableExcelCell class];
       [self prepareInit:mode];

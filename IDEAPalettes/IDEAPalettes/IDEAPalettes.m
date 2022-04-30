@@ -574,7 +574,7 @@ static inline UIColor *ColorFromRGB(uint32_t rgbValue) {
          NSMutableDictionary<IDEAPaletteTint, UIColor *> *replacementTints =
          [NSMutableDictionary dictionaryWithDictionary:_accents];
          for (IDEAPaletteTint tintKey in requiredTintKeys) {
-            [replacementTints setObject:[UIColor clearColor] forKey:tintKey];
+            [replacementTints setObject:UIColor.clearColor forKey:tintKey];
          }
          allTints = replacementTints;
       }

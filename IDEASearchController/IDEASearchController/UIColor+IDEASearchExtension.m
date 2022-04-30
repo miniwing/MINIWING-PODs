@@ -13,7 +13,7 @@
 NSString *colorString = [[hexString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
 
 if (colorString.length < 6) {
-return [UIColor clearColor];
+return UIColor.clearColor;
 }
 
 if ([colorString hasPrefix:@"0X"]) {
@@ -25,7 +25,7 @@ colorString = [colorString substringFromIndex:1];
 }
 
 if (colorString.length != 6) {
-return [UIColor clearColor];
+return UIColor.clearColor;
 }
 
 NSRange range;

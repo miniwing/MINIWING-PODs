@@ -179,9 +179,15 @@ Pod::Spec.new do |spec|
 
 #import <Availability.h>
 
-#ifndef __IPHONE_10_0
-#  warning "This project uses features only available in iOS SDK 10.0 and later."
-#endif
+#ifndef __IPHONE_12_0
+#  warning "This project uses features only available in iOS SDK 12.0 and later."
+#endif /* __IPHONE_12_0 */
+
+#import <stdlib.h>
+#import <stdio.h>
+#import <string.h>
+
+#import <pthread/pthread.h>
 
 #import <objc/message.h>
 #import <objc/runtime.h>
@@ -193,9 +199,6 @@ Pod::Spec.new do |spec|
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
 #else /* __OBJC__ */
-#  import <stdlib.h>
-#  import <stdio.h>
-#  import <string.h>
 #endif /* !__OBJC__ */
 
 /******************************************************************************************************/
@@ -704,8 +707,8 @@ __END_DECLS
 #import <IDEAKit/NSObject+Notification.h>
 
 #import <IDEAColor/IDEAColor.h>
-#import <IDEAColor/UIColor+System.h>
-#import <IDEAColor/UIColor+Dynamic.h>
+#import <IDEAColor/UIColorX+System.h>
+#import <IDEAColor/UIColorX+Dynamic.h>
 
 #import <IDEAUIKit/IDEAUIKit.h>
 

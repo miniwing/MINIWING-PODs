@@ -207,7 +207,7 @@
    } /* End if () */
    
 //   stCancelAttributes = @{
-//      NSForegroundColorAttributeName: [UIColor whiteColor],
+//      NSForegroundColorAttributeName: UIColor.whiteColor,
 //   };
 //
 //   stAttributedCancel = [[NSAttributedString alloc] initWithString:stCancelButton.titleLabel.text
@@ -217,7 +217,7 @@
 //                             forState:UIControlStateNormal];
 //
 //   stCancelAttributes = @{
-//      NSForegroundColorAttributeName: [UIColor grayColor]
+//      NSForegroundColorAttributeName: UIColor.grayColor
 //   };
 //
 //   stAttributedCancel = [[NSAttributedString alloc] initWithString:stCancelButton.titleLabel.text

@@ -1,5 +1,5 @@
 //
-//  UIColor+System.h
+//  UIColorX+System.h
 //  IDEAKit
 //
 //  Created by Harry on 15/1/16.
@@ -12,9 +12,8 @@
 #import <UIKit/UIKit.h>
 
 // https://noahgilmore.com/blog/dark-mode-uicolor-compatibility/
-//#ifdef __IPHONE_13_0
-//#else /* __IPHONE_13_0 */
-@interface UIColor (SystemColors)
+
+@interface UIColorX : NSObject
 
 #pragma mark System colors
 
@@ -147,4 +146,3 @@
 @property(class, nonatomic, readonly) UIColor *appTabbarUnselectedColor;
 
 @end
-//#endif /* !__IPHONE_13_0 */

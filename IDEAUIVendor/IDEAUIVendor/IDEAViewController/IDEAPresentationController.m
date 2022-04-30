@@ -177,10 +177,10 @@
 #if IDEA_NIGHT_VERSION_MANAGER
 //      [_backgroundView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor translucentBackground])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
-//      [_backgroundView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
+//      [_backgroundView setBackgroundColor:[UIColor.blackColor colorWithAlphaComponent:0.5]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
 
-      [_backgroundView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
+      [_backgroundView setBackgroundColor:[UIColor.blackColor colorWithAlphaComponent:0.5]];
 
 //      [_backgroundView addGestureRecognizer:self.tapGestureRecognizer];
       

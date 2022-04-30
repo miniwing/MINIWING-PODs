@@ -205,9 +205,9 @@
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
    if (!cell) {
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-      cell.textLabel.textColor = [UIColor darkGrayColor];
+      cell.textLabel.textColor = UIColor.darkGrayColor;
       cell.textLabel.font = [UIFont search_regularFontOfSize:14];
-      cell.backgroundColor = [UIColor clearColor];
+      cell.backgroundColor = UIColor.clearColor;
       UIImageView *line = [[UIImageView alloc] initWithImage: [NSBundle search_imageNamed:@"cell-content-line"]];
       
       //      line.py_height = 0.5;

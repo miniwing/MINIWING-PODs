@@ -54,13 +54,13 @@ Pod::Spec.new do |spec|
 
   spec.public_header_files  = 'IDEAColorTable/**/*.{h}',
                               'IDEAColor/**/*.{h}',
-                              'UIColor+System/**/*.{h}',
-                              'UIColor+Dynamic/**/*.{h}'
+                              'UIColorX+System/**/*.{h}',
+                              'UIColorX+Dynamic/**/*.{h}'
                               
   spec.source_files         = 'IDEAColorTable/**/*.{h,m,mm,c,cpp}',
                               'IDEAColor/**/*.{h,m,mm,c,cpp}',
-                              'UIColor+System/**/*.{h,m,mm,c,cpp}',
-                              'UIColor+Dynamic/**/*.{h,m,mm,c,cpp}'
+                              'UIColorX+System/**/*.{h,m,mm,c,cpp}',
+                              'UIColorX+Dynamic/**/*.{h,m,mm,c,cpp}'
 
   spec.requires_arc         = true
 
@@ -146,9 +146,15 @@ Pod::Spec.new do |spec|
 
 #import <Availability.h>
 
-#ifndef __IPHONE_10_0
-#  warning "This project uses features only available in iOS SDK 10.0 and later."
-#endif
+#ifndef __IPHONE_12_0
+#  warning "This project uses features only available in iOS SDK 12.0 and later."
+#endif /* __IPHONE_12_0 */
+
+#import <stdlib.h>
+#import <stdio.h>
+#import <string.h>
+
+#import <pthread/pthread.h>
 
 #import <objc/message.h>
 #import <objc/runtime.h>
@@ -160,9 +166,6 @@ Pod::Spec.new do |spec|
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
 #else /* __OBJC__ */
-#  import <stdlib.h>
-#  import <stdio.h>
-#  import <string.h>
 #endif /* !__OBJC__ */
 
 /******************************************************************************************************/

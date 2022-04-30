@@ -154,7 +154,7 @@
     if (self.backgroundConfig.visualEffect) {
         [_blurView updateBlurEffect:self.backgroundConfig.visualEffect];
     } else {
-        _blurView.colorTint = [UIColor whiteColor];
+        _blurView.colorTint = UIColor.whiteColor;
         _blurView.colorTintAlpha = self.maxBlurTintAlpha;
         _blurView.userInteractionEnabled = NO;
     }
@@ -179,7 +179,7 @@
 		_backgroundView = [UIView new];
 		_backgroundView.userInteractionEnabled = NO;
 		_backgroundView.alpha = 0;
-		_backgroundView.backgroundColor = [UIColor blackColor];
+		_backgroundView.backgroundColor = UIColor.blackColor;
 	}
 	return _backgroundView;
 }

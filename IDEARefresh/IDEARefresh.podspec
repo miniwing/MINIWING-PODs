@@ -94,22 +94,27 @@ Pod::Spec.new do |spec|
 
 #import <Availability.h>
 
-#ifndef __IPHONE_10_0
-#  warning "This project uses features only available in iOS SDK 10.0 and later."
-#endif
+#ifndef __IPHONE_12_0
+#  warning "This project uses features only available in iOS SDK 12.0 and later."
+#endif /* __IPHONE_12_0 */
+
+#import <stdlib.h>
+#import <stdio.h>
+#import <string.h>
+
+#import <pthread/pthread.h>
 
 #import <objc/message.h>
 #import <objc/runtime.h>
 
 #ifdef __OBJC__
-
 #  import <UIKit/UIKit.h>
 #  import <Foundation/Foundation.h>
 #  import <QuartzCore/QuartzCore.h>
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
-
-#endif /* __OBJC__ */
+#else /* __OBJC__ */
+#endif /* !__OBJC__ */
 
 /******************************************************************************************************/
 

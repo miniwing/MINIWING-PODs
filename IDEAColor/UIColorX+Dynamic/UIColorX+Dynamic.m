@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 Harry. All rights reserved.
 //
 
-#import "UIColor+Dynamic.h"
 #import "IDEAColor.h"
+#import "UIColorX+Dynamic.h"
 
 @implementation UIColor (DynamicColor)
 

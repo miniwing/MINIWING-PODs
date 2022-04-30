@@ -85,7 +85,7 @@ NSString *const UIUnitFieldDidResignFirstResponderNotification = @"UIUnitFieldDi
 }
 
 - (void)initialize {
-   [self setBackgroundColor:[UIColor clearColor]];
+   [self setBackgroundColor:UIColor.clearColor];
    self.opaque = NO;
    _characterArray   = [NSMutableArray array];
    _secureTextEntry  = NO;
@@ -98,11 +98,11 @@ NSString *const UIUnitFieldDidResignFirstResponderNotification = @"UIUnitFieldDi
    _returnKeyType    = UIReturnKeyDone;
    _enablesReturnKeyAutomatically = YES;
    _autoResignFirstResponderWhenInputFinished = NO;
-   _textColor        = [UIColor darkGrayColor];
+   _textColor        = UIColor.darkGrayColor;
    _tintColor        = [UIColor lightGrayColor];
-   _trackTintColor   = [UIColor orangeColor];
-   _cursorColor      = [UIColor orangeColor];
-   mBackgroundColor  = mBackgroundColor ?: [UIColor clearColor];
+   _trackTintColor   = UIColor.orangeColor;
+   _cursorColor      = UIColor.orangeColor;
+   mBackgroundColor  = mBackgroundColor ?: UIColor.clearColor;
    _autocorrectionType     = UITextAutocorrectionTypeNo;
    _autocapitalizationType = UITextAutocapitalizationTypeNone;
    self.cursorLayer.backgroundColor = _cursorColor.CGColor;
@@ -248,7 +248,7 @@ NSString *const UIUnitFieldDidResignFirstResponderNotification = @"UIUnitFieldDi
 
 - (void)setTextColor:(UIColor *)textColor {
    if (textColor == nil) {
-      _textColor = [UIColor blackColor];
+      _textColor = UIColor.blackColor;
    }
    else {
       _textColor = textColor;

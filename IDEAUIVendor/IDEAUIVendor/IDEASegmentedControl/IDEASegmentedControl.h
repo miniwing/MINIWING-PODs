@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger, IDEASegmentedControlImagePosition) {
 /**
  Segmented control background color.
  
- Default is `[UIColor whiteColor]`
+ Default is `UIColor.whiteColor`
  */
 @property (nonatomic, strong) UIColor *backgroundColor UI_APPEARANCE_SELECTOR;
 
@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, IDEASegmentedControlImagePosition) {
 /**
  Color for the vertical divider between segments.
  
- Default is `[UIColor blackColor]`
+ Default is `UIColor.blackColor`
  */
 @property (nonatomic, strong) UIColor *verticalDividerColor UI_APPEARANCE_SELECTOR;
 
@@ -185,7 +185,7 @@ typedef NS_ENUM(NSInteger, IDEASegmentedControlImagePosition) {
 /**
  Specifies the border color.
  
- Default is `[UIColor blackColor]`
+ Default is `UIColor.blackColor`
  */
 @property (nonatomic, strong) UIColor *borderColor;
 

@@ -18,7 +18,7 @@
    
    [self __drawStroke:aRect
           strokeColor:self.borderColor
-            fillColor:[UIColor clearColor]
+            fillColor:UIColor.clearColor
             lineWidth:self.borderWidth];
    
    return;
@@ -34,7 +34,7 @@
    
    [self __drawStroke:aRect
           strokeColor:self.borderColor
-            fillColor:[UIColor clearColor]
+            fillColor:UIColor.clearColor
             lineWidth:self.borderWidth];
    
    return;

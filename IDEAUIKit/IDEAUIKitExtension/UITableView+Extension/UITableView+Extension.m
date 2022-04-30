@@ -32,7 +32,7 @@
    
    if (self.tableHeaderView) {
       
-      [self.tableHeaderView setBackgroundColor:[UIColor clearColor]];
+      [self.tableHeaderView setBackgroundColor:UIColor.clearColor];
       
    } /* End if () */
    
@@ -45,7 +45,7 @@
    
    if (self.tableFooterView) {
       
-      [self.tableFooterView setBackgroundColor:[UIColor clearColor]];
+      [self.tableFooterView setBackgroundColor:UIColor.clearColor];
       
    } /* End if () */
    

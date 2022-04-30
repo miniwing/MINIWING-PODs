@@ -6,8 +6,8 @@
 //  Copyright © 2021 Harry. All rights reserved.
 //
 
-#import <IDEAColor/UIColor+System.h>
 #import <IDEAColor/IDEAColor.h>
+#import <IDEAColor/UIColorX+System.h>
 
 #import "UIViewController+Separator.h"
 

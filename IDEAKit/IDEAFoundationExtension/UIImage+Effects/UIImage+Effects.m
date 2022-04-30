@@ -306,7 +306,7 @@
                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:size.height*0.5f]}
                                      context:nil].size;
    CGFloat left = (size.width-isize.width)*0.5f, top = (size.height-isize.height)*0.5f;
-   [text drawInRect:CGRectMake(left, top, isize.width, isize.height) withAttributes:@{NSForegroundColorAttributeName:textColor?textColor:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:size.height*0.5f]}];
+   [text drawInRect:CGRectMake(left, top, isize.width, isize.height) withAttributes:@{NSForegroundColorAttributeName:textColor?textColor:UIColor.blackColor, NSFontAttributeName:[UIFont systemFontOfSize:size.height*0.5f]}];
    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
    UIGraphicsEndImageContext();
    return image;

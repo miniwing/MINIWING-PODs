@@ -211,8 +211,8 @@ header.stateLabel.font = [UIFont systemFontOfSize:15];
 header.lastUpdatedTimeLabel.font = [UIFont systemFontOfSize:14];
 
 // Set textColor
-header.stateLabel.textColor = [UIColor redColor];
-header.lastUpdatedTimeLabel.textColor = [UIColor blueColor];
+header.stateLabel.textColor = UIColor.redColor;
+header.lastUpdatedTimeLabel.textColor = UIColor.blueColor;
 ```
 ![(下拉刷新05-自定义文字)](http://images0.cnblogs.com/blog2015/497279/201506/141204563633593.gif)
 
@@ -273,7 +273,7 @@ footer.refreshingTitleHidden = YES;
 footer.stateLabel.font = [UIFont systemFontOfSize:17];
 
 // Set textColor
-footer.stateLabel.textColor = [UIColor blueColor];
+footer.stateLabel.textColor = UIColor.blueColor;
 ```
 ![(上拉刷新05-自定义文字)](http://images0.cnblogs.com/blog2015/497279/201506/141205295511153.gif)
 

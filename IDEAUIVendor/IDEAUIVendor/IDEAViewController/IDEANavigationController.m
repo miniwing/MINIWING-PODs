@@ -69,13 +69,13 @@
    
 #if RT_ROOT_NAVIGATIONCONTROLLER
 #else /* RT_ROOT_NAVIGATIONCONTROLLER */
-   [self.navigationBar setBarTintColor:UIColor.appNavigationBarTintColor];
-   [self.navigationBar setBackgroundColor:UIColor.systemBackgroundColor];
+   [self.navigationBar setBarTintColor:UIColorX.appNavigationBarTintColor];
+   [self.navigationBar setBackgroundColor:UIColorX.systemBackgroundColor];
    
 #  if APP_NAVIGATION_BAR_BACKGROUND_IMAGE
-   [self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColor.systemBackgroundColor]
+   [self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColorX.systemBackgroundColor]
                             forBarMetrics:UIBarMetricsDefault];
-   [self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColor.systemBackgroundColor]
+   [self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColorX.systemBackgroundColor]
                             forBarMetrics:UIBarMetricsDefaultPrompt];
    [self.navigationBar setOpaque:APP_NAVIGATION_BAR_BACKGROUND_IMAGE];
    [self.navigationBar setTranslucent:!APP_NAVIGATION_BAR_BACKGROUND_IMAGE];

@@ -123,7 +123,7 @@
 //      LogDebug((@"MDCAppBar :: %@", self.appBar));
 //
 //      [self.appBar.headerViewController.headerView setShadowColor:UIColor.lightGrayColor];
-//      [self.appBar.headerViewController.headerView setBackgroundColor:UIColor.systemBackgroundColor];
+//      [self.appBar.headerViewController.headerView setBackgroundColor:UIColorX.systemBackgroundColor];
 //
 //      [self.appBar.headerViewController setShowsHairline:YES];
 //      [self.appBar.headerViewController setHairlineColor:UIColor.lightGrayColor];
@@ -422,7 +422,7 @@
    
    if (!_baseSearchTableView) {
       UITableView *baseSearchTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-      baseSearchTableView.backgroundColor = [UIColor clearColor];
+      baseSearchTableView.backgroundColor = UIColor.clearColor;
       baseSearchTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
       if ([baseSearchTableView respondsToSelector:@selector(setCellLayoutMarginsFollowReadableWidth:)]) { // For the adapter iPad
          baseSearchTableView.cellLayoutMarginsFollowReadableWidth = NO;
@@ -553,7 +553,7 @@
 - (void)setup {
       
 #if IDEA_NIGHT_VERSION_MANAGER
-//   self.view.backgroundColor  = [UIColor whiteColor];
+//   self.view.backgroundColor  = UIColor.whiteColor;
    [self.view setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
    self.view.backgroundColor  = [UIColor systemBackgroundColor];
@@ -707,7 +707,7 @@
    UIView *footerView = [[UIView alloc] init];
    footerView.width = IDEA_SCREEN_WIDTH;
    UILabel *emptySearchHistoryLabel = [[UILabel alloc] init];
-   emptySearchHistoryLabel.textColor = [UIColor darkGrayColor];
+   emptySearchHistoryLabel.textColor = UIColor.darkGrayColor;
    emptySearchHistoryLabel.font = [UIFont search_regularFontOfSize:13];
    emptySearchHistoryLabel.userInteractionEnabled = YES;
    emptySearchHistoryLabel.text = [NSBundle search_localizedStringForKey:IDEASearchEmptySearchHistoryText];
@@ -746,7 +746,7 @@
    contentView.width = IDEASEARCH_REALY_SCREEN_WIDTH;
    contentView.left = -IDEASEARCH_MARGIN * 1.5;
    contentView.top += 2;
-   contentView.backgroundColor = [UIColor whiteColor];
+   contentView.backgroundColor = UIColor.whiteColor;
    self.baseSearchTableView.backgroundColor = [UIColor search_colorWithHexString:@"#efefef"];
    // remove all subviews in hotSearchTagsContentView
    [self.hotSearchTagsContentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -760,7 +760,7 @@
       rectangleTagLabel.userInteractionEnabled = YES;
       rectangleTagLabel.font = [UIFont search_regularFontOfSize:14];
       rectangleTagLabel.textColor = IDEATextColor;
-      rectangleTagLabel.backgroundColor = [UIColor clearColor];
+      rectangleTagLabel.backgroundColor = UIColor.clearColor;
       rectangleTagLabel.text = self.hotSearches[H];
       rectangleTagLabel.width = contentView.width / IDEARectangleTagMaxCol;
       rectangleTagLabel.height = rectangleTagH;
@@ -856,13 +856,13 @@
       stRankTextLabel.userInteractionEnabled = YES;
       stRankTextLabel.text             = self.hotSearches[H];
       stRankTextLabel.textAlignment    = NSTextAlignmentLeft;
-      stRankTextLabel.backgroundColor  = [UIColor clearColor];
+      stRankTextLabel.backgroundColor  = UIColor.clearColor;
       
 //      stRankTextLabel.textColor        = IDEATextColor;
 #if IDEA_NIGHT_VERSION_MANAGER
       [stRankTextLabel setTextColorPicker:DKColorPickerWithKey([IDEAColor label])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
-      [stRankTextLabel setTextColor:[UIColor labelColor]];
+      [stRankTextLabel setTextColor:UIColorX.labelColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
 
       stRankTextLabel.font             = [UIFont search_regularFontOfSize:14];
@@ -899,21 +899,21 @@
       switch (H) {
          case 0: // NO.1
             stRankTag.backgroundColor = [UIColor search_colorWithHexString:self.rankTagBackgroundColorHexStrings[0]];
-            stRankTag.textColor = [UIColor whiteColor];
+            stRankTag.textColor = UIColor.whiteColor;
 #if __DebugColor__
             [stRankView setBackgroundColor:[UIColor systemGreenColor]];
 #endif /* __DebugColor__ */
             break;
          case 1: // NO.2
             stRankTag.backgroundColor = [UIColor search_colorWithHexString:self.rankTagBackgroundColorHexStrings[1]];
-            stRankTag.textColor = [UIColor whiteColor];
+            stRankTag.textColor = UIColor.whiteColor;
 #if __DebugColor__
             [stRankView setBackgroundColor:[UIColor systemRedColor]];
 #endif /* __DebugColor__ */
             break;
          case 2: // NO.3
             stRankTag.backgroundColor = [UIColor search_colorWithHexString:self.rankTagBackgroundColorHexStrings[2]];
-            stRankTag.textColor = [UIColor whiteColor];
+            stRankTag.textColor = UIColor.whiteColor;
 #if __DebugColor__
             [stRankView setBackgroundColor:[UIColor systemYellowColor]];
 #endif /* __DebugColor__ */
@@ -1250,7 +1250,7 @@
    switch (searchHistoryStyle) {
       case IDEASearchHistoryStyleColorfulTag:
          for (UILabel *tag in self.searchHistoryTags) {
-            tag.textColor = [UIColor whiteColor];
+            tag.textColor = UIColor.whiteColor;
             tag.layer.borderColor = nil;
             tag.layer.borderWidth = 0.0;
             tag.backgroundColor = IDEASEARCH_COLORPolRandomColor;
@@ -1258,14 +1258,14 @@
          break;
       case IDEASearchHistoryStyleBorderTag:
          for (UILabel *tag in self.searchHistoryTags) {
-            tag.backgroundColor = [UIColor clearColor];
+            tag.backgroundColor = UIColor.clearColor;
             tag.layer.borderColor = IDEASEARCH_COLOR(223, 223, 223).CGColor;
             tag.layer.borderWidth = 0.5;
          }
          break;
       case IDEASearchHistoryStyleARCBorderTag:
          for (UILabel *tag in self.searchHistoryTags) {
-            tag.backgroundColor = [UIColor clearColor];
+            tag.backgroundColor = UIColor.clearColor;
             tag.layer.borderColor = IDEASEARCH_COLOR(223, 223, 223).CGColor;
             tag.layer.borderWidth = 0.5;
             tag.layer.cornerRadius = tag.height * 0.5;
@@ -1283,7 +1283,7 @@
    switch (hotSearchStyle) {
       case IDEAHotSearchStyleColorfulTag:
          for (UILabel *tag in self.hotSearchTags) {
-            tag.textColor = [UIColor whiteColor];
+            tag.textColor = UIColor.whiteColor;
             tag.layer.borderColor = nil;
             tag.layer.borderWidth = 0.0;
             tag.backgroundColor = IDEASEARCH_COLORPolRandomColor;
@@ -1291,14 +1291,14 @@
          break;
       case IDEAHotSearchStyleBorderTag:
          for (UILabel *tag in self.hotSearchTags) {
-            tag.backgroundColor = [UIColor clearColor];
+            tag.backgroundColor = UIColor.clearColor;
             tag.layer.borderColor = IDEASEARCH_COLOR(223, 223, 223).CGColor;
             tag.layer.borderWidth = 0.5;
          }
          break;
       case IDEAHotSearchStyleARCBorderTag:
          for (UILabel *tag in self.hotSearchTags) {
-            tag.backgroundColor = [UIColor clearColor];
+            tag.backgroundColor = UIColor.clearColor;
             tag.layer.borderColor = IDEASEARCH_COLOR(223, 223, 223).CGColor;
             tag.layer.borderWidth = 0.5;
             tag.layer.cornerRadius = tag.height * 0.5;
@@ -1410,7 +1410,7 @@
    label.userInteractionEnabled = YES;
    label.font = [UIFont search_regularFontOfSize:12];
    label.text = title;
-   label.textColor = [UIColor grayColor];
+   label.textColor = UIColor.grayColor;
    label.backgroundColor = [UIColor search_colorWithHexString:@"#fafafa"];
    label.layer.cornerRadius = 3;
    label.clipsToBounds = YES;
@@ -1618,7 +1618,7 @@
       stCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
       stCell.textLabel.textColor = IDEATextColor;
       stCell.textLabel.font = [UIFont search_regularFontOfSize:14];
-      stCell.backgroundColor = [UIColor clearColor];
+      stCell.backgroundColor = UIColor.clearColor;
       
       UIButton    *stClosetButton   = [[UIButton alloc] init];
       stClosetButton.size  = CGSizeMake(stCell.height, stCell.height);
@@ -1627,7 +1627,7 @@
 #if IDEA_NIGHT_VERSION_MANAGER
       [stClosetButton setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
-      [stClosetButton setTintColor:[UIColor darkGrayColor]];
+      [stClosetButton setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
 
       UIImageView *stCloseView      = [[UIImageView alloc] initWithImage:[NSBundle search_imageNamed:@"close"]];
@@ -1635,7 +1635,7 @@
 #if IDEA_NIGHT_VERSION_MANAGER
       [stCloseView setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
-      [stCloseView setTintColor:[UIColor darkGrayColor]];
+      [stCloseView setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
 
       [stClosetButton addTarget:self action:@selector(closeDidClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -1666,7 +1666,7 @@
 #if IDEA_NIGHT_VERSION_MANAGER
    [stCell.imageView setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
-   [stCell.imageView setTintColor:[UIColor darkGrayColor]];
+   [stCell.imageView setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
    
    return stCell;

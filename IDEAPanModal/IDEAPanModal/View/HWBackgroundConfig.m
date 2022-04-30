@@ -43,7 +43,7 @@
             break;
         case HWBackgroundBehaviorCustomBlurEffect: {
             self.backgroundBlurRadius = 10;
-            self.blurTintColor = [UIColor whiteColor];
+            self.blurTintColor = UIColor.whiteColor;
         }
             break;
         default: {

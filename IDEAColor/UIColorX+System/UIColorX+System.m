@@ -1,12 +1,12 @@
 //
-//  UIColor+System.m
+//  UIColorX+System.m
 //  IDEAKit
 //
 //  Created by Harry on 15/1/31.
 //  Copyright (c) 2015年 Harry. All rights reserved.
 //
 
-#import "UIColor+System.h"
+#import "UIColorX+System.h"
 
 //#ifdef __IPHONE_13_0
 //#else /* __IPHONE_13_0 */
@@ -16,7 +16,7 @@
 #endif /* rgba */
 
 #pragma mark - Light Mode
-@implementation UIColor (SystemColors)
+@implementation UIColorX
 
 + (UIColor *)labelColor {
    

@@ -32,7 +32,7 @@
    
    if (self) {
       
-      _textColor  = [UIColor darkGrayColor];
+      _textColor  = UIColor.darkGrayColor;
       _fontSize   = 14;
       _selectedBackgroundColor = [UIColor systemGrayColor];
    }

@@ -8,6 +8,8 @@
 //  TEL : +(852)53054612
 //
 
+#import "IDEAColor/UIColorX+System.h"
+
 #import "UINavigationBarX.h"
 #import "UINavigationBarX+Inner.h"
 
@@ -100,7 +102,7 @@
    [self.subTitleLabel setHidden:YES];
 
    [self.splitView setHidden:YES];
-   [self.splitView setBackgroundColor:UIColor.opaqueSeparatorColor];
+   [self.splitView setBackgroundColor:UIColorX.opaqueSeparatorColor];
    [self.splitViewH setConstant:0.5f];
 
 //#if __Debug__
@@ -261,7 +263,7 @@
 // 这个函数是专门为 xib设计的，会在渲染前设置你想要配置的属性。
 - (void)prepareForInterfaceBuilder {
   
-//   self.backgroundColor = [UIColor blueColor];
+//   self.backgroundColor = UIColor.blueColor;
    
    return;
 }

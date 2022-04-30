@@ -129,29 +129,29 @@
 }
 
 #pragma mark - UIUserInterfaceStyle
-- (UIUserInterfaceStyle)overrideUserInterfaceStyle {
-   
-   //   if (UIUserInterfaceStyleDark == self.traitCollection.userInterfaceStyle) {
-   //
-   //      return UIUserInterfaceStyleDark;
-   //
-   //   } /* End if () */
-   //   else {
-   //
-   //      return UIUserInterfaceStyleLight;
-   //
-   //   } /* End else */
-   
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
-      
-      return UIUserInterfaceStyleDark;
-      
-   } /* End if () */
-   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
-      
-      return UIUserInterfaceStyleLight;
-      
-   } /* End if () */
-}
+//- (UIUserInterfaceStyle)overrideUserInterfaceStyle {
+//   
+//   //   if (UIUserInterfaceStyleDark == self.traitCollection.userInterfaceStyle) {
+//   //
+//   //      return UIUserInterfaceStyleDark;
+//   //
+//   //   } /* End if () */
+//   //   else {
+//   //
+//   //      return UIUserInterfaceStyleLight;
+//   //
+//   //   } /* End else */
+//   
+//   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+//      
+//      return UIUserInterfaceStyleDark;
+//      
+//   } /* End if () */
+//   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
+//      
+//      return UIUserInterfaceStyleLight;
+//      
+//   } /* End if () */
+//}
 
 @end

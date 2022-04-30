@@ -84,7 +84,7 @@
    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d FPS",(int)round(fps)]];
 #if YY_KIT
    [text setColor:color range:NSMakeRange(0, text.length - 3)];
-   [text setColor:[UIColor whiteColor] range:NSMakeRange(text.length - 3, 3)];
+   [text setColor:UIColor.whiteColor range:NSMakeRange(text.length - 3, 3)];
    text.font = _font;
    [text setFont:_subFont range:NSMakeRange(text.length - 4, 1)];
 #endif /* YY_KIT */
