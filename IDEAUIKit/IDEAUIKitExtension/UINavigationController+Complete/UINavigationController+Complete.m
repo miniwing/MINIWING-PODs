@@ -19,28 +19,55 @@
    int                            nErr                                     = EFAULT;
    
    __TRY;
-   
-   [CATransaction begin];
+
+//   [CATransaction begin];
+//
+//   [self pushViewController:aViewController
+//                   animated:aAnimated];
+//
+//   [CATransaction setCompletionBlock:^{
+//
+//      if (nil != aCompletion) {
+//
+////         [CATransaction setCompletionBlock:aCompletion];
+//         dispatch_async_on_main_queue(aCompletion);
+//
+//      } /* End if () */
+//   }];
+//   [CATransaction commit];
+
    [self pushViewController:aViewController
-                   animated:YES];
-   
-   [CATransaction setCompletionBlock:^{
+                   animated:aAnimated];
+
+   if (aAnimated) {
+      
+      [self.transitionCoordinator animateAlongsideTransition:nil
+                                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
+
+         if (nil != aCompletion) {
+
+            aCompletion();
+            
+         } /* End if () */
+      }];
+
+   } /* End if () */
+   else {
       
       if (nil != aCompletion) {
          
-//         [CATransaction setCompletionBlock:aCompletion];
          dispatch_async_on_main_queue(aCompletion);
          
       } /* End if () */
-   }];
-   [CATransaction commit];
-   
+
+   } /* End else */
+      
    __CATCH(nErr);
    
    return;
 }
 
-- (nullable UIViewController *)popViewControllerAnimated:(BOOL)animated
+- (nullable UIViewController *)popViewControllerAnimated:(BOOL)aAnimated
                                               completion:(nullable void (^)(void))aCompletion {
    
    int                            nErr                                     = EFAULT;
@@ -49,20 +76,45 @@
    
    __TRY;
    
-   [CATransaction begin];
-   stViewController  = [self popViewControllerAnimated:YES];
+//   [CATransaction begin];
+//   stViewController  = [self popViewControllerAnimated:aAnimated];
+//
+//   [CATransaction setCompletionBlock:^{
+//
+//      if (nil != aCompletion) {
+//
+////         [CATransaction setCompletionBlock:aCompletion];
+//         dispatch_async_on_main_queue(aCompletion);
+//
+//      } /* End if () */
+//   }];
+//
+//   [CATransaction commit];
 
-   [CATransaction setCompletionBlock:^{
+   stViewController  = [self popViewControllerAnimated:aAnimated];
+
+   if (aAnimated) {
+      
+      [self.transitionCoordinator animateAlongsideTransition:nil
+                                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
+
+         if (nil != aCompletion) {
+            
+            aCompletion();
+            
+         } /* End if () */
+      }];
+
+   } /* End if () */
+   else {
       
       if (nil != aCompletion) {
          
-//         [CATransaction setCompletionBlock:aCompletion];
          dispatch_async_on_main_queue(aCompletion);
          
       } /* End if () */
-   }];
-
-   [CATransaction commit];
+      
+   } /* End else */
    
    __CATCH(nErr);
    

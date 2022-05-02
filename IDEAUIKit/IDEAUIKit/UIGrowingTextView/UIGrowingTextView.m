@@ -436,6 +436,7 @@
 - (BOOL)resignFirstResponder
 {
    [super resignFirstResponder];
+   
    return [internalTextView resignFirstResponder];
 }
 
