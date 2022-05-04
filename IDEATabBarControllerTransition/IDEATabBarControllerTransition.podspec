@@ -68,8 +68,8 @@ Pod::Spec.new do |spec|
     spec.dependency 'YYKit'
   end # IDEA_YYKIT
   
-  if ENV['RTRootNavigationController'] == 'YES'
-    spec.dependency 'RTRootNavigationController'
+  if ENV['ROOT_NAVIGATION_CONTROLLER'] == 'YES'
+    spec.dependency 'ROOT_NAVIGATION_CONTROLLER'
   end # RTRootNavigationController
 
   pch_app_kit = <<-EOS

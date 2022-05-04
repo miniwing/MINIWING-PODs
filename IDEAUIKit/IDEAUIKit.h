@@ -40,7 +40,6 @@
 #import <IDEAUIKit/UIAlertController+Blocks.h>
 
 #import <IDEAUIKit/UINavigationController+Complete.h>
-#import <IDEAUIKit/UINavigationController+FullscreenPopGesture.h>
 
 #import <IDEAUIKit/UIImpactFeedbackGenerator+Shortcut.h>
 #import <IDEAUIKit/UISelectionFeedbackGenerator+Shortcut.h>

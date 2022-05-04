@@ -1,5 +1,7 @@
 NAME                             NORMAL      NIGHT
 
+////////////////////////////////////////////////////////
+
 appTint                          #005F81FF   #409CC8FF
 
 // NavigationBar 配色
@@ -14,6 +16,20 @@ appTabbarUnselected              #1C1C1E99   #FFFFFF99
 
 text                             #000000EE   #FFFFFFEE
 switchOn                         #000000EE   #FFFFFFEE
+
+////////////////////////////////////////////////////////
+systemRed                        #FF3B30FF   #FF453AFF
+systemOrange                     #FF9500FF   #FF9F0AFF
+systemYellow                     #FFCC00FF   #FFD60AFF
+systemGreen                      #34C759FF   #30D158FF
+systemMint                       #00C7BEFF   #66D4CFFF
+systemTeal                       #30B0C7FF   #40C8E0FF
+systemCyan                       #32ADE6FF   #64D2FFFF
+systemBlue                       #007AFFFF   #0A84FFFF
+systemIndigo                     #5856D6FF   #5E5CE6FF
+systemPurple                     #AF52E6FF   #BF5AF2FF
+systemPink                       #FF2D55FF   #FF375FFF
+systemBrown                      #A2845EFF   #AC8E68FF
 
 ////////////////////////////////////////////////////////
 translucentBackground            #00000033   #FFFFFF7A
@@ -39,15 +55,15 @@ link                             #007AFFFF   #0984FFFF
 darkText                         #000000FF   #000000FF
 lightText                        #FFFFFF99   #FFFFFF99
 
-systemBlue                       #007AFFFF   #0A84FFFF
-systemGreen                      #34C759FF   #30D158FF
-systemIndigo                     #5856D6FF   #5E5CE6FF
-systemOrange                     #FF9500FF   #FF9F0AFF
-systemPink                       #FF2D55FF   #FF375FFF
-systemPurple                     #AF52DEFF   #BF5AF2FF
-systemRed                        #FF3B30FF   #FF453AFF
-systemTeal                       #5AC8FAFF   #64D2FFFF
-systemYellow                     #FFCC00FF   #FFD60AFF
+// systemBlue                       #007AFFFF   #0A84FFFF
+// systemGreen                      #34C759FF   #30D158FF
+// systemIndigo                     #5856D6FF   #5E5CE6FF
+// systemOrange                     #FF9500FF   #FF9F0AFF
+// systemPink                       #FF2D55FF   #FF375FFF
+// systemPurple                     #AF52DEFF   #BF5AF2FF
+// systemRed                        #FF3B30FF   #FF453AFF
+// systemTeal                       #5AC8FAFF   #64D2FFFF
+// systemYellow                     #FFCC00FF   #FFD60AFF
 
 systemGray                       #8E8E93FF   #8E8E93FF
 systemGray2                      #AEAEB2FF   #636366FF

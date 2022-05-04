@@ -89,9 +89,13 @@ Pod::Spec.new do |spec|
     spec.dependency 'UIKitExtension'
   end # IDEA_FOUNDATION_EXTENSION
 
-  if ENV['RTRootNavigationController'] == 'YES'
-    spec.dependency 'RTRootNavigationController'
+  if ENV['ROOT_NAVIGATION_CONTROLLER'] == 'YES'
+    spec.dependency 'ROOT_NAVIGATION_CONTROLLER'
   end # RTRootNavigationController
+
+  if ENV['IDEA_FULLSCREEN_POP_GESTURE'] == 'YES'
+    spec.dependency 'IDEAFullscreenPopGesture'
+  end # IDEA_FULLSCREEN_POP_GESTURE
 
 #  spec.dependency 'pop'
 

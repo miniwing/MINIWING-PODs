@@ -116,20 +116,6 @@
    if (self = [super initWithCoder:aCoder]) {
       
 //      [self setup];
-      
-#if MATERIAL_APP_BAR
-//      self.appBar  = [[MDCAppBar alloc] init];
-//
-//      LogDebug((@"MDCAppBar :: %@", self.appBar));
-//
-//      [self.appBar.headerViewController.headerView setShadowColor:UIColor.lightGrayColor];
-//      [self.appBar.headerViewController.headerView setBackgroundColor:UIColorX.systemBackgroundColor];
-//
-//      [self.appBar.headerViewController setShowsHairline:YES];
-//      [self.appBar.headerViewController setHairlineColor:UIColor.lightGrayColor];
-//
-//      [self addChildViewController:self.appBar.headerViewController];
-#endif /* MATERIAL_APP_BAR */
 
    } /* End if () */
    

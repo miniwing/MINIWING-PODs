@@ -1,131 +1,86 @@
 Pod::Spec.new do |spec|
-  spec.name           = "IDEAUIKit"
-  spec.version        = "1.0.1"
-  spec.summary        = "IDEAUIKit"
-  spec.description    = "IDEAUIKit"
-  spec.homepage       = "https://github.com/miniwing"
-  spec.license        = "MIT"
-  spec.author         = { "Harry" => "miniwing.hz@gmail.com" }
-  spec.platform       = :ios, "10.0"
+  spec.name                 = "IDEAFullscreenPopGesture"
+  spec.version              = "1.1-IDEA"
+  spec.summary              = "IDEAFullscreenPopGesture"
+  spec.description          = "IDEAFullscreenPopGesture"
+  spec.homepage             = "https://github.com/forkingdog/FDFullscreenPopGesture"
+  spec.license              = "MIT"
+  spec.author               = { "Harry" => "miniwing.hz@gmail.com" }
+  spec.platform             = :ios, "10.0"
   
-  spec.ios.pod_target_xcconfig     = {
-                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit',
+  spec.source                       = { :path => "." }
+  
+  spec.ios.deployment_target        = '10.0'
+  spec.watchos.deployment_target    = '4.3'
+    
+  spec.osx.deployment_target        = '10.10'
+  spec.tvos.deployment_target       = '10.0'
+
+  spec.ios.pod_target_xcconfig      = {
+                                        'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAFullscreenPopGesture',
                                         'ENABLE_BITCODE'            => 'NO',
                                         'SWIFT_VERSION'             => '5.0',
                                         'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
                                         'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                         'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
                                       }
-  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit' }
-  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit-watchOS' }
-  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit' }
+  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAFullscreenPopGesture' }
+  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAFullscreenPopGesture-watchOS' }
+  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAFullscreenPopGesture' }
 
-#  spec.requires_arc = true
-#  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']
+  spec.frameworks                   = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
 
-#  spec.frameworks     = ['Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreFoundation']
-
-  spec.source         = { :path => "." }
+  spec.xcconfig                     = {
+    'HEADER_SEARCH_PATHS'               => [
+#                                            "${PODS_TARGET_SRCROOT}/",
+#                                            "${PODS_TARGET_SRCROOT}/../",
+#                                            "${PODS_ROOT}/Headers/Public/FoundationExtension",
+#                                            "${PODS_ROOT}/Headers/Public/YYKit/",
+#                                            "${PODS_ROOT}/Headers/Public/IDEAKit/",
+#                                            "${PODS_ROOT}/Headers/Public/IDEANightVersion"
+                                           ]
+                                      }
   
-  spec.xcconfig       = {
-    'HEADER_SEARCH_PATHS'   => [
-#                                  "${PODS_TARGET_SRCROOT}/",
-#                                  "${PODS_TARGET_SRCROOT}/../",
-#                                  "${PODS_ROOT}/Headers/Public/FoundationExtension",
-#                                  "${PODS_ROOT}/Headers/Public/UIKitExtension",
-#                                  "${PODS_ROOT}/Headers/Public/IDEAKit/",
-#                                  "${PODS_ROOT}/Headers/Public/IDEAColor",
-#                                  "${PODS_ROOT}/Headers/Public/YYKit/",
-#                                  "${PODS_ROOT}/Headers/Public/RTRootNavigationController",
-#                                  "${PODS_ROOT}/Headers/Public/IDEANightVersion"
-                               ],
-#  'FRAMEWORK_SEARCH_PATHS'  => [
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/RTRootNavigationController",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/YYKit",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEAKit",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEAColor",
-#                                  "${PODS_CONFIGURATION_BUILD_DIR}/IDEANightVersion",
-#                               ]
-  }
+  spec.pod_target_xcconfig          = {
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAFullscreenPopGesture\" ', ' BUNDLE=\"IDEAFullscreenPopGesture\" ' ]
+                                      }
 
-  spec.pod_target_xcconfig  = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAUIKit\" ', ' BUNDLE=\"IDEAUIKit\" ' ]
-  }
-
-  if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
-    spec.dependency 'FoundationExtension'
-  end # IDEA_FOUNDATION_EXTENSION
-
-  if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
-    spec.dependency 'UIKitExtension'
-  end # IDEA_UIKIT_EXTENSION
-
-#  spec.dependency 'CocoaExtension'
+#  spec.dependency 'FoundationExtension'
+#  spec.dependency 'UIKitExtension'
+#  spec.dependency 'IDEANightVersion'
 
   if ENV['ROOT_NAVIGATION_CONTROLLER'] == 'YES'
-    spec.dependency 'ROOT_NAVIGATION_CONTROLLER'
+    pod 'ROOT_NAVIGATION_CONTROLLER'
   end # RTRootNavigationController
 
-  if ENV['IDEA_FULLSCREEN_POP_GESTURE'] == 'YES'
-    spec.dependency 'IDEAFullscreenPopGesture'
-  end # IDEA_FULLSCREEN_POP_GESTURE
+#  spec.requires_arc         = true
+#  spec.non_arc_files        = [ 'XXXXXX//*.{h,m}' ]
 
-#  if ENV['MATERIAL_NAVIGATION_BAR'] == 'YES'
-  spec.dependency 'MaterialComponents/NavigationBar'
-#  end # MATERIAL_NAVIGATION_BAR
+  spec.public_header_files  = 'UINavigationController+FullscreenPopGesture/**/*.{h}'
+                              
+  spec.source_files         = 'UINavigationController+FullscreenPopGesture/**/*.{h,m,mm,c,cpp}'
 
-  spec.dependency 'IDEANibBridge'
+  spec.requires_arc         = true
 
-#  spec.dependency 'pop'
-
-#  spec.dependency 'AFNetworking'
-#  spec.dependency 'AFNetworking/Serialization'
-#  spec.dependency 'AFNetworking/Security'
-#  spec.dependency 'AFNetworking/Reachability'
-#  spec.dependency 'AFNetworking/NSURLSession'
-
-#  spec.dependency 'Masonry'
-#  spec.dependency 'MBProgressHUD',              '~> 0.9.2'
-
-  spec.dependency 'MBProgressHUD'
-
-  if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
-  end # IDEA_YYKIT
+#  spec.resources            = [ 'ColorTable.txt' ]
+#  spec.resources            = [ 'IDEAFullscreenPopGestureTable/ColorTable.txt' ]
   
-  spec.dependency 'IDEAKit'
-  spec.dependency 'IDEAColor'
-  spec.dependency 'IDEANightVersion'
-
-  spec.public_header_files    = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h}',
-                                'IDEAUIKitExtension/**/*.{h}'
-
-  spec.source_files           = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
-                                'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
-
-  spec.requires_arc           = true
-
-#  spec.subspec 'IDEAVendor' do |sub|
-#    sub.dependency 'UIKitExtension'
-#    sub.public_header_files   = 'IDEAUIKit/IDEAVendor/*.h'
-#    sub.source_files          = 'IDEAUIKit/IDEAVendor/*.{h,m}'
-##    sub.resource_bundle       = { 'IDEAFONTSFUI'    => [ 'FONTs/SF-UI/SF-UI-Text-Light.otf', 'FONTs/SF-UI/SF-UI-Text-Regular.otf', 'FONTs/SF-UI/SF-UI-Text-Semibold.otf' ] }
-#  end
-
 #  spec.resource_bundles     = {
-#                                'UINavigationBarX' => [
-#                                                'IDEAUIKit/UINavigationBarX/*.xib'
-#                                               ]
+#                                'APPDEBUG' => [
+#                                              'APPs',
+#                                              'PLISTs',
+#                                              'JSONs',
+#                                              'IMAGEs',
+#                                              'DB'
+#                                           ]
 #                              }
-  spec.resources            = 'IDEAUIKit/UINavigationBarX/*.xib'
-  
-#  spec.vendored_libraries     = 'libXG-SDK.a'
-#  spec.vendored_frameworks    = 'libXG-SDK.a'
 
-   pch_app_kit = <<-EOS
-   
+
+#  spec.vendored_libraries   = 'libXG-SDK.a'
+#  spec.vendored_frameworks  = 'libXG-SDK.framework'
+
+  pch_app_kit = <<-EOS
+
 /******************************************************************************************************/
 
 #ifdef DEBUG
@@ -134,13 +89,18 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wformat"
 #  pragma clang diagnostic ignored                 "-Wswitch"
 #  pragma clang diagnostic ignored                 "-Wvarargs"
+#  pragma clang diagnostic ignored                 "-Wvarargs"
 #  pragma clang diagnostic ignored                 "-Wnonnull"
+#  pragma clang diagnostic ignored                 "-Wcomment"
+#  pragma clang diagnostic ignored                 "-Wprotocol"
 #  pragma clang diagnostic ignored                 "-Wpointer-sign"
 #  pragma clang diagnostic ignored                 "-Wdangling-else"
 #  pragma clang diagnostic ignored                 "-Wunused-result"
+#  pragma clang diagnostic ignored                 "-Wpch-date-time"
 #  pragma clang diagnostic ignored                 "-Wuninitialized"
 #  pragma clang diagnostic ignored                 "-Wdocumentation"
 #  pragma clang diagnostic ignored                 "-Wpch-date-time"
+#  pragma clang diagnostic ignored                 "-Wambiguous-macro"
 #  pragma clang diagnostic ignored                 "-Wenum-conversion"
 #  pragma clang diagnostic ignored                 "-Wunused-variable"
 #  pragma clang diagnostic ignored                 "-Wunused-function"
@@ -150,8 +110,10 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wshorten-64-to-32"
 #  pragma clang diagnostic ignored                 "-Wwritable-strings"
 #  pragma clang diagnostic ignored                 "-Wstrict-prototypes"
+#  pragma clang diagnostic ignored                 "-Wobjc-method-access"
 #  pragma clang diagnostic ignored                 "-Wdocumentation-html"
 #  pragma clang diagnostic ignored                 "-Wobjc-method-access"
+#  pragma clang diagnostic ignored                 "-Wincomplete-umbrella"
 #  pragma clang diagnostic ignored                 "-Wundeclared-selector"
 #  pragma clang diagnostic ignored                 "-Wimplicit-retain-self"
 #  pragma clang diagnostic ignored                 "-Wunguarded-availability"
@@ -162,8 +124,11 @@ Pod::Spec.new do |spec|
 #  pragma clang diagnostic ignored                 "-Wnullability-completeness"
 #  pragma clang diagnostic ignored                 "-Wobjc-missing-super-calls"
 #  pragma clang diagnostic ignored                 "-Wnonportable-include-path"
+#  pragma clang diagnostic ignored                 "-Warc-performSelector-leaks"
 #  pragma clang diagnostic ignored                 "-Wconditional-uninitialized"
+#  pragma clang diagnostic ignored                 "-Wincompatible-property-type"
 #  pragma clang diagnostic ignored                 "-Wincompatible-pointer-types"
+#  pragma clang diagnostic ignored                 "-Wunguarded-availability-new"
 #  pragma clang diagnostic ignored                 "-Wdeprecated-implementations"
 #  pragma clang diagnostic ignored                 "-Wmismatched-parameter-types"
 #  pragma clang diagnostic ignored                 "-Wobjc-redundant-literal-use"
@@ -201,28 +166,9 @@ Pod::Spec.new do |spec|
 #else /* __OBJC__ */
 #endif /* !__OBJC__ */
 
+/******************************************************************************************************/
+
 #ifdef __OBJC__
-
-#  if __has_include(<FoundationExtension/FoundationExtension.h>)
-#     import <FoundationExtension/FoundationExtension.h>
-#     define FOUNDATION_EXTENSION                                          (1)
-#  elif __has_include("FoundationExtension/FoundationExtension.h")
-#     import "FoundationExtension/FoundationExtension.h"
-#     define FOUNDATION_EXTENSION                                          (1)
-#  else
-#     define FOUNDATION_EXTENSION                                          (0)
-#  endif
-
-#  if __has_include(<UIKitExtension/UIKitExtension.h>)
-#     import <UIKitExtension/UIKitExtension.h>
-#     define UIKIT_EXTENSION                                               (1)
-#  elif __has_include("UIKitExtension/UIKitExtension.h")
-#     import "UIKitExtension/UIKitExtension.h"
-#     define UIKIT_EXTENSION                                               (1)
-#  else
-#     define UIKIT_EXTENSION                                               (0)
-#  endif
-
 #  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
 #     import <RTRootNavigationController/RTRootNavigationController.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
@@ -237,36 +183,16 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  else
-#     define MATERIAL_NAVIGATION_BAR                                       (0)
-#  endif
-
 #  if __has_include(<IDEANightVersion/DKNightVersion.h>)
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #     import <IDEANightVersion/DKNightVersion.h>
-#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  elif __has_include("IDEANightVersion/DKNightVersion.h")
-#     import "IDEANightVersion/DKNightVersion.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#  else
-#     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
+#     import "IDEANightVersion/DKNightVersion.h"
+#  elif __has_include("DKNightVersion.h")
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#     import "DKNightVersion.h"
 #  endif
-
-#  if __has_include(<IDEANibBridge/IDEANibBridge.h>)
-#     import <IDEANibBridge/IDEANibBridge.h>
-#     define IDEA_NIB_BRIDGE                                               (1)
-#  elif __has_include("IDEANibBridge/IDEANibBridge.h")
-#     import "IDEANibBridge/IDEANibBridge.h"
-#     define IDEA_NIB_BRIDGE                                               (1)
-#  else
-#     define IDEA_NIB_BRIDGE                                               (0)
-#  endif
-
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/
@@ -303,47 +229,37 @@ Pod::Spec.new do |spec|
 
 /******************************************************************************************************/
 
-#if (__has_include(<YYKit/YYKit.h>))
-#  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
-#  import "YYKit/YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
-#else /* YY_KIT */
+#ifndef weakify
+#   if __has_feature(objc_arc)
+#      define weakify( x )                                                                       \\
+          _Pragma("clang diagnostic push")                                                       \\
+          _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+          autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;                             \\
+          _Pragma("clang diagnostic pop")
+#   else
+#      define weakify( x )                                                                       \\
+          _Pragma("clang diagnostic push")                                                       \\
+          _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+          autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;                           \\
+          _Pragma("clang diagnostic pop")
+#   endif
+#endif /* !weakify */
 
-#  ifndef weakify
-#     if __has_feature(objc_arc)
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !weakify */
-
-#  ifndef strongify
-#     if __has_feature(objc_arc)
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !strongify */
-
-#endif
+#ifndef strongify
+#   if __has_feature(objc_arc)
+#      define strongify( x )                                                                     \\
+          _Pragma("clang diagnostic push")                                                       \\
+          _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+          try{} @finally{} __typeof__(x) x = __weak_##x##__;                                     \\
+          _Pragma("clang diagnostic pop")
+#   else
+#      define strongify( x )                                                                     \\
+          _Pragma("clang diagnostic push")                                                       \\
+          _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
+          try{} @finally{} __typeof__(x) x = __block_##x##__;                                    \\
+          _Pragma("clang diagnostic pop")
+#   endif
+#endif /* !strongify */
 
 /******************************************************************************************************/
 
@@ -499,20 +415,6 @@ NS_INLINE void ____LoggerDebug(NSString *aFormat, ...) {
    return;
 }
 
-NS_INLINE void ____LoggerClass(Class aClass) {
-   
-   unsigned int    nMethodCount  = 0;
-   Method         *stMethods     = class_copyMethodList(aClass, &nMethodCount);
-   
-   for (int H = 0; H< nMethodCount; H++) {
-      
-      NSLog(@\"    method name = %@ type = %s\", NSStringFromSelector(method_getName(stMethods[H])), method_getTypeEncoding(stMethods[H]));
-      
-   } /* End for () */
-   
-   return;
-}
-
 #else
 
 __BEGIN_DECLS
@@ -628,10 +530,8 @@ __END_DECLS
 
 #if __DebugDebug__
 #  define LogDebug(x)                              ____LoggerDebug x
-#  define LoggerClass(x)                           ____LoggerClass x
 #else
 #  define LogDebug(x)
-#  define LoggerClass(x)
 #endif
 
 #if __DebugWarn__
@@ -696,15 +596,6 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-#define __DebugRegex__                             (__AUTO__)
-#if __DebugRegex__
-#  define LogRegex(x)                              ____LoggerDebug x
-#else
-#  define LogRegex(x)
-#endif
-
-/******************************************************************************************************/
-
 #ifndef __DUMMY_CLASS
 # define __DUMMY_CLASS(_name_)                     @interface __DUMMY_CLASS_ ## _name_ : NSObject                             \\
                                                    @end                                                                       \\
@@ -720,5 +611,5 @@ __END_DECLS
 
   EOS
   spec.prefix_header_contents = pch_app_kit
-      
+
 end
