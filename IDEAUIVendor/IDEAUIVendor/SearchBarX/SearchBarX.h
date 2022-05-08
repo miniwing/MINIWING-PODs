@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak)   IBOutlet       UISearchBar                         * searchBar;
 
+@property (nonatomic, strong, readonly)      UITextField                         * searchTextField;
+
 @end
 
 @interface SearchBarX ()
@@ -22,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)                  void                                  (^onBeginSearch)(void);
 @property (nonatomic, copy)                  void                                  (^onEndSearch)(void);
 @property (nonatomic, copy)                  void                                  (^onTextChange)(NSString *aText);
+
+@end
+
+@interface SearchBarX ()
+
+- (void)setSearchTextFieldBackgroundColor:(UIColor *)aColor;
 
 @end
 

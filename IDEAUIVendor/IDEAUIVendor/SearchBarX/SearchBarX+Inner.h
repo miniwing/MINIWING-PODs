@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SearchBarX ()
 
-@property (nonatomic, strong)                UITextField                         * searchTextField;
+@property (nonatomic, strong, readwrite)     UITextField                         * searchTextField;
+
+@property (nonatomic, strong)                UIColor                             * searchTextFieldBackgroundColor;
+
 @property (nonatomic, assign)                BOOL                                  shouldEndEditing;
 
 @end

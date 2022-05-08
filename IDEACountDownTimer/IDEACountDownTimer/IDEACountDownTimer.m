@@ -23,7 +23,7 @@
 #undef  __DebugColor__
 #define __DebugColor__                             (__OFF__)
 
-#undef  __DebugColor__
+#undef  __DebugView__
 #define __DebugView__                              (__OFF__)
 
 @interface IDEACountDownTimer()

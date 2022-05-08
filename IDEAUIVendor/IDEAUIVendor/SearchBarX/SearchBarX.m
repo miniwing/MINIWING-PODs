@@ -11,10 +11,6 @@
 #import "SearchBarX.h"
 #import "SearchBarX+Inner.h"
 
-@interface SearchBarX ()
-
-@end
-
 @implementation SearchBarX
 
 - (void)dealloc {
@@ -65,12 +61,12 @@
 
    if (@available(iOS 13.0, *)) {
       
-      self.searchTextField = self.searchBar.searchTextField;
+      _searchTextField = self.searchBar.searchTextField;
       
    } /* End if () */
    else {
       
-      self.searchTextField = [self.searchBar valueForKey:@"_searchField"];
+      _searchTextField = [self.searchBar valueForKey:@"_searchField"];
 
    } /* End else */
 
@@ -81,6 +77,12 @@
 
    [self setCancelButtnAttributes];
    
+   if (nil != self.searchTextFieldBackgroundColor) {
+      
+      [self.searchTextField setBackgroundColor:self.searchTextFieldBackgroundColor];
+      
+   } /* End if () */
+
    __CATCH(nErr);
 
    return;
@@ -97,4 +99,16 @@
 }
 */
 
+- (void)setSearchTextFieldBackgroundColor:(UIColor *)aColor {
+   
+   _searchTextFieldBackgroundColor  = aColor;
+   
+   if (nil != self.searchTextField && nil != aColor) {
+      
+      [self.searchTextField setBackgroundColor:aColor];
+      
+   } /* End if () */
+   
+   return;
+}
 @end

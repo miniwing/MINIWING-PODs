@@ -24,10 +24,10 @@
 
 #define __DebugInfo__                              __AUTO__
 #define __DebugDebug__                             __AUTO__
-#define __DebugError__                             __OFF__
+#define __DebugError__                             __AUTO__
 #define __DebugFunc__                              __AUTO__
 #define __DebugVideo__                             __OFF__
-#define __DebugView__                              __OFF__
+#define __DebugView__                              __AUTO__
 
 #define __DebugColor__                             __AUTO__
 
