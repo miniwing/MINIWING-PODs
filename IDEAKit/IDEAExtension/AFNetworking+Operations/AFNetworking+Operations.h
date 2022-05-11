@@ -22,7 +22,7 @@
 #     import "AFNetworking.h"
 #  endif
 
-//NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NSDictionary<NSString *,NSString *>        HttpHeader;
 typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
@@ -86,6 +86,6 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
 
 @end
 
-//NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END
 
 #endif /* (__has_include(<AFNetworking/AFNetworking.h>) || __has_include("AFNetworking/AFNetworking.h")) */

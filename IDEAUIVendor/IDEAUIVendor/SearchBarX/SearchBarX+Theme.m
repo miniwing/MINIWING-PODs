@@ -8,6 +8,7 @@
 //  TEL : +(852)53054612
 //
 
+#import "SearchBarX+Inner.h"
 #import "SearchBarX+Theme.h"
 
 #pragma mark - UITheme
