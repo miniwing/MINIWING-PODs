@@ -61,7 +61,8 @@ Pod::Spec.new do |spec|
                               }
 
     pch_app_kit = <<-EOS
-#ifdef DEBUG
+    
+#if (defined(DEBUG) && (1==DEBUG))
 #  pragma clang diagnostic ignored                 "-Wgnu"
 #  pragma clang diagnostic ignored                 "-Wcomma"
 #  pragma clang diagnostic ignored                 "-Wformat"

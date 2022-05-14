@@ -45,7 +45,8 @@ Pod::Spec.new do |spec|
     spec.requires_arc = true
 
    pch_app_kit = <<-EOS
-#ifdef DEBUG
+   
+#if (defined(DEBUG) && (1==DEBUG))
 #  pragma clang diagnostic ignored                 "-Wgnu"
 #  pragma clang diagnostic ignored                 "-Wcomma"
 #  pragma clang diagnostic ignored                 "-Wformat"
