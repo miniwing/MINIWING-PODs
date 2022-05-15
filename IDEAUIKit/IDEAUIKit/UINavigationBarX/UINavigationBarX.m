@@ -10,6 +10,8 @@
 
 #import "IDEAColor/UIColorX+System.h"
 
+#import "NSLayoutConstraint+Extension.h"
+
 #import "UINavigationBarX.h"
 #import "UINavigationBarX+Inner.h"
 
@@ -104,6 +106,9 @@
    [self.splitView setHidden:YES];
    [self.splitView setBackgroundColor:UIColorX.opaqueSeparatorColor];
    [self.splitViewH setConstant:0.5f];
+
+   self.navigationBarXHeight  = [NSLayoutConstraint constraintWithIdentifier:@"H"
+                                                                    fromView:self];
 
 //#if __Debug__
 //   [self.splitView setHidden:NO];

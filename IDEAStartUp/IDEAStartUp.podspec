@@ -535,6 +535,8 @@ __END_DECLS
 #define __DebugColor__                             (__AUTO__)
 #define __DebugView__                              (__AUTO__)
 
+#define __DebugKeyboard__                          (__OFF__)
+
 /******************************************************************************************************/
 
 #if __DebugDebug__
@@ -567,6 +569,12 @@ __END_DECLS
 #  define LogView(x)                               ____LoggerInfo x
 #else
 #  define LogView(x)
+#endif
+
+#if __DebugKeyboard__
+#  define LogKeyboard(x)                           ____LoggerInfo x
+#else
+#  define LogKeyboard(x)
 #endif
 
 /******************************************************************************************************/

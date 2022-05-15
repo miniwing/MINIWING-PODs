@@ -463,6 +463,8 @@ __END_DECLS
 #define __DebugColor__                             (__AUTO__)
 #define __DebugView__                              (__AUTO__)
 
+#define __DebugKeyboard__                          (__OFF__)
+
 /******************************************************************************************************/
 
 #if __DebugDebug__
