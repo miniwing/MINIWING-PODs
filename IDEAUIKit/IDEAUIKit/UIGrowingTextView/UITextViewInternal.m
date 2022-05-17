@@ -56,9 +56,9 @@
       insets.bottom = 0;
       insets.top = 0;
       self.contentInset = insets;
-      
-   } else {
-      
+   }
+   else
+   {
       float bottomOffset = (self.contentSize.height - self.frame.size.height + self.contentInset.bottom);
       if(s.y < bottomOffset && self.scrollEnabled){
          UIEdgeInsets insets = self.contentInset;
@@ -110,7 +110,8 @@
          paragraphStyle.alignment = self.textAlignment;
          [self.placeholder drawInRect:CGRectMake(5, 8 + self.contentInset.top, self.frame.size.width-self.contentInset.left, self.frame.size.height- self.contentInset.top) withAttributes:@{NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.placeholderColor, NSParagraphStyleAttributeName:paragraphStyle}];
       }
-      else {
+      else
+      {
          [self.placeholderColor set];
          
 //         NSDictionary* attributes = @{NSFontAttributeName:self.font};

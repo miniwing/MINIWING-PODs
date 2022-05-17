@@ -150,7 +150,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextField;
 }
 
@@ -172,7 +172,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextField;
 }
 
@@ -194,7 +194,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextField;
 }
 
@@ -216,7 +216,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextField;
 }
 
@@ -319,7 +319,6 @@
          [self performSelector:stSEL withObject:stResult];
 #pragma clang diagnostic pop
       }];
-
    }];
    
    if (self.themeManager.supportsKeyboard) {
@@ -340,23 +339,25 @@
          self.keyboardAppearance = UIKeyboardAppearanceDefault;
 #endif
       } /* End else */
-      
-//      if (@available(iOS 13.0, *)) {
-//         
-//      } /* End if () */
-//      else {
-//         
-//#warning " 强制刷新键盘外观 "
+
+      if (@available(iOS 13.0, *)) {
+         
+      } /* End if () */
+      else {
+         
+#warning " 刷新键盘外观 "
 //         [UIView performWithoutAnimation:^{
-//            
+//
 //            [self resignFirstResponder];
 //            [self becomeFirstResponder];
 //         }];
-//         
-//      } /* End else */
+         
+         [self resignFirstResponder];
+
+      } /* End else */
 
    } /* End if () */
-   
+
    return;
 }
 

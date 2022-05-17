@@ -48,13 +48,15 @@
    NSTextAlignment textAlignment;
    NSRange selectedRange;
    BOOL editable;
-   UIDataDetectorTypes dataDetectorTypes;
-   UIReturnKeyType returnKeyType;
-   UIKeyboardType keyboardType;
+   UIDataDetectorTypes   dataDetectorTypes;
+   UIReturnKeyType       returnKeyType;
+   UIKeyboardType        keyboardType;
    
-   UIEdgeInsets contentInset;
+   UIEdgeInsets          contentInset;
    
+//   UIKeyboardAppearance  keyboardAppearance;
 }
+
 - (void)commonInitialiser;
 - (void)resizeTextView:(NSInteger)newSizeH;
 - (void)growDidStop;
@@ -574,6 +576,16 @@
 - (UIKeyboardType)keyboardType
 {
    return internalTextView.keyboardType;
+}
+
+- (void)setKeyboardAppearance:(UIKeyboardAppearance)keyboardAppearance
+{
+   internalTextView.keyboardAppearance = keyboardAppearance;
+}
+
+- (UIKeyboardType)keyboardAppearance
+{
+   return internalTextView.keyboardAppearance;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

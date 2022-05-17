@@ -16,6 +16,4 @@
 @property (nonatomic, copy, setter = setTextColorPicker:) DKColorPicker textColorPicker;
 @property (nonatomic, copy, setter = setPlaceholderColorPicker:) DKColorPicker placeholderColorPicker;
 
-- (void)setPlaceholderColor:(UIColor *)aColor;
-
 @end

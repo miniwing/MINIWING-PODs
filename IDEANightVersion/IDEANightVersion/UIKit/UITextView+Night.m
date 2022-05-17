@@ -152,7 +152,7 @@
       } /* End else */
       
    } /* End if () */
-      
+
    return stTextView;
 }
 
@@ -176,7 +176,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextView;
 }
 
@@ -200,7 +200,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stTextView;
 }
 
@@ -224,7 +224,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
 //   [[NSNotificationCenter defaultCenter] removeObserver:stTextView
 //                                                   name:DKNightVersionThemeChangingNotification
 //                                                 object:nil];
@@ -285,32 +285,34 @@
          
 #ifdef __IPHONE_7_0
          self.keyboardAppearance = UIKeyboardAppearanceDark;
-#else
+#else /* __IPHONE_7_0 */
          self.keyboardAppearance = UIKeyboardAppearanceDefault;
-#endif
+#endif /* !__IPHONE_7_0 */
          
       } /* End if () */
       else {
 #ifdef __IPHONE_7_0
          self.keyboardAppearance = UIKeyboardAppearanceLight;
-#else
+#else /* __IPHONE_7_0 */
          self.keyboardAppearance = UIKeyboardAppearanceDefault;
-#endif
+#endif /* !__IPHONE_7_0 */
       } /* End else */
       
-//      if (@available(iOS 13.0, *)) {
-//         
-//      } /* End if () */
-//      else {
-//         
-//#warning " 强制刷新键盘外观 "
+      if (@available(iOS 13.0, *)) {
+         
+      } /* End if () */
+      else {
+         
+#warning " 刷新键盘外观 "
 //         [UIView performWithoutAnimation:^{
-//            
+//
 //            [self resignFirstResponder];
 //            [self becomeFirstResponder];
 //         }];
-//         
-//      } /* End else */
+
+         [self resignFirstResponder];
+
+      } /* End else */
       
    } /* End if () */
 

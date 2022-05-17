@@ -32,7 +32,7 @@
 @interface UITextViewInternal : UITextView
 
 @property (nonatomic, strong) NSString *placeholder;
-@property (nonatomic, strong) UIColor *placeholderColor;
-@property (nonatomic) BOOL displayPlaceHolder;
+@property (nonatomic, strong) UIColor  *placeholderColor;
+@property (nonatomic, assign) BOOL      displayPlaceHolder;
 
 @end

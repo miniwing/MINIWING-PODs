@@ -102,7 +102,6 @@
          method_exchangeImplementations(originalMethod, swizzledMethod);
          
       } /* End else */
-      
    });
    
    return;
@@ -128,7 +127,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stSearchBar;
 }
 
@@ -152,7 +151,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stSearchBar;
 }
 
@@ -176,7 +175,7 @@
       } /* End else */
       
    } /* End if () */
-   
+
    return stSearchBar;
 }
 
@@ -250,30 +249,32 @@
          self.keyboardAppearance = UIKeyboardAppearanceDefault;
 #endif
       } /* End else */
-      
-//      if (@available(iOS 13.0, *)) {
-//         
-//      } /* End if () */
-//      else {
-//
-//#warning " 强制刷新键盘外观 "
-//
-//         UITextField *stTextField   = [self valueForKey:@"_searchField"];
-//
-//         if (nil != stTextField) {
-//            
+
+      if (@available(iOS 13.0, *)) {
+         
+      } /* End if () */
+      else {
+
+#warning " 刷新键盘外观 "
+
+         UITextField *stTextField   = [self valueForKey:@"_searchField"];
+
+         if (nil != stTextField) {
+            
 //            [UIView performWithoutAnimation:^{
-//               
+//
 //               [stTextField resignFirstResponder];
 //               [stTextField becomeFirstResponder];
 //            }];
-//
-//         } /* End if () */
-//         
-//      } /* End else */
+
+            [stTextField resignFirstResponder];
+
+         } /* End if () */
+         
+      } /* End else */
       
    } /* End if () */
-   
+
    return;
 }
 
