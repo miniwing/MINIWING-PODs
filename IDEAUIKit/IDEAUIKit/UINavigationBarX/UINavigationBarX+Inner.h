@@ -13,10 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBarX ()
 
-@end
-
-@interface UINavigationBarX ()
-
 @property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarT;
 @property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarB;
 @property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarL;

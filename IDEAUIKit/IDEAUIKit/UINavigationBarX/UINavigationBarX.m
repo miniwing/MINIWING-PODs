@@ -90,6 +90,18 @@
    [super awakeFromNib];
    // Initialization code
    
+   if ([self conformsToProtocol:@protocol(IDEANibBridge)]) {
+      
+      if (nil == self.superview) {
+         
+         nErr  = noErr;
+         
+         break;
+         
+      } /* End if () */
+      
+   } /* End if () */
+
    [self.navigationBar setBackgroundColor:UIColor.clearColor];
 
    [self setNeedsUpdateConstraints];
