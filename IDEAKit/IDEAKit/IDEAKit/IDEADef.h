@@ -85,7 +85,7 @@
 
 /******************************************************************************************************/
 
-#define BORDER_WIDTH_PX(x)                                  ([[UIScreen mainScreen] scale] > 0.0 ? (x) / [[UIScreen mainScreen] scale] : (x))
+#define IDEA_PIXEL(x)                                       ([[UIScreen mainScreen] scale] > 0.0 ? (x) / [[UIScreen mainScreen] scale] : (x))
 
 /******************************************************************************************************/
 
