@@ -27,6 +27,23 @@
    return;
 }
 
+- (instancetype)initWithFrame:(CGRect)aFrame {
+
+   int                            nErr                                     = EFAULT;
+   
+   __TRY;
+   
+   self  = [super initWithFrame:aFrame];
+   
+   if (self) {
+
+   } /* End if () */
+   
+   __CATCH(nErr);
+   
+   return self;
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aCoder {
 
    int                            nErr                                     = EFAULT;
