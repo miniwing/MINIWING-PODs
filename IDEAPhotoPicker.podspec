@@ -1,0 +1,1 @@
+IDEAPhotoPicker/IDEAPhotoPicker.podspec
