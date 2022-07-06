@@ -13,6 +13,9 @@
 #import <Foundation/Foundation.h>
 
 //#import <IDEAUIVendor/IDEASegmentedControl.h>
+
+#import <IDEAUIVendor/IDEAAlertController.h>
+
 #import <IDEAUIVendor/IDEAViewController.h>
 #import <IDEAUIVendor/IDEATableViewController.h>
 #import <IDEAUIVendor/IDEACollectionViewController.h>
