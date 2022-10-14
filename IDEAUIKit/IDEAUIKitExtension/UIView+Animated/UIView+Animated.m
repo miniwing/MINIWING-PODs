@@ -9,12 +9,14 @@
 
 #import "IDEAUIKit/UIView+Animated.h"
 
-//#if (__has_include(<UIKitExtension/UIView.h>))
-//#  import <UIKitExtension/UIView.h>
-//extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
-//#else
-//static const NSTimeInterval __UIViewAnimationDefaultDuraton = 0.25f;
-//#endif
+#if (__has_include(<UIKitExtension/UIView.h>))
+#  import <UIKitExtension/UIView.h>
+extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
+#else
+const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
+#endif
+
+//const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 
 //const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
 //   

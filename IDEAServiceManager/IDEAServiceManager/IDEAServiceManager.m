@@ -28,31 +28,35 @@
 
 @implementation IDEAServiceManager
 
-static dispatch_once_t      g_stOnceToken;
-
 + (void)install {
    
-   dispatch_once(&g_stOnceToken, ^(void) {
-      
-      __init();
-   });
-   
+   __init();
+
    return;
 }
 
 + (void)load {
    
-   dispatch_once(&g_stOnceToken, ^(void) {
-      
-      __init();
-   });
-   
+   __init();
+
    return;
 }
 
 NS_INLINE void __init() {
    
-   _dyld_register_func_for_add_image(__dyld_callback);
+   @synchronized (IDEAServiceManager.class) {
+      
+      static dispatch_once_t onceToken;
+
+      dispatch_once(&onceToken, ^(void) {
+         
+         _dyld_register_func_for_add_image(__dyld_callback);
+      });
+
+   } /* synchronized */
+
+
+   return;
 }
 
 NS_INLINE void __dyld_callback(const struct mach_header *mhp, intptr_t vmaddr_slide) {

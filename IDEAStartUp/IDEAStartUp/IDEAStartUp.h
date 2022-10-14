@@ -30,7 +30,7 @@ typedef struct __StartUp {
 
 @interface IDEAStartUp : NSObject
 
-+ (void)starUp;
++ (void)startUp;
 
 @end
 

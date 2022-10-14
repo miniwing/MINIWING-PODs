@@ -36,12 +36,8 @@ static __attribute__((destructor)) void __destructor() {
 
 @implementation IDEAStartUp
 
-+ (void)starUp {
++ (void)startUp {
    
-//   dispatch_once(&onceToken, ^(void)
-//                 {
-//   });
-
    __init();
 
    return;
@@ -49,10 +45,6 @@ static __attribute__((destructor)) void __destructor() {
 
 + (void)load {
    
-//   dispatch_once(&onceToken, ^(void) {
-//
-//   });
-
    __init();
 
    return;
