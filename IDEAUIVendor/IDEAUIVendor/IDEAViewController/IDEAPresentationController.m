@@ -160,7 +160,13 @@
 //
 //   } /* End if () */
    
-   return [self.presentedViewController frameOfPresented];
+   if ([self.presentedViewController respondsToSelector:@selector(frameOfPresented)]) {
+            
+      return [self.presentedViewController frameOfPresented];
+      
+   } /* End if () */
+   
+   return CGRectZero;
 }
 
 - (BOOL)backgroundTouchToClose {
