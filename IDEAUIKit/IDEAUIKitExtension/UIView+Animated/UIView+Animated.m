@@ -16,7 +16,7 @@ extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 #endif
 
-const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
+//const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 
 //const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
 //   
