@@ -104,10 +104,8 @@
 
    [self.navigationBar setBackgroundColor:UIColor.clearColor];
 
-   [self setNeedsUpdateConstraints];
-   [self updateConstraintsIfNeeded];
-   
    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+   [self setAutoresizingMask:UIViewAutoresizingNone];
    
    LogDebug((@"-[UINavigationBarX awakeFromNib] : stackView : %@", self.navigationBar));
    LogDebug((@"-[UINavigationBarX awakeFromNib] : navigationBar : %@", self.navigationBar));
@@ -119,17 +117,47 @@
    [self.splitView setBackgroundColor:UIColorX.opaqueSeparatorColor];
    [self.splitViewH setConstant:0.5f];
 
-   self.navigationBarXHeight  = [NSLayoutConstraint constraintWithIdentifier:@"H"
-                                                                    fromView:self];
+//   if (nil == self.navigationBarXHeight) {
+//
+//      self.navigationBarXHeight  = [NSLayoutConstraint constraintWithIdentifier:@"H"
+//                                                                       fromView:self];
+//
+//   } /* End if () */
+//
+//   if (nil == self.navigationBarXHeight) {
+//
+//      self.navigationBarXHeight  = [NSLayoutConstraint constraintWithItem:self
+//                                                                attribute:NSLayoutAttributeHeight
+//                                                                relatedBy:NSLayoutRelationEqual
+//                                                                   toItem:nil
+//                                                                attribute:nil
+//                                                               multiplier:1
+//                                                                 constant:110];
+//
+//   } /* End if () */
 
-//#if __Debug__
-//   [self.splitView setHidden:NO];
-//   [self.splitView setBackgroundColor:UIColor.blackColor];
-//   [self.splitViewH setConstant:2.0f];
-//#endif /* __Debug__ */
+   LogDebug((@"-[UINavigationBarX awakeFromNib] : navigationBarXHeight : %@", self.navigationBarXHeight));
+   
+   for (NSLayoutConstraint *stConstraint in self.constraints) {
+      
+//      LogDebug((@"-[UINavigationBarX awakeFromNib] : Constraint : %@", stConstraint));
+      
+      if (NSLayoutAttributeHeight == stConstraint.firstAttribute || NSLayoutAttributeHeight == stConstraint.secondAttribute) {
+         
+         LogDebug((@"-[UINavigationBarX awakeFromNib] : NSLayoutAttributeHeight : %@ : %@", stConstraint, stConstraint.identifier));
 
-//   [self setNeedsUpdateConstraints];
-//   [self updateConstraintsIfNeeded];
+         if (![self.navigationBarXHeight.identifier isEqualToString:stConstraint.identifier]) {
+            
+            [stConstraint setActive:NO];
+            
+         } /* End if () */
+                  
+      } /* End if () */
+
+   } /* End for () */
+
+   [self setNeedsUpdateConstraints];
+   [self updateConstraintsIfNeeded];
 
    __CATCH(nErr);
    

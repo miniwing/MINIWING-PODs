@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setScrollableContentOffset:(CGPoint)offset animated:(BOOL)animated;
 
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

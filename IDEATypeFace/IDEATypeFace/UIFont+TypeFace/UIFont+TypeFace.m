@@ -28,7 +28,7 @@
    return;
 }
 
-//自定义的交换方法
+// 自定义的交换方法
 + (UIFont *)customSystemFontOfSize:(CGFloat)fontSize {
    
    CGFloat size = [UIFont transSizeWithFontSize:fontSize];
@@ -37,7 +37,7 @@
    return [UIFont customSystemFontOfSize:size];
 }
 
-//自定义的交换方法
+// 自定义的交换方法
 + (UIFont *)customFontWithName:(NSString *)fontName size:(CGFloat)fontSize {
    
    CGFloat size = [UIFont transSizeWithFontSize:fontSize];

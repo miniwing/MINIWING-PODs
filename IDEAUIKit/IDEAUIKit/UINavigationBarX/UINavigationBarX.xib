@@ -38,15 +38,15 @@
             <constraints>
                 <constraint firstItem="Pws-hi-UII" firstAttribute="top" secondItem="Op9-on-GAK" secondAttribute="bottom" id="1Xg-CK-lS7"/>
                 <constraint firstAttribute="trailing" secondItem="Op9-on-GAK" secondAttribute="trailing" id="KBI-4x-WU9"/>
-                <constraint firstAttribute="bottom" secondItem="gsC-rb-E32" secondAttribute="bottom" id="QIs-sI-jTP"/>
+                <constraint firstAttribute="bottom" secondItem="gsC-rb-E32" secondAttribute="bottom" priority="750" id="QIs-sI-jTP"/>
                 <constraint firstAttribute="height" constant="110" identifier="H" id="cjH-dX-1tj"/>
                 <constraint firstItem="Pws-hi-UII" firstAttribute="leading" secondItem="SPF-qN-6Ys" secondAttribute="leading" id="dhz-px-yqH"/>
-                <constraint firstAttribute="trailing" secondItem="gsC-rb-E32" secondAttribute="trailing" id="fBL-bT-Hy7"/>
+                <constraint firstAttribute="trailing" secondItem="gsC-rb-E32" secondAttribute="trailing" priority="750" id="fBL-bT-Hy7"/>
                 <constraint firstItem="Op9-on-GAK" firstAttribute="leading" secondItem="SPF-qN-6Ys" secondAttribute="leading" id="fTg-sq-jmf"/>
                 <constraint firstAttribute="bottom" secondItem="Pws-hi-UII" secondAttribute="bottom" id="lZD-D1-LUw"/>
-                <constraint firstItem="gsC-rb-E32" firstAttribute="leading" secondItem="SPF-qN-6Ys" secondAttribute="leading" id="tm2-FU-dFe"/>
+                <constraint firstItem="gsC-rb-E32" firstAttribute="leading" secondItem="SPF-qN-6Ys" secondAttribute="leading" priority="750" id="tm2-FU-dFe"/>
                 <constraint firstAttribute="trailing" secondItem="Pws-hi-UII" secondAttribute="trailing" id="twg-k1-dLb"/>
-                <constraint firstItem="gsC-rb-E32" firstAttribute="top" secondItem="SPF-qN-6Ys" secondAttribute="top" id="wkx-aO-gDV"/>
+                <constraint firstItem="gsC-rb-E32" firstAttribute="top" secondItem="SPF-qN-6Ys" secondAttribute="top" priority="750" id="wkx-aO-gDV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -55,6 +55,7 @@
                 <outlet property="navigationBarL" destination="tm2-FU-dFe" id="AXh-tN-YEH"/>
                 <outlet property="navigationBarR" destination="fBL-bT-Hy7" id="ZyK-cG-dF9"/>
                 <outlet property="navigationBarT" destination="wkx-aO-gDV" id="sMh-gw-uTh"/>
+                <outlet property="navigationBarXHeight" destination="cjH-dX-1tj" id="pUg-sX-bm6"/>
                 <outlet property="splitView" destination="Pws-hi-UII" id="R9M-67-7SK"/>
                 <outlet property="splitViewB" destination="lZD-D1-LUw" id="pbD-4z-Rpc"/>
                 <outlet property="splitViewH" destination="Hg3-Xv-Ypr" id="jtT-2k-jJf"/>

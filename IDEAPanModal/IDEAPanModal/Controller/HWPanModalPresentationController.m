@@ -399,12 +399,21 @@
 }
 
 - (void)dismiss:(BOOL)isInteractive mode:(PanModalInteractiveMode)mode {
-	self.presentedViewController.hw_panModalPresentationDelegate.interactive = isInteractive;
-	self.presentedViewController.hw_panModalPresentationDelegate.interactiveMode = mode;
-	[self.presentable panModalWillDismiss];
-	[self.presentedViewController dismissViewControllerAnimated:YES completion:^{
-		[self.presentable panModalDidDismissed];
-	}];
+    [self dismiss:isInteractive mode:mode animated:YES completion:nil];
+}
+
+- (void)dismiss:(BOOL)isInteractive mode:(PanModalInteractiveMode)mode animated:(BOOL)animated completion:(void (^)(void))completion {
+    self.presentedViewController.hw_panModalPresentationDelegate.interactive = isInteractive;
+    self.presentedViewController.hw_panModalPresentationDelegate.interactiveMode = mode;
+    [self.presentable panModalWillDismiss];
+    [self.presentedViewController dismissViewControllerAnimated:animated completion:^{
+        if (completion) completion();
+        [self.presentable panModalDidDismissed];
+    }];
+}
+
+- (void)dismissAnimated:(BOOL)animated completion:(nonnull void (^)(void))completion {
+    [self dismiss:NO mode:PanModalInteractiveModeNone animated:animated completion:completion];
 }
 
 - (void)presentableTransitionToState:(PresentationState)state {
@@ -485,6 +494,8 @@
 - (void)screenEdgeInteractiveAction:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:recognizer.view];
     CGFloat percent = translation.x / CGRectGetWidth(recognizer.view.bounds);
+    CGPoint velocity = [recognizer velocityInView:recognizer.view];
+    
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan: {
 			[self dismiss:YES mode:PanModalInteractiveModeSideslip];
@@ -492,7 +503,7 @@
             break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded: {
-            if (percent > 0.5) {
+            if (percent > 0.5 || velocity.x >= [[self presentable] minHorizontalVelocityToTriggerScreenEdgeDismiss]) {
                 [self finishInteractiveTransition];
             } else {
                 [self cancelInteractiveTransition];

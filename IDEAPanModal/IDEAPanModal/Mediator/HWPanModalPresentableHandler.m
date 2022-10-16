@@ -29,7 +29,7 @@ static NSString *const kScrollViewKVOContentOffsetKey = @"contentOffset";
 
 @property (nonatomic, assign) CGFloat anchoredYPosition;
 
-@property (nonatomic, strong) id<HWPanModalPresentable> presentable;
+@property (nonatomic, strong) id<HWPanModalPresentable, HWPanModalPanGestureDelegate> presentable;
 
 // keyboard handle
 @property (nonatomic, copy) NSDictionary *keyboardInfo;
@@ -366,8 +366,20 @@ static NSString *const kScrollViewKVOContentOffsetKey = @"contentOffset";
  * Halts the scroll of a given scroll view & anchors it at the `scrollViewYOffset`
  */
 - (void)haltScrolling:(UIScrollView *)scrollView {
-    [scrollView setContentOffset:CGPointMake(0, self.scrollViewYOffset) animated:NO];
-    scrollView.showsVerticalScrollIndicator = NO;
+    
+    //
+    // Fix bug: the app will crash after the table view reloads data via calling [tableView reloadData] if the user scrolls to the bottom.
+    //
+    // We remove some element and reload data, for example, [self.dataSource removeLastObject], the previous saved scrollViewYOffset value
+    // will be great than or equal to the current actual offset(i.e. scrollView.contentOffset.y). At this time, if the method
+    // [scrollView setContentOffset:CGPointMake(0, self.scrollViewYOffset) animated:NO] is called, which will trigger KVO recursively.
+    // So scrollViewYOffset must be less than or equal to the actual offset here.
+    // See issues: https://github.com/HeathWang/HWPanModal/issues/107 and https://github.com/HeathWang/HWPanModal/issues/103
+ 
+    if (scrollView.contentOffset.y <= 0 || self.scrollViewYOffset <= scrollView.contentOffset.y) {
+        [scrollView setContentOffset:CGPointMake(0, self.scrollViewYOffset) animated:NO];
+        scrollView.showsVerticalScrollIndicator = NO;
+    }
 }
 
 - (void)didPanOnScrollViewChanged:(NSDictionary<NSKeyValueChangeKey, id> *)change {
@@ -485,6 +497,11 @@ static NSString *const kScrollViewKVOContentOffsetKey = @"contentOffset";
  * ONLY When otherGestureRecognizer is panGestureRecognizer, and target gestureRecognizer is panGestureRecognizer, return YES.
  */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    if ([self.presentable respondsToSelector:@selector(hw_gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:)]) {
+        return [self.presentable hw_gestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer];
+    }
+    
     if ([gestureRecognizer isKindOfClass:UIPanGestureRecognizer.class]) {
         return [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class];
     }
@@ -495,13 +512,32 @@ static NSString *const kScrollViewKVOContentOffsetKey = @"contentOffset";
  * 当前手势为screenGestureRecognizer时，其他pan recognizer都应该fail
  */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    if ([self.presentable respondsToSelector:@selector(hw_gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:)]) {
+        return [self.presentable hw_gestureRecognizer:gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:otherGestureRecognizer];
+    }
+    
+    
     if (gestureRecognizer == self.screenEdgeGestureRecognizer && [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class]) {
         return YES;
     }
     return NO;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if ([self.presentable respondsToSelector:@selector(hw_gestureRecognizer:shouldRequireFailureOfGestureRecognizer:)]) {
+        return [self.presentable hw_gestureRecognizer:gestureRecognizer shouldRequireFailureOfGestureRecognizer:otherGestureRecognizer];
+    }
+
+    return NO;
+}
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    if ([self.presentable respondsToSelector:@selector(hw_gestureRecognizerShouldBegin:)]) {
+        return [self.presentable hw_gestureRecognizerShouldBegin:gestureRecognizer];
+    }
+    
     if (gestureRecognizer == self.screenEdgeGestureRecognizer) {
         CGPoint velocity = [self.screenEdgeGestureRecognizer velocityInView:self.screenEdgeGestureRecognizer.view];
 

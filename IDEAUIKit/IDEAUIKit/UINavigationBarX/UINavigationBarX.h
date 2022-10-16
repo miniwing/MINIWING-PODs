@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak)   IBOutlet       UIView                              * splitView;
 
+@property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarXHeight;
+
 @end
 
 @interface UINavigationBarX ()
@@ -33,12 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) IBInspectable  CGFloat                               splitViewBottomInset;
 @property (nonatomic, assign) IBInspectable  CGFloat                               splitViewLeftInset;
 @property (nonatomic, assign) IBInspectable  CGFloat                               splitViewRightInset;
-
-@end
-
-@interface UINavigationBarX ()
-
-@property (nonatomic, strong)                NSLayoutConstraint                  * navigationBarXHeight;
 
 @end
 
