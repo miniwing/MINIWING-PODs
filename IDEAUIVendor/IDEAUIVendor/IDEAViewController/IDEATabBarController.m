@@ -175,35 +175,35 @@
 //#pragma mark - UIStatusBar
 //- (UIStatusBarStyle)preferredStatusBarStyle
 //{
-//   LogDebug((@"[%@ preferredStatusBarStyle]", [self class]));
+//   LogDebug((@"-[%@ preferredStatusBarStyle]", [self class]));
 //
 //   return UIStatusBarStyleLightContent;
 //}
 //
 //- (BOOL)prefersStatusBarHidden
 //{
-//   LogDebug((@"[%@ prefersStatusBarHidden]", [self class]));
+//   LogDebug((@"-[%@ prefersStatusBarHidden]", [self class]));
 //
 //   return NO;
 //}
 //
 //- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
 //{
-//   LogDebug((@"[%@ preferredStatusBarUpdateAnimation]", [self class]));
+//   LogDebug((@"-[%@ preferredStatusBarUpdateAnimation]", [self class]));
 //
 //   return UIStatusBarAnimationFade;
 //}
 //
 //- (BOOL)shouldAutorotate
 //{
-//   LogDebug((@"[%@ shouldAutorotate]", [self class]));
+//   LogDebug((@"-[%@ shouldAutorotate]", [self class]));
 //
 //   return NO;
 //}
 //
 //- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 //{
-//   LogDebug((@"[%@ supportedInterfaceOrientations]", [self class]));
+//   LogDebug((@"-[%@ supportedInterfaceOrientations]", [self class]));
 //
 //   return UIInterfaceOrientationMaskPortrait;
 //}
@@ -211,14 +211,14 @@
 //// Controls the application's preferred home indicator auto-hiding when this view controller is shown.
 //- (BOOL)prefersHomeIndicatorAutoHidden
 //{
-//   LogDebug((@"[%@ prefersHomeIndicatorAutoHidden]", [self class]));
+//   LogDebug((@"-[%@ prefersHomeIndicatorAutoHidden]", [self class]));
 //
 //   return YES;
 //}
 //
 //- (UIModalPresentationStyle)modalPresentationStyle
 //{
-//   LogDebug((@"[%@ modalPresentationStyle]", [self class]));
+//   LogDebug((@"-[%@ modalPresentationStyle]", [self class]));
 //
 //   return UIModalPresentationFullScreen;
 //}
@@ -249,7 +249,7 @@
       
    __TRY;
    
-   LogDebug((@"[IDEATabBarController onThemeUpdate:] : Notification : %@", aNotification));
+   LogDebug((@"-[IDEATabBarController onThemeUpdate:] : Notification : %@", aNotification));
    
    [UIView animateWithDuration:DKNightVersionAnimationDuration
                     animations:^{

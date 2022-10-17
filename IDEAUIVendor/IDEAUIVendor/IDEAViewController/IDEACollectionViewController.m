@@ -115,7 +115,7 @@
       
    __TRY;
    
-   LogDebug((@"[IDEACollectionViewController onThemeUpdate:] : Notification : %@", aNotification));
+   LogDebug((@"-[IDEACollectionViewController onThemeUpdate:] : Notification : %@", aNotification));
       
    [UIView animateWithDuration:DKNightVersionAnimationDuration
                     animations:^{

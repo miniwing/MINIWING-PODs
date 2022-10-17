@@ -117,7 +117,7 @@
    
    __TRY;
    
-   LogDebug((@"[IDEAPageViewController onThemeUpdate:] : Notification : %@", aNotification));
+   LogDebug((@"-[IDEAPageViewController onThemeUpdate:] : Notification : %@", aNotification));
    
 #if IDEA_NAVIGATION_BAR
    [self wr_setNavBarTintColor:[APPColor colorWithKey:[APPColor appNavigationBarBackground]]];

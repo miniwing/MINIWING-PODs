@@ -12,6 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, TransType) {
+   
+   TransTypeNone  = -1,
+   TransTypeMove  = 0,
+   TransTypeFade  = 1,
+   TransTypeScale = 2,
+   TransTypeCustom= 3
+};
+
 typedef NS_ENUM(NSInteger, IDEATabBarControllerTransitionDirection) {
    DirectionLeft  = 0,
    DirectionRight = 1

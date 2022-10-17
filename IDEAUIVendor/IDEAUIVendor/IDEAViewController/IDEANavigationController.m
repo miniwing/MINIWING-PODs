@@ -180,9 +180,9 @@
 //   
 //   // Get the new view controller using [segue destinationViewController].
 //   // Pass the selected object to the new view controller.
-//   LogDebug((@"[IDEANavigationController prepareForSegue:sender:] : Segue.identifier  : %@", aSegue.identifier));
-//   LogDebug((@"[IDEANavigationController prepareForSegue:sender:] : Segue.source      : %@", aSegue.sourceViewController));
-//   LogDebug((@"[IDEANavigationController prepareForSegue:sender:] : Segue.destination : %@", aSegue.destinationViewController));
+//   LogDebug((@"-[IDEANavigationController prepareForSegue:sender:] : Segue.identifier  : %@", aSegue.identifier));
+//   LogDebug((@"-[IDEANavigationController prepareForSegue:sender:] : Segue.source      : %@", aSegue.sourceViewController));
+//   LogDebug((@"-[IDEANavigationController prepareForSegue:sender:] : Segue.destination : %@", aSegue.destinationViewController));
 //   
 //   __CATCH(nErr);
 //   
@@ -192,7 +192,7 @@
 #pragma mark - UIStatusBarStyle
 - (UIStatusBarStyle)preferredStatusBarStyle {
    
-   LogView((@"[%@ preferredStatusBarStyle]", [self class]));
+   LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
    
 #if RT_ROOT_NAVIGATIONCONTROLLER
    if ([self isKindOfClass:[RTRootNavigationController class]]) {
@@ -242,7 +242,7 @@
 //
 //- (BOOL)prefersStatusBarHidden {
 //   
-//   LogView((@"[%@ prefersStatusBarHidden]", [self class]));
+//   LogView((@"-[%@ prefersStatusBarHidden]", [self class]));
 //   
 //#if RT_ROOT_NAVIGATIONCONTROLLER
 //   if ([self isKindOfClass:[RTRootNavigationController class]]) {
@@ -269,7 +269,7 @@
 //
 //- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
 //   
-//   LogView((@"[%@ preferredStatusBarUpdateAnimation]", [self class]));
+//   LogView((@"-[%@ preferredStatusBarUpdateAnimation]", [self class]));
 //   
 //#if RT_ROOT_NAVIGATIONCONTROLLER
 //   if ([self isKindOfClass:[RTRootNavigationController class]]) {
@@ -296,7 +296,7 @@
 //
 ////- (void)setNeedsStatusBarAppearanceUpdate
 ////{
-////   LogView((@"[%@ setNeedsStatusBarAppearanceUpdate]", [self class]));
+////   LogView((@"-[%@ setNeedsStatusBarAppearanceUpdate]", [self class]));
 ////
 ////   UIViewController        *stViewController          = nil;
 ////
@@ -343,7 +343,7 @@
 //
 //- (BOOL)shouldAutorotate {
 //   
-//   LogView((@"[%@ shouldAutorotate]", [self class]));
+//   LogView((@"-[%@ shouldAutorotate]", [self class]));
 //   
 //#if RT_ROOT_NAVIGATIONCONTROLLER
 //   if ([self isKindOfClass:[RTRootNavigationController class]]) {
@@ -370,7 +370,7 @@
 //
 //- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 //   
-//   LogView((@"[%@ supportedInterfaceOrientations]", [self class]));
+//   LogView((@"-[%@ supportedInterfaceOrientations]", [self class]));
 //   
 //#if RT_ROOT_NAVIGATIONCONTROLLER
 //   if ([self isKindOfClass:[RTRootNavigationController class]]) {
@@ -406,7 +406,7 @@
 //
 //- (UIModalPresentationStyle)modalPresentationStyle {
 //   
-//   LogView((@"[%@ modalPresentationStyle]", [self class]));
+//   LogView((@"-[%@ modalPresentationStyle]", [self class]));
 //   
 //#if RT_ROOT_NAVIGATIONCONTROLLER
 //   if ([self isKindOfClass:[RTRootNavigationController class]]) {

@@ -178,9 +178,9 @@
 //   
 //   // Get the new view controller using [segue destinationViewController].
 //   // Pass the selected object to the new view controller.
-//   LogDebug((@"[IDEATabNavigationController prepareForSegue:sender:] : Segue.identifier  : %@", aSegue.identifier));
-//   LogDebug((@"[IDEATabNavigationController prepareForSegue:sender:] : Segue.source      : %@", aSegue.sourceViewController));
-//   LogDebug((@"[IDEATabNavigationController prepareForSegue:sender:] : Segue.destination : %@", aSegue.destinationViewController));
+//   LogDebug((@"-[IDEATabNavigationController prepareForSegue:sender:] : Segue.identifier  : %@", aSegue.identifier));
+//   LogDebug((@"-[IDEATabNavigationController prepareForSegue:sender:] : Segue.source      : %@", aSegue.sourceViewController));
+//   LogDebug((@"-[IDEATabNavigationController prepareForSegue:sender:] : Segue.destination : %@", aSegue.destinationViewController));
 //   
 //   __CATCH(nErr);
 //   
@@ -190,7 +190,7 @@
 //#pragma mark - UIStatusBarStyle
 //- (UIStatusBarStyle)preferredStatusBarStyle {
 //   
-//   LogView((@"[%@ preferredStatusBarStyle]", [self class]));
+//   LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      
@@ -203,7 +203,7 @@
 //
 //- (BOOL)prefersStatusBarHidden {
 //   
-//   LogView((@"[%@ prefersStatusBarHidden]", [self class]));
+//   LogView((@"-[%@ prefersStatusBarHidden]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      
@@ -216,7 +216,7 @@
 //
 //- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
 //   
-//   LogView((@"[%@ preferredStatusBarUpdateAnimation]", [self class]));
+//   LogView((@"-[%@ preferredStatusBarUpdateAnimation]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      
@@ -229,7 +229,7 @@
 //
 ////- (void)setNeedsStatusBarAppearanceUpdate
 ////{
-////   LogView((@"[%@ setNeedsStatusBarAppearanceUpdate]", [self class]));
+////   LogView((@"-[%@ setNeedsStatusBarAppearanceUpdate]", [self class]));
 ////
 ////   UIViewController        *stViewController          = nil;
 ////
@@ -276,7 +276,7 @@
 //
 //- (BOOL)shouldAutorotate {
 //   
-//   LogView((@"[%@ shouldAutorotate]", [self class]));
+//   LogView((@"-[%@ shouldAutorotate]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      
@@ -289,7 +289,7 @@
 //
 //- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 //   
-//   LogView((@"[%@ supportedInterfaceOrientations]", [self class]));
+//   LogView((@"-[%@ supportedInterfaceOrientations]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      
@@ -311,7 +311,7 @@
 //
 //- (UIModalPresentationStyle)modalPresentationStyle {
 //   
-//   LogView((@"[%@ modalPresentationStyle]", [self class]));
+//   LogView((@"-[%@ modalPresentationStyle]", [self class]));
 //      
 //   if (self.visibleViewController) {
 //      

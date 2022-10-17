@@ -118,7 +118,7 @@
       
    __TRY;
    
-   LogDebug((@"[IDEATableViewController onThemeUpdate:] : Notification : %@", aNotification));
+   LogDebug((@"-[IDEATableViewController onThemeUpdate:] : Notification : %@", aNotification));
       
    [UIView animateWithDuration:DKNightVersionAnimationDuration
                     animations:^{

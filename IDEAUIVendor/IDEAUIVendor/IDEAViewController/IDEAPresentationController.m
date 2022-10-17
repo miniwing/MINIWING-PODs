@@ -154,7 +154,7 @@
 //
 ////      NSValue  *stValue = [self.presentedViewController performSelector:@selector(frameOfPresented)];
 ////      CGRect    stFrame = [self.presentedViewController frameOfPresented];
-////      LogDebug((@"[IDEAPresentationController frameOfPresentedViewInContainerView] : Result : %@", stValue));
+////      LogDebug((@"-[IDEAPresentationController frameOfPresentedViewInContainerView] : Result : %@", stValue));
 //
 //      return [self.presentedViewController frameOfPresented];
 //
@@ -259,7 +259,7 @@
                       animated:YES
                     completion:^{
 
-      LogDebug((@"[UIViewController(PopUp) popUp:] : TransitioningDelegate : %@", aViewController.transitioningDelegate));
+      LogDebug((@"-[UIViewController(PopUp) popUp:] : TransitioningDelegate : %@", aViewController.transitioningDelegate));
    }];
    
    __CATCH(nErr);
