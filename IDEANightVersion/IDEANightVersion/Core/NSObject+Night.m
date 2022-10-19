@@ -75,7 +75,7 @@ static void *DKViewDeallocHelperKey;
 //
 //      if ([aSelector isEqualToString:@"setText:"]) {
 //         
-//         LogDebug((@"[aSelector isEqualToString:@\"setText:\"]"));
+//         LogDebug((@"-[aSelector isEqualToString:@\"setText:\"]"));
 //         
 //      } /* End if () */
       

@@ -38,6 +38,17 @@
    self.layoutConstraintLeftInset   = 15;
    self.layoutConstraintRightInset  = 15;
 
+   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+      
+      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+         
+         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
+         
+      } /* End if () */
+
+      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+   }];
+
    if (@available(iOS 13, *)) {
             
    } /* End if () */

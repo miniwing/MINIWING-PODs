@@ -122,7 +122,7 @@
       
    __TRY;
    
-   LogDebug((@"[IDEAViewController onThemeUpdate:] : Notification : %@", aNotification));
+   LogDebug((@"-[IDEAViewController onThemeUpdate:] : Notification : %@", aNotification));
    
 //   if (UIUserInterfaceStyleDark == self.traitCollection.userInterfaceStyle) {
 //

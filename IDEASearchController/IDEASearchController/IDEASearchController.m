@@ -141,7 +141,7 @@
    
    // Do any additional setup after loading the view.
       
-   LogDebug((@"[IDEASearchController viewDidLoad] : VIEW : %@", self.view.debugDescription));
+   LogDebug((@"-[IDEASearchController viewDidLoad] : VIEW : %@", self.view.debugDescription));
    
 #if MATERIAL_APP_BAR
 //   [self.navigationController setNavigationBarHidden:YES];

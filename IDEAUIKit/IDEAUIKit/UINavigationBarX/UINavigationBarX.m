@@ -279,9 +279,9 @@
    return;
 }
 
-- (void)showLine {
+- (void)showLine:(BOOL)aShow {
    
-   [self.splitView setHidden:NO];
+   [self.splitView setHidden:!aShow];
    
    return;
 }

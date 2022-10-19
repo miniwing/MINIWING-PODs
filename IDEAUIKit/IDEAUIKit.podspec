@@ -269,6 +269,10 @@ Pod::Spec.new do |spec|
 
 #endif /* __OBJC__ */
 
+#import <IDEAColor/IDEAColor.h>
+#import <IDEAColor/UIColorX+System.h>
+#import <IDEAColor/UIColorX+Dynamic.h>
+
 /******************************************************************************************************/
 
 #if __has_feature(objc_arc)

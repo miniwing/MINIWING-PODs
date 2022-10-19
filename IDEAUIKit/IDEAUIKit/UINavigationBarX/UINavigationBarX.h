@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBarX ()
 
-- (void)showLine;
+- (void)showLine:(BOOL)aShow;
 
 - (void)setSubTitle:(NSString *)aTitle;
 
