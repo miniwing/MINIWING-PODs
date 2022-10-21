@@ -84,7 +84,7 @@ Pod::Spec.new do |spec|
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
     spec.dependency 'FoundationExtension'
   end # IDEA_FOUNDATION_EXTENSION
-
+  
   if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
     spec.dependency 'UIKitExtension'
   end # IDEA_UIKIT_EXTENSION
