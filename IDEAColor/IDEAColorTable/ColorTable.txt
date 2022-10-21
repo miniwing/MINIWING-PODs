@@ -55,16 +55,6 @@ link                             #007AFFFF   #0984FFFF
 darkText                         #000000FF   #000000FF
 lightText                        #FFFFFF99   #FFFFFF99
 
-// systemBlue                       #007AFFFF   #0A84FFFF
-// systemGreen                      #34C759FF   #30D158FF
-// systemIndigo                     #5856D6FF   #5E5CE6FF
-// systemOrange                     #FF9500FF   #FF9F0AFF
-// systemPink                       #FF2D55FF   #FF375FFF
-// systemPurple                     #AF52DEFF   #BF5AF2FF
-// systemRed                        #FF3B30FF   #FF453AFF
-// systemTeal                       #5AC8FAFF   #64D2FFFF
-// systemYellow                     #FFCC00FF   #FFD60AFF
-
 systemGray                       #8E8E93FF   #8E8E93FF
 systemGray2                      #AEAEB2FF   #636366FF
 systemGray3                      #C7C7CCFF   #48484AFF

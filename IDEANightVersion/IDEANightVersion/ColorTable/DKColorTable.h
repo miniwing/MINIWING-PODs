@@ -85,3 +85,9 @@
 - (DKColorPicker)pickerWithKey:(NSString *)key;
 
 @end
+
+@interface DKColorTable (Shortcut)
+
++ (void)appendThemes:(NSString *)aThemeFile;
+
+@end

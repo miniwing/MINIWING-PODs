@@ -16,6 +16,8 @@
 
 @interface NSString (Trimming)
 
+- (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)aCharacterSet;
+
 @end
 
 @implementation NSString (Trimming)
@@ -47,7 +49,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, UIColor *> *> *table;
 
-@property (nonatomic, strong, readwrite) NSArray<DKThemeVersion *> *themes;
+//@property (nonatomic, strong, readwrite) NSArray<DKThemeVersion *> *themes;
+@property (nonatomic, strong) NSMutableArray<DKThemeVersion *> *themes;
 
 @end
 
@@ -169,11 +172,10 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
          
       } /* End if () */
       
-      NSString *keys = [self keyFromEntry:szEntry];
+      NSString *szKey   = [self keyFromEntry:szEntry];
+      NSArray  *stColors= [self colorsFromEntry:szEntry];
       
-      NSArray *colors = [self colorsFromEntry:szEntry];
-      
-      [self addEntryWithKey:keys colors:colors themes:self.themes];
+      [self addEntryWithKey:szKey colors:stColors themes:self.themes];
       
    } /* End for () */
    
@@ -307,6 +309,76 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
    NSArray *array = [aString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
    
    return [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
+}
+
+@end
+
+@implementation DKColorTable (Shortcut)
+
++ (void)appendThemes:(NSString *)aThemeFile {
+   
+   LogDebug((@"+[DKColorTable appendThemes:] : ThemeFile: %@", aThemeFile));
+
+   NSError  *stError    = nil;
+   NSString *szContents = [NSString stringWithContentsOfFile:aThemeFile
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:&stError];
+   
+   if (stError || nil == szContents) {
+      
+      LogError((@"+[DKColorTable appendThemes:] : Error reading file: %@", stError.localizedDescription));
+
+      aThemeFile  = [[NSBundle mainBundle] pathForResource:aThemeFile ofType:nil];
+      szContents  = [NSString stringWithContentsOfFile:aThemeFile
+                                             encoding:NSUTF8StringEncoding
+                                                error:&stError];
+      
+   } /* End if () */
+   
+   if (stError || nil == szContents) {
+      
+      LogError((@"+[DKColorTable appendThemes:] : Error reading file: %@", stError.localizedDescription));
+
+      return;
+      
+   } /* End if () */
+      
+   NSMutableArray *stTempEntries = [[szContents componentsSeparatedByString:@"\n"] mutableCopy];
+   
+   // Fixed whitespace error in txt file, fix https://github.com/Draveness/DKNightVersion/issues/64
+   NSMutableArray *stEntries     = [NSMutableArray array];
+   
+   [stTempEntries enumerateObjectsUsingBlock:^(NSString * _Nonnull aEntry, NSUInteger aIndex, BOOL * _Nonnull aStop) {
+      
+      NSString *trimmingEntry = [aEntry stringByTrimmingTrailingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+      
+      [stEntries addObject:trimmingEntry];
+   }];
+   
+   [stEntries filterUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
+   
+   [stEntries removeObjectAtIndex:0]; // Remove theme entry
+   
+   NSMutableArray<DKThemeVersion *> *stThemes = [[[DKColorTable sharedColorTable] themesFromContents:szContents] mutableCopy];
+   [stThemes removeObjectAtIndex:0]; // 删除 NAME
+   
+   // Add entry to color table
+   for (NSString *szEntry in stEntries) {
+      
+      if ([[szEntry stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] hasPrefix:@"//"]) {
+         
+         continue;
+         
+      } /* End if () */
+      
+      NSString *szKey   = [[DKColorTable sharedColorTable] keyFromEntry:szEntry];
+      NSArray  *stColors= [[DKColorTable sharedColorTable] colorsFromEntry:szEntry];
+      
+      [[DKColorTable sharedColorTable] addEntryWithKey:szKey colors:stColors themes:[DKColorTable sharedColorTable].themes];
+      
+   } /* End for () */
+   
+   return;
 }
 
 @end

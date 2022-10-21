@@ -31,7 +31,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
 
 - (NSURLSessionDataTask * _Nullable)GET:(NSString *)aURL
                                  resume:(BOOL)aResume
-                                prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPrepare
+                                prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                                 headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                              parameters:(nullable NSDictionary <NSString *, NSString *> *)aParams
                                 success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -42,7 +42,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
  */
 - (NSURLSessionDataTask *)POST:(NSString *)aURL
                         resume:(BOOL)aRESUME
-                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPREPARE
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aPARAMETERs
                        success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -53,7 +53,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
  */
 - (NSURLSessionDataTask *)PATCH:(NSString *)aURL
                          resume:(BOOL)aRESUME
-                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPREPARE
+                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                         headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                      parameters:(id)aPARAMETERs
                         success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -64,7 +64,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
  */
 - (NSURLSessionDataTask *)POST:(NSString *)URLString
                         resume:(BOOL)aRESUME
-                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPREPARE
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aPARAMETERs
               constructingBody:(void (^)(id <AFMultipartFormData> formData))aBlock
@@ -74,6 +74,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
 
 - (NSURLSessionDownloadTask *)DOWNLOAD:(NSString *)aURL
                                 resume:(BOOL)aRESUME
+                               prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                                headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                             parameters:(id)aPARAMETERs
                               progress:(void (^)(NSProgress *aDownloadProgress)) aDownloadProgress

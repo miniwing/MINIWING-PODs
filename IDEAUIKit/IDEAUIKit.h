@@ -46,6 +46,8 @@
 #import <IDEAUIKit/UISelectionFeedbackGenerator+Shortcut.h>
 #import <IDEAUIKit/UINotificationFeedbackGenerator+Shortcut.h>
 
+#import <IDEAUIKit/MBProgressHUD+Extend.h>
+
 #import <IDEAUIKit/UIGrowingTextView.h>
 
 #import <IDEAUIKit/UIViewX.h>

@@ -14,7 +14,7 @@
 
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)aMethod
                                        URLString:(NSString *)aURL
-                                         prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
+                                         prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                                          headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                                       parameters:(id)aParameters
                                   uploadProgress:(void (^)(NSProgress *uploadProgress)) aUploadProgress
@@ -33,6 +33,7 @@
       if (aFAILURE) {
          
          dispatch_async(self.completionQueue ?: dispatch_get_main_queue(), ^{
+            
             aFAILURE(nil, stError);
          });
          
@@ -44,7 +45,7 @@
    
    if (aPrepare) {
       
-      aPrepare(stRequest);
+      aPrepare(stRequest, self);
       
    } /* End if () */
 
@@ -83,7 +84,7 @@
 
 - (NSURLSessionDataTask *)GET:(NSString *)aURL
                        resume:(BOOL)aResume
-                      prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPrepare
+                      prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                       headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                    parameters:(nullable NSDictionary <NSString *, NSString *> *)aParams
                       success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -109,7 +110,7 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)aURL
                         resume:(BOOL)aResume
-                       prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aParameters
                        success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -136,7 +137,7 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)aURL
                         resume:(BOOL)aResume
-                       prepare:(void (^)(NSMutableURLRequest *aRequest))aPrepare
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aPARAMETERs
               constructingBody:(void (^)(id <AFMultipartFormData> aFormData))aBlock
@@ -145,13 +146,7 @@
                        failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE {
    
    __block NSError     *stError     = nil;
-   
-   if (aPrepare) {
       
-      aPrepare(self);
-      
-   } /* End if () */
-   
    NSMutableURLRequest *stRequest   = [self.requestSerializer multipartFormRequestWithMethod:@"POST"
                                                                                    URLString:[[NSURL URLWithString:aURL relativeToURL:self.baseURL] absoluteString]
                                                                                   parameters:aPARAMETERs
@@ -172,6 +167,12 @@
       
    } /*End for () */
    
+   if (aPrepare) {
+      
+      aPrepare(stRequest, self);
+      
+   } /* End if () */
+
    for (NSString *szHeaderField in aHeaders.keyEnumerator) {
       
       [stRequest setValue:aHeaders[szHeaderField] forHTTPHeaderField:szHeaderField];
@@ -210,21 +211,9 @@
    return stDataTask;
 }
 
-//- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(NSURLRequest *)request
-//                                             progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
-//                                          destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
-//                                    completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler
-//{
-//    NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithRequest:request];
-//
-//    [self addDelegateForDownloadTask:downloadTask progress:downloadProgressBlock destination:destination completionHandler:completionHandler];
-//
-//    return downloadTask;
-//}
-
 - (NSURLSessionDataTask *)PATCH:(NSString *)aURL
                          resume:(BOOL)aResume
-                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest))aPrepare
+                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                         headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                      parameters:(id)aParameters
                         success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
@@ -251,6 +240,7 @@
 
 - (NSURLSessionDownloadTask *)DOWNLOAD:(NSString *)aURL
                                 resume:(BOOL)aResume
+                               prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                                headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                             parameters:(id)aPARAMETERs
                               progress:(void (^)(NSProgress *aDownloadProgress)) aDownloadProgress
