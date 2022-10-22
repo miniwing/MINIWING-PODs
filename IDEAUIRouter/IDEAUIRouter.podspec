@@ -28,9 +28,13 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIRouter-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIRouter' }
 
+#  spec.pod_target_xcconfig          = {
+#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAUIRouter\" '
+#  }
+
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAUIRouter\" '
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAUIRouter\" ' ]
+                                      }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
 
@@ -642,8 +646,23 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-// #import "IDEAKit.h"
-// #import "IDEAUIKit.h"
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
+
+/******************************************************************************************************/
 
   EOS
   spec.prefix_header_contents = pch_app_kit

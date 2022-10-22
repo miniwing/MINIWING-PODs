@@ -39,8 +39,8 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes-watchOS' }
   spec.tvos.pod_target_xcconfig    = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
 
-  spec.pod_target_xcconfig         = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAPalettes\" '
+  spec.pod_target_xcconfig          = {
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAPalettes\" ' ]
   }
 
   spec.requires_arc    = true

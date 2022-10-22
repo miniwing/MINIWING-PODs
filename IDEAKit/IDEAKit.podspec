@@ -59,9 +59,13 @@ Pod::Spec.new do |spec|
                                             ]
                                       }
 
+#  spec.pod_target_xcconfig          = {
+#    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAKit\" ' ]
+#                                      }
+
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAKit\" ' ]
-                                      }
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAKit\" ' ]
+  }
 
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
     spec.dependency 'FoundationExtension'
@@ -191,6 +195,24 @@ Pod::Spec.new do |spec|
 #  import <MessageUI/MessageUI.h>
 #else /* __OBJC__ */
 #endif /* !__OBJC__ */
+
+/******************************************************************************************************/
+
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
 
 /******************************************************************************************************/
 

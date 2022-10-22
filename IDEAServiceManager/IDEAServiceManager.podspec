@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAServiceManager' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAServiceManager\" ', ' BUNDLE=\"IDEAServiceManager\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAServiceManager\" ' ]
                                       }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
@@ -641,6 +641,24 @@ __END_DECLS
 #define DEBUG_COLOR                                (__OFF__)
 #define DEBUG_NAVIGATION_BAR                       (__OFF__)
 #define DEBUG_TRANSITION                           (__OFF__)
+
+/******************************************************************************************************/
+
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
 
 /******************************************************************************************************/
 

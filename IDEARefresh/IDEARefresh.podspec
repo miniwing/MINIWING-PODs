@@ -27,8 +27,12 @@ Pod::Spec.new do |spec|
     spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARefresh-watchOS' }
     spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARefresh' }
 
+#    spec.pod_target_xcconfig          = {
+#      'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEARefresh\" '
+#    }
+
     spec.pod_target_xcconfig          = {
-      'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEARefresh\" '
+      'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEARefresh\" ', ' BUNDLE=\"IDEARefresh\" ' ]
     }
 
     spec.xcconfig   = {
@@ -517,6 +521,79 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
+
+/******************************************************************************************************/
+
+NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
+   
+   static NSBundle         *g_BUNDLE      = nil;
+   static dispatch_once_t   stOnceToken;
+   
+   dispatch_once(&stOnceToken, ^{
+      
+      NSBundle *stBundle   = [NSBundle bundleForClass:aClass];
+      NSString *szPath     = [stBundle pathForResource:@(BUNDLE) ofType:@"bundle"];
+      
+      g_BUNDLE = [NSBundle bundleWithPath:szPath];
+   });
+   
+   return g_BUNDLE;
+}
+
+NS_INLINE NSString * __LOCALIZED_STRING(Class aClass, NSString *aKey) {
+   
+   return NSLocalizedStringWithDefaultValue(aKey, nil, __BUNDLE_FROM(aClass), aKey, aKey);
+}
+
+NS_INLINE NSString * __FILE_IN_BUNDLE(NSString *aName, Class aClass) {
+    
+  return [__BUNDLE_FROM(aClass) pathForResource:aName ofType:@""];
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(NSString *aName, Class aClass) {
+   
+   return [UIImage imageNamed:aName inBundle:__BUNDLE_FROM(aClass) compatibleWithTraitCollection:nil];
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED_IN_FRAMEWORK(NSString *aName) {
+   
+   NSString *szPath     = [[NSBundle mainBundle] pathForResource:@(MODULE)
+                                                      ofType:@"framework"
+                                                 inDirectory:@"Frameworks"];
+   
+   NSBundle *stBundle   = [NSBundle bundleWithPath:szPath];
+   
+   return [UIImage imageNamed:aName inBundle:stBundle compatibleWithTraitCollection:nil];
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED(NSString *aName, Class aClass) {
+   
+   UIImage  *stImage    = __IMAGE_NAMED_IN_BUNDLE(aName, aClass);
+   
+   if (nil == stImage) {
+      
+      stImage  = __IMAGE_NAMED_IN_FRAMEWORK(aName);
+      
+   } /* End if () */
+   
+   return stImage;
+}
+
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
 
 /******************************************************************************************************/
 

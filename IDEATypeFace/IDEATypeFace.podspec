@@ -34,10 +34,13 @@ Pod::Spec.new do |spec|
                                            ]
                                       }
 
+#  spec.pod_target_xcconfig  = {
+#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEATypeFace\" '
+#  }
   
-  spec.pod_target_xcconfig  = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEATypeFace\" '
-  }
+  spec.pod_target_xcconfig          = {
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEATypeFace\" ' ]
+                                      }
 
 #  spec.dynamic_frameworks        = true
 #  spec.build_as_static_framework = true
@@ -569,8 +572,21 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-//#import <IDEAKit/IDEAKit.h>
-//#import <IDEAKit/IDEADebug.h>
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
 
 /******************************************************************************************************/
 

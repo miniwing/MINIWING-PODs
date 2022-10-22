@@ -28,8 +28,12 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAStartUp-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAStartUp' }
 
+#  spec.pod_target_xcconfig          = {
+#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAStartUp\" '
+#  }
+
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAStartUp\" '
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAStartUp\" ' ]
   }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
@@ -632,8 +636,21 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-//#import <IDEAKit/IDEAKit.h>
-//#import <IDEAKit/IDEADebug.h>
+NS_INLINE NSString * __APP_BUNDLE_NAME() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+}
+
+NS_INLINE NSString * __APP_BUNDLE_ID() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+NS_INLINE NSString * __APP_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+NS_INLINE NSString * __APP_BUILD_VERSION() {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
 
 /******************************************************************************************************/
 
