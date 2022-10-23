@@ -24,7 +24,7 @@
 
 #import <IDEAKit/IDEAUtils.h>
 #import <IDEAKit/IDEAIdentifier.h>
-
+#import <IDEAKit/IDEAFileUtils.h>
 #import <IDEAKit/UIApplication+Path.h>
 #import <IDEAKit/UIApplication+Extension.h>
 

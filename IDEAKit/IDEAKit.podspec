@@ -87,6 +87,8 @@ Pod::Spec.new do |spec|
     spec.dependency 'YYKit'
   end # IDEA_YYKIT
 
+  spec.dependency 'SSZipArchive'
+
   spec.public_header_files        = 'IDEAKit/**/*.{h}',
                                     'IDEAExtension/**/*.{h}',
                                     'IDEAFoundationExtension/**/*.{h}'
@@ -256,6 +258,16 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 #     define REGEX_KITLITE                                                 (1)
 #  else
 #     define REGEX_KITLITE                                                 (0)
+#  endif
+
+#  if __has_include(<SSZipArchive/SSZipArchive.h>)
+#     import <SSZipArchive/SSZipArchive.h>
+#     define SS_ZIP_ARCHIVE                                                (1)
+#  elif __has_include("SSZipArchive/SSZipArchive.h")
+#     import "SSZipArchive/SSZipArchive.h"
+#     define SS_ZIP_ARCHIVE                                                (1)
+#  else
+#     define SS_ZIP_ARCHIVE                                                (0)
 #  endif
 
 #endif /* __OBJC__ */

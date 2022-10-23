@@ -234,14 +234,11 @@ Pod::Spec.new do |spec|
 #  endif
 
 #  if __has_include(<IDEAFONT/IDEAFONT.h>)
-#     define IDEA_FONT                                                     (1)
 #     import <IDEAFONT/IDEAFONT.h>
+#     define IDEA_FONT                                                     (1)
 #  elif __has_include("IDEAFONT/IDEAFONT.h")
-#     define IDEA_FONT                                                     (1)
 #     import "IDEAFONT/IDEAFONT.h"
-#  elif __has_include("IDEAFONT.h")
 #     define IDEA_FONT                                                     (1)
-#     import "IDEAFONT.h"
 #  else
 #     define IDEA_FONT                                                     (0)
 #  endif
