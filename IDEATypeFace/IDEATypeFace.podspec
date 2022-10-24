@@ -34,12 +34,10 @@ Pod::Spec.new do |spec|
                                            ]
                                       }
 
-#  spec.pod_target_xcconfig  = {
-#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEATypeFace\" '
-#  }
-  
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEATypeFace\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                              ' MODULE=\"IDEATypeFace\" '
+                                            ]
                                       }
 
 #  spec.dynamic_frameworks        = true
@@ -565,10 +563,6 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
-
-/******************************************************************************************************/
-
-#define TRANSITION_ANIMATION_BOUNCE                (30)
 
 /******************************************************************************************************/
 

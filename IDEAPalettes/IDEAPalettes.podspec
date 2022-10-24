@@ -21,13 +21,13 @@ Pod::Spec.new do |spec|
 #  spec.platform      = :ios, '10.0'
 #  spec.platforms     = { :ios => "8.0", :osx => "10.7", :watchos => "2.0", :tvos => "9.0" }
 
-  spec.ios.deployment_target       = '10.0'
-  spec.watchos.deployment_target   = '4.3'
+  spec.ios.deployment_target        = '10.0'
+  spec.watchos.deployment_target    = '4.3'
 
-  spec.osx.deployment_target       = '10.10'
-  spec.tvos.deployment_target      = '10.0'
+  spec.osx.deployment_target        = '10.10'
+  spec.tvos.deployment_target       = '10.0'
 
-  spec.ios.pod_target_xcconfig     = {
+  spec.ios.pod_target_xcconfig      = {
                                     'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes',
                                     'ENABLE_BITCODE'            => 'NO',
                                     'SWIFT_VERSION'             => '5.0',
@@ -35,13 +35,15 @@ Pod::Spec.new do |spec|
                                     'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                     'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
                                   }
-  spec.osx.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
-  spec.watchos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes-watchOS' }
-  spec.tvos.pod_target_xcconfig    = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
+  spec.osx.pod_target_xcconfig      = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
+  spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes-watchOS' }
+  spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPalettes' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAPalettes\" ' ]
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [
+                                          ' MODULE=\"IDEAPalettes\" '
+                                        ]
+                                    }
 
   spec.requires_arc    = true
 

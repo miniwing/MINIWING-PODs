@@ -29,7 +29,9 @@ Pod::Spec.new do |spec|
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAServiceManager' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAServiceManager\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                              ' MODULE=\"IDEAServiceManager\" '
+                                           ]
                                       }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
@@ -629,10 +631,6 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
-
-/******************************************************************************************************/
-
-#define TRANSITION_ANIMATION_BOUNCE                (30)
 
 /******************************************************************************************************/
 

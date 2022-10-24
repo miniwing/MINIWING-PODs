@@ -45,7 +45,7 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
                       preferredStyle:(UIAlertControllerStyle)aPreferredStyle
                    cancelButtonTitle:(NSString *)aCancelButtonTitle
               destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                   otherButtonTitles:(NSArray *)aOtherButtonTitles
+                   otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
 #if TARGET_OS_IOS
   popoverPresentationControllerBlock:(UIAlertControllerPopoverPresentationControllerBlock)aPopoverPresentationControllerBlock
 #endif
@@ -57,7 +57,7 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
                                   message:(NSString *)aMessage
                         cancelButtonTitle:(NSString *)aCancelButtonTitle
                    destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                        otherButtonTitles:(NSArray *)aOtherButtonTitles
+                        otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
                                  tapBlock:(UIAlertControllerCompletionBlock)aTapBlock;
 
 
@@ -67,7 +67,7 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
                                         message:(NSString *)aMessage
                               cancelButtonTitle:(NSString *)aCancelButtonTitle
                          destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                              otherButtonTitles:(NSArray  *)aOtherButtonTitles
+                              otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
 #if TARGET_OS_IOS
              popoverPresentationControllerBlock:(UIAlertControllerPopoverPresentationControllerBlock)aPopoverPresentationControllerBlock
 #endif

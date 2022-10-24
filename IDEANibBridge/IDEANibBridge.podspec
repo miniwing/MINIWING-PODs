@@ -26,13 +26,11 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEANibBridge-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEANibBridge' }
 
-#  spec.pod_target_xcconfig          = {
-#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEANibBridge\" '
-#  }
-
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEANibBridge\" ' ]
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [
+                                          ' MODULE=\"IDEANibBridge\" '
+                                        ]
+                                      }
 
 #  spec.requires_arc   = true
 #  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']

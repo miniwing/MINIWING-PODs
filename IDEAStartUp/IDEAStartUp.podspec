@@ -28,13 +28,11 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAStartUp-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAStartUp' }
 
-#  spec.pod_target_xcconfig          = {
-#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAStartUp\" '
-#  }
-
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAStartUp\" ' ]
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [
+                                          ' MODULE=\"IDEAStartUp\" '
+                                        ]
+                                      }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
 
@@ -629,10 +627,6 @@ __END_DECLS
 /******************************************************************************************************/
 
 #define __AVAILABLE_SDK_IOS(_ios)                  ((__IPHONE_##_ios != 0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_##_ios))
-
-/******************************************************************************************************/
-
-#define TRANSITION_ANIMATION_BOUNCE                (30)
 
 /******************************************************************************************************/
 

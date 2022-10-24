@@ -50,7 +50,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                       preferredStyle:(UIAlertControllerStyle)aPreferredStyle
                    cancelButtonTitle:(NSString *)aCancelButtonTitle
               destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                   otherButtonTitles:(NSArray *)aOtherButtonTitles
+                   otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
 #if TARGET_OS_IOS
   popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *aPopover))aPopoverPresentationControllerBlock
 #endif
@@ -62,7 +62,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    __weak UIAlertController   *stAlertController   = stStrongController;
    
-   if (aCancelButtonTitle) {
+   if (aCancelButtonTitle && 0 < aCancelButtonTitle.length) {
       
       UIAlertAction  *stCancelAction   = [UIAlertAction actionWithTitle:aCancelButtonTitle
                                                                   style:UIAlertActionStyleCancel
@@ -75,6 +75,12 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
       }];
       
       [stAlertController addAction:stCancelAction];
+      
+//      LogDebug((@" : %@", [UIAlertController getAllProperty:stAlertController]));
+//      LogDebug((@" : %@", [UIAlertController getAllProperty:stCancelAction]));
+//      LogDebug((@" : %@", [UIAlertController getAllProperty:[[NSClassFromString(@"_UIAlertControllerActionView") alloc] init]]));
+//      [stCancelAction setValue:[UIColor colorWithHexString:@"#3FBE8C"] forKey:@"_titleTextColor"];
+//      [stCancelAction setValue:[UIFont systemFontOfSize:14 weight:UIFontWeightLight] forKey:@"_font"];
       
    } /* End if () */
    
@@ -138,7 +144,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                   message:(NSString *)aMessage
                         cancelButtonTitle:(NSString *)aCancelButtonTitle
                    destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                        otherButtonTitles:(NSArray *)aOtherButtonTitles
+                        otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
                                  tapBlock:(UIAlertControllerCompletionBlock)aTapBlock {
    
    return [self showInViewController:aViewController
@@ -161,7 +167,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                         message:(NSString *)aMessage
                               cancelButtonTitle:(NSString *)aCancelButtonTitle
                          destructiveButtonTitle:(NSString *)aDestructiveButtonTitle
-                              otherButtonTitles:(NSArray *)aOtherButtonTitles
+                              otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
 #if TARGET_OS_IOS
              popoverPresentationControllerBlock:(void(^)(UIPopoverPresentationController *aPopover))aPopoverPresentationControllerBlock
 #endif

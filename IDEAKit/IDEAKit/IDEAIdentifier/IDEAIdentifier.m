@@ -22,7 +22,7 @@
 //      g_IDENTIFIER         = [NSString stringWithUTF8String:APP_BUNDLE_IDENTIFIER];
 //   });
    
-   return APP_BUNDLE_IDENTIFIER;
+   return @(APP_BUNDLE_IDENTIFIER);
 }
 
 + (NSString *)identifierGroup {
@@ -34,7 +34,7 @@
 //      g_IDENTIFIER_GROUP   = [NSString stringWithUTF8String:APP_BUNDLE_IDENTIFIER_GROUP];
 //   });
 
-   return APP_BUNDLE_IDENTIFIER_GROUP;
+   return @(APP_BUNDLE_IDENTIFIER_GROUP);
 }
 
 + (NSString *)identifierWidget {
@@ -46,7 +46,7 @@
 //      g_IDENTIFIER_WIDGET  = [NSString stringWithUTF8String:APP_BUNDLE_IDENTIFIER_WIDGET];
 //   });
 
-   return APP_BUNDLE_IDENTIFIER_WIDGET;
+   return @(APP_BUNDLE_IDENTIFIER_WIDGET);
 }
 
 + (NSString *)scheme {
@@ -58,12 +58,12 @@
 //      g_SCHEME             = [NSString stringWithUTF8String:APP_SCHEME];
 //   });
 
-   return APP_SCHEME;
+   return @(APP_SCHEME);
 }
 
 + (NSString *)schemePrefix {
    
-   NSURL *stURL   = [NSURL URLWithString:APP_SCHEME];
+   NSURL *stURL   = [NSURL URLWithString:[IDEAIdentifier scheme]];
    
    return stURL.scheme;
 }
@@ -74,6 +74,7 @@
    static   dispatch_once_t stOnceToken;
    
    dispatch_once(&stOnceToken, ^{
+      
       g_APP_URL   = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld", APP_ID];
    });
    

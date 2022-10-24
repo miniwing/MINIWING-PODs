@@ -28,12 +28,11 @@ Pod::Spec.new do |spec|
   spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEANightVersion-watchOS' }
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEANightVersion' }
 
-#  spec.pod_target_xcconfig          = {
-#    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEANightVersion\" '
-#  }
-
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEANightVersion\" ', ' BUNDLE=\"IDEANightVersion\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                              ' MODULE=\"IDEANightVersion\" ',
+                                              ' BUNDLE=\"IDEANightVersion\" '
+                                            ]
                                       }
 
   spec.frameworks                   = ['Foundation', 'UIKit']

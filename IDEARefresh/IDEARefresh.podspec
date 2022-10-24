@@ -27,13 +27,12 @@ Pod::Spec.new do |spec|
     spec.watchos.pod_target_xcconfig  = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARefresh-watchOS' }
     spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARefresh' }
 
-#    spec.pod_target_xcconfig          = {
-#      'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEARefresh\" '
-#    }
-
     spec.pod_target_xcconfig          = {
-      'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEARefresh\" ', ' BUNDLE=\"IDEARefresh\" ' ]
-    }
+      'GCC_PREPROCESSOR_DEFINITIONS'  => [
+                                            ' MODULE=\"IDEARefresh\" ',
+                                            ' BUNDLE=\"IDEARefresh\" '
+                                          ]
+                                        }
 
     spec.xcconfig   = {
       'HEADER_SEARCH_PATHS'   => [

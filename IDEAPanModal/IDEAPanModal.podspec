@@ -45,8 +45,11 @@ Pod::Spec.new do |spec|
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAPanModal' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => [ ' MODULE=\"IDEAPanModal\" ', ' BUNDLE=\"IDEAPanModal\" ' ]
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'  => [
+                                          ' MODULE=\"IDEAPanModal\" ',
+                                          ' BUNDLE=\"IDEAPanModal\" '
+                                        ]
+                                      }
 
   spec.source_files         = ['IDEAPanModal/**/*']
   spec.public_header_files  = ['IDEAPanModal/**/*.h']

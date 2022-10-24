@@ -78,7 +78,9 @@ Pod::Spec.new do |spec|
 #  end # IDEA_MATERIAL_COMPONENTS
 
   spec.pod_target_xcconfig          = {
-                                        'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAUIVendor\" '
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                              ' MODULE=\"IDEAUIVendor\" '
+                                           ]
                                       }
 
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'

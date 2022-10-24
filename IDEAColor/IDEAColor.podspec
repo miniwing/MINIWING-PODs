@@ -42,7 +42,9 @@ Pod::Spec.new do |spec|
                                       }
   
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [ ' MODULE=\"IDEAColor\" ', ' BUNDLE=\"IDEAColor\" ' ]
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                              ' MODULE=\"IDEAColor\" ',
+                                              ' BUNDLE=\"IDEAColor\" ' ]
                                       }
 
 #  spec.dependency 'FoundationExtension'
