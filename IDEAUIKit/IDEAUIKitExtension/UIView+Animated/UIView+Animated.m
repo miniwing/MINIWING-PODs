@@ -11,17 +11,15 @@
 
 #if (__has_include(<UIKitExtension/UIKitExtension.h>))
 #  import <UIKitExtension/UIKitExtension.h>
-extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
+FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 #elif (__has_include("UIKitExtension/UIKitExtension.h"))
-extern const NSTimeInterval UIAViewAnimationDefaultDuraton;
+#  import "UIKitExtension/UIKitExtension.h"
+FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 #else
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 #endif
 
-//const NSTimeInterval UIViewAnimationDefaultDuraton(void) {
-//   
-//   return __UIViewAnimationDefaultDuraton;
-//}
+//const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 
 @implementation UIView (Animated)
 

@@ -126,8 +126,9 @@ Pod::Spec.new do |spec|
   
 #  spec.vendored_libraries     = 'libXG-SDK.a'
 #  spec.vendored_frameworks    = 'libXG-SDK.a'
+#  spec.vendored_libraries  = 'UIKitExtension.framework'
 
-   pch_app_kit = <<-EOS
+  pch_app_kit = <<-EOS
    
 /******************************************************************************************************/
 
