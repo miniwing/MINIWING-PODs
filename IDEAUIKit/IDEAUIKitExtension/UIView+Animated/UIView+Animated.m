@@ -10,16 +10,10 @@
 #import "IDEAUIKit/UIView+Animated.h"
 
 #if (__has_include(<UIKitExtension/UIKitExtension.h>))
-#  import <UIKitExtension/UIKitExtension.h>
-FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 #elif (__has_include("UIKitExtension/UIKitExtension.h"))
-#  import "UIKitExtension/UIKitExtension.h"
-FOUNDATION_EXTERN const NSTimeInterval UIAViewAnimationDefaultDuraton;
 #else
 const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 #endif
-
-//const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
 
 @implementation UIView (Animated)
 
@@ -45,7 +39,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:UIAViewAnimationDefaultDuraton
+   [[self class] animateWithDuration:[UIView animationDefaultDuraton]
                           animations:^(void) {
       self.alpha = endAlpha;
    }
@@ -115,7 +109,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:UIAViewAnimationDefaultDuraton
+   [[self class] animateWithDuration:[UIView animationDefaultDuraton]
                           animations:^(void) {
       self.alpha = endAlpha;
    }

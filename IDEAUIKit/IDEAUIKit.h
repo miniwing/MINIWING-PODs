@@ -57,5 +57,6 @@
 #import <IDEAUIKit/UITextViewX.h>
 #import <IDEAUIKit/UITableViewCellX.h>
 #import <IDEAUIKit/UIImageViewX.h>
+#import <IDEAUIKit/MKAnnotationViewX.h>
 
 #endif /* IDEAUIKit_H */
