@@ -14,9 +14,9 @@
 
 //#define kTransitionDuration 0.8
 
-//#define kTransitionDuration               0.25 /* UIAViewAnimationDefaultDuraton */
+//#define kTransitionDuration               0.25 /* UIAViewAnimationDefaultDuration */
 
-#define kTransitionDuration               [UIView animationDefaultDuraton]
+#define kTransitionDuration               [UIView animationDefaultDuration]
 
 NSString *getCATransitionTypeStringWithCATransitionType(UICATransitionType type) {
    switch (type) {

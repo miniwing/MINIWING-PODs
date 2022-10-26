@@ -12,7 +12,7 @@
 #if (__has_include(<UIKitExtension/UIKitExtension.h>))
 #elif (__has_include("UIKitExtension/UIKitExtension.h"))
 #else
-const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
+const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
 #endif
 
 @implementation UIView (Animated)
@@ -39,7 +39,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:[UIView animationDefaultDuraton]
+   [[self class] animateWithDuration:[UIView animationDefaultDuration]
                           animations:^(void) {
       self.alpha = endAlpha;
    }
@@ -109,7 +109,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuraton = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:[UIView animationDefaultDuraton]
+   [[self class] animateWithDuration:[UIView animationDefaultDuration]
                           animations:^(void) {
       self.alpha = endAlpha;
    }

@@ -24,11 +24,13 @@
       
    [super night_updateColor:aNotification];
    
+#if __Debug__
    if ([@"ChatKeyboard" isEqualToString:self.className]) {
       
       LogDebug((@"-[IDEAView night_updateColor:] : %@", self));
       
    } /* End if () */
+#endif /* __Debug__ */
    
    if ([self respondsToSelector:@selector(onThemeUpdate:)]) {
       

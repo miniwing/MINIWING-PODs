@@ -15,11 +15,11 @@ NSString *  const DKThemeVersionNight                       = @"NIGHT";
 
 //#if __has_include(<UIKitExtension/UIKitExtension.h>)
 //#  import <UIKitExtension/UIKitExtension.h>
-//CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuraton;
+//CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuration;
 ////CGFloat     const DKNightVersionAnimationDuration           = 3.0f;
 //#elif __has_include("UIKitExtension/UIKitExtension.h")
 //#  import "UIKitExtension/UIKitExtension.h"
-//CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuraton;
+//CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuration;
 //#else
 ////CGFloat     const DKNightVersionAnimationDuration           = 0.3f;
 //#endif
@@ -140,13 +140,17 @@ NSString *           const DKNightVersionCurrentThemeVersionKey      = @"com.ide
    [[NSUserDefaults standardUserDefaults] setValue:aThemeVersion forKey:DKNightVersionCurrentThemeVersionKey];
    [[NSUserDefaults standardUserDefaults] synchronize];
    
-   __DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
+//   __DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
+//
+//      [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionThemeChangingNotification
+//                                                          object:nil
+//                                                        userInfo:@{DKNightVersionThemeChangingNotification:aThemeVersion}];
+//   });
 
-      [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionThemeChangingNotification
-                                                          object:nil
-                                                        userInfo:@{DKNightVersionThemeChangingNotification:aThemeVersion}];
-   });
-   
+   [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionThemeChangingNotification
+                                                       object:nil
+                                                     userInfo:@{DKNightVersionThemeChangingNotification:aThemeVersion}];
+
    if (self.shouldChangeStatusBar) {
       
 #pragma clang diagnostic push

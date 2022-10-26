@@ -14,6 +14,9 @@
 
 //#import <IDEAUIVendor/IDEASegmentedControl.h>
 
+#import <IDEAUIVendor/IDEAView.h>
+#import <IDEAUIVendor/SearchBarX.h>
+
 #import <IDEAUIVendor/IDEAAlertController.h>
 
 #import <IDEAUIVendor/IDEAViewController.h>
@@ -27,8 +30,6 @@
 
 #import <IDEAUIVendor/IDEAPresentationController.h>
 #import <IDEAUIVendor/IDEAPageViewController.h>
-
-#import <IDEAUIVendor/IDEAView.h>
 
 //#import <IDEAUIVendor/IDEATabBarController.h>
 //#import <IDEAUIVendor/IDEATableViewController.h>

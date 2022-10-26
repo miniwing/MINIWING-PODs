@@ -60,7 +60,8 @@
 
 + (id)instantiateFromNib {
    
-   return [self instantiateFromNibInBundle:nil owner:nil];
+   return [self instantiateFromNibInBundle:[NSBundle bundleForClass:NSClassFromString(self.nibID)]
+                                     owner:nil];
 }
 
 + (id)instantiateFromNibInBundle:(NSBundle *)bundle owner:(id)owner {

@@ -52,13 +52,30 @@
    });
 }
 
-- (id)hackedAwakeAfterUsingCoder:(NSCoder *)decoder {
+- (id)hackedAwakeAfterUsingCoder:(NSCoder *)aDecoder {
+   
+   self = [super awakeAfterUsingCoder:aDecoder];
    
    if ([self.class conformsToProtocol:@protocol(IDEANibBridge)] && ((UIView *)self).subviews.count == 0) {
       
-      // "self" is placeholder view for this moment, replace it.
-      return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
-   }
+      if ([self respondsToSelector:@selector(shouldApplyNibBridge)]) {
+         
+         if ([(id<IDEANibBridge>)self shouldApplyNibBridge]) {
+            
+            // "self" is placeholder view for this moment, replace it.
+            return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
+
+         } /* End if () */
+         
+      } /* End if () */
+      else {
+         
+         // "self" is placeholder view for this moment, replace it.
+         return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
+         
+      } /* End else */
+            
+   } /* End if () */
    
    return self;
 }

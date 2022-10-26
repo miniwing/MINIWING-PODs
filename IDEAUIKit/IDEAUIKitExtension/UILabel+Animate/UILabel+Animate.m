@@ -14,7 +14,7 @@
 - (void)setText:(NSString *)aText animated:(BOOL)aAnimated completion:(void (^ __nullable)(void))aCompletion {
    
    [UIView transitionWithView:self
-                     duration:[UIView animationDefaultDuraton]
+                     duration:[UIView animationDefaultDuration]
                       options:UIViewAnimationOptionTransitionCrossDissolve
                    animations:^{
       [self setText:aText];

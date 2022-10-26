@@ -595,10 +595,6 @@ __END_DECLS
 
 /******************************************************************************************************/
 
-#define TRANSITION_ANIMATION_BOUNCE                (30)
-
-/******************************************************************************************************/
-
 NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
    
    static NSBundle         *g_BUNDLE      = nil;
@@ -618,6 +614,11 @@ NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
 NS_INLINE NSString * __LOCALIZED_STRING(Class aClass, NSString *aKey) {
    
    return NSLocalizedStringWithDefaultValue(aKey, nil, __BUNDLE_FROM(aClass), aKey, aKey);
+}
+
+NS_INLINE NSString * __FILE_IN_BUNDLE(NSString *aName, Class aClass) {
+    
+  return [__BUNDLE_FROM(aClass) pathForResource:aName ofType:@""];
 }
 
 NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(NSString *aName, Class aClass) {

@@ -30,4 +30,8 @@
 /// @end
 ///
 @protocol IDEANibBridge <IDEANibConvention>
+
+@optional
+- (BOOL)shouldApplyNibBridge;
+
 @end

@@ -14,19 +14,4 @@
 #pragma mark - UITheme
 @implementation SearchBarX (Theme)
 
-// #if DK_NIGHT_VERSION
-// #endif /* DK_NIGHT_VERSION */
-- (void)onThemeUpdate:(NSNotification *)aNotification {
-   
-   int                            nErr                                     = EFAULT;
-   
-   __TRY;
-   
-   LogDebug((@"-[SearchBarX onThemeUpdate:] : Notification : %@", aNotification));
-
-   __CATCH(nErr);
-
-   return;
-}
-
 @end
