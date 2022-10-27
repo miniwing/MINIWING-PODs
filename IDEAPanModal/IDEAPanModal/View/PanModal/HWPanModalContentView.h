@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)presentInView:(nullable UIView *)view;
 
+- (void)presentInView:(nullable UIView *)view animated:(BOOL)aAnimated;
+
 /**
  * call this method to dismiss contentView directly.
  * @param flag should animate flag

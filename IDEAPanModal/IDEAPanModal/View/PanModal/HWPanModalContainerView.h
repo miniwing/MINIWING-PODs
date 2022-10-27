@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithPresentingView:(UIView *)presentingView contentView:(HWPanModalContentView<HWPanModalPresentable> *)contentView;
 
 - (void)show;
+- (void)show:(BOOL)aAnimated;
 
 - (void)dismissAnimated:(BOOL)flag completion:(void (^)(void))completion;
 

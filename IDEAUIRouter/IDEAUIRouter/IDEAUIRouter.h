@@ -46,6 +46,8 @@ typedef void (^IDEAUIRouterHandler)(NSString *aURL, NSDictionary *aRouterParamet
  */
 + (void)openURL:(NSString *)URL completion:(IDEAUIRouterCompletion)completion;
 
++ (void)queryURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion;
+
 /**
  *  打开此 URL，带上附加信息，同时当操作完成时，执行额外的代码
  *

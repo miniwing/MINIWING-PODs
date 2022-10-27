@@ -521,3 +521,74 @@
 }
 
 @end
+
+@implementation HWPanModalContainerView (Animated)
+
+- (void)show:(BOOL)aAnimated {
+   [self prepare];
+   [self presentAnimationWillBegin];
+   [self beginPresentAnimation:aAnimated];
+}
+
+- (void)beginPresentAnimation:(BOOL)aAnimated {
+   self.isPresenting = YES;
+   CGFloat yPos = self.contentView.shortFormYPos;
+   if ([[self presentable] originPresentationState] == PresentationStateLong) {
+      yPos = self.contentView.longFormYPos;
+   } else if ([[self presentable] originPresentationState] == PresentationStateMedium) {
+      yPos = self.contentView.mediumFormYPos;
+   }
+   
+   // refresh layout
+   [self configureViewLayout];
+   [self adjustPresentedViewFrame];
+   
+   self.panContainerView.hw_top = self.hw_height;
+   
+   if ([[self presentable] isHapticFeedbackEnabled]) {
+      if (@available(iOS 10.0, *)) {
+         [self.feedbackGenerator selectionChanged];
+      }
+   }
+   
+   if (aAnimated) {
+      
+      [HWPanModalAnimator animate:^{
+         self.panContainerView.hw_top = yPos;
+         self.backgroundView.dimState = DimStateMax;
+      }
+                           config:[self presentable]
+                       completion:^(BOOL completion) {
+         self.isPresenting = NO;
+         [[self presentable] panModalTransitionDidFinish];
+         
+         if (@available(iOS 10.0, *)) {
+            self.feedbackGenerator = nil;
+         }
+      }];
+
+   } /* End if () */
+   else {
+      
+      self.panContainerView.hw_top = yPos;
+      self.backgroundView.dimState = DimStateMax;
+      
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+
+         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.isPresenting = NO;
+            [[self presentable] panModalTransitionDidFinish];
+            
+            if (@available(iOS 10.0, *)) {
+               self.feedbackGenerator = nil;
+            }
+         });
+      });
+      
+   } /* End else */
+
+   return;
+}
+
+@end

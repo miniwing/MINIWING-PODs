@@ -26,6 +26,14 @@
     [containerView show];
 }
 
+- (void)presentInView:(nullable UIView *)view animated:(BOOL)aAnimated {
+   if (!view) {
+       view = [UIApplication sharedApplication].keyWindow;
+   }
+   HWPanModalContainerView *containerView = [[HWPanModalContainerView alloc] initWithPresentingView:view contentView:self];
+   [containerView show:aAnimated];
+}
+
 - (void)dismissAnimated:(BOOL)flag completion:(void (^)(void))completion {
     [self.containerView dismissAnimated:flag completion:completion];
 }

@@ -44,12 +44,23 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
    return;
 }
 
+/**
+ *  打开此 URL
+ *  会在已注册的 URL -> Handler 中寻找，如果找到，则执行 Handler
+ *
+ *  @param URL 带 Scheme，如 mgj://beauty/3
+ */
 + (void)openURL:(NSString *)aURL {
    
    [self openURL:aURL completion:nil];
 }
 
 + (void)openURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion {
+   
+   [self openURL:aURL withUserInfo:nil completion:aCompletion];
+}
+
++ (void)queryURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion {
    
    [self openURL:aURL withUserInfo:nil completion:aCompletion];
 }
