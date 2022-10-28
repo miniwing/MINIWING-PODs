@@ -7,7 +7,8 @@
 
 typedef NS_ENUM(NSUInteger, HWIndicatorState) {
     HWIndicatorStateNormal NS_SWIFT_NAME(normal),     // origin state
-    HWIndicatorStatePullDown NS_SWIFT_NAME(pull),   // drag down state
+    HWIndicatorStatePullDown NS_SWIFT_NAME(pullDown), // drag down state
+    HWIndicatorStatePullUp NS_SWIFT_NAME(pullUp),     // drag up state
 };
 
 static CGFloat const kIndicatorYOffset = 5;
