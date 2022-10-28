@@ -42,6 +42,7 @@ static __attribute__((destructor)) void __destructor() {
 
 @implementation IDEAServiceManager
 
+#if 0
 + (void)install {
    
    __init();
@@ -49,12 +50,12 @@ static __attribute__((destructor)) void __destructor() {
    return;
 }
 
-//+ (void)load {
-//   
-//   __init();
-//
-//   return;
-//}
++ (void)load {
+   
+   __init();
+
+   return;
+}
 
 static dispatch_once_t onceToken;
 
@@ -82,24 +83,6 @@ NS_INLINE void __init() {
    
    return;
 }
-
-//NS_INLINE void __init() {
-//   
-//   LogDebug((@"IDEAServiceManager::__init"));
-//
-//   @synchronized (IDEAServiceManager.class) {
-//      
-//      static dispatch_once_t onceToken;
-//
-//      dispatch_once(&onceToken, ^(void) {
-//         
-//         _dyld_register_func_for_add_image(__dyld_callback);
-//      });
-//
-//   } /* synchronized */
-//
-//   return;
-//}
 
 NS_INLINE void __dyld_callback(const struct mach_header *mhp, intptr_t vmaddr_slide) {
    
@@ -141,10 +124,10 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    NSMutableArray *st_services   = [NSMutableArray array];
    unsigned long   ul_size       = 0;
 #ifndef __LP64__
-   uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp, SEG_DATA, section_name, &ul_size);
+   uintptr_t      *pst_memory    = (uintptr_t*)getsectiondata(mhp, SEG_DATA, section_name, &ul_size);
 #else
    const struct mach_header_64 *mhp64  = (const struct mach_header_64 *)mhp;
-   uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp64, SEG_DATA, section_name, &ul_size);
+   uintptr_t      *pst_memory    = (uintptr_t*)getsectiondata(mhp64, SEG_DATA, section_name, &ul_size);
 #endif
    
    unsigned long ul_counter = ul_size / sizeof(void *);
@@ -165,6 +148,7 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    
    return st_services;
 }
+#endif
 
 + (instancetype)sharedManager {
    
@@ -195,13 +179,7 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
 - (void)safeCall:(void(^)(void))aBlock {
    
    if (NULL != aBlock) {
-      
-//      @synchronized (self) {
-//
-//         aBlock();
-//
-//      } /* synchronized */
-      
+            
       dispatch_semaphore_wait(_lock, dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC));
       aBlock();
       dispatch_semaphore_signal(_lock);
@@ -249,6 +227,11 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    __CATCH(nErr);
    
    return bOK;
+}
+
++ (BOOL)registerService:(Protocol *)aService implClass:(Class)aClass {
+   
+      return [[IDEAServiceManager sharedManager] registerService:aService implClass:aClass];
 }
 
 - (id)createService:(Protocol *)aService {

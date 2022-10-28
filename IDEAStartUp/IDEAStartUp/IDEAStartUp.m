@@ -16,6 +16,11 @@
 
 #import "IDEAStartUp.h"
 
+@implementation IDEAStartUp
+
+@end
+
+#if 0
 static __attribute__((constructor)) void __constructor() {
    
    LogDebug((@"IDEAStartUp::__constructor"));
@@ -39,12 +44,12 @@ static __attribute__((destructor)) void __destructor() {
    return;
 }
 
-//+ (void)load {
-//   
-////   __init();
-//
-//   return;
-//}
++ (void)load {
+   
+//   __init();
+
+   return;
+}
 
 //static dispatch_once_t   onceToken;
 //static IDEAStartUp      *g_INSTANCE = nil;
@@ -170,3 +175,4 @@ NS_INLINE void __dyld_callback_ex(const struct mach_header *_mach_header, intptr
 }
 
 @end
+#endif

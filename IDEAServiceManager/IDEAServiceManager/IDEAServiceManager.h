@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define __SERVICE_SECTION_NAME               "__SERVICE"
-#define __SECTION_DATA(sectname)             __attribute((used, section("__DATA," #sectname)))
+#define __SERVICE_SECTION_NAME                  "__SERVICE"
+#define __SECTION_DATA(sectname)                __attribute((used, section("__DATA," #sectname)))
 
-#define __EXPORT_SERVICE(servicename, impl)  char * k_##servicename##_service __SECTION_DATA(__SERVICE) = "{ \""#servicename"\" : \""#impl"\"}";
+#define __EXPORT_SERVICE(servicename, impl)     char * k_##servicename##_service __SECTION_DATA(__SERVICE) = "{ \""#servicename"\" : \""#impl"\"}";
 
 @interface IDEAServiceManager : NSObject
 
 + (id)createService:(Protocol *)service;
++ (BOOL)registerService:(Protocol *)aService implClass:(Class)aClass;
 
 @end
 
@@ -29,3 +30,4 @@
 
 
 #define SERVICE(service)                        ((id<service>)[IDEAServiceManager createService:@protocol(service)])
+//#define SERVICE(service)                        ((id<service>)[IDEAServiceManager performSelector:@selector(createService:) withObject:@protocol(service)])

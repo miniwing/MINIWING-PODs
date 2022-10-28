@@ -30,8 +30,6 @@ typedef struct __StartUp {
 
 @interface IDEAStartUp : NSObject
 
-+ (void)startUp;
-
 @end
 
 NS_ASSUME_NONNULL_END
