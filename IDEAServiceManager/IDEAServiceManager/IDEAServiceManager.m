@@ -16,6 +16,20 @@
 
 #import "IDEAServiceManager.h"
 
+static __attribute__((constructor)) void __constructor() {
+   
+   LogDebug((@"IDEAServiceManager::__constructor"));
+   
+   return;
+}
+
+static __attribute__((destructor)) void __destructor() {
+
+   LogDebug((@"IDEAServiceManager::__destructor"));
+
+   return;
+}
+
 @interface IDEAServiceManager() {
    
    dispatch_semaphore_t _lock;
@@ -35,29 +49,57 @@
    return;
 }
 
-+ (void)load {
-   
-   __init();
+//+ (void)load {
+//   
+//   __init();
+//
+//   return;
+//}
 
-   return;
-}
+static dispatch_once_t onceToken;
 
 NS_INLINE void __init() {
    
-   @synchronized (IDEAServiceManager.class) {
+   LogDebug((@"IDEAServiceManager::__init"));
+
+   @try {
       
-      static dispatch_once_t onceToken;
-
-      dispatch_once(&onceToken, ^(void) {
+      @synchronized (IDEAServiceManager.class) {
          
-         _dyld_register_func_for_add_image(__dyld_callback);
-      });
+         dispatch_once(&onceToken, ^(void) {
+            
+            _dyld_register_func_for_add_image(__dyld_callback);
+         });
 
-   } /* synchronized */
+      } /* synchronized */
 
+   } /* End try */
+   @catch (NSException *_Exception) {
+      
+      LogDebug((@"IDEAServiceManager::__init : NSException : %@", _Exception));
 
+   } /* End catch (NSException) */
+   
    return;
 }
+
+//NS_INLINE void __init() {
+//   
+//   LogDebug((@"IDEAServiceManager::__init"));
+//
+//   @synchronized (IDEAServiceManager.class) {
+//      
+//      static dispatch_once_t onceToken;
+//
+//      dispatch_once(&onceToken, ^(void) {
+//         
+//         _dyld_register_func_for_add_image(__dyld_callback);
+//      });
+//
+//   } /* synchronized */
+//
+//   return;
+//}
 
 NS_INLINE void __dyld_callback(const struct mach_header *mhp, intptr_t vmaddr_slide) {
    
@@ -105,7 +147,7 @@ NS_INLINE NSArray<NSString *> * __services_from_seg_data(char *section_name,cons
    uintptr_t      *pst_memory = (uintptr_t*)getsectiondata(mhp64, SEG_DATA, section_name, &ul_size);
 #endif
    
-   unsigned long ul_counter = ul_size/sizeof(void*);
+   unsigned long ul_counter = ul_size / sizeof(void *);
    
    for (int H = 0; H < ul_counter; ++H) {
       
