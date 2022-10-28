@@ -1,24 +1,12 @@
 //
-//  IDEADisposeBag.m
-//  IDEAEventBus
+//  IDEAStartUp.m
+//  IDEAStartUp
 //
 //  Created by Harry on 2017/8/2.
 //  Copyright © 2017 Harry. All rights reserved.
 //
 
-#include <mach-o/getsect.h>
-#include <mach-o/loader.h>
-#include <mach-o/dyld.h>
-#include <dlfcn.h>
-#include <objc/runtime.h>
-#include <objc/message.h>
-#include <mach-o/ldsyms.h>
-
 #import "IDEAStartUp.h"
-
-@implementation IDEAStartUp
-
-@end
 
 #if 0
 static __attribute__((constructor)) void __constructor() {
