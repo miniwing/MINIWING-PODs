@@ -31,9 +31,9 @@
 
 - (instancetype)initWithLatitude:(CLLocationDegrees)aLatitude longitude:(CLLocationDegrees)aLongitude {
 
-   int                            nErr                                     = EFAULT;
-   
-   __TRY;
+//   int                            nErr                                     = EFAULT;
+//
+//   __TRY;
    
    self  = [super init];
    
@@ -44,7 +44,7 @@
 
    } /* End if () */
    
-   __CATCH(nErr);
+//   __CATCH(nErr);
    
    return self;
 }

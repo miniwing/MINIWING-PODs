@@ -61,6 +61,11 @@
    return @(APP_SCHEME);
 }
 
++ (NSString *)appId {
+   
+   return @(APP_ID);
+}
+
 + (NSString *)schemePrefix {
    
    NSURL *stURL   = [NSURL URLWithString:[IDEAIdentifier scheme]];

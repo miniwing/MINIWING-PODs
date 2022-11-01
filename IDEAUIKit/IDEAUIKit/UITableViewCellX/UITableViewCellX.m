@@ -35,8 +35,8 @@
    
    [self.containerView setClipsToBounds:YES];
 
-   self.layoutConstraintLeftInset   = 15;
-   self.layoutConstraintRightInset  = 15;
+   self.layoutConstraintLeftInset   = [UITableViewCellX constraintLeftInset];
+   self.layoutConstraintRightInset  = [UITableViewCellX constraintRightInset];
 
    [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
       
@@ -153,6 +153,15 @@
    return 8.0f;
 }
 
++ (CGFloat)constraintLeftInset {
+   
+   return 16.0f;
+}
+
++ (CGFloat)constraintRightInset {
+   
+   return 16.0f;
+}
 
 - (void)drawRect:(CGRect)aRect {
       

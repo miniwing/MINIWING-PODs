@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)scheme;
 + (NSString *)schemePrefix;
 
++ (NSString *)appId;
+
 + (NSString *)identifier;
 + (NSString *)identifierGroup;
 + (NSString *)identifierWidget;

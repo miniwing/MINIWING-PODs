@@ -152,6 +152,7 @@ Pod::Spec.new do |spec|
 #     import <IDEAApplet/IDEAAppletModel.h>
 #     import <IDEAApplet/IDEAAppletEvent.h>
 #     import <IDEAApplet/IDEAAppletService.h>
+#     import <IDEAApplet/IDEAAppletSingleton.h>
 #     import <IDEAApplet/IDEAAppletNotificationBus.h>
 #     import <IDEAApplet/IDEAAppletSignalBus.h>
 #  endif // __has_include(<IDEAApplet/IDEAApplet.h>)
