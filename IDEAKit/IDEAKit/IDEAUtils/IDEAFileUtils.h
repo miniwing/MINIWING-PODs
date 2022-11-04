@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)formatFileSize:(NSInteger)aSize;
 
++ (NSString *)byteCountFormat:(NSInteger)aBytes;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,10 +10,6 @@
 
 #import "UITextFieldX.h"
 
-@interface UITextFieldX ()
-
-@end
-
 @implementation UITextFieldX
 
 - (CGRect)textRectForBounds:(CGRect)aBounds {
