@@ -77,7 +77,7 @@ Pod::Spec.new do |spec|
 #    spec.dependency 'AFNetworking/Security'
 #    spec.dependency 'AFNetworking/Reachability'
 #    spec.dependency 'AFNetworking/NSURLSession'
-  end # if $IDEAFONT_MSYH == 'YES'
+  end # if IDEA_AFNETWORKING
 
   if ENV['IDEA_YYKIT'] == 'YES'
     spec.dependency 'YYKit'

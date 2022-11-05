@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
   spec.source         = { :path => "." }
   
   spec.xcconfig       = {
-    'HEADER_SEARCH_PATHS'   => [
+     'HEADER_SEARCH_PATHS' => [
 #                                  "${PODS_TARGET_SRCROOT}/",
 #                                  "${PODS_TARGET_SRCROOT}/../",
 #                                  "${PODS_ROOT}/Headers/Public/FoundationExtension",
@@ -49,67 +49,70 @@ Pod::Spec.new do |spec|
   }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'      => [
-                                              ' MODULE=\"IDEAUIKit\" ',
-                                              ' BUNDLE=\"IDEAUIKit\" '
+     'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                                ' MODULE=\"IDEAUIKit\" ',
+                                                ' BUNDLE=\"IDEAUIKit\" '
                                             ]
-                                      }
-
+  }
+  
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
-    spec.dependency 'FoundationExtension'
+     spec.dependency 'FoundationExtension'
   end # IDEA_FOUNDATION_EXTENSION
-
+  
   if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
-    spec.dependency 'UIKitExtension'
+     spec.dependency 'UIKitExtension'
   end # IDEA_UIKIT_EXTENSION
-
-#  spec.dependency 'CocoaExtension'
-
+  
+  #  spec.dependency 'CocoaExtension'
+  
   if ENV['ROOT_NAVIGATION_CONTROLLER'] == 'YES'
-    spec.dependency 'ROOT_NAVIGATION_CONTROLLER'
+     spec.dependency 'ROOT_NAVIGATION_CONTROLLER'
   end # RTRootNavigationController
-
+  
   if ENV['IDEA_FULLSCREEN_POP_GESTURE'] == 'YES'
-    spec.dependency 'IDEAFullscreenPopGesture'
+     spec.dependency 'IDEAFullscreenPopGesture'
   end # IDEA_FULLSCREEN_POP_GESTURE
-
-#  if ENV['MATERIAL_NAVIGATION_BAR'] == 'YES'
-  spec.dependency 'MaterialComponents/NavigationBar'
-#  end # MATERIAL_NAVIGATION_BAR
-
+  
+  if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
+     spec.dependency 'MaterialComponents'
+#     spec.dependency 'MaterialComponents/Palettes'
+#     spec.dependency 'MaterialComponents/NavigationBar'
+#     spec.dependency 'MaterialComponents/ActivityIndicator'
+  end # IDEA_MATERIAL_COMPONENTS
+  
   spec.dependency 'IDEANibBridge'
-
-#  spec.dependency 'pop'
-
-#  spec.dependency 'AFNetworking'
-#  spec.dependency 'AFNetworking/Serialization'
-#  spec.dependency 'AFNetworking/Security'
-#  spec.dependency 'AFNetworking/Reachability'
-#  spec.dependency 'AFNetworking/NSURLSession'
-
-#  spec.dependency 'Masonry'
-#  spec.dependency 'MBProgressHUD',              '~> 0.9.2'
-
+  
+  #  spec.dependency 'pop'
+  
+  #  spec.dependency 'AFNetworking'
+  #  spec.dependency 'AFNetworking/Serialization'
+  #  spec.dependency 'AFNetworking/Security'
+  #  spec.dependency 'AFNetworking/Reachability'
+  #  spec.dependency 'AFNetworking/NSURLSession'
+  
+  #  spec.dependency 'Masonry'
+  #  spec.dependency 'MBProgressHUD',              '~> 0.9.2'
+  
   spec.dependency 'MBProgressHUD'
-
+  
   if ENV['IDEA_YYKIT'] == 'YES'
-    spec.dependency 'YYKit'
+     spec.dependency 'YYKit'
   end # IDEA_YYKIT
   
   spec.dependency 'IDEAKit'
   spec.dependency 'IDEAColor'
   spec.dependency 'IDEANightVersion'
-
+  
   spec.public_header_files    = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h}',
-                                'IDEAUIKitExtension/**/*.{h}'
-
+  'IDEAUIKit/**/*.{h}',
+  'IDEAUIKitExtension/**/*.{h}'
+  
   spec.source_files           = 'IDEAUIKit.h',
-                                'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
-                                'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
-
+  'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
+  'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
+  
   spec.requires_arc           = true
-
+  
 #  spec.subspec 'IDEAVendor' do |sub|
 #    sub.dependency 'UIKitExtension'
 #    sub.public_header_files   = 'IDEAUIKit/IDEAVendor/*.h'

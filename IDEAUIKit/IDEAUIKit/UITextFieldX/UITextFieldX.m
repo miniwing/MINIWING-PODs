@@ -10,6 +10,13 @@
 
 #import "UITextFieldX.h"
 
+@interface UITextFieldX ()
+
+@property (nonatomic, assign)                CGFloat                               edgeX;
+@property (nonatomic, assign)                CGFloat                               edgeY;
+
+@end
+
 @implementation UITextFieldX
 
 - (CGRect)textRectForBounds:(CGRect)aBounds {
@@ -20,6 +27,14 @@
 - (CGRect)editingRectForBounds:(CGRect)aBounds {
 
    return CGRectInset(aBounds, self.leftView.width + self.edgeX, self.edgeY);
+}
+
+- (void)setEdgeX:(CGFloat)aEdgeX edgeY:(CGFloat)aEdgeY {
+   
+   _edgeX   = aEdgeX;
+   _edgeY   = aEdgeY;
+   
+   return;
 }
 
 @end

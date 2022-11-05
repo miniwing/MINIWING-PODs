@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITextFieldX ()
 
-@property (nonatomic, assign)                CGFloat                               edgeX;
-@property (nonatomic, assign)                CGFloat                               edgeY;
+- (void)setEdgeX:(CGFloat)aEdgeX edgeY:(CGFloat)aEdgeY;
 
 @end
 
