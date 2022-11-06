@@ -134,16 +134,16 @@
    [super prepareForReuse];
    
    // Configure the view for the selected state
-   _rectCorner = UIRectCornerNone;
-   
+   self.rectCorner   = UIRectCornerNone;
+
    if (@available(iOS 13, *)) {
-      
+
    } /* End if () */
    else {
-      
+
       [self.containerView.layer setMask:nil];
       [self.containerView.layer setMasksToBounds:NO];
-      
+
    } /* End else */
    
    __CATCH(nErr);
@@ -155,6 +155,15 @@
    
    _rectCorner = aRectCorner;
    
+   if (@available(iOS 13, *)) {
+
+   } /* End if () */
+   else {
+
+      [self setNeedsDisplay];
+
+   } /* End else */
+
    return;
 }
 
@@ -176,40 +185,40 @@
 - (void)drawRect:(CGRect)aRect {
    
    if (@available(iOS 13, *)) {
-      
+
    } /* End if () */
    else {
-      
-      if ([self.className isEqualToString:@"PingResultCell"]) {
-         
-         LogDebug((@"-[UITableViewCellX drawRect:] : indexPath : (%d, %d), rectCorner : %d", self.indexPath.section, self.indexPath.row, self.rectCorner));
-         
-      } /* End if () */
-      
+
+//      if ([self.className isEqualToString:@"PingResultCell"]) {
+//
+//         LogDebug((@"-[UITableViewCellX drawRect:] : indexPath : (%d, %d), rectCorner : %d", self.indexPath.section, self.indexPath.row, self.rectCorner));
+//
+//      } /* End if () */
+
       if (UIRectCornerNone != self.rectCorner) {
-         
+
          UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
                                                                byRoundingCorners:self.rectCorner
                                                                      cornerRadii:CGSizeMake([UITableViewCellX cornerRadii], [UITableViewCellX cornerRadii])];
          CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
          stMaskLayer.frame = self.containerView.bounds;
          stMaskLayer.path  = stBezierPath.CGPath;
-         
+
          [self.containerView.layer setMasksToBounds:YES];
          [self.containerView.layer setMask:stMaskLayer];
-         
+
       } /* End if () */
       else {
-         
+
          [self.containerView.layer setMask:nil];
          [self.containerView.layer setMasksToBounds:NO];
-         
+
       } /* End else */
-      
+
    } /* End else */
-   
+
    [super drawRect:aRect];
-   
+
    return;
 }
 
