@@ -184,7 +184,7 @@ Pod::Spec.new do |spec|
 
 #  if __has_include(<Masonry/Masonry.h>)
 #     import <Masonry/Masonry.h>
-#     define YY_KIT                                                        (1)
+#     define MASONRY                                                       (1)
 #  elif __has_include("Masonry/Masonry.h")
 #     import "Masonry/Masonry.h"
 #     define MASONRY                                                       (1)

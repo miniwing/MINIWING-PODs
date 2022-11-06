@@ -15,10 +15,10 @@
 //#if __Debug__
 //@def_signal(self);
 //#endif /* __Debug__ */
-//
+
 //@def_signal(beginSearch);
 //@def_signal(endSearch);
-//
+
 //@def_signal(textChane);
 
 @end
@@ -28,7 +28,7 @@
 
 //#if __Debug__
 //handleSignal(SearchBarX, selfSignal) {
-//      
+//
 //   return;
 //}
 //#endif /* __Debug__ */

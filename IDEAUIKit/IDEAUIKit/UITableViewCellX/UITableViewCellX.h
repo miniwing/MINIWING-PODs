@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define UIRectCornerNone                     (0)
+
 @interface UITableViewCellX : UITableViewCell
 
 @property (nonatomic, weak)   IBOutlet       UIView                              * containerView;
@@ -23,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)constraintLeftInset;
 + (CGFloat)constraintRightInset;
 
-- (void)setRectCorner:(UIRectCorner)aRectCorner API_DEPRECATED("", ios(2.0, 12.0));
+//- (void)setRectCorner:(UIRectCorner)aRectCorner API_DEPRECATED("", ios(2.0, 12.0));
+- (void)setRectCorner:(UIRectCorner)aRectCorner;
 
 @end
 

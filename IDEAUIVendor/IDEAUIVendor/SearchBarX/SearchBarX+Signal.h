@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 //#if __Debug__
 //@signal(self);
 //#endif /* __Debug__ */
-//
+
 //@signal(beginSearch);
 //@signal(endSearch);
-//
+
 //@signal(textChane);
 
 @end

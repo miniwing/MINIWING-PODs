@@ -34,10 +34,10 @@
    // Initialization code
    
    [self.containerView setClipsToBounds:YES];
-
+   
    self.layoutConstraintLeftInset   = [UITableViewCellX constraintLeftInset];
    self.layoutConstraintRightInset  = [UITableViewCellX constraintRightInset];
-
+   
    [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
@@ -45,12 +45,12 @@
          return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
          
       } /* End if () */
-
+      
       return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
    }];
-
+   
    if (@available(iOS 13, *)) {
-            
+      
    } /* End if () */
    else {
       
@@ -75,14 +75,14 @@
       } /* End for () */
       
       if (nil == self.layoutConstraintL) {
-                  
+         
          self.layoutConstraintL  = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                             attribute:NSLayoutAttributeLeading
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.contentView
-                                                             attribute:NSLayoutAttributeLeading
-                                                            multiplier:1
-                                                              constant:self.layoutConstraintLeftInset];
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.contentView
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1
+                                                                 constant:self.layoutConstraintLeftInset];
          
          [self.contentView addConstraint:self.layoutConstraintL];
          
@@ -92,16 +92,16 @@
          [self.layoutConstraintL setConstant:self.layoutConstraintLeftInset];
          
       } /* End else */
-
+      
       if (nil == self.layoutConstraintR) {
          
          self.layoutConstraintR  = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                             attribute:NSLayoutAttributeTrailing
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.contentView
-                                                             attribute:NSLayoutAttributeTrailing
-                                                            multiplier:1
-                                                              constant:self.layoutConstraintRightInset];
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.contentView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1
+                                                                 constant:self.layoutConstraintRightInset];
          
          [self.contentView addConstraint:self.layoutConstraintR];
          
@@ -111,13 +111,13 @@
          [self.layoutConstraintR setConstant:self.layoutConstraintRightInset];
          
       } /* End else */
-
+      
       [self.contentView setNeedsUpdateConstraints];
       [self.contentView updateConstraintsIfNeeded];
       
       [self.contentView setNeedsLayout];
       [self.contentView layoutIfNeeded];
-
+      
    } /* End else */
    
    __CATCH(nErr);
@@ -128,14 +128,24 @@
 - (void)prepareForReuse {
    
    int                            nErr                                     = EFAULT;
-
+   
    __TRY;
-
+   
    [super prepareForReuse];
-
+   
    // Configure the view for the selected state
-   _rectCorner = 0;
-
+   _rectCorner = UIRectCornerNone;
+   
+   if (@available(iOS 13, *)) {
+      
+   } /* End if () */
+   else {
+      
+      [self.containerView.layer setMask:nil];
+      [self.containerView.layer setMasksToBounds:NO];
+      
+   } /* End else */
+   
    __CATCH(nErr);
    
    return;
@@ -164,13 +174,19 @@
 }
 
 - (void)drawRect:(CGRect)aRect {
-      
+   
    if (@available(iOS 13, *)) {
       
    } /* End if () */
    else {
       
-      if (0 != self.rectCorner) {
+      if ([self.className isEqualToString:@"PingResultCell"]) {
+         
+         LogDebug((@"-[UITableViewCellX drawRect:] : indexPath : (%d, %d), rectCorner : %d", self.indexPath.section, self.indexPath.row, self.rectCorner));
+         
+      } /* End if () */
+      
+      if (UIRectCornerNone != self.rectCorner) {
          
          UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
                                                                byRoundingCorners:self.rectCorner
@@ -181,18 +197,19 @@
          
          [self.containerView.layer setMasksToBounds:YES];
          [self.containerView.layer setMask:stMaskLayer];
-
+         
       } /* End if () */
       else {
          
          [self.containerView.layer setMask:nil];
-
+         [self.containerView.layer setMasksToBounds:NO];
+         
       } /* End else */
-
+      
    } /* End else */
-
+   
    [super drawRect:aRect];
-
+   
    return;
 }
 
