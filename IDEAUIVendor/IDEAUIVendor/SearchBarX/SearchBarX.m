@@ -73,7 +73,17 @@
    [self.searchTextField setPlaceholderColorPicker:DKColorPickerWithKey([IDEAColor placeholderText])];
    [self.searchTextField setTextColorPicker:DKColorPickerWithKey([IDEAColor label])];
    [self.searchTextField setBorderStyle:UITextBorderStyleRoundedRect];
-   [self.searchTextField setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemGroupedBackground])];
+//   [self.searchTextField setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemGroupedBackground])];
+   [self.searchTextField setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+      
+      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+         
+         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
+         
+      } /* End if () */
+
+      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+   }];
 
    [self setCancelButtnAttributes];
    

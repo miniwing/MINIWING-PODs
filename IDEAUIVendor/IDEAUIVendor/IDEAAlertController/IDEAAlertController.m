@@ -9,6 +9,7 @@
 //
 
 #import "IDEAAlertController.h"
+#import "IDEAAlertController+Inner.h"
 
 @implementation IDEAAlertController
 
@@ -133,8 +134,8 @@
 
 @end
 
-#pragma mark - UIStoryboard
-@implementation IDEAAlertController (UIStoryboard)
+#pragma mark - UIStoryboardSegue
+@implementation IDEAAlertController (UIStoryboardSegue)
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)aSegue sender:(id)aSender {
@@ -149,18 +150,6 @@
    __CATCH(nErr);
 
    return;
-}
-
-+ (NSString *)storyboard {
-   
-#warning Incomplete implementation, Name of the Stroyboard.
-   return @"";
-}
-
-+ (NSString *)bundle {
-
-#warning Incomplete implementation, Name of the Bundle.
-   return @"";
 }
 
 @end
