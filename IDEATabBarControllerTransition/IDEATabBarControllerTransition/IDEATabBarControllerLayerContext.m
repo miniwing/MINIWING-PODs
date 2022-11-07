@@ -100,15 +100,15 @@
       
       bViewLoaded = [aToViewController pureViewController].isViewLoaded;
       
-      [aToViewController loadViewIfNeeded];
-      [aToViewController.pureViewController loadViewIfNeeded];
-      
       if (NO == bViewLoaded) {
          
+         [aToViewController loadViewIfNeeded];
+         [aToViewController.pureViewController loadViewIfNeeded];
+
          [[aToViewController pureViewController].view setNeedsLayout];
-         
+
       } /* End if () */
-      
+
       _viewLayer  = [aToViewController pureViewController].view.layer;
       
       _fromLayer  = [IDEATabBarControllerLayerContext makeLayer:aFromViewController.pureViewController];
@@ -145,30 +145,37 @@
 
 + (UIImage *)imageFromView:(UIView *)aSnapView {
    
-//    UIGraphicsBeginImageContext(snapView.frame.size);
-//   UIGraphicsBeginImageContextWithOptions(aSnapView.frame.size, NO, [UIScreen mainScreen].scale);
-   UIGraphicsBeginImageContextWithOptions(aSnapView.frame.size, NO, 0.0);
+   UIGraphicsBeginImageContextWithOptions(aSnapView.frame.size, NO, [UIScreen mainScreen].scale);
+//   [aSnapView.layer renderInContext:UIGraphicsGetCurrentContext()];
    CGContextRef stContext = UIGraphicsGetCurrentContext();
-   
-//   if ([aSnapView respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-//
-//      [aSnapView drawViewHierarchyInRect:aSnapView.bounds afterScreenUpdates:YES];
-//
-//   } /* End if () */
-//   else {
-//
-//      [aSnapView.layer renderInContext:stContext];
-//
-//   } /* End else */
-   
    [aSnapView.layer renderInContext:stContext];
    
 //   stSnapshotView = [aInputView drawViewHierarchyInRect:aInputView.bounds afterScreenUpdates:NO];
    
-   UIImage *stTargetImage = UIGraphicsGetImageFromCurrentImageContext();
+   UIImage  *stImage = UIGraphicsGetImageFromCurrentImageContext();
    UIGraphicsEndImageContext();
    
-   return stTargetImage;
+//#if __Debug__
+//   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//
+//      NSError  *stError    = nil;
+//      NSArray  *stPaths    = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//      NSString *szFilePath = [[stPaths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%ld.png", NSDate.now.timeIntervalSinceNow]];  // 保存文件的名称
+//
+//      NSLog(@"保存路径 : %p : %@", stImage, szFilePath);
+//
+//      BOOL      bOK        = [UIImagePNGRepresentation(stImage) writeToFile:szFilePath
+//                                                                    options:NSDataWritingAtomic
+//                                                                      error:&stError]; // 保存成功会返回YES
+//      if (nil == stError) {
+//         NSLog(@"保存成功");
+//      }
+//
+//      return;
+//   });
+//#endif /* __Debug__ */
+
+   return stImage;
 }
 
 + (UIImage *)imageFromViewEx:(UIView *)aSnapView {
@@ -216,52 +223,72 @@
    
    BOOL         bAfterUpdates                = YES;
    
-   if (@available(iOS 11, *)) {
-
+//   if (@available(iOS 11, *)) {
+//
+//#if __Debug__
+//      if ([aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]) {
+//
+//         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [aInputView viewController]));
+//         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [[aInputView viewController] parentViewController]));
+//
+//      } /* End if () */
+//#endif /* __Debug__ */
+//
+////      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
+//
+////      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+//
+////      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+////                                              afterScreenUpdates:YES
+////                                                   withCapInsets:UIEdgeInsetsZero];
+//
+//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+//
+//      if ([aInputView viewController] && [[aInputView viewController] parentViewController] && ![[[aInputView viewController] parentViewController] isKindOfClass:[UINavigationController class]]) {
+//
+//         bAfterUpdates  = NO;
+//
+//      } /* End if () */
+//
+//      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:bAfterUpdates];
+//
+////      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+//
+////      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+////                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
+////                                                   withCapInsets:UIEdgeInsetsZero];
+//
+//   } /* End if () */
+//   else {
+//
+//      stImage        = [self imageFromView:aInputView];
+//      stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+//
+//   } /* End else */
+   
+   stImage        = [self imageFromView:aInputView];
+   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+   
 #if __Debug__
-      if ([aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]) {
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [aInputView viewController]));
-         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [[aInputView viewController] parentViewController]));
+      NSError  *stError    = nil;
+      NSArray  *stPaths    = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+      NSString *szFilePath = [[stPaths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%ld.png", [NSDate date].timeIntervalSinceNow]];  // 保存文件的名称
+      
+      NSLog(@"保存路径 : %p : %@", stImage, szFilePath);
 
-      } /* End if () */
+      BOOL      bOK        = [UIImagePNGRepresentation(stImage) writeToFile:szFilePath
+                                                                    options:NSDataWritingAtomic
+                                                                      error:&stError]; // 保存成功会返回YES
+      if (nil == stError) {
+         NSLog(@"保存成功");
+      }
+      
+      return;
+   });
 #endif /* __Debug__ */
 
-//      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
-
-//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-
-//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-//                                              afterScreenUpdates:YES
-//                                                   withCapInsets:UIEdgeInsetsZero];
-
-      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-
-      if ([aInputView viewController] && [[aInputView viewController] parentViewController] && ![[[aInputView viewController] parentViewController] isKindOfClass:[UINavigationController class]]) {
-
-         bAfterUpdates  = NO;
-
-      } /* End if () */
-
-      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:bAfterUpdates];
-
-//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-
-//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-//                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
-//                                                   withCapInsets:UIEdgeInsetsZero];
-
-   } /* End if () */
-   else {
-
-      stImage        = [self imageFromView:aInputView];
-      stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
-
-   } /* End else */
-   
-//   stImage        = [self imageFromView:aInputView];
-//   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
-   
    [stSnapshotView.layer setMasksToBounds:YES];
    [stSnapshotView setClipsToBounds:YES];
    

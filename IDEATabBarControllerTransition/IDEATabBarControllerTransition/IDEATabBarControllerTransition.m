@@ -226,11 +226,11 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    }];
    
    aLayerContext.viewLayer.opacity  = 1;
-   aLayerContext.fromLayer.opacity  = 0;
-   aLayerContext.toLayer.opacity    = 1;
+   aLayerContext.fromLayer.opacity  = 1;
+   aLayerContext.toLayer.opacity    = 0;
    
    aLayerContext.fromNavigationBarLayer.opacity = 0;
-   aLayerContext.toNavigationBarLayer.opacity   = 1;
+   aLayerContext.toNavigationBarLayer.opacity   = 0;
 
    [aLayerContext.fromLayer addAnimation:stFromAnimation
                                   forKey:IDEATabBarControllerTransitionAnimationKeyFromView];
