@@ -216,51 +216,51 @@
    
    BOOL         bAfterUpdates                = YES;
    
-//   if (@available(iOS 11, *)) {
-//
-//#if __Debug__
-//      if ([aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]) {
-//
-//         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [aInputView viewController]));
-//         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [[aInputView viewController] parentViewController]));
-//
-//      } /* End if () */
-//#endif /* __Debug__ */
-//
-////      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
-//
-////      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-//
-////      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-////                                              afterScreenUpdates:YES
-////                                                   withCapInsets:UIEdgeInsetsZero];
-//
+   if (@available(iOS 11, *)) {
+
+#if __Debug__
+      if ([aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]) {
+
+         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [aInputView viewController]));
+         LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : [aInputView viewController] : %@", [[aInputView viewController] parentViewController]));
+
+      } /* End if () */
+#endif /* __Debug__ */
+
+//      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:YES];
+
 //      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-//
-//      if ([aInputView viewController] && [[aInputView viewController] parentViewController] && ![[[aInputView viewController] parentViewController] isKindOfClass:[UINavigationController class]]) {
-//
-//         bAfterUpdates  = NO;
-//
-//      } /* End if () */
-//
-//      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:bAfterUpdates];
-//
-////      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
-//
-////      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
-////                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
-////                                                   withCapInsets:UIEdgeInsetsZero];
-//
-//   } /* End if () */
-//   else {
-//
-//      stImage        = [self imageFromView:aInputView];
-//      stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
-//
-//   } /* End else */
+
+//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+//                                              afterScreenUpdates:YES
+//                                                   withCapInsets:UIEdgeInsetsZero];
+
+      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+
+      if ([aInputView viewController] && [[aInputView viewController] parentViewController] && ![[[aInputView viewController] parentViewController] isKindOfClass:[UINavigationController class]]) {
+
+         bAfterUpdates  = NO;
+
+      } /* End if () */
+
+      stSnapshotView = [aInputView snapshotViewAfterScreenUpdates:bAfterUpdates];
+
+//      LogDebug((@"+[IDEATabBarControllerLayerContext snapshotFromView:] : SnapshotView : %@", stSnapshotView));
+
+//      stSnapshotView = [aInputView resizableSnapshotViewFromRect:aInputView.bounds
+//                                              afterScreenUpdates:![aInputView isKindOfClass:NSClassFromString(@"MDCFlexibleHeaderView")]
+//                                                   withCapInsets:UIEdgeInsetsZero];
+
+   } /* End if () */
+   else {
+
+      stImage        = [self imageFromView:aInputView];
+      stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+
+   } /* End else */
    
-   stImage        = [self imageFromView:aInputView];
-   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
+//   stImage        = [self imageFromView:aInputView];
+//   stSnapshotView = [[UIImageView alloc] initWithImage:stImage];
    
    [stSnapshotView.layer setMasksToBounds:YES];
    [stSnapshotView setClipsToBounds:YES];
