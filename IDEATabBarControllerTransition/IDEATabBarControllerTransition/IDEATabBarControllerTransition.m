@@ -1,12 +1,12 @@
-   //
-   //  IDEATabBarControllerTransition.m
-   //  IDEATabBarControllerTransition
-   //
-   //  Created by Harry on 2021/4/8.
-   //
-   //  Mail: miniwing.hz@gmail.com
-   //  TEL : +(852)53054612
-   //
+//
+//  IDEATabBarControllerTransition.m
+//  IDEATabBarControllerTransition
+//
+//  Created by Harry on 2021/4/8.
+//
+//  Mail: miniwing.hz@gmail.com
+//  TEL : +(852)53054612
+//
 
 #import "IDEATabBarControllerTransition.h"
 
@@ -200,15 +200,25 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
    stViewLayerAnimation = [IDEATabBarControllerAnimationFactory makeAnimationWithType: AnimationTypeOpacity from: 0 to: 1];
 
+#if __Debug__
+#  if TARGET_IPHONE_SIMULATOR
+   UIImage  *stImage = [aLayerContext.viewLayer snapshotImage];
+   [IDEATabBarControllerTransition saveImage:stImage withName:@"viewLayer"];
+
+   stImage = [aLayerContext.fromLayer snapshotImage];
+   [IDEATabBarControllerTransition saveImage:stImage withName:@"fromLayer"];
+
+   stImage = [aLayerContext.toLayer snapshotImage];
+   [IDEATabBarControllerTransition saveImage:stImage withName:@"toLayer"];
+#  endif /* TARGET_IPHONE_SIMULATOR */
+#endif /* __Debug__ */
+
    aLayerContext.viewLayer.opacity  = 0;
 //   aLayerContext.fromLayer.opacity  = 1;
 //   aLayerContext.toLayer.opacity    = 0;
 
    aLayerContext.fromNavigationBarLayer.opacity = 1;
    aLayerContext.toNavigationBarLayer.opacity   = 0;
-
-//   NSString *  const IDEATabBarControllerTransitionBeginNotification = @"NightVersionThemeChangingNotification";
-//   NSString *  const IDEATabBarControllerTransitionEndNotification   = @"NightVersionThemeChangingNotification";
 
    [[NSNotificationCenter defaultCenter] postNotificationName:IDEATabBarControllerTransitionBeginNotification
                                                        object:nil];
@@ -223,6 +233,8 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
       [aLayerContext reset];
       [[NSNotificationCenter defaultCenter] postNotificationName:IDEATabBarControllerTransitionEndNotification
                                                           object:nil];
+      
+      return;
    }];
    
    aLayerContext.viewLayer.opacity  = 1;
@@ -252,6 +264,33 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    return;
 }
 
+#if __Debug__
+#  if TARGET_IPHONE_SIMULATOR
++ (void)saveImage:(UIImage *)aImage withName:(NSString *)aName {
+   
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+      
+      NSError  *stError    = nil;
+      NSArray  *stPaths    = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+      NSString *szFilePath = [[stPaths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", aName]];  // 保存文件的名称
+      
+      NSLog(@"保存路径 : %p : %@", aImage, szFilePath);
+      
+      BOOL      bOK        = [UIImagePNGRepresentation(aImage) writeToFile:szFilePath
+                                                                   options:NSDataWritingAtomic
+                                                                     error:&stError]; // 保存成功会返回YES
+      if (nil == stError) {
+         NSLog(@"保存成功");
+      }
+      
+      return;
+   });
+   
+   return;
+}
+#  endif /* TARGET_IPHONE_SIMULATOR */
+#endif /* __Debug__ */
+
 @end
 
 @implementation IDEATabBarControllerTransition (IDEATabBarControllerTransitionDirection)
@@ -267,4 +306,6 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
    return DirectionRight;
 }
 
+
 @end
+

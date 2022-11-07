@@ -56,29 +56,29 @@ Pod::Spec.new do |spec|
   }
   
   if ENV['IDEA_FOUNDATION_EXTENSION'] == 'YES'
-     spec.dependency 'FoundationExtension'
+    spec.dependency 'FoundationExtension'
   end # IDEA_FOUNDATION_EXTENSION
   
   if ENV['IDEA_UIKIT_EXTENSION'] == 'YES'
-     spec.dependency 'UIKitExtension'
+    spec.dependency 'UIKitExtension'
   end # IDEA_UIKIT_EXTENSION
   
   #  spec.dependency 'CocoaExtension'
   
   if ENV['IDEA_ROOT_NAVIGATION_CONTROLLER'] == 'YES'
     spec.dependency 'RTRootNavigationController'
-#    spec.dependency 'RTInteractivePush'
+    #    spec.dependency 'RTInteractivePush'
   end # IDEA_ROOT_NAVIGATION_CONTROLLER
-
+  
   if ENV['IDEA_FULLSCREEN_POP_GESTURE'] == 'YES'
-     spec.dependency 'IDEAFullscreenPopGesture'
+    spec.dependency 'IDEAFullscreenPopGesture'
   end # IDEA_FULLSCREEN_POP_GESTURE
   
   if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
-     spec.dependency 'MaterialComponents'
-#     spec.dependency 'MaterialComponents/Palettes'
-#     spec.dependency 'MaterialComponents/NavigationBar'
-#     spec.dependency 'MaterialComponents/ActivityIndicator'
+    spec.dependency 'MaterialComponents'
+#    spec.dependency 'MaterialComponents/Palettes'
+#    spec.dependency 'MaterialComponents/NavigationBar'
+#    spec.dependency 'MaterialComponents/ActivityIndicator'
     spec.dependency 'MotionInterchange'
   end # IDEA_MATERIAL_COMPONENTS
   

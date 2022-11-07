@@ -83,7 +83,9 @@ Pod::Spec.new do |spec|
     spec.dependency 'YYKit'
   end # IDEA_YYKIT
 
-  spec.dependency 'SSZipArchive'
+  if ENV['SSZipArchive'] == 'YES'
+    spec.dependency 'SSZipArchive'
+  end # SSZipArchive
 
   spec.public_header_files        = 'IDEAKit/**/*.{h}',
                                     'IDEAExtension/**/*.{h}',
