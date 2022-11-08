@@ -102,6 +102,8 @@
       
    } /* End if () */
 
+   [self setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor appNavigationBarBackground])];
+
    [self.navigationBar setBackgroundColor:UIColor.clearColor];
 
    [self setTranslatesAutoresizingMaskIntoConstraints:NO];

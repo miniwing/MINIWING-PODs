@@ -7,7 +7,8 @@ appTint                          #005F81FF   #409CC8FF
 // NavigationBar 配色
 appNavigationBarTitle            #FFFFFFFF   #FFFFFFFF
 appNavigationBarTint             #FFFFFFFF   #FFFFFFFF
-appNavigationBarBackground       #005F81FF   #409CC8FF
+// appNavigationBarBackground       #005F81FF   #409CC8FF
+appNavigationBarBackground       #FFFFFFFF   #1C1C1EFF
 
 // Tabbar 配色
 appTabbarBackground              #FFFFFFFF   #1C1C1EFF
