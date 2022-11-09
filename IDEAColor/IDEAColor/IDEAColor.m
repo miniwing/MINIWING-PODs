@@ -78,8 +78,8 @@
 @implementation IDEAColor
 
 #if (__has_include(<IDEANightVersion/DKNightVersion.h>) || __has_include("IDEANightVersion/DKNightVersion.h") || __has_include("DKNightVersion.h"))
-+ (UIColor *)colorWithKey:(NSString *)aKey
-{
++ (UIColor *)colorWithKey:(NSString *)aKey {
+   
    DKColorPicker   fnColorPicker = DKColorPickerWithKey(aKey);
    
    return fnColorPicker([DKNightVersionManager sharedManager].themeVersion);

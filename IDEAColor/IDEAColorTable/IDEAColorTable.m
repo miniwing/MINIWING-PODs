@@ -16,7 +16,7 @@
 
 @end
 
-static   NSString       *g_ColorTable        = nil;
+//static   NSString       *g_ColorTable        = nil;
 
 @implementation IDEAColorTable
 
@@ -29,9 +29,9 @@ static   NSString       *g_ColorTable        = nil;
       NSBundle   *stBundle = [NSBundle bundleForClass:[self class]];
       NSURL      *stURL    = [stBundle URLForResource:@"ColorTable" withExtension:@"txt"];
 
-      g_ColorTable  = [stURL.path copy];
+//      g_ColorTable  = [stURL.path copy];
       
-      [[DKColorTable sharedColorTable] setFile:g_ColorTable];
+      [[DKColorTable sharedColorTable] setFile:[stURL.path copy]];
    });
 
    return;

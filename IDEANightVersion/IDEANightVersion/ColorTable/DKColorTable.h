@@ -43,6 +43,8 @@
  */
 @property (nonatomic, copy) NSString *file;
 
+@property (nonatomic, copy) NSMutableArray<NSString *> *externals;
+
 /**
  *  An array of DKThemeVersion, order is exactly the same in `file`.
  */
@@ -88,6 +90,7 @@
 
 @interface DKColorTable (Shortcut)
 
++ (void)appendThemeFile:(NSString *)aThemeFile;
 + (void)appendThemes:(NSString *)aThemeFile;
 
 @end

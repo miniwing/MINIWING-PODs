@@ -92,28 +92,8 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
    self.table  = nil;
    self.themes = nil;
    
-   NSString    *szFilePath = szFilePath = self.file;
-   
-// Load color table file
-//#if __has_include("IDEANightVersion/IDEAColorTable.h")
-//   szFilePath  = self.file;
-//#else
-//   szFilePath  = [[NSBundle mainBundle] pathForResource:self.file.stringByDeletingPathExtension ofType:self.file.pathExtension];
-//#endif
-
-//   if (stURL.isFileURL)
-//   {
-//      szFilePath = self.file;
-//
-//   } /* End if () */
-//   else
-//   {
-//      szFilePath  = [[NSBundle mainBundle] pathForResource:self.file.stringByDeletingPathExtension ofType:self.file.pathExtension];
-//
-//   } /* End if () */
-   
+   NSString *szFilePath = szFilePath = self.file;
    NSError  *stError    = nil;
-   
    NSString *szContents = [NSString stringWithContentsOfFile:szFilePath
                                                     encoding:NSUTF8StringEncoding
                                                        error:&stError];
@@ -176,6 +156,15 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
       NSArray  *stColors= [self colorsFromEntry:szEntry];
       
       [self addEntryWithKey:szKey colors:stColors themes:self.themes];
+      
+   } /* End for () */
+   
+   /**
+    * 添加外部文件中的配色方案
+    */
+   for (NSString *szFile in self.externals) {
+      
+      [DKColorTable appendThemes:szFile];
       
    } /* End for () */
    
@@ -255,6 +244,20 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
    return _table;
 }
 
+/**
+ * 外部配置的配色文件
+ */
+- (NSMutableArray<NSString *> *)externals {
+   
+   if (!_externals) {
+      
+      _externals = [NSMutableArray<NSString *> array];
+      
+   } /* End if () */
+   
+   return _externals;
+}
+
 - (void)setFile:(NSString *)aFile {
    
    _file = aFile;
@@ -315,6 +318,13 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
 
 @implementation DKColorTable (Shortcut)
 
++ (void)appendThemeFile:(NSString *)aThemeFile {
+   
+   [[DKColorTable sharedColorTable].externals addObject:aThemeFile];
+   
+   return;
+}
+
 + (void)appendThemes:(NSString *)aThemeFile {
    
    LogDebug((@"+[DKColorTable appendThemes:] : ThemeFile: %@", aThemeFile));
@@ -344,7 +354,8 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
    } /* End if () */
       
    NSMutableArray *stTempEntries = [[szContents componentsSeparatedByString:@"\n"] mutableCopy];
-   
+   LogDebug((@"+[DKColorTable appendThemes:] : TempEntries: %@", stTempEntries));
+
    // Fixed whitespace error in txt file, fix https://github.com/Draveness/DKNightVersion/issues/64
    NSMutableArray *stEntries     = [NSMutableArray array];
    
@@ -374,7 +385,9 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
       NSString *szKey   = [[DKColorTable sharedColorTable] keyFromEntry:szEntry];
       NSArray  *stColors= [[DKColorTable sharedColorTable] colorsFromEntry:szEntry];
       
-      [[DKColorTable sharedColorTable] addEntryWithKey:szKey colors:stColors themes:[DKColorTable sharedColorTable].themes];
+      [[DKColorTable sharedColorTable] addEntryWithKey:szKey
+                                                colors:stColors
+                                                themes:[DKColorTable sharedColorTable].themes];
       
    } /* End for () */
    
