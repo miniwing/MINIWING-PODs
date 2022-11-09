@@ -21,6 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface IDEAViewController (UINavigationBarX)
+
+- (CGSize)intrinsicNavigationBarSize;
+
+@end
+
 @interface IDEAViewController (Theme)
 
 - (void)onThemeUpdate:(NSNotification *)aSender;

@@ -53,6 +53,7 @@ UIKIT_EXTERN NSNotificationName  const IDEATabBarControllerTransitionEndNotifica
 
 @interface IDEATabBarControllerTransition : UITabBarController <UITabBarControllerDelegate>
 
+-(TransType)transType;
 - (CAMediaTimingFunction *)transitionTimingFunction;
 - (CFTimeInterval)transitionDuration;
 

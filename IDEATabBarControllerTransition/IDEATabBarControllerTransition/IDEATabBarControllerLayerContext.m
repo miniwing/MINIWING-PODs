@@ -128,16 +128,16 @@
       
 #if __Debug__
 #  if TARGET_IPHONE_SIMULATOR
-      {
-         UIImage  *stImage = [_viewLayer snapshotImage];
-         [[self class] saveImage:stImage withName:@"_viewLayer"];
-         
-         stImage = [_fromLayer snapshotImage];
-         [[self class] saveImage:stImage withName:@"_fromLayer"];
-         
-         stImage = [_toLayer snapshotImage];
-         [[self class] saveImage:stImage withName:@"_toLayer"];
-      }
+//      {
+//         UIImage  *stImage = [_viewLayer snapshotImage];
+//         [[self class] saveImage:stImage withName:@"_viewLayer"];
+//         
+//         stImage = [_fromLayer snapshotImage];
+//         [[self class] saveImage:stImage withName:@"_fromLayer"];
+//         
+//         stImage = [_toLayer snapshotImage];
+//         [[self class] saveImage:stImage withName:@"_toLayer"];
+//      }
 #  endif /* TARGET_IPHONE_SIMULATOR */
 #endif /* __Debug__ */
 

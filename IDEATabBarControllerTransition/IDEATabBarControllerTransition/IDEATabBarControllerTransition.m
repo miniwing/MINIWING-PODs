@@ -43,22 +43,27 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
 @implementation IDEATabBarControllerTransition
 
-- (void)viewWillAppear:(BOOL)aAnimated {
-   
-   int                            nErr                                     = EFAULT;
-   
-   __TRY;
-   
-   [super viewWillAppear:aAnimated];
+//- (void)viewWillAppear:(BOOL)aAnimated {
+//
+//   int                            nErr                                     = EFAULT;
+//
+//   __TRY;
+//
+//   [super viewWillAppear:aAnimated];
+//
+//   __CATCH(nErr);
+//
+//   return;
+//}
 
-   __CATCH(nErr);
+- (TransType)transType {
    
-   return;
+   return TransTypeMove;
 }
 
 - (CFTimeInterval)transitionDuration {
    
-   return 0.4;
+   return 0.35;
 }
 
 - (CAMediaTimingFunction *)transitionTimingFunction {
@@ -68,11 +73,35 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
 - (CAAnimation *)fromTransitionAnimation:(CALayer *)aLayer direction:(IDEATabBarControllerTransitionDirection)aDirection {
    
+   if (TransTypeFade == [self transType]) {
+      
+      return [IDEATabBarControllerTransitionAnimation fadeWithType:IDEATabBarControllerTransitionViewTypeFrom];
+
+   } /* End if () */
+   
+   if (TransTypeScale == [self transType]) {
+      
+      return [IDEATabBarControllerTransitionAnimation scaleWithType:IDEATabBarControllerTransitionViewTypeFrom];
+
+   } /* End if () */
+   
    return [IDEATabBarControllerTransitionAnimation moveWithType:IDEATabBarControllerTransitionViewTypeFrom direction:aDirection];
 }
 
 - (CAAnimation *)toTransitionAnimation:(CALayer *)aLayer direction:(IDEATabBarControllerTransitionDirection)aDirection {
+
+   if (TransTypeFade == [self transType]) {
+      
+      return [IDEATabBarControllerTransitionAnimation fadeWithType:IDEATabBarControllerTransitionViewTypeTo];
+
+   } /* End if () */
    
+   if (TransTypeScale == [self transType]) {
+      
+      return [IDEATabBarControllerTransitionAnimation scaleWithType:IDEATabBarControllerTransitionViewTypeTo];
+
+   } /* End if () */
+
    return [IDEATabBarControllerTransitionAnimation moveWithType:IDEATabBarControllerTransitionViewTypeTo direction:aDirection];
 }
 
@@ -202,14 +231,14 @@ NSNotificationName   const IDEATabBarControllerTransitionEndNotification   = @"I
 
 #if __Debug__
 #  if TARGET_IPHONE_SIMULATOR
-   UIImage  *stImage = [aLayerContext.viewLayer snapshotImage];
-   [IDEATabBarControllerTransition saveImage:stImage withName:@"viewLayer"];
-
-   stImage = [aLayerContext.fromLayer snapshotImage];
-   [IDEATabBarControllerTransition saveImage:stImage withName:@"fromLayer"];
-
-   stImage = [aLayerContext.toLayer snapshotImage];
-   [IDEATabBarControllerTransition saveImage:stImage withName:@"toLayer"];
+//   UIImage  *stImage = [aLayerContext.viewLayer snapshotImage];
+//   [IDEATabBarControllerTransition saveImage:stImage withName:@"viewLayer"];
+//
+//   stImage = [aLayerContext.fromLayer snapshotImage];
+//   [IDEATabBarControllerTransition saveImage:stImage withName:@"fromLayer"];
+//
+//   stImage = [aLayerContext.toLayer snapshotImage];
+//   [IDEATabBarControllerTransition saveImage:stImage withName:@"toLayer"];
 #  endif /* TARGET_IPHONE_SIMULATOR */
 #endif /* __Debug__ */
 

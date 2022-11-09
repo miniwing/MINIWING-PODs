@@ -113,6 +113,19 @@
 
 @end
 
+@implementation IDEAViewController (UINavigationBarX)
+
+static const CGFloat kNavigationBarDefaultHeight   = 56;
+static const CGFloat kNavigationBarMinHeight       = 24;
+
+- (CGSize)intrinsicNavigationBarSize {
+   
+   CGFloat height = kNavigationBarDefaultHeight;
+   return CGSizeMake(UIViewNoIntrinsicMetric, height);
+}
+
+@end
+
 #pragma mark - UITheme
 @implementation IDEAViewController (Theme)
 
