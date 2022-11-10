@@ -322,6 +322,8 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
    
    [[DKColorTable sharedColorTable].externals addObject:aThemeFile];
    
+   [DKColorTable appendThemes:aThemeFile];
+   
    return;
 }
 
