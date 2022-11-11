@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSString *)stringForKey:(NSString *)aDefaultName;
 + (nullable NSArray *)arrayForKey:(NSString *)aDefaultName;
 + (nullable NSDictionary<NSString *, id> *)dictionaryForKey:(NSString *)aDefaultName;
-+ (nullable NSData *)dataForKey:(NSString *)defaultName;
++ (nullable NSData *)dataForKey:(NSString *)aDefaultName;
 + (nullable NSArray<NSString *> *)stringArrayForKey:(NSString *)aDefaultName;
 + (NSInteger)integerForKey:(NSString *)aDefaultName;
 + (float)floatForKey:(NSString *)aDefaultName;
