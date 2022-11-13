@@ -1,0 +1,1 @@
+IDEAWaterDropView/IDEAWaterDropView.podspec
