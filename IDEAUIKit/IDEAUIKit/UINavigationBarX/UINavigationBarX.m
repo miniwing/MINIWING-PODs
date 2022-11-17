@@ -283,7 +283,14 @@
 
 - (void)showLine:(BOOL)aShow {
    
-   [self.splitView setHidden:!aShow];
+   [self showLine:!aShow animated:NO];
+   
+   return;
+}
+
+- (void)showLine:(BOOL)aShow animated:(BOOL)aAnimated {
+   
+   [self.splitView setHidden:!aShow animated:aAnimated];
    
    return;
 }

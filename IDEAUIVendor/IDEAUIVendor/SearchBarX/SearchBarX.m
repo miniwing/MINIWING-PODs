@@ -56,7 +56,18 @@
    
 //   [self.searchBar setPlaceholder:__LOCALIZED_STRING(self.class, @"Search")];
 
-   [self.searchBar setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
+//   [self.searchBar setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
+//   [self.searchBar setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+//      
+//      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+//         
+//         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
+//         
+//      } /* End if () */
+//      
+//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+//   }];
+
    [self.searchBar setReturnKeyType:UIReturnKeySearch];
 
    if (@available(iOS 13.0, *)) {
