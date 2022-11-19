@@ -260,6 +260,8 @@
                     completion:^{
 
       LogDebug((@"-[UIViewController(PopUp) popUp:] : TransitioningDelegate : %@", aViewController.transitioningDelegate));
+      
+      return;
    }];
    
    __CATCH(nErr);

@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define UIATableViewSelectedDefaultDuraton   (0.15f)
+#define UIATableViewSelectedDefaultDuration  (0.15f)
 
 @interface UITableView (Extension)
 

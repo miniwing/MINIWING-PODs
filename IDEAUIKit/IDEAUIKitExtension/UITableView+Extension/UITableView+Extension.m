@@ -14,7 +14,7 @@
    
    [self performSelector:@selector(unselectCurrentRow:)
               withObject:@(aAnimated)
-              afterDelay:UIATableViewSelectedDefaultDuraton];
+              afterDelay:UIATableViewSelectedDefaultDuration];
 
    return;
 }

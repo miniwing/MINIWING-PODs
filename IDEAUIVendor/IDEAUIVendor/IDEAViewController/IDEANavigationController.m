@@ -330,7 +330,7 @@
 ////
 ////   if ([stViewController respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
 ////   {
-////      [UIView animateWithDuration:UIViewAnimationDefaultDuraton()
+////      [UIView animateWithDuration:UIViewAnimationDefaultDuration()
 ////                       animations:^
 ////       {
 ////          [stViewController performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
