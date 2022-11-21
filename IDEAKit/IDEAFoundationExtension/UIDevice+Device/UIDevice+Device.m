@@ -34,6 +34,20 @@
    return [[UIDevice currentDevice] name];
 }
 
++ (NSString *)getSystemBuildVersion {
+   
+   NSString *szVersion  = [[NSProcessInfo processInfo] operatingSystemVersionString];// Version 12.1 (Build 16B5084a)
+   NSArray  *stVersions = [szVersion componentsSeparatedByString:@" "];
+   if (stVersions.count > 2) {
+       NSString *tempStr = [stVersions objectAtIndex:3];
+       NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"()"];
+       NSString *build = [tempStr stringByTrimmingCharactersInSet:set];
+       return build;
+   }
+   
+   return @"";
+}
+
 + (BOOL)isIPhone {
    
    return [UIDevice getDeviceType] == CurrentDeviceTypeIPhone;

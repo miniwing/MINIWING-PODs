@@ -17,7 +17,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
 
 @implementation UIView (Animated)
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>))
+#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h") || __has_include("UIKitExtension.h"))
 #else
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated {
    

@@ -14,7 +14,7 @@
 
 @interface UIView (Animated)
 
-#if __has_include(<UIKitExtension/UIKitExtension.h>)
+#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h") || __has_include("UIKitExtension.h"))
 #else
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated;
 #endif

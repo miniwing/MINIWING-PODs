@@ -39,6 +39,12 @@ typedef enum : NSUInteger {
 + (NSString *)getOSName;
 
 /**
+ Build 16B5084a
+ e.g. @"iOS"
+ */
++ (NSString *)getSystemBuildVersion;
+
+/**
  判断当前设备是不是手机(iPhone)
  */
 + (BOOL)isIPhone;
