@@ -13,3 +13,22 @@ typedef NSString DKThemeVersion;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 typedef id (^DKPicker)(DKThemeVersion *aThemeVersion);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/**
+ * Swift 用法
+ */
+//let onAppRateOnStoreNotification : @convention(block) (_ aThemeVersion:String) -> UIColor = { (aThemeVersion) -> UIColor in
+//  
+//   return UIColor.clear
+//};
+//
+//self.view.backgroundColorPicker  = { (aThemeVersion) -> UIColor in
+//
+//   if DKThemeVersionNight == aThemeVersion {
+//
+//      return IDEAColor.color(withKey: IDEAColor.systemBackground())
+//
+//   } /* End if () */
+//
+//   return IDEAColor.color(withKey: IDEAColor.systemGroupedBackground())
+//};

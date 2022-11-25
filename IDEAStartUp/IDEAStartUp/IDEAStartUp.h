@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 typedef struct __StartUp {
    
    char * _Nonnull key;
@@ -27,6 +25,8 @@ typedef struct __StartUp {
                                  static void __startup_##key() \
 
 #define IDEA_MAIN()              __STARTUP(__main)
+
+NS_ASSUME_NONNULL_BEGIN
 
 //@interface IDEAStartUp : NSObject
 //

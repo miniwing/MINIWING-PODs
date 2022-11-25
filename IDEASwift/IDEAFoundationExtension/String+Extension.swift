@@ -14,11 +14,16 @@ extension String {
       return trimmedStr.isEmpty
    }
    
-   public var localized:String {
+   public var localized: String {
       return NSLocalizedString(self, comment: "")
    }
+
+   public func localized(bundle: Bundle!) -> String {
+      
+      return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+   }
    
-   public func isEmpty() -> Bool{
+   public func isEmpty() -> Bool {
       return (self == "")
    }
    

@@ -198,18 +198,24 @@
                                                  bundle:stBundle];
 
    } /* End catch (NSException) */
-   @finally {
-      
-      NSArray        *stItems       = [szIdentifier split:@"."];
-
-      szIdentifier   = stItems.lastObject;
-
-   } /* End finally */
    
    LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : %@ in %@", szIdentifier, stBundle));
 
-   stViewController  = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
-   LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : ViewController : %@", stViewController));
+   NSArray  *stItems = [szIdentifier split:@"."];
+
+   szIdentifier      = stItems.lastObject;
+
+   @try {
+
+      stViewController  = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
+      LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : ViewController : %@", stViewController));
+
+   } /* End try */
+   @catch (NSException *_Exception) {
+      
+      LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : NSException : %@", _Exception));
+
+   } /* End catch (NSException) */
 
    __CATCH(nErr);
    
