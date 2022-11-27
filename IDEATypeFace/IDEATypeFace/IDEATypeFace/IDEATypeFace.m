@@ -16,6 +16,11 @@
 
 @implementation IDEATypeFace
 
++ (CGFloat)titleSize {
+   
+   return 16;
+}
+
 + (CGFloat)tabTitleSize {
    
    return 12;

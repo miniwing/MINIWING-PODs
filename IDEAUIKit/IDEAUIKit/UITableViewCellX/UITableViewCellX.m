@@ -33,6 +33,14 @@
    [super awakeFromNib];
    // Initialization code
    
+   [self setBackgroundColor:UIColor.clearColor];
+   [self.contentView setBackgroundColor:UIColor.clearColor];
+   
+   self.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];// 这句不可省略
+//   [self.selectedBackgroundView setSize:CGSizeZero];
+   [self.selectedBackgroundView setBackgroundColor:UIColor.clearColor];
+   [self.selectedBackgroundView setClipsToBounds:YES];
+
    [self.containerView setClipsToBounds:YES];
    
    self.layoutConstraintLeftInset   = [UITableViewCellX constraintLeftInset];
@@ -120,6 +128,8 @@
       
    } /* End else */
    
+   [self.separatorView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+   
    __CATCH(nErr);
    
    return;
@@ -136,15 +146,12 @@
    // Configure the view for the selected state
    self.rectCorner   = UIRectCornerNone;
 
-   if (@available(iOS 13, *)) {
-
-   } /* End if () */
-   else {
+   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
 
       [self.containerView.layer setMask:nil];
       [self.containerView.layer setMasksToBounds:NO];
 
-   } /* End else */
+   } /* End if () */
    
    __CATCH(nErr);
    
@@ -155,14 +162,11 @@
    
    _rectCorner = aRectCorner;
    
-   if (@available(iOS 13, *)) {
-
-   } /* End if () */
-   else {
+   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
 
       [self setNeedsDisplay];
 
-   } /* End else */
+   } /* End if () */
 
    return;
 }
@@ -184,16 +188,7 @@
 
 - (void)drawRect:(CGRect)aRect {
    
-   if (@available(iOS 13, *)) {
-
-   } /* End if () */
-   else {
-
-//      if ([self.className isEqualToString:@"PingResultCell"]) {
-//
-//         LogDebug((@"-[UITableViewCellX drawRect:] : indexPath : (%d, %d), rectCorner : %d", self.indexPath.section, self.indexPath.row, self.rectCorner));
-//
-//      } /* End if () */
+   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
 
       if (UIRectCornerNone != self.rectCorner) {
 
@@ -215,7 +210,7 @@
 
       } /* End else */
 
-   } /* End else */
+   } /* End if () */
 
    [super drawRect:aRect];
 

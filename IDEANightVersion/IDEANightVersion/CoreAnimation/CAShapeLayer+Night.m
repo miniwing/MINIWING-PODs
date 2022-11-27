@@ -17,22 +17,22 @@
 
 @implementation CAShapeLayer (Night)
 
-- (DKColorPicker)dk_strokeColorPicker {
-   return objc_getAssociatedObject(self, @selector(dk_strokeColorPicker));
+- (DKColorPicker)strokeColorPicker {
+   return objc_getAssociatedObject(self, @selector(strokeColorPicker));
 }
 
-- (void)setDk_strokeColorPicker:(DKColorPicker)picker {
-   objc_setAssociatedObject(self, @selector(dk_strokeColorPicker), picker, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setStrokeColorPicker:(DKColorPicker)picker {
+   objc_setAssociatedObject(self, @selector(strokeColorPicker), picker, OBJC_ASSOCIATION_COPY_NONATOMIC);
    self.strokeColor = picker(self.themeManager.themeVersion).CGColor;
    [self.pickers setValue:[picker copy] forKey:NSStringFromSelector(@selector(setStrokeColor:))];
 }
 
-- (DKColorPicker)dk_fillColorPicker {
-   return objc_getAssociatedObject(self, @selector(dk_strokeColorPicker));
+- (DKColorPicker)fillColorPicker {
+   return objc_getAssociatedObject(self, @selector(strokeColorPicker));
 }
 
-- (void)setDk_fillColorPicker:(DKColorPicker)picker {
-   objc_setAssociatedObject(self, @selector(dk_fillColorPicker), picker, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setFillColorPicker:(DKColorPicker)picker {
+   objc_setAssociatedObject(self, @selector(fillColorPicker), picker, OBJC_ASSOCIATION_COPY_NONATOMIC);
    self.fillColor = picker(self.themeManager.themeVersion).CGColor;
    [self.pickers setValue:[picker copy] forKey:NSStringFromSelector(@selector(setFillColor:))];
 }

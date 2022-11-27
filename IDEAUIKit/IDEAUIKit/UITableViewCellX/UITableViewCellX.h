@@ -12,10 +12,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define UIRectCornerNone                     (0)
+#define UITableViewXStyleInsetGrouped        (3)
 
 @interface UITableViewCellX : UITableViewCell
 
 @property (nonatomic, weak)   IBOutlet       UIView                              * containerView;
+@property (nonatomic, weak)   IBOutlet       UIView                              * separatorView;
+
+@end
+
+@interface UITableViewCellX ()
+
+@property (nonatomic, assign)                NSInteger                             tableViewXStyle;
 
 @end
 

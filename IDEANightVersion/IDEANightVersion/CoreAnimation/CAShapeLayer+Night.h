@@ -11,7 +11,7 @@
 
 @interface CAShapeLayer (Night)
 
-@property (nonatomic, copy) DKColorPicker dk_strokeColorPicker;
-@property (nonatomic, copy) DKColorPicker dk_fillColorPicker;
+@property (nonatomic, copy) DKColorPicker strokeColorPicker;
+@property (nonatomic, copy) DKColorPicker fillColorPicker;
 
 @end
