@@ -116,6 +116,11 @@
    return @"";
 }
 
++ (NSString *)bundle {
+   
+   return @"";
+}
+
 @end
 
 #pragma mark - UITheme

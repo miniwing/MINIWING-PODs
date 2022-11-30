@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, PresentingViewControllerAnimationStyle) {
  * Default, you don't need to conform all of these methods, just implement what you want to customize.
  * All the config has default value, we use a `UIViewController` category to conform `HWPanModalPresentable` protocol.
  */
+NS_SWIFT_NAME(PanModalPresentable)
 @protocol HWPanModalPresentable <NSObject>
 
 #pragma mark - ScrollView Config

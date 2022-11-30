@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IDEATableViewController (UIStoryboard)
 
 @property (class, nonatomic, readonly)       NSString                            * storyboard;
+@property (class, nonatomic, readonly)       NSString                            * bundle;
 
 @end
 
