@@ -58,6 +58,7 @@
    CAShapeLayer   *stMaskLayer   = [[CAShapeLayer alloc] init];
    stMaskLayer.frame = self.bounds;
    stMaskLayer.path  = stBezierPath.CGPath;
+//   stMaskLayer.maskedCorners  = nil;
    
    [self.layer setMasksToBounds:YES];
    [self.layer setMask:stMaskLayer];
