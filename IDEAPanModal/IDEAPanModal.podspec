@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'IDEAPanModal'
-  spec.version          = '0.8.9'
+  spec.version          = '0.9.5-IDEA'
   spec.summary          = 'IDEAPanModal is used to present controller and drag to dismiss.'
 
 # This description is used to generate tags and improve search results.

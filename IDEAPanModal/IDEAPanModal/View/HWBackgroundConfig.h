@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, HWBackgroundBehavior) {
     HWBackgroundBehaviorCustomBlurEffect, // use custom blur
 };
 
+NS_SWIFT_NAME(BackgroundConfig)
 @interface HWBackgroundConfig : NSObject
 
 @property (nonatomic, assign) HWBackgroundBehavior backgroundBehavior;

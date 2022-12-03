@@ -148,7 +148,7 @@
 }
 
 - (nonnull UIColor *)backgroundBlurColor {
-    return UIColor.whiteColor;
+    return [UIColor whiteColor];
 }
 
 - (HWBackgroundConfig *)backgroundConfig {

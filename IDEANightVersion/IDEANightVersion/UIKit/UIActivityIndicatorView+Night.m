@@ -1,6 +1,6 @@
 //
 //  UIActivityIndicatorView+Night.m
-//  APPBase
+//  IDEANightVersion
 //
 //  Created by Harry on 2019/12/30.
 //  Copyright © 2019 Harry. All rights reserved.

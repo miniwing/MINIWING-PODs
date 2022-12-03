@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
+NS_SWIFT_NAME(PanModalPresentationController)
 @interface HWPanModalPresentationController : UIPresentationController
 
 @property (nonatomic, readonly) HWDimmedView *backgroundView;

@@ -6,11 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "HWPanModalPresentable.h"
-#import "HWPanModalPresentationUpdateProtocol.h"
-#import "UIViewController+LayoutHelper.h"
-#import "HWPanModalPanGestureDelegate.h"
+#import <IDEAPanModal/HWPanModalPresentable.h>
+#import <IDEAPanModal/HWPanModalPresentationUpdateProtocol.h>
+#import <IDEAPanModal/UIViewController+LayoutHelper.h>
+#import <IDEAPanModal/HWPanModalPanGestureDelegate.h>
 
 @class HWPanModalContainerView;
 

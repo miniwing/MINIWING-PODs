@@ -243,15 +243,11 @@ static NSString *const kScrollViewKVOContentOffsetKey = @"contentOffset";
 
     // update drag indicator
     if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-       if (velocity.y > 0) {
-           [self.dragIndicatorView didChangeToState:HWIndicatorStatePullDown];
-       }
-       else if (velocity.y < 0 && self.presentedView.frame.origin.y <= self.anchoredYPosition && !self.extendsPanScrolling) {
-           [self.dragIndicatorView didChangeToState:HWIndicatorStateNormal];
-       }
-       else if (velocity.y < 0) {
-           [self.dragIndicatorView didChangeToState:HWIndicatorStatePullUp];
-       }
+        if (velocity.y > 0) {
+            [self.dragIndicatorView didChangeToState:HWIndicatorStatePullDown];
+        } else if (velocity.y < 0 && self.presentedView.frame.origin.y <= self.anchoredYPosition && !self.extendsPanScrolling) {
+            [self.dragIndicatorView didChangeToState:HWIndicatorStateNormal];
+        }
     }
 }
 

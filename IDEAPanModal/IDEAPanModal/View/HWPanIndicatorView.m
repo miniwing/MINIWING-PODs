@@ -6,7 +6,7 @@
 //
 
 #import "UIView+HW_Frame.h"
-#import "HWPanIndicatorView.h"
+#import <IDEAPanModal/HWPanIndicatorView.h>
 
 @interface HWPanIndicatorView ()
 
@@ -22,7 +22,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:CGRectZero];
 	if (self) {
-		self.backgroundColor = UIColor.clearColor;
+		self.backgroundColor = [UIColor clearColor];
 		[self addSubview:self.leftView];
 		[self addSubview:self.rightView];
 		self.indicatorColor = [UIColor colorWithRed:0.792 green:0.788 blue:0.812 alpha:1.00];
@@ -32,7 +32,13 @@
 }
 
 - (void)animate:(void (^)(void))animations {
-	[UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut animations:animations completion:^(BOOL finished) {
+	[UIView animateWithDuration:0.5
+                         delay:0
+        usingSpringWithDamping:1
+         initialSpringVelocity:1
+                       options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut
+                    animations:animations
+                    completion:^(BOOL finished) {
 
 	}];
 }
