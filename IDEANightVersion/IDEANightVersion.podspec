@@ -48,9 +48,6 @@ Pod::Spec.new do |spec|
                                         ]
                                       }
 
-#  spec.dependency 'IDEAApplet',         :configurations => ['Debug']
-#  spec.dependency 'IDEAAppletDebugger', :configurations => ['Debug']
-
   spec.public_header_files          = 'IDEANightVersion/**/*.{h}'
   spec.source_files                 = 'IDEANightVersion/**/*.{h,m,mm,c,cpp}'
 

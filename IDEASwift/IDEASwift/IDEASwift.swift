@@ -11,8 +11,10 @@ public class IDEASwift {
 
    #if DEBUG
    public static let Debug : Bool   = true
+   public static let Error : Bool   = true
    #else
    public static let Debug : Bool   = false
+   public static let Error : Bool   = false
    #endif
 }
 
