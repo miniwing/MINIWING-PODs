@@ -1,5 +1,5 @@
 //
-//  String+Extension.swift
+//  UIImage+Extension.swift
 //  IDEASwift
 //
 //  Created by Harry on 2021/10/19.
@@ -13,6 +13,5 @@ extension UIImage {
       
       return UIImage.init(named: name, in: bundle, compatibleWith: nil)
    }
-
 }
 

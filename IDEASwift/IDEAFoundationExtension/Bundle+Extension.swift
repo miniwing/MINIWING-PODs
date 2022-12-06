@@ -16,6 +16,5 @@ extension Bundle {
       
       return Bundle.init(path: szPath!)
    }
-   
 }
 
