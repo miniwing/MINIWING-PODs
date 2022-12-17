@@ -14,7 +14,7 @@
 
 @interface UISearchBar ()
 
-@property (nonatomic, strong) NSMutableDictionary<NSString *, DKColorPicker> *pickers;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, id> *pickers;
 
 @end
 
@@ -191,15 +191,44 @@
    if (nil != aPicker) {
       
       self.barTintColor = aPicker(self.themeManager.themeVersion);
-      [self.pickers setValue:[aPicker copy] forKey:@"setBarTintColor:"];
+      [self.pickers setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setBarTintColor:))];
 
    } /* End if () */
    else {
       
-      [self.pickers removeObjectForKey:@"setBarTintColor:"];
+      [self.pickers removeObjectForKey:NSStringFromSelector(@selector(setBarTintColor:))];
       
    } /* End else */
    
+   return;
+}
+
+- (void)setImagePicker:(DKImagePicker)aPicker forSearchBarIcon:(UISearchBarIcon)aIcon state:(UIControlState)aState {
+   
+   NSString             *szKey         = [NSString stringWithFormat:@"%@/%@", @(aIcon), @(aState)];
+
+   if (nil != aPicker) {
+      
+      NSMutableDictionary  *stDictionary  = [self.pickers valueForKey:szKey];
+      
+      if (!stDictionary) {
+         
+         stDictionary = [NSMutableDictionary dictionary];
+         
+      } /* End if () */
+      
+      [stDictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setImage:forSearchBarIcon:state:))];
+      [self.pickers setValue:stDictionary forKey:szKey];
+
+      [self setImage:aPicker(self.themeManager.themeVersion) forSearchBarIcon:aIcon state:aState];
+
+   } /* End if () */
+   else {
+
+      [self.pickers removeObjectForKey:szKey];
+      
+   } /* End else */
+      
    return;
 }
 
@@ -218,20 +247,51 @@
 //
 //   } /* End else */
 
-   [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
+   [self.pickers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aKey, id _Nonnull aObject, BOOL * _Nonnull aStop) {
       
-      SEL stSEL      = NSSelectorFromString(aSelector);
-      id  stResult   = aPicker(self.themeManager.themeVersion);
-      
-      [UIView animateWithDuration:DKNightVersionAnimationDuration
-                       animations:^{
+      if ([aObject isKindOfClass:[NSDictionary class]]) {
+         
+         NSDictionary<NSString *, DKPicker>  *stDictionary  = (NSDictionary *)aObject;
+         
+         [stDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
+            
+            NSArray           *stParams         = [aKey componentsSeparatedByString:@"/"];
+            
+            UISearchBarIcon    eSearchBarIcon   = [stParams[0] integerValue];
+            UIControlState     eControlState    = [stParams[1] integerValue];
+
+            [UIView transitionWithView:self
+                              duration:DKNightVersionAnimationDuration
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{
+               
+               if ([aSelector isEqualToString:NSStringFromSelector(@selector(setImage:forSearchBarIcon:state:))]) {
+                  UIImage  *stImage = aPicker(self.themeManager.themeVersion);
+                  
+                  [self setImage:stImage forSearchBarIcon:eSearchBarIcon state:eControlState];
+                  
+               } /* End if () */
+            }
+                            completion:nil];
+         }];
+         
+      } /* End if () */
+      else {
+         SEL       stSEL      = NSSelectorFromString(aKey);
+         DKPicker  stPicker   = (DKPicker)aObject;
+         id        stResult   = stPicker(self.themeManager.themeVersion);
+         
+         [UIView animateWithDuration:DKNightVersionAnimationDuration
+                          animations:^{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-         [self performSelector:stSEL withObject:stResult];
+            [self performSelector:stSEL withObject:stResult];
 #pragma clang diagnostic pop
-      }];
+         }];
+         
+      } /* End else */
    }];
-   
+      
    if (self.themeManager.supportsKeyboard) {
       
       if ([self.themeManager.themeVersion isEqualToString:DKThemeVersionNight]) {
@@ -261,12 +321,6 @@
 
          if (nil != stTextField) {
             
-//            [UIView performWithoutAnimation:^{
-//
-//               [stTextField resignFirstResponder];
-//               [stTextField becomeFirstResponder];
-//            }];
-
             [stTextField resignFirstResponder];
 
          } /* End if () */
