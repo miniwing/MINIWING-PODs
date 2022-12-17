@@ -79,7 +79,7 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
                             parameters:(id)aPARAMETERs
                               progress:(void (^)(NSProgress *aDownloadProgress)) aDownloadProgress
                            destination:(NSURL * (^)(NSURL *aTargetPath, NSURLResponse *aResponse))aDestination
-                     completionHandler:(void (^)(NSURLResponse *aResponse, NSURL *aFilePath, NSError *aError))aCompletionHandler;
+                     completionHandler:(void (^)(NSURLResponse *aResponse, NSURL *aFilePath, NSError * _Nullable aError))aCompletionHandler;
 
 - (void)cancelAllOperations;
 

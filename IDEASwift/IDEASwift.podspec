@@ -497,7 +497,7 @@ __END_DECLS
 #define __DebugWarn__                              (__AUTO__)
 #define __DebugError__                             (__AUTO__)
 #define __DebugColor__                             (__AUTO__)
-#define __DebugView__                              (__AUTO__)
+#define __DebugView__                              (__OFF__)
 
 /******************************************************************************************************/
 

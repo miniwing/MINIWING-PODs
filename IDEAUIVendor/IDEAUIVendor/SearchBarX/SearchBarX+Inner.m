@@ -22,10 +22,14 @@
 
    __TRY;
 
-   [self.searchBar setShowsCancelButton:YES animated:YES];
-   
-   [self setCancelButtnAttributes];
+   if (UITextFieldViewModeAlways == self.cancelButtonMode || UITextFieldViewModeWhileEditing == self.cancelButtonMode) {
+      
+      [self.searchBar setShowsCancelButton:YES animated:YES];
 
+      [self setCancelButtnAttributes];
+
+   } /* End if () */
+   
    self.shouldEndEditing   = NO;
    
 //   [self postSignal:SearchBarX.beginSearchSignal onQueue:DISPATCH_GET_MAIN_QUEUE()];
@@ -130,7 +134,12 @@
    
    self.shouldEndEditing   = YES;
    [self.searchBar endEditing:YES];
-   [self.searchBar setShowsCancelButton:NO animated:YES];
+   
+   if (UITextFieldViewModeWhileEditing == self.cancelButtonMode) {
+      
+      [self.searchBar setShowsCancelButton:NO animated:YES];
+
+   } /* End if () */
    
 //   [self postSignal:SearchBarX.endSearchSignal onQueue:DISPATCH_GET_MAIN_QUEUE()];
    DISPATCH_ASYNC_ON_MAIN_QUEUE(^{

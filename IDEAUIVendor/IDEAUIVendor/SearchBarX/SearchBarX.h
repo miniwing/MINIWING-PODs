@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak)   IBOutlet       UISearchBar                         * searchBar;
 
 @property (nonatomic, strong, readonly)      UITextField                         * searchTextField;
+@property (nonatomic, assign)                UITextFieldViewMode                   cancelButtonMode;
 
 @end
 
@@ -30,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SearchBarX ()
 
 - (void)setSearchTextFieldBackgroundColor:(UIColor *)aColor;
+- (BOOL)resignFirstResponder;
 
 @end
 

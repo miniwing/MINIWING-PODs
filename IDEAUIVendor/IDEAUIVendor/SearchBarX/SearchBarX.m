@@ -109,6 +109,39 @@
    return;
 }
 
+- (BOOL)resignFirstResponder {
+   
+   BOOL     bDone    = NO;
+   
+   bDone = [self.searchBar resignFirstResponder];
+   
+   if (!bDone) {
+      
+      bDone = [self.searchTextField resignFirstResponder];
+      
+   } /* End if () */
+   
+   if (!bDone) {
+      
+      bDone = [self.searchBar endEditing:YES];
+      
+   } /* End if () */
+
+   if (!bDone) {
+      
+      bDone = [self endEditing:YES];
+      
+   } /* End if () */
+   
+   if (!bDone) {
+      
+      bDone = [super resignFirstResponder];
+      
+   } /* End if () */
+
+   return bDone;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
