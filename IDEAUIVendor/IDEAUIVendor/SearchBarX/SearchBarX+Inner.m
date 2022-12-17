@@ -170,13 +170,13 @@
 - (BOOL)resignFirstResponder {
    
    BOOL     bDone    = NO;
-
-   bDone = [self.searchTextField resignFirstResponder];
+   
+   bDone = [self.searchBar resignFirstResponder];
    
    if (!bDone) {
       
-      bDone = [self.searchBar resignFirstResponder];
-
+      bDone = [self.searchTextField resignFirstResponder];
+      
    } /* End if () */
    
    if (!bDone) {
@@ -188,6 +188,12 @@
    if (!bDone) {
       
       bDone = [self endEditing:YES];
+      
+   } /* End if () */
+   
+   if (!bDone) {
+      
+      bDone = [super resignFirstResponder];
       
    } /* End if () */
 
