@@ -120,52 +120,77 @@
 
 + (UIColor *)systemBlueColor {
    
-   return rgba(0.0, 122.0, 255.0, 1.0);
+   return UIColor.systemBlueColor;
+//   return rgba(0.0, 122.0, 255.0, 1.0);
 }
 
 + (UIColor *)systemGreenColor {
    
-   return rgba(52.0, 199.0, 89.0, 1.0);
+   return UIColor.systemGreenColor;
+//   return rgba(52.0, 199.0, 89.0, 1.0);
 }
 
 + (UIColor *)systemIndigoColor {
    
-   return rgba(88.0, 86.0, 214.0, 1.0);
+   return UIColor.systemIndigoColor;
+//   return rgba(88.0, 86.0, 214.0, 1.0);
 }
 
 + (UIColor *)systemOrangeColor {
-   
-   return rgba(255.0, 149.0, 0.0, 1.0);
+      
+   return UIColor.systemOrangeColor;;
+//   return rgba(255.0, 149.0, 0.0, 1.0);
 }
 
 + (UIColor *)systemPinkColor{
    
-   return rgba(255.0, 45.0, 85.0, 1.0);
+   return UIColor.systemPinkColor;
+//   return rgba(255.0, 45.0, 85.0, 1.0);
 }
 
 + (UIColor *)systemPurpleColor {
    
-   return rgba(175.0, 82.0, 222.0, 1.0);
+   return UIColor.systemPurpleColor;
+//   return rgba(175.0, 82.0, 222.0, 1.0);
 }
 
 + (UIColor *)systemRedColor {
    
-   return rgba(255.0, 59.0, 48.0, 1.0);
+   return UIColor.systemRedColor;
+//   return rgba(255.0, 59.0, 48.0, 1.0);
 }
 
 + (UIColor *)systemTealColor {
    
-   return rgba(90.0, 200.0, 250.0, 1.0);
+   return UIColor.systemTealColor;
+//   return rgba(90.0, 200.0, 250.0, 1.0);
 }
 
 + (UIColor *)systemYellowColor {
    
-   return rgba(255.0, 204.0, 0.0, 1.0);
+   return UIColor.systemYellowColor;
+//   return rgba(255.0, 204.0, 0.0, 1.0);
+}
+
++ (UIColor *)systemBrownColor {
+   
+   return UIColor.systemBrownColor;
+}
+
++ (UIColor *)systemMintColor {
+   
+   return UIColor.systemMintColor;
+}
+
++ (UIColor *)systemCyanColor {
+   
+   return UIColor.systemCyanColor;
 }
 
 + (UIColor *)systemGrayColor {
-   
-   return rgba(142.0, 142.0, 147.0, 1.0);
+
+   return UIColor.systemGrayColor;
+//   return rgba(142.0, 142.0, 147.0, 1.0);
 }
 
 + (UIColor *)systemGray2Color {

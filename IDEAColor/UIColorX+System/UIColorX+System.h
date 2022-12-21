@@ -31,6 +31,10 @@
 @property (class, nonatomic, readonly) UIColor *systemTealColor;
 @property (class, nonatomic, readonly) UIColor *systemIndigoColor;
 
+@property (class, nonatomic, readonly) UIColor *systemBrownColor;
+@property (class, nonatomic, readonly) UIColor *systemMintColor;
+@property (class, nonatomic, readonly) UIColor *systemCyanColor;
+
 /* Shades of gray. systemGray is the base gray color.
  */
 @property (class, nonatomic, readonly) UIColor *systemGrayColor;
