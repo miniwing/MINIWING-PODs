@@ -174,17 +174,19 @@
 
 + (UIColor *)systemBrownColor {
    
-   return UIColor.systemBrownColor;
+   return UIColor.brownColor;
 }
 
 + (UIColor *)systemMintColor {
    
-   return UIColor.systemMintColor;
+//   return UIColor.systemMintColor;
+//   return UIColor.mintColor;
+   return rgba(162, 228, 184, 1.0);
 }
 
 + (UIColor *)systemCyanColor {
    
-   return UIColor.systemCyanColor;
+   return UIColor.cyanColor;
 }
 
 + (UIColor *)systemGrayColor {
