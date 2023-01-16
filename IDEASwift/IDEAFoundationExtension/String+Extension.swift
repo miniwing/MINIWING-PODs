@@ -22,6 +22,11 @@ extension String {
       
       return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
    }
+
+   public func localized(_ aClass: AnyClass, in aName: String) -> String {
+      
+      return NSLocalizedString(self, tableName: nil, bundle: Bundle.bundle(for: aClass, with: aName) ?? Bundle.main, value: "", comment: "")
+   }
    
    public func isEmpty() -> Bool {
       return (self == "")
