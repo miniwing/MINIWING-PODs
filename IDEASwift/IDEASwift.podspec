@@ -61,6 +61,7 @@ Pod::Spec.new do |spec|
 #  spec.dependency 'YYCategories'
 
   spec.source_files               = 'IDEASwift/**/*.{swift}',
+                                    'IDEAFoundation/**/*.{swift}',
                                     'IDEAFoundationExtension/**/*.{swift}',
                                     'IDEAUIKitExtension/**/*.{swift}'
 
