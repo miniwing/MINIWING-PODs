@@ -12,36 +12,36 @@
 
 @implementation IDEAFileUtils
 
-+ (NSString *)formatFileSize:(NSInteger)size {
++ (NSString *)formatFileSize:(int64_t)size {
    
    if (size>0) {
       
-      double kiloByte = size/1024.0;
+      double kiloByte = size / 1024.0;
       
       if (kiloByte < 1 && kiloByte > 0) {
          
-         return [NSString stringWithFormat:@"%.2fByte",size];
+         return [NSString stringWithFormat:@"%.2f B",size];
       }
       
       double megaByte = kiloByte / 1024.0;
       
       if (megaByte < 1) {
          
-         return [NSString stringWithFormat:@"%.2fK",kiloByte];
+         return [NSString stringWithFormat:@"%.2f KB",kiloByte];
       }
       
       double gigaByte = megaByte / 1024.0;
       
       if (gigaByte < 1) {
          
-         return [NSString stringWithFormat:@"%.2fM",megaByte];
+         return [NSString stringWithFormat:@"%.2f MB",megaByte];
       }
       
       double teraByte = gigaByte / 1024.0;
       
       if (teraByte < 1) {
          
-         return [NSString stringWithFormat:@"%.2fG",gigaByte];
+         return [NSString stringWithFormat:@"%.2f GB",gigaByte];
       }
       
       return [NSString stringWithFormat:@"%.2fT",teraByte];
@@ -50,7 +50,7 @@
    return @"0K";
 }
 
-+ (NSString *)byteCountFormat:(NSInteger)aBytes {
++ (NSString *)byteCountFormat:(int64_t)aBytes {
    
    int                            nErr                                     = EFAULT;
    
@@ -60,6 +60,7 @@
       
       @"B", @"KB", @"MB", @"GB", @"TB", @"PB", @"EB", @"ZB", @"YB"
    };
+   
    double                         dBytes                                   = aBytes;
    NSInteger                      nUnitIndex                               = 0;
    

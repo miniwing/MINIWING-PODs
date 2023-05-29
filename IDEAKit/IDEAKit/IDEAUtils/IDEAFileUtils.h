@@ -23,9 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param size : unit byte.
  @return 返回值实例：1.22M
  */
-+ (NSString *)formatFileSize:(NSInteger)aSize;
++ (NSString *)formatFileSize:(int64_t)aSize;
 
-+ (NSString *)byteCountFormat:(NSInteger)aBytes;
++ (NSString *)byteCountFormat:(int64_t)aBytes;
 
 @end
 
