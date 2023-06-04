@@ -18,7 +18,7 @@
     [UIView animateWithDuration:duration * 0.4 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         CATransform3D tran = CATransform3DIdentity;
         tran.m34 = -1 / 1000.0f;
-        tran = CATransform3DRotate(tran, M_PI / 180, 1, 0, 0);
+        tran = CATransform3DRotate(tran, M_PI / 16, 1, 0, 0);
         tran = CATransform3DTranslate(tran, 0, 0, -100);
         fromVC.view.layer.transform = tran;
     } completion:^(BOOL finished) {
