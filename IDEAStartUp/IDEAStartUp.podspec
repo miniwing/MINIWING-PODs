@@ -61,7 +61,7 @@ Pod::Spec.new do |spec|
 
   spec.public_header_files          = 'IDEAStartUp/**/*.h'
 #  spec.source_files                 = 'IDEAStartUp/**/*.{h}'
-  spec.source_files                 = 'IDEAStartUp/**/*.{h,m}'
+  spec.source_files                 = 'IDEAStartUp/**/*.{h,m,mm}'
   spec.requires_arc                 = true
   
   pch_app_kit = <<-EOS

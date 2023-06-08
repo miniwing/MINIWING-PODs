@@ -209,6 +209,11 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    return UIAlertControllerBlocksDestructiveButtonIndex;
 }
 
+- (BOOL)shouldAutorotate {
+   
+   return NO;
+}
+
 @end
 
 @implementation UIViewController (UACB_Topmost)
