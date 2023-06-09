@@ -1,0 +1,1 @@
+IDEACycleView/IDEACycleView.podspec
