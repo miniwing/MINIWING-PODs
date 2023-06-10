@@ -12,97 +12,126 @@
 
 @interface IDEACycleView() <UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIScrollView *mainScrollView;
-@property (nonatomic, weak) NSTimer         * autoTimer;
-@property (nonatomic, assign) CGFloat     itemWidth;
+@property (nonatomic, strong) UIScrollView         * mainScrollView;
+@property (nonatomic, weak)   NSTimer              * autoTimer;
+@property (nonatomic, assign) CGFloat                itemWidth;
 
 // left middle right 3 View
-@property (nonatomic, strong) IDEACycleViewCell * leftView;
-@property (nonatomic, strong) IDEACycleViewCell * middleView;
-@property (nonatomic, strong) IDEACycleViewCell * rightView;
+@property (nonatomic, strong) IDEACycleViewCell    * leftView;
+@property (nonatomic, strong) IDEACycleViewCell    * middleView;
+@property (nonatomic, strong) IDEACycleViewCell    * rightView;
 
-@property (nonatomic, strong) IDEAPageControl *pageControl;
+@property (nonatomic, strong) IDEAPageControl      * pageControl;
 //
-@property (nonatomic, assign) NSInteger     rightIndex;
-@property (nonatomic, assign) NSInteger     middleIndex;
-@property (nonatomic, assign) NSInteger     leftIndex;
+@property (nonatomic, assign) NSInteger              rightIndex;
+@property (nonatomic, assign) NSInteger              middleIndex;
+@property (nonatomic, assign) NSInteger              leftIndex;
 
 //
-@property (nonatomic, assign) NSInteger     itemCount;
+@property (nonatomic, assign) NSInteger              itemCount;
 
-@property (nonatomic, strong) NSLock *lock;
+@property (nonatomic, strong) NSLock               * lock;
 @end
 @implementation IDEACycleView
 
 
 - (instancetype)init {
+   
    self = [super init];
+   
    if (self) {
+      
       [self setupData];
       [self setupViews];
       [self setupLayout];
-   }
+      
+   } /* End if () */
+   
    return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
+
    self = [super initWithFrame:frame];
+
    if (self) {
+
       [self setupData];
       [self setupViews];
       [self setupLayout];
-   }
+
+   } /* End if () */
+
    return self;
 }
 
-
 - (instancetype)initWithFrame:(CGRect)frame pageControl:(IDEAPageControl *)pageControl {
+   
    self = [super initWithFrame:frame];
+   
    if (self) {
+      
       self.pageControl = pageControl;
       [self setupData];
       [self setupViews];
       [self setupLayout];
-   }
+      
+   } /* End if () */
+
    return self;
 }
+
 #pragma mark - tap 点击事件
 - (void)tapClick:(UITapGestureRecognizer*)tap {
+   
    if (self.delegate && [self.delegate respondsToSelector:@selector(oBCycleView:itemIndex:)]) {
       [self.delegate oBCycleView:self itemIndex:self.middleIndex];
    }
+
+   return;
 }
 
 
 #pragma mark - reload data method
 - (void)reloadCycleData {
-   if (self.imagesArray.count <=0) {
+   
+   if (self.views.count <=0) {
+      
       return;
-   }
+      
+   } /*  End if () */
+   
    if (self.space > 0.01) {
+      
       IDEACycleViewCell *cell0 = [self.mainScrollView viewWithTag:1010];
       IDEACycleViewCell *cell4 = [self.mainScrollView viewWithTag:1011];
-      NSInteger index0 = (self.leftIndex -1) < 0? (self.imagesArray.count-1): (self.leftIndex -1);
-      [cell0 fillElementWithImgString:self.imagesArray[index0]];
-      NSInteger index4 = (self.rightIndex +1) > (self.imagesArray.count-1)? 0:(self.rightIndex +1);
-      [cell4 fillElementWithImgString:self.imagesArray[index4]];
-   }
+      
+      NSInteger index0 = (self.leftIndex -1) < 0? (self.views.count-1): (self.leftIndex -1);
+      [cell0 fillElementWithView:self.views[index0]];
+      
+      NSInteger index4 = (self.rightIndex +1) > (self.views.count-1)? 0:(self.rightIndex +1);
+      [cell4 fillElementWithView:self.views[index4]];
+      
+   } /* End if () */
    
-   [self.leftView fillElementWithImgString:self.imagesArray[_leftIndex]];
-   [self.middleView fillElementWithImgString:self.imagesArray[_middleIndex]];
-   [self.rightView fillElementWithImgString:self.imagesArray[_rightIndex]];
+   [self.leftView    fillElementWithView:self.views[_leftIndex]];
+   [self.middleView  fillElementWithView:self.views[_middleIndex]];
+   [self.rightView   fillElementWithView:self.views[_rightIndex]];
    
-   
+   return;
 }
 
-- (void)setImagesArray:(NSArray *)imagesArray {
-   _imagesArray = imagesArray;
-   self.itemCount = imagesArray.count;
-   self.pageControl.pageCount = imagesArray.count;
+- (void)setViews:(NSArray<UIView *> *)aViews {
+   
+   _views   = [aViews copy];
+   self.itemCount             = aViews.count;
+   self.pageControl.pageCount = aViews.count;
    [self loadConfigData];
    [self reloadCycleData];
    //
    [self timerStart];
+   
+   return;
 }
 
 #pragma mark - private
@@ -117,61 +146,85 @@
 }
 
 - (void)loadConfigData {
+   
    self.itemWidth = self.bounds.size.width-self.space*4;
-   self.itemCount = self.imagesArray.count;
+   self.itemCount = self.views.count;
+   
    if (self.itemCount ==1) {
+      
       self.mainScrollView.scrollEnabled = NO;
-   }else
+   }
+   else {
+      
       self.mainScrollView.scrollEnabled = YES;
+   }
    
    if (self.itemCount >2) {
-      self.leftIndex   =self.imagesArray.count - 1;
+      self.leftIndex   =self.views.count - 1;
       self.middleIndex =0;
       self.rightIndex  =1;
-   } else if(self.itemCount == 2) {
+   }
+   else if(self.itemCount == 2) {
       self.leftIndex   =1;
       self.middleIndex =0;
       self.rightIndex  =1;
-   } else if(self.itemCount == 1) {
+   }
+   else if(self.itemCount == 1) {
       self.leftIndex   =0;
       self.middleIndex =0;
       self.rightIndex  =0;
    }
-   self.pageControl.pageCount = self.imagesArray.count;
-   self.pageControl.selectIndex = self.middleIndex;
+   
+   self.pageControl.pageCount    = self.views.count;
+   self.pageControl.selectIndex  = self.middleIndex;
+   
+   return;
 }
 
 - (void)setSpace:(CGFloat)space {
+   
    _space = space;
+   
    if (space > 0.001) {
+      
       [self loadConfigData];
       [self setupLayout];
-   }
+      
+   } /* End if () */
+   
+   return;
 }
 - (void)setAutoScroll:(BOOL)autoScroll {
+   
    _autoScroll = autoScroll;
+   
    if (!autoScroll) {
+      
       [self timerStop];
-   }
+      
+   } /* End if () */
+   
+   return;
 }
 
 - (void)setTimeInterval:(NSTimeInterval)timeInterval {
+   
    _timeInterval = timeInterval;
    if (!self.autoScroll) {
+      
       [self timerStop];
-   } else {
+      
+   }  /* End if () */
+   else {
       [self timerStart];
-   }
+      
+   } /* End if () */
+
+   return;
 }
 
-- (void)setPlaceholderImage:(UIImage *)placeholderImage {
-   _placeholderImage = placeholderImage;
-   self.leftView.placeholderImage = placeholderImage;
-   self.middleView.placeholderImage = placeholderImage;
-   self.rightView.placeholderImage = placeholderImage;
-   
-}
 - (void)setupViews {
+   
    self.backgroundColor = [UIColor whiteColor];
    [self addSubview:self.mainScrollView];
    [self addSubview:self.pageControl];
@@ -189,15 +242,15 @@
    //    tap.delegate = self;
    [self.middleView addGestureRecognizer:tap];
    
-   
-   
    self.rightView = [[IDEACycleViewCell alloc] init];
    [self.mainScrollView addSubview:self.rightView];
+   
+   return;
 }
 
 - (void)setupLayout {
+   
    if (self.space > 0.01) {
-      
       
       CGFloat k_space = self.space;
       self.itemWidth = self.bounds.size.width-k_space*4;
@@ -223,7 +276,8 @@
       rightView0.tag = 1011;
       [self.mainScrollView addSubview:rightView0];
       
-   } else {
+   }  /* End if () */
+   else {
       
       CGFloat k_space = self.space;
       self.itemWidth = self.bounds.size.width-k_space*4;
@@ -235,7 +289,10 @@
       CGFloat r_x = CGRectGetMaxX(self.middleView.frame) + k_space;
       self.rightView.frame = CGRectMake(r_x, 0, k_w, self.bounds.size.height);
       self.mainScrollView.contentOffset = CGPointMake( k_w+k_space, 0);
-   }
+      
+   } /* End else */
+   
+   return;
 }
 
 
@@ -245,14 +302,18 @@
    CGFloat flag_left_x = 0;
    CGFloat offset_x = 0;   // 滑动的目的地
    if (self.space > 0.01) {
+      
       flag_right_x = self.itemWidth*2-1;
       flag_left_x = self.itemWidth;
       offset_x = self.itemWidth*2;
-   } else {
+      
+   }  /* End if () */
+   else {
       flag_right_x = self.itemWidth -1;
       flag_left_x = 1;
       offset_x = self.itemWidth+self.space;
-   }
+      
+   } /* End else */
    
    //像左滑动
    if (self.mainScrollView.contentOffset.x >= flag_right_x) {

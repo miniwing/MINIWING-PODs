@@ -34,14 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 网络图片 url string 数组
  */
-@property (nonatomic, copy) NSArray * imagesArray;
-
-/**
- * 每张图片对应要显示的文字数组
- */
-@property (nonatomic, strong) NSArray *titlesArray;
-
-@property (nonatomic, strong) UIImage *placeholderImage;
+@property (nonatomic, copy) NSArray<UIView *> * views;
 
 /**
  * item 点击的代理回调

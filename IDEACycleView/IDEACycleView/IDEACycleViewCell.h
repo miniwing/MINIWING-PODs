@@ -12,10 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IDEACycleViewCell : UIView
 
-@property (nonatomic, strong) UIImage *placeholderImage;
-@property (nonatomic, strong) UIImageView *contentIV;
-
-- (void)fillElementWithImgString:(NSString *)imgUrl;
+- (void)fillElementWithView:(UIView *)aView;
 
 @end
 
