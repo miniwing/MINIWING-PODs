@@ -93,7 +93,7 @@
 
    LogView((@"-[%@ supportedInterfaceOrientations]", [self class]));
 
-   return UIInterfaceOrientationMaskPortrait;
+   return UIInterfaceOrientationMaskAll;
 }
 
 // Controls the application's preferred home indicator auto-hiding when this view controller is shown.

@@ -37,7 +37,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @interface UIViewController (UACB_Topmost)
 
-- (UIViewController *)__TopMost;
+- (UIViewController *)__topMost;
 
 @end
 
@@ -127,7 +127,9 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    } /* End if () */
    
-   [aViewController.__TopMost presentViewController:stAlertController animated:YES completion:nil];
+   LogDebug((@"+[UIAlertController showInViewController:] : %@", aViewController.__topMost));
+   
+   [aViewController.__topMost presentViewController:stAlertController animated:YES completion:nil];
    
    if (@available(iOS 13, *)) {
       
@@ -209,8 +211,29 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    return UIAlertControllerBlocksDestructiveButtonIndex;
 }
 
-- (BOOL)shouldAutorotate {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
    
+   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.__topMost));
+   
+   if (nil != self.__topMost && self != self.__topMost) {
+      
+      return [self.__topMost supportedInterfaceOrientations];
+      
+   } /* End if () */
+   
+   return UIInterfaceOrientationMaskLandscape;
+}
+
+- (BOOL)shouldAutorotate {
+
+   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.__topMost));
+   
+   if (nil != self.__topMost && self != self.__topMost) {
+      
+      return [self.__topMost shouldAutorotate];
+      
+   } /* End if () */
+
    return NO;
 }
 
@@ -218,7 +241,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @implementation UIViewController (UACB_Topmost)
 
-- (UIViewController *)__TopMost {
+- (UIViewController *)__topMost {
    
    UIViewController  *stTopMost  = self;
    UIViewController  *stAbove    = nil;

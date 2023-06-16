@@ -16,6 +16,7 @@ NSString *const IDEAUIRouterParameterCompletion = @"IDEAUIRouterParameterComplet
 NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInfo";
 
 @interface IDEAUIRouter ()
+
 /**
  *  保存了所有已注册的 URL
  *  结构类似 @{@"beauty": @{@":id": {@"_", [block copy]}}}
@@ -34,6 +35,7 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
       
       g_INSTANCE = [[self alloc] init];
    });
+   
    return g_INSTANCE;
 }
 
@@ -53,16 +55,22 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
 + (void)openURL:(NSString *)aURL {
    
    [self openURL:aURL completion:nil];
+   
+   return;
 }
 
 + (void)openURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion {
    
    [self openURL:aURL withUserInfo:nil completion:aCompletion];
+   
+   return;
 }
 
 + (void)queryURL:(NSString *)aURL completion:(IDEAUIRouterCompletion)aCompletion {
    
    [self openURL:aURL withUserInfo:nil completion:aCompletion];
+   
+   return;
 }
 
 + (void)openURL:(NSString *)aURL withUserInfo:(NSDictionary *)aUserInfo completion:(IDEAUIRouterCompletion)aCompletion {
@@ -75,7 +83,8 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
       if ([aObj isKindOfClass:[NSString class]]) {
          
          stParameters[aKey] = [aObj stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-      }
+         
+      } /* End if () */
    }];
    
    if (stParameters) {
@@ -84,17 +93,23 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
       if (aCompletion) {
          
          stParameters[IDEAUIRouterParameterCompletion] = aCompletion;
-      }
+         
+      } /* End if () */
+      
       if (aUserInfo) {
          
          stParameters[IDEAUIRouterParameterUserInfo] = aUserInfo;
-      }
+         
+      } /* End if () */
+      
       if (stHandler) {
          
          [stParameters removeObjectForKey:@"block"];
          stHandler(aURL, stParameters, aCompletion);
-      }
-   }
+         
+      } /* End if () */
+      
+   } /* End if () */
    
    return;
 }
@@ -167,7 +182,8 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
             stSubRoutes = stSubRoutes[szKey];
             
             break;
-         }
+            
+         } /* End if () */
          else if ([szKey hasPrefix:@":"]) {
             
             bFound      = YES;
@@ -175,17 +191,23 @@ NSString *const IDEAUIRouterParameterUserInfo   = @"IDEAUIRouterParameterUserInf
             stParameters[[szKey substringFromIndex:1]] = szPathComponent;
             
             break;
-         }
-      }
+            
+         } /* End else if () */
+         
+      } /* End for () */
+      
       // 如果没有找到该 pathComponent 对应的 handler，则以上一层的 handler 作为 fallback
       if (!bFound && !stSubRoutes[@"_"]) {
          
          return nil;
-      }
-   }
+         
+      } /* End if () */
+      
+   } /* End for () */
    
    // Extract Params From Query.
-   NSArray* pathInfo = [aURL componentsSeparatedByString:@"?"];
+   NSArray  *pathInfo = [aURL componentsSeparatedByString:@"?"];
+   
    if (pathInfo.count > 1) {
       
       NSString* parametersString = [pathInfo objectAtIndex:1];

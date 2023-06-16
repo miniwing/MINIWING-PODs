@@ -80,7 +80,14 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
                                                        ofType:@"txt"];
 #else
       sharedInstance.file = @"ColorTable.txt";
+
+      NSBundle   *stBundle = [NSBundle bundleForClass:[self class]];
+      NSURL      *stURL    = [stBundle URLForResource:@"ColorTable" withExtension:@"txt"];
+
+      sharedInstance.file = [stURL.path copy];
 #endif
+      
+      return;
    });
    
    return sharedInstance;

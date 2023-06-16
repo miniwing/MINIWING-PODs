@@ -20,22 +20,22 @@
 
 @implementation IDEAColorTable
 
-+ (void)load {
-   
-   static   dispatch_once_t    stOnceToken;
-
-   dispatch_once(&stOnceToken, ^{
-
-      NSBundle   *stBundle = [NSBundle bundleForClass:[self class]];
-      NSURL      *stURL    = [stBundle URLForResource:@"ColorTable" withExtension:@"txt"];
-
-//      g_ColorTable  = [stURL.path copy];
-      
-      [[DKColorTable sharedColorTable] setFile:[stURL.path copy]];
-   });
-
-   return;
-}
+//+ (void)load {
+//
+//   static   dispatch_once_t    stOnceToken;
+//
+//   dispatch_once(&stOnceToken, ^{
+//
+//      NSBundle   *stBundle = [NSBundle bundleForClass:[self class]];
+//      NSURL      *stURL    = [stBundle URLForResource:@"ColorTable" withExtension:@"txt"];
+//
+////      g_ColorTable  = [stURL.path copy];
+//      
+//      [[DKColorTable sharedColorTable] setFile:[stURL.path copy]];
+//   });
+//
+//   return;
+//}
 
 + (NSString *)pathForColorTable:(NSString *)aColorTable
                          ofType:(NSString *)aType {
