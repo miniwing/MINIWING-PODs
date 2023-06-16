@@ -52,7 +52,7 @@ Pod::Spec.new do |spec|
   spec.source_files                 = 'IDEANightVersion/**/*.{h,m,mm,c,cpp}'
 
   spec.requires_arc                 = true
-  spec.resources            = [ 'IDEANightVersion/ColorTable.txt' ]
+  spec.resources                    = [ 'IDEANightVersion/ColorTable.txt' ]
 
   pch_app_kit = <<-EOS
 
