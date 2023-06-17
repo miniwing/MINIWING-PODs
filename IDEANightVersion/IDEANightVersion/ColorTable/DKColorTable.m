@@ -78,14 +78,14 @@ UIColor *DKColorFromRGBA(NSUInteger aHex) {
 #if __has_include("IDEAColor/IDEAColorTable.h") || __has_include("IDEAColorTable.h")
       sharedInstance.file = [IDEAColorTable pathForColorTable:@"ColorTable"
                                                        ofType:@"txt"];
-#else
-      sharedInstance.file = @"ColorTable.txt";
+#else // __has_include("IDEAColor/IDEAColorTable.h") || __has_include("IDEAColorTable.h")
+//      sharedInstance.file = @"ColorTable.txt";
 
       NSBundle   *stBundle = [NSBundle bundleForClass:[self class]];
       NSURL      *stURL    = [stBundle URLForResource:@"ColorTable" withExtension:@"txt"];
 
-      sharedInstance.file = [stURL.path copy];
-#endif
+      sharedInstance.file  = [stURL.path copy];
+#endif // __has_include("IDEAColor/IDEAColorTable.h") || __has_include("IDEAColorTable.h")
       
       return;
    });
