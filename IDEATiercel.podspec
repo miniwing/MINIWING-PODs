@@ -1,0 +1,1 @@
+IDEATiercel/IDEATiercel.podspec
