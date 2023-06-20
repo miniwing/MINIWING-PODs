@@ -59,42 +59,44 @@ public class SessionManager {
    }
    
    private struct State {
-      var logger: Logable
-      var isControlNetworkActivityIndicator: Bool = true
-      var configuration: SessionConfiguration {
+      var logger                             : Logable
+      var isControlNetworkActivityIndicator  : Bool = true
+      var configuration                      : SessionConfiguration {
          didSet {
             guard !shouldCreatSession else { return }
             shouldCreatSession = true
             if status == .running {
                if configuration.maxConcurrentTasksLimit <= oldValue.maxConcurrentTasksLimit {
                   restartTasks = runningTasks + tasks.filter { $0.status == .waiting }
-               } else {
+               }
+               else {
                   restartTasks = tasks.filter { $0.status == .waiting || $0.status == .running }
                }
-            } else {
+            }
+            else {
                session?.invalidateAndCancel()
                session = nil
             }
          }
       }
-      var session: URLSession?
-      var shouldCreatSession: Bool = false
-      var timer: DispatchSourceTimer?
-      var status: Status = .waiting
-      var tasks: [DownloadTask] = []
-      var taskMapper: [String: DownloadTask] = [String: DownloadTask]()
-      var urlMapper: [URL: URL] = [URL: URL]()
-      var runningTasks: [DownloadTask] = []
-      var restartTasks: [DownloadTask] = []
-      var succeededTasks: [DownloadTask] = []
-      var speed: Int64 = 0
-      var timeRemaining: Int64 = 0
+      var session             : URLSession?
+      var shouldCreatSession  : Bool                     = false
+      var timer               : DispatchSourceTimer?
+      var status              : Status                   = .waiting
+      var tasks               : [DownloadTask]           = []
+      var taskMapper          : [String: DownloadTask]   = [String: DownloadTask]()
+      var urlMapper           : [URL: URL]               = [URL: URL]()
+      var runningTasks        : [DownloadTask]           = []
+      var restartTasks        : [DownloadTask]           = []
+      var succeededTasks      : [DownloadTask]           = []
+      var speed               : Int64                    = 0
+      var timeRemaining       : Int64                    = 0
       
-      var progressExecuter: Executer<SessionManager>?
-      var successExecuter: Executer<SessionManager>?
-      var failureExecuter: Executer<SessionManager>?
-      var completionExecuter: Executer<SessionManager>?
-      var controlExecuter: Executer<SessionManager>?
+      var progressExecuter    : Executer<SessionManager>?
+      var successExecuter     : Executer<SessionManager>?
+      var failureExecuter     : Executer<SessionManager>?
+      var completionExecuter  : Executer<SessionManager>?
+      var controlExecuter     : Executer<SessionManager>?
    }
    
    

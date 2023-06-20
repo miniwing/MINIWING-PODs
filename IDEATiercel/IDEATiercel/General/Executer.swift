@@ -29,8 +29,9 @@ import Foundation
 public typealias Handler<T> = (T) -> ()
 
 public class Executer<T> {
-   private let onMainQueue: Bool
-   private let handler: Handler<T>?
+   
+   private let onMainQueue : Bool
+   private let handler     : Handler<T>?
    
    public init(onMainQueue: Bool = true, handler: Handler<T>?) {
       self.onMainQueue = onMainQueue

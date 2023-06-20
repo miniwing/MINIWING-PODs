@@ -161,8 +161,6 @@ public class DownloadTask: Task<DownloadTask> {
    internal override func execute(_ executer: Executer<DownloadTask>?) {
       executer?.execute(self)
    }
-   
-   
 }
 
 
@@ -571,7 +569,6 @@ extension DownloadTask {
    }
    
 }
-
 
 
 extension Array where Element == DownloadTask {

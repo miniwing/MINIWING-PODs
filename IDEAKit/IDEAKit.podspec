@@ -86,6 +86,10 @@ Pod::Spec.new do |spec|
   if ENV['SSZipArchive'] == 'YES'
     spec.dependency 'SSZipArchive'
   end # SSZipArchive
+  
+  if ENV['PromisesObjC'] == 'YES'
+    spec.dependency 'PromisesObjC'
+  end # PromisesObjC
 
   spec.public_header_files        = 'IDEAKit/**/*.{h}',
                                     'IDEAExtension/**/*.{h}',
