@@ -11,6 +11,7 @@
 #endif /* DEBUG */
 
 #import <IDEAKit/NSURLRequest+NSString.h>
+#import <YYKit/YYKit.h>
 
 #if (__has_include(<AFNetworking/AFNetworking.h>) || __has_include("AFNetworking/AFNetworking.h") || __has_include("AFNetworking.h"))
 
@@ -45,6 +46,14 @@ typedef NSMutableDictionary<NSString *,NSString *> HttpMutableHeaders;
                        prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                        headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                     parameters:(id)aPARAMETERs
+                       success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
+                       failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE;
+
+- (NSURLSessionDataTask *)POST:(NSString *)aURL
+                        resume:(BOOL)aRESUME
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
+                       headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
+                          body:(nullable NSObject<YYModel> *)aJsonBody
                        success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
                        failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE;
 

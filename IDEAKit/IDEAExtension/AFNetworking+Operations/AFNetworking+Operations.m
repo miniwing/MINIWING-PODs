@@ -17,6 +17,7 @@
                                          prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
                                          headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
                                       parameters:(id)aParameters
+                                            body:(NSObject<YYModel> *)aJsonBody
                                   uploadProgress:(void (^)(NSProgress *uploadProgress)) aUploadProgress
                                 downloadProgress:(void (^)(NSProgress *downloadProgress)) aDownloadProgress
                                          success:(void (^)(NSURLSessionDataTask *, id))aSUCCESS
@@ -54,6 +55,12 @@
       [stRequest setValue:aHeaders[szHeaderField] forHTTPHeaderField:szHeaderField];
       
    } /* End for () */
+   
+   if (nil != aJsonBody) {
+      
+      stRequest.HTTPBody   = [[aJsonBody modelToJSONString] dataUsingEncoding:NSUTF8StringEncoding];
+      
+   } /* End if () */
    
    __block NSURLSessionDataTask *stDataTask  = [self dataTaskWithRequest:stRequest
                                                           uploadProgress:aUploadProgress
@@ -94,6 +101,7 @@
                                                            prepare:aPrepare
                                                            headers:aHeaders
                                                         parameters:aParams
+                                                              body:nil
                                                     uploadProgress:nil
                                                   downloadProgress:nil
                                                            success:aSUCCESS
@@ -121,6 +129,35 @@
                                                            prepare:aPrepare
                                                            headers:aHeaders
                                                         parameters:aParameters
+                                                              body:nil
+                                                    uploadProgress:nil
+                                                  downloadProgress:nil
+                                                           success:aSUCCESS
+                                                           failure:aFAILURE];
+   
+   if (aResume) {
+      
+      [stDataTask resume];
+      
+   } /* End if () */
+   
+   return stDataTask;
+}
+
+- (NSURLSessionDataTask *)POST:(NSString *)aURL
+                        resume:(BOOL)aResume
+                       prepare:(nullable void (^)(NSMutableURLRequest *aRequest, AFHTTPSessionManager *aSessionManager))aPrepare
+                       headers:(nullable NSDictionary <NSString *, NSString *> *)aHeaders
+                          body:(nullable NSObject<YYModel> *)aJsonBody
+                       success:(void (^)(NSURLSessionDataTask *aTask, id aResponse))aSUCCESS
+                       failure:(void (^)(NSURLSessionDataTask *aTask, NSError *aError))aFAILURE {
+   
+   NSURLSessionDataTask *stDataTask = [self dataTaskWithHTTPMethod:@"POST"
+                                                         URLString:aURL
+                                                           prepare:aPrepare
+                                                           headers:aHeaders
+                                                        parameters:nil
+                                                              body:aJsonBody
                                                     uploadProgress:nil
                                                   downloadProgress:nil
                                                            success:aSUCCESS
@@ -224,6 +261,7 @@
                                                            prepare:aPrepare
                                                            headers:aHeaders
                                                         parameters:aParameters
+                                                              body:nil
                                                     uploadProgress:nil
                                                   downloadProgress:nil
                                                            success:aSUCCESS
