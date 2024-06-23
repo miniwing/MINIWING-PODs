@@ -60,8 +60,6 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                                                             message:aMessage
                                                                      preferredStyle:aPreferredStyle];
    
-   __weak UIAlertController   *stAlertController   = stStrongController;
-   
    if (aCancelButtonTitle && 0 < aCancelButtonTitle.length) {
       
       UIAlertAction  *stCancelAction   = [UIAlertAction actionWithTitle:aCancelButtonTitle
@@ -69,14 +67,14 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                                                 handler:^(UIAlertAction *action) {
          if (aTapBlock) {
             
-            aTapBlock(stAlertController, action, UIAlertControllerBlocksCancelButtonIndex);
+            aTapBlock(stStrongController, action, UIAlertControllerBlocksCancelButtonIndex);
             
          } /* End if () */
       }];
       
-      [stAlertController addAction:stCancelAction];
+      [stStrongController addAction:stCancelAction];
       
-//      LogDebug((@" : %@", [UIAlertController getAllProperty:stAlertController]));
+//      LogDebug((@" : %@", [UIAlertController getAllProperty:stStrongController]));
 //      LogDebug((@" : %@", [UIAlertController getAllProperty:stCancelAction]));
 //      LogDebug((@" : %@", [UIAlertController getAllProperty:[[NSClassFromString(@"_UIAlertControllerActionView") alloc] init]]));
 //      [stCancelAction setValue:[UIColor colorWithHexString:@"#3FBE8C"] forKey:@"_titleTextColor"];
@@ -93,19 +91,19 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                                                    handler:^(UIAlertAction *action) {
          if (aTapBlock) {
             
-            aTapBlock(stAlertController, action, UIAlertControllerBlocksFirstOtherButtonIndex + H);
+            aTapBlock(stStrongController, action, UIAlertControllerBlocksFirstOtherButtonIndex + H);
             
          } /* End if () */
       }];
       
-      [stAlertController addAction:stOtherAction];
+      [stStrongController addAction:stOtherAction];
       
    } /* End for () */
    
 #if TARGET_OS_IOS
    if (aPopoverPresentationControllerBlock) {
       
-      aPopoverPresentationControllerBlock(stAlertController.popoverPresentationController);
+      aPopoverPresentationControllerBlock(stStrongController.popoverPresentationController);
       
    } /* End if () */
 #endif
@@ -118,26 +116,26 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
          
          if (aTapBlock) {
             
-            aTapBlock(stAlertController, action, UIAlertControllerBlocksDestructiveButtonIndex);
+            aTapBlock(stStrongController, action, UIAlertControllerBlocksDestructiveButtonIndex);
          
          } /* End if () */
       }];
       
-      [stAlertController addAction:stDestructiveAction];
+      [stStrongController addAction:stDestructiveAction];
    
    } /* End if () */
    
    LogDebug((@"+[UIAlertController showInViewController:] : %@", aViewController.__topMost));
    
-   [aViewController.__topMost presentViewController:stAlertController animated:YES completion:nil];
+   [aViewController.__topMost presentViewController:stStrongController animated:YES completion:nil];
    
    if (@available(iOS 13, *)) {
       
-      stAlertController.overrideUserInterfaceStyle  = aUserInterfaceStyle;
+      stStrongController.overrideUserInterfaceStyle  = aUserInterfaceStyle;
 
    } /* End if () */
       
-   return stAlertController;
+   return stStrongController;
 }
 
 + (instancetype)showAlertInViewController:(UIViewController *)aViewController
@@ -217,11 +215,15 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    if (nil != self.__topMost && self != self.__topMost) {
       
-      return [self.__topMost supportedInterfaceOrientations];
-      
+      if (![self.__topMost isKindOfClass:UIAlertController.class]) {
+         
+         return [self.__topMost supportedInterfaceOrientations];
+
+      } /* End if () */
+
    } /* End if () */
    
-   return UIInterfaceOrientationMaskLandscape;
+   return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)shouldAutorotate {
@@ -230,8 +232,12 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    if (nil != self.__topMost && self != self.__topMost) {
       
-      return [self.__topMost shouldAutorotate];
-      
+      if (![self.__topMost isKindOfClass:UIAlertController.class]) {
+         
+         return [self.__topMost shouldAutorotate];
+
+      } /* End if () */
+            
    } /* End if () */
 
    return NO;

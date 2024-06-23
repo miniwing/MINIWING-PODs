@@ -3,7 +3,7 @@
 //  IDEAWaterFallLayout
 //
 //  Created by Harry on 2017/5/18.
-//  Copyright © 2017年 . All rights reserved.
+//  Copyright © 2024年 . All rights reserved.
 //
 
 #import "IDEAWaterFallLayout.h"

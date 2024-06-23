@@ -15,20 +15,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, PresentationState) {
-	PresentationStateShort NS_SWIFT_NAME(short),
-    PresentationStateMedium NS_SWIFT_NAME(medium),
-	PresentationStateLong NS_SWIFT_NAME(long),
+   PresentationStateShort NS_SWIFT_NAME(short),
+   PresentationStateMedium NS_SWIFT_NAME(medium),
+   PresentationStateLong NS_SWIFT_NAME(long),
 };
 
 typedef NS_ENUM(NSInteger, PresentingViewControllerAnimationStyle) {
-    // no animation for presentingVC
-    PresentingViewControllerAnimationStyleNone NS_SWIFT_NAME(none),
-    // page sheet animation, like iOS13 default modalPresentation style
-    PresentingViewControllerAnimationStylePageSheet NS_SWIFT_NAME(pageSheet),
-    // shopping cart animation, like jd/taobao shopping cart animation
-    PresentingViewControllerAnimationStyleShoppingCart NS_SWIFT_NAME(shoppingCart),
-    // make your own custom animation
-    PresentingViewControllerAnimationStyleCustom NS_SWIFT_NAME(custom),
+   // no animation for presentingVC
+   PresentingViewControllerAnimationStyleNone NS_SWIFT_NAME(none),
+   // page sheet animation, like iOS13 default modalPresentation style
+   PresentingViewControllerAnimationStylePageSheet NS_SWIFT_NAME(pageSheet),
+   // shopping cart animation, like jd/taobao shopping cart animation
+   PresentingViewControllerAnimationStyleShoppingCart NS_SWIFT_NAME(shoppingCart),
+   // make your own custom animation
+   PresentingViewControllerAnimationStyleCustom NS_SWIFT_NAME(custom),
 };
 
 /**
@@ -275,9 +275,9 @@ NS_SWIFT_NAME(PanModalPresentable)
 - (CGFloat)cornerRadius;
 
 /**
-* presented content shadow
-* Default is None config
-*/
+ * presented content shadow
+ * Default is None config
+ */
 - (HWPanModalShadow)contentShadow;
 
 #pragma mark - Indicator config
@@ -305,7 +305,7 @@ NS_SWIFT_NAME(PanModalPresentable)
 /**
  The offset that keyboard show from input view's bottom. It works when
  `isAutoHandleKeyboardEnabled` return YES.
-
+ 
  @return offset, default is 5.
  */
 - (CGFloat)keyboardOffsetFromInputView;
@@ -348,14 +348,14 @@ NS_SWIFT_NAME(PanModalPresentable)
  * 这个时候会发现viewA有时候无法拖动，可以实现此delegate方法来解决
  ```
  - (BOOL)shouldPrioritizePanModalGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
-    CGPoint loc = [panGestureRecognizer locationInView:self.view];
-    // check whether user pan action in viewA
-    if (CGRectContainsPoint(self.viewA.frame, loc)) {
-        return YES;
-    }
-
-    return NO;
-}
+ CGPoint loc = [panGestureRecognizer locationInView:self.view];
+ // check whether user pan action in viewA
+ if (CGRectContainsPoint(self.viewA.frame, loc)) {
+ return YES;
+ }
+ 
+ return NO;
+ }
  ```
  * 默认为NO
  *

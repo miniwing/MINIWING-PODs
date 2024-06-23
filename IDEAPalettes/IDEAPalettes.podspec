@@ -21,8 +21,8 @@ Pod::Spec.new do |spec|
 #  spec.platform      = :ios, '10.0'
 #  spec.platforms     = { :ios => "8.0", :osx => "10.7", :watchos => "2.0", :tvos => "9.0" }
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
+  spec.ios.deployment_target        = '12.0'
+  spec.watchos.deployment_target    = '5.0'
 
   spec.osx.deployment_target        = '10.10'
   spec.tvos.deployment_target       = '10.0'

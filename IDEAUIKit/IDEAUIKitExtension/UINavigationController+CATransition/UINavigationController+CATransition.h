@@ -3,7 +3,7 @@
 //  UINavigationController+CATransition
 //
 //  Created by Peak on 17/3/24.
-//  Copyright © 2017年 Peak. All rights reserved.
+//  Copyright © 2024年 Peak. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

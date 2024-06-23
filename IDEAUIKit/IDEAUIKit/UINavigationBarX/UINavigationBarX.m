@@ -117,6 +117,7 @@
 
    [self.splitView setHidden:YES];
    [self.splitView setBackgroundColor:UIColorX.opaqueSeparatorColor];
+//   [self.splitView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor lightGray])];
    [self.splitViewH setConstant:0.5f];
 
 //   if (nil == self.navigationBarXHeight) {
@@ -283,7 +284,7 @@
 
 - (void)showLine:(BOOL)aShow {
    
-   [self showLine:!aShow animated:NO];
+   [self showLine:aShow animated:NO];
    
    return;
 }

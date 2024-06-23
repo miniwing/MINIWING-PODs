@@ -15,10 +15,10 @@ Pod::Spec.new do |spec|
   spec.source                     = { :path => "." }
 #  spec.source                     = { :git  => 'https://github.com/Feghal/FGRoute.git', :tag => spec.version.to_s }
   
-  spec.ios.deployment_target      = '10.0'
-  spec.watchos.deployment_target  = '4.3'
+  spec.ios.deployment_target      = '12.0'
+  spec.watchos.deployment_target  = '5.0'
 #  spec.osx.deployment_target      = '10.10'
-#  spec.tvos.deployment_target     = '10.0'
+#  spec.tvos.deployment_target     = '12.0'
 
   spec.ios.pod_target_xcconfig     = {
                                         'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEARouter',
@@ -79,7 +79,7 @@ Pod::Spec.new do |spec|
 #  spec.vendored_frameworks  = 'libXG-SDK.a'
 
 #  spec.subspec 'Debug' do |sub|
-#    sub.ios.deployment_target   = '10.0'
+#    sub.ios.deployment_target   = '12.0'
 #    sub.ios.source_files        = 'IDEARouter/IDEARouter/**/*.{h,m,mm}'
 #    sub.ios.public_header_files = 'IDEARouter/IDEARouter/**/*.{h}'
 #    sub.ios.header_dir          = 'IDEARouter'

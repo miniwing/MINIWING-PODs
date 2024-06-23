@@ -3,7 +3,7 @@
 //  IDEAStartUp
 //
 //  Created by Harry on 2017/8/2.
-//  Copyright © 2017 Harry. All rights reserved.
+//  Copyright © 2024 Harry. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

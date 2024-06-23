@@ -3,7 +3,7 @@
 //  UIViewController+Separator
 //
 //  Created by Harry on 2021/02/25.
-//  Copyright © 2021 Harry. All rights reserved.
+//  Copyright © 2024 Harry. All rights reserved.
 //
 
 #import <IDEAColor/IDEAColor.h>

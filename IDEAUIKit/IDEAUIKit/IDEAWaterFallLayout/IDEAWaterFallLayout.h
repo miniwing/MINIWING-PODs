@@ -2,7 +2,7 @@
 //  IDEAWaterFallLayout.h
 //  IDEAWaterFallLayout
 //
-//  Copyright © 2017年 . All rights reserved.
+//  Copyright © 2024年 . All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

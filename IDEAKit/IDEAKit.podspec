@@ -15,8 +15,8 @@ Pod::Spec.new do |spec|
 
 #  spec.swift_versions               = ["4.2", "5.0"]
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
+  spec.ios.deployment_target        = '12.0'
+  spec.watchos.deployment_target    = '5.0'
     
   spec.osx.deployment_target        = '10.10'
   spec.tvos.deployment_target       = '10.0'
@@ -82,6 +82,10 @@ Pod::Spec.new do |spec|
   if ENV['IDEA_YYKIT'] == 'YES'
     spec.dependency 'YYKit'
   end # IDEA_YYKIT
+
+  if ENV['OpenSSL'] == 'YES'
+    spec.dependency 'OpenSSL-Universal'
+  end # OpenSSL
 
   if ENV['SSZipArchive'] == 'YES'
     spec.dependency 'SSZipArchive'
@@ -275,6 +279,14 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/
+
+#if __has_include(<OpenSSL/OpenSSL.h>)
+#  import <OpenSSL/OpenSSL.h>
+#elif __has_include("OpenSSL/OpenSSL.h")
+#  import "OpenSSL/OpenSSL.h"
+#elif __has_include("OpenSSL.h")
+#  import "OpenSSL.h"
+#endif
 
 #import <IDEAKit/IDEADef.h>
 #import <IDEAKit/IDEADebug.h>

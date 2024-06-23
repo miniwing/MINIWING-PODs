@@ -34,7 +34,7 @@
 
 #import <IDEAKit/NSString+Java.h>
 #import <IDEAKit/NSString+Extension.h>
-#import <IDEAKit/NSString+RegularExpression.h>
+#import <IDEAKit/NSString+Network.h>
 #import <IDEAKit/NSLocale+Localization.h>
 
 #import <IDEAKit/NSArray+Hash.h>

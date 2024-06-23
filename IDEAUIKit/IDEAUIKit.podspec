@@ -98,6 +98,10 @@ Pod::Spec.new do |spec|
   #  spec.dependency 'Masonry'
   #  spec.dependency 'MBProgressHUD',              '~> 0.9.2'
   
+  if ENV['OpenSSL'] == 'YES'
+    spec.dependency 'OpenSSL-Universal'
+  end # OpenSSL
+
   spec.dependency 'MBProgressHUD'
   
   if ENV['IDEA_YYKIT'] == 'YES'
@@ -291,6 +295,14 @@ Pod::Spec.new do |spec|
 
 #endif /* __OBJC__ */
 
+#if __has_include(<OpenSSL/OpenSSL.h>)
+#  import <OpenSSL/OpenSSL.h>
+#elif __has_include("OpenSSL/OpenSSL.h")
+#  import "OpenSSL/OpenSSL.h"
+#elif __has_include("OpenSSL.h")
+#  import "OpenSSL.h"
+#endif
+
 #import <IDEAColor/IDEAColor.h>
 #import <IDEAColor/UIColorX+System.h>
 #import <IDEAColor/UIColorX+Dynamic.h>
@@ -333,8 +345,8 @@ Pod::Spec.new do |spec|
 #  import <YYKit/YYKit.h>
 #elif (__has_include("YYKit/YYKit.h"))
 #  import "YYKit/YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
+#elif (__has_include("YYKit.h"))
+#  import "YYKit.h"
 #else /* YY_KIT */
 
 #  ifndef weakify

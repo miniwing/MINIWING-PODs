@@ -11,32 +11,27 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_include(<openssl/opensslconf.h>)
-#  import <openssl/rsa.h>
-#  import <openssl/pem.h>
-#  import <openssl/err.h>
-#elif __has_include("openssl/opensslconf.h")
-#  import "openssl/rsa.h"
-#  import "openssl/pem.h"
-#  import "openssl/err.h"
-//#elif __has_include("opensslconf.h")
-//#  import "rsa.h"
-//#  import "pem.h"
-//#  import "err.h"
+#if __has_include(<OpenSSL/OpenSSL.h>)
+#  import <OpenSSL/OpenSSL.h>
+#elif __has_include("OpenSSL/OpenSSL.h")
+#  import "OpenSSL/OpenSSL.h"
+#elif __has_include("OpenSSL.h")
+#  import "OpenSSL.h"
 #endif
 
-#if __has_include(<openssl/opensslconf.h>) || __has_include("openssl/opensslconf.h")
+#if __has_include(<OpenSSL/OpenSSL.h>) || __has_include("OpenSSL/OpenSSL.h")
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum
-{
+typedef enum {
+   
    KeyTypePublic,
    KeyTypePrivate
+   
 } KeyType;
 
-typedef enum
-{
+typedef enum {
+   
    RSA_PADDING_TYPE_NONE   = RSA_NO_PADDING,
    RSA_PADDING_TYPE_PKCS1  = RSA_PKCS1_PADDING,
    RSA_PADDING_TYPE_SSLV23 = RSA_SSLV23_PADDING

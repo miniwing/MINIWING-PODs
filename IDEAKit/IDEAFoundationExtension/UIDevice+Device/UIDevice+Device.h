@@ -3,7 +3,7 @@
 //  PracticeProject
 //
 //  Created by PacteraLF on 2017/6/12.
-//  Copyright © 2017年 PacteraLF. All rights reserved.
+//  Copyright © 2024年 PacteraLF. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

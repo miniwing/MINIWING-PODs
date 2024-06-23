@@ -3,14 +3,14 @@
 //  Pods
 //
 //  Created by Harry on 2021/7/28.
-//  Copyright © 2021 Harry. All rights reserved.
+//  Copyright © 2024 Harry. All rights reserved.
 //
 //  Mail: miniwing.hz@gmail.com
 //
 
-#import "NSString+RegularExpression.h"
+#import "NSString+Network.h"
 
-@implementation NSString (RegularExpression)
+@implementation NSString (Network)
 
 - (NSArray<NSString *> *)IPV4s {
    

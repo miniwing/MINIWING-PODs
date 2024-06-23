@@ -9,8 +9,8 @@ Pod::Spec.new do |spec|
 #  spec.platform             = :ios, "10.0"
   spec.source               = { :path => "." }
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
+  spec.ios.deployment_target        = '12.0'
+  spec.watchos.deployment_target    = '5.0'
     
   spec.osx.deployment_target        = '10.10'
   spec.tvos.deployment_target       = '10.0'
