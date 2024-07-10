@@ -134,7 +134,7 @@ typedef void (^ViewControllerWillAppearInjectBlock)(UIViewController *viewContro
 - (void)swizzledViewWillAppear:(BOOL)animated {
    
    LogDebug((@"-[UIViewController swizzledViewWillAppear:] : %@", self));
-
+   
    // Forward to primary implementation.
    [self swizzledViewWillAppear:animated];
    
@@ -173,7 +173,7 @@ typedef void (^ViewControllerWillAppearInjectBlock)(UIViewController *viewContro
       Class  class = [self class];
       
       LogDebug((@"+[UINavigationController load] : %@", class));
-
+      
       SEL    originalSelector = @selector(pushViewController:animated:);
       SEL    swizzledSelector = @selector(swizzledPushViewController:animated:);
       
@@ -200,7 +200,7 @@ typedef void (^ViewControllerWillAppearInjectBlock)(UIViewController *viewContro
    
    LogDebug((@"-[UINavigationController swizzledPushViewController:animated:] : %@", self));
    LogDebug((@"-[UINavigationController swizzledPushViewController:animated:] : viewController : %@", viewController));
-
+   
    if (![self.interactivePopGestureRecognizer.view.gestureRecognizers containsObject:self.fullscreenPopGestureRecognizer]) {
       
       // Add our own gesture recognizer to where the onboard screen edge pan gesture recognizer is attached to.
@@ -235,7 +235,7 @@ typedef void (^ViewControllerWillAppearInjectBlock)(UIViewController *viewContro
    
    LogDebug((@"-[UINavigationController setupViewControllerBasedNavigationBarAppearanceIfNeeded:] : %@", self));
    LogDebug((@"-[UINavigationController setupViewControllerBasedNavigationBarAppearanceIfNeeded:] : appearingViewController : %@", appearingViewController));
-
+   
    if (!self.viewControllerBasedNavigationBarAppearanceEnabled) {
       
       return;
@@ -250,12 +250,12 @@ typedef void (^ViewControllerWillAppearInjectBlock)(UIViewController *viewContro
       
    } /* End if () */
    
-//   __weak typeof(self) stWEAK_SELF = self;
+   //   __weak typeof(self) stWEAK_SELF = self;
    @weakify(self);
    ViewControllerWillAppearInjectBlock block = ^(UIViewController *viewController, BOOL animated) {
       
       @strongify(self);
-//      __strong typeof(stWEAK_SELF) stSTRONG_SELF = stWEAK_SELF;
+      //      __strong typeof(stWEAK_SELF) stSTRONG_SELF = stWEAK_SELF;
       
       if (self) {
          

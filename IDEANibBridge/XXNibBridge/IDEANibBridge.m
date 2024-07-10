@@ -64,7 +64,7 @@
             
             // "self" is placeholder view for this moment, replace it.
             return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
-
+            
          } /* End if () */
          
       } /* End if () */
@@ -74,7 +74,7 @@
          return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
          
       } /* End else */
-            
+      
    } /* End if () */
    
    return self;
@@ -133,15 +133,15 @@
             
             newConstraint.shouldBeArchived = constraint.shouldBeArchived;
             newConstraint.priority = constraint.priority;
-
+            
 //            if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
 //               newConstraint.identifier = constraint.identifier;
 //            }
-
+            
             if (@available(iOS 7.0, *)) {
                
                newConstraint.identifier = constraint.identifier;
-
+               
             } /* End if () */
             
             [realView addConstraint:newConstraint];

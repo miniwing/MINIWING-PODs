@@ -193,7 +193,11 @@
    
    LogDebug((@"-[IDEAActivityIndicatorController onThemeUpdate:] : Notification : %@", aNotification));
 
-   [super onThemeUpdate:aNotification];
+   if ([super respondsToSelector:@selector(onThemeUpdate:)]) {
+      
+      [super onThemeUpdate:aNotification];
+
+   } /* End if () */
 
    __CATCH(nErr);
 

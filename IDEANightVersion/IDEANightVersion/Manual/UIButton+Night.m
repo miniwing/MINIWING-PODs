@@ -18,17 +18,33 @@
 @implementation UIButton (Night)
 
 - (void)setTitleColorPicker:(DKColorPicker)picker forState:(UIControlState)state {
-   [self setTitleColor:picker(self.themeManager.themeVersion) forState:state];
+   
    NSString *key = [NSString stringWithFormat:@"%@", @(state)];
-   NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
-   if (!dictionary) {
-      dictionary = [[NSMutableDictionary alloc] init];
-   }
-   [dictionary setValue:[picker copy] forKey:NSStringFromSelector(@selector(setTitleColor:forState:))];
-   [self.pickers setValue:dictionary forKey:key];
+
+   if (nil != picker) {
+      
+      [self setTitleColor:picker(self.themeManager.themeVersion)
+                 forState:state];
+      
+      NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
+      if (!dictionary) {
+         dictionary = [[NSMutableDictionary alloc] init];
+      }
+      [dictionary setValue:[picker copy] forKey:NSStringFromSelector(@selector(setTitleColor:forState:))];
+      [self.pickers setValue:dictionary forKey:key];
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:key];
+
+   } /* End else */
+   
+   return;
 }
 
 - (void)setBackgroundImagePicker:(DKImagePicker)picker forState:(UIControlState)state {
+   
    [self setBackgroundImage:picker(self.themeManager.themeVersion) forState:state];
    NSString *key = [NSString stringWithFormat:@"%@", @(state)];
    NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
@@ -82,7 +98,9 @@
                
                [UIView animateWithDuration:DKNightVersionAnimationDuration
                                 animations:^{
+                  
                   UIColor  *stColor = ((DKColorPicker)aPicker)(self.themeManager.themeVersion);
+
                   [self setTitleColor:stColor forState:eState];
                }];
 
@@ -93,6 +111,7 @@
                                  duration:DKNightVersionAnimationDuration
                                   options:UIViewAnimationOptionTransitionCrossDissolve
                                animations:^{
+                  
 //                  if ([aSelector isEqualToString:NSStringFromSelector(@selector(setTitleColor:forState:))]) {
 //                     UIColor *resultColor = ((DKColorPicker)aPicker)(self.themeManager.themeVersion);
 //                     [self setTitleColor:resultColor forState:eState];

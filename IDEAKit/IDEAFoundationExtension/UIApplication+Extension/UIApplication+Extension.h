@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)hasHardwareSafeAreas;
 + (CGFloat)deviceTopSafeAreaInset;
++ (BOOL)isInstalled:(NSString *)scheme;
 
 @end
 

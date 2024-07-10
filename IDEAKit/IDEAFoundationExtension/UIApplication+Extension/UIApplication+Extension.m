@@ -77,4 +77,9 @@
    return topInset;
 }
 
++ (BOOL)isInstalled:(NSString *)scheme {
+   
+   return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:scheme]];
+}
+
 @end
