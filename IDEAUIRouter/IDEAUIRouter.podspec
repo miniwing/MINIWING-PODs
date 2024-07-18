@@ -10,11 +10,11 @@ Pod::Spec.new do |spec|
 #  spec.source                       = { :path => "." }
   spec.source                       = { :git => 'https://github.com/miniwing/MINIWING-PODs.git', :tag => spec.version.to_s }
 
+  spec.tvos.deployment_target       = '12.0'
   spec.ios.deployment_target        = '12.0'
+
+  spec.osx.deployment_target        = '10.15'
   spec.watchos.deployment_target    = '5.0'
-    
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
 
   spec.ios.pod_target_xcconfig      = {
                                       'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIRouter',

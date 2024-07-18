@@ -11,17 +11,17 @@ Pod::Spec.new do |spec|
 #  spec.requires_arc = true
 #  spec.non_arc_files  = ['Classes/Frameworks/PGSQLKit/*.{h,m}']
   
-  spec.source                     = { :path => "." }
+  spec.source                       = { :path => "." }
 
 #  spec.swift_versions               = ["4.2", "5.0"]
 
+  spec.tvos.deployment_target       = '12.0'
   spec.ios.deployment_target        = '12.0'
-  spec.watchos.deployment_target    = '5.0'
-    
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
 
-  spec.ios.pod_target_xcconfig     = {
+  spec.osx.deployment_target        = '10.15'
+  spec.watchos.deployment_target    = '5.0'
+
+  spec.ios.pod_target_xcconfig      = {
                                         'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAKit',
                                         'ENABLE_BITCODE'            => 'NO',
                                         'SWIFT_VERSION'             => '5.0',
