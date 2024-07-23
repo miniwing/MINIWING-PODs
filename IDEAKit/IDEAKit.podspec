@@ -77,7 +77,7 @@ Pod::Spec.new do |spec|
 #    spec.dependency 'AFNetworking/Security'
 #    spec.dependency 'AFNetworking/Reachability'
 #    spec.dependency 'AFNetworking/NSURLSession'
-  end # if IDEA_AFNETWORKING
+  end # IDEA_AFNETWORKING
 
   if ENV['IDEA_YYKIT'] == 'YES'
     spec.dependency 'YYKit'
