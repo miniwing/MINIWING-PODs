@@ -10,7 +10,7 @@
 
 @interface UITableViewHeaderFooterView (Reuse)
 
-+ (NSString *)reuseIdentifier;
+@property (nonatomic, class, readonly)       NSString                            * reuseIdentifier;
 
 @end
 

@@ -785,12 +785,12 @@ NS_INLINE NSString * __LOCALIZED_STRING(Class aClass, NSString *aKey) {
    return NSLocalizedStringWithDefaultValue(aKey, nil, __BUNDLE_FROM(aClass), aKey, aKey);
 }
 
-NS_INLINE NSString * __FILE_IN_BUNDLE(NSString *aName, Class aClass) {
+NS_INLINE NSString * __FILE_IN_BUNDLE(Class aClass, NSString *aName) {
     
   return [__BUNDLE_FROM(aClass) pathForResource:aName ofType:@""];
 }
 
-NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(NSString *aName, Class aClass) {
+NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(Class aClass, NSString *aName) {
    
    return [UIImage imageNamed:aName inBundle:__BUNDLE_FROM(aClass) compatibleWithTraitCollection:nil];
 }
@@ -806,9 +806,9 @@ NS_INLINE UIImage * __IMAGE_NAMED_IN_FRAMEWORK(NSString *aName) {
    return [UIImage imageNamed:aName inBundle:stBundle compatibleWithTraitCollection:nil];
 }
 
-NS_INLINE UIImage * __IMAGE_NAMED(NSString *aName, Class aClass) {
+NS_INLINE UIImage * __IMAGE_NAMED(Class aClass, NSString *aName) {
    
-   UIImage  *stImage    = __IMAGE_NAMED_IN_BUNDLE(aName, aClass);
+   UIImage  *stImage    = __IMAGE_NAMED_IN_BUNDLE(aClass, aName);
    
    if (nil == stImage) {
       

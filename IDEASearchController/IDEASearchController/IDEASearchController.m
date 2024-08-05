@@ -126,7 +126,7 @@
    
    [super awakeFromNib];
    
-   [self setup];
+//   [self setup];
    
    return;
 }
@@ -169,125 +169,129 @@
       
    } /* End if () */
    
-   CGFloat         fAdaptWidth   = 0.0;
-   UISearchBar    *searchBar     = self.searchBar;
-   UITextField    *searchField   = self.searchTextField;
-   UIView         *titleView     = self.navigationItem.titleView;
-   UIButton       *backButton    = self.navigationItem.leftBarButtonItem.customView;
-   UIButton       *cancelButton  = self.navigationItem.rightBarButtonItem.customView;
-   UIEdgeInsets    backButtonLayoutMargins   = UIEdgeInsetsZero;
-   UIEdgeInsets    cancelButtonLayoutMargins = UIEdgeInsetsZero;
-   UIEdgeInsets    navigationBarLayoutMargins= UIEdgeInsetsZero;
-   
-   UINavigationBar *navigationBar   = self.navigationController.navigationBar;
-   
-   if (@available(iOS 8.0, *)) {
-      
-      backButton.layoutMargins   = UIEdgeInsetsMake(8, 0, 8, 8);
-      backButtonLayoutMargins    = backButton.layoutMargins;
-      cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
-      cancelButtonLayoutMargins  = cancelButton.layoutMargins;
-      navigationBarLayoutMargins = navigationBar.layoutMargins;
-      
-   } /* End if () */
-   
-   if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
-      
-      UIButton    *backButton = self.navigationItem.leftBarButtonItem.customView;
-      UIImageView *imageView  = backButton.imageView;
-      UIView      *titleLabel = backButton.titleLabel;
-      
-      [backButton sizeToFit];
-      [imageView sizeToFit];
-      [titleLabel sizeToFit];
-      
+//   if (nil != self.navigationController && !self.navigationController.navigationBarHidden) {
+//            
+//   } /* End if () */
+//   
+//   CGFloat         fAdaptWidth   = 0.0;
+//   UISearchBar    *searchBar     = self.searchBar;
+//   UITextField    *searchField   = self.searchTextField;
+//   UIView         *titleView     = self.navigationItem.titleView;
+//   UIButton       *backButton    = self.navigationItem.leftBarButtonItem.customView;
+//   UIButton       *cancelButton  = self.navigationItem.rightBarButtonItem.customView;
+//   UIEdgeInsets    backButtonLayoutMargins   = UIEdgeInsetsZero;
+//   UIEdgeInsets    cancelButtonLayoutMargins = UIEdgeInsetsZero;
+//   UIEdgeInsets    navigationBarLayoutMargins= UIEdgeInsetsZero;
+//   
+//   UINavigationBar *navigationBar   = self.navigationController.navigationBar;
+//   
+//   if (@available(iOS 8.0, *)) {
+//      
+//      backButton.layoutMargins   = UIEdgeInsetsMake(8, 0, 8, 8);
+//      backButtonLayoutMargins    = backButton.layoutMargins;
+//      cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
+//      cancelButtonLayoutMargins  = cancelButton.layoutMargins;
+//      navigationBarLayoutMargins = navigationBar.layoutMargins;
+//      
+//   } /* End if () */
+//   
+//   if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
+//      
+//      UIButton    *backButton = self.navigationItem.leftBarButtonItem.customView;
+//      UIImageView *imageView  = backButton.imageView;
+//      UIView      *titleLabel = backButton.titleLabel;
+//      
+//      [backButton sizeToFit];
+//      [imageView sizeToFit];
+//      [titleLabel sizeToFit];
+//      
+////      backButton.height = navigationBar.height;
 //      backButton.height = navigationBar.height;
-      backButton.height = navigationBar.height;
-      
-      if (nil != backButton) {
-         
+//      
+//      if (nil != backButton) {
+//         
+////         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
 //         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
-         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
-
-//      adaptWidth = backButton.width + 8;
-         fAdaptWidth = backButton.width + 8;
-
-      } /* End if () */
-      else {
-
-//      adaptWidth = backButton.width + 8;
-         fAdaptWidth = 44 + 8;
-
-      } /* End else */
-            
-   } /* End if () */
-   else { // Default is IDEASearchControllerShowModeModal
-      
-      if (nil != backButton) {
-         
-         [cancelButton sizeToFit];
-         [cancelButton.titleLabel sizeToFit];
-         self.cancelButtonWidth = cancelButton.width + cancelButtonLayoutMargins.left + cancelButtonLayoutMargins.right;
-         fAdaptWidth = self.cancelButtonWidth + 8;
-
-      } /* End if () */
-      else {
-         
-         self.cancelButtonWidth  = 44;
-         fAdaptWidth = self.cancelButtonWidth + 8;
-
-      } /* End else */
-      
-   } /* End else */
-   
-   fAdaptWidth = fAdaptWidth + navigationBarLayoutMargins.left + navigationBarLayoutMargins.right;
-   // Adapt the search bar layout problem in the navigation bar on iOS 11
-   // More details : https://github.com/iphone5solo/PYSearch/issues/108
-   if (@available(iOS 11.0, *)) { // iOS 11
-      
-      if (self.searchControllerShowMode == IDEASearchControllerShowModeModal) {
-         
-         NSLayoutConstraint *leftLayoutConstraint = [searchBar.leftAnchor constraintEqualToAnchor:titleView.leftAnchor];
-         
-         if (navigationBarLayoutMargins.left > IDEASEARCH_MARGIN) {
-            [leftLayoutConstraint setConstant:0];
-            
-         } /* End if () */
-         else {
-            
-            [leftLayoutConstraint setConstant:IDEASEARCH_MARGIN - navigationBarLayoutMargins.left];
-            
-         } /* End else */
-         
-      } /* End if () */
-      
-//      searchBar.height = self.view.width > self.view.frameHeight ? 24 : 30;
-      searchBar.height   = self.view.width > self.view.height ? 24 : 30;
-      
-//      searchBar.width = self.view.width - adaptWidth - IDEASEARCH_MARGIN;
-      searchBar.width    = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
-      
-      searchField.frame       = searchBar.bounds;
-      cancelButton.width = self.cancelButtonWidth;
-      
-   } /* End if () */
-   else {
-      
-      titleView.top  = self.view.width > self.view.height ? 4 : 7;
-      titleView.height   = self.view.width > self.view.height ? 24 : 30;
-      
-      if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
-         
-         titleView.width = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
-         
-      } /* End if () */
-      else {
-         
-         titleView.left = IDEASEARCH_MARGIN * 1.5;
-         titleView.width = self.view.width - self.cancelButtonWidth - titleView.left * 2 - 3;
-         
-      } /* End else */
-   }
+//
+////      adaptWidth = backButton.width + 8;
+//         fAdaptWidth = backButton.width + 8;
+//
+//      } /* End if () */
+//      else {
+//
+////      adaptWidth = backButton.width + 8;
+//         fAdaptWidth = 44 + 8;
+//
+//      } /* End else */
+//            
+//   } /* End if () */
+//   else { // Default is IDEASearchControllerShowModeModal
+//      
+//      if (nil != backButton) {
+//         
+//         [cancelButton sizeToFit];
+//         [cancelButton.titleLabel sizeToFit];
+//         self.cancelButtonWidth = cancelButton.width + cancelButtonLayoutMargins.left + cancelButtonLayoutMargins.right;
+//         fAdaptWidth = self.cancelButtonWidth + 8;
+//
+//      } /* End if () */
+//      else {
+//         
+//         self.cancelButtonWidth  = 44;
+//         fAdaptWidth = self.cancelButtonWidth + 8;
+//
+//      } /* End else */
+//      
+//   } /* End else */
+//   
+//   fAdaptWidth = fAdaptWidth + navigationBarLayoutMargins.left + navigationBarLayoutMargins.right;
+//   // Adapt the search bar layout problem in the navigation bar on iOS 11
+//   // More details : https://github.com/iphone5solo/PYSearch/issues/108
+//   if (@available(iOS 11.0, *)) { // iOS 11
+//      
+//      if (self.searchControllerShowMode == IDEASearchControllerShowModeModal) {
+//         
+//         NSLayoutConstraint *leftLayoutConstraint = [searchBar.leftAnchor constraintEqualToAnchor:titleView.leftAnchor];
+//         
+//         if (navigationBarLayoutMargins.left > IDEASEARCH_MARGIN) {
+//            [leftLayoutConstraint setConstant:0];
+//            
+//         } /* End if () */
+//         else {
+//            
+//            [leftLayoutConstraint setConstant:IDEASEARCH_MARGIN - navigationBarLayoutMargins.left];
+//            
+//         } /* End else */
+//         
+//      } /* End if () */
+//      
+////      searchBar.height = self.view.width > self.view.frameHeight ? 24 : 30;
+//      searchBar.height   = self.view.width > self.view.height ? 24 : 30;
+//      
+////      searchBar.width = self.view.width - adaptWidth - IDEASEARCH_MARGIN;
+//      searchBar.width    = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
+//      
+//      searchField.frame       = searchBar.bounds;
+//      cancelButton.width = self.cancelButtonWidth;
+//      
+//   } /* End if () */
+//   else {
+//      
+//      titleView.top  = self.view.width > self.view.height ? 4 : 7;
+//      titleView.height   = self.view.width > self.view.height ? 24 : 30;
+//      
+//      if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
+//         
+//         titleView.width = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
+//         
+//      } /* End if () */
+//      else {
+//         
+//         titleView.left = IDEASEARCH_MARGIN * 1.5;
+//         titleView.width = self.view.width - self.cancelButtonWidth - titleView.left * 2 - 3;
+//         
+//      } /* End else */
+//   } /* End else */
    
    return;
 }
@@ -547,7 +551,9 @@
 
    self.baseSearchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
    self.navigationController.navigationBar.backIndicatorImage = nil;
-   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(keyboardDidShow:)
+                                                name:UIKeyboardDidShowNotification object:nil];
    
    /**
     Cancel Button
@@ -603,8 +609,8 @@
    self.removeSpaceOnSearchString               = YES;
    self.searchBarCornerRadius                   = 0.0;
    
-   UIView *titleView = [[UIView alloc] init];
-   UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:titleView.bounds];
+   UIView      *titleView  = [[UIView alloc] init];
+   UISearchBar *searchBar  = [[UISearchBar alloc] initWithFrame:titleView.bounds];
    [titleView addSubview:searchBar];
    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) { // iOS 11
       [NSLayoutConstraint activateConstraints:@[
@@ -632,24 +638,26 @@
    
    self.searchBar = searchBar;
    
-   UIView *headerView = [[UIView alloc] init];
-   headerView.width = IDEA_SCREEN_WIDTH;
-   headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-   UIView *hotSearchView = [[UIView alloc] init];
-   hotSearchView.left = IDEASEARCH_MARGIN * 1.5;
-   hotSearchView.width = headerView.width - hotSearchView.left * 2;
-   hotSearchView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-   UILabel *titleLabel = [self setupTitleLabel:[NSBundle search_localizedStringForKey:IDEASearchHotSearchText]];
-   self.hotSearchHeader = titleLabel;
-   [hotSearchView addSubview:titleLabel];
+   UIView   *stHeaderView = [[UIView alloc] init];
+   stHeaderView.width = IDEA_SCREEN_WIDTH;
+   stHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   
+   UIView   *stHotSearchView = [[UIView alloc] init];
+   stHotSearchView.left = IDEASEARCH_MARGIN * 1.5;
+   stHotSearchView.width = stHeaderView.width - stHotSearchView.left * 2;
+   stHotSearchView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   
+   UILabel  *stTitleLabel = [self setupTitleLabel:[NSBundle search_localizedStringForKey:IDEASearchHotSearchText]];
+   self.hotSearchHeader = stTitleLabel;
+   [stHotSearchView addSubview:stTitleLabel];
    
 // HARRY FIXED
 // IDEASearchHotSearchRefresh
 #if __DebugColor__
-   [hotSearchView setBackgroundColor:[UIColor systemPinkColor]];
-   [headerView setBackgroundColor:[UIColor systemBlueColor]];
+   [stHotSearchView setBackgroundColor:[UIColor systemPinkColor]];
+   [stHeaderView setBackgroundColor:[UIColor systemBlueColor]];
 #endif /* __DebugColor__ */
-   LogDebug((@"hotSearchView : %@", hotSearchView));
+   LogDebug((@"hotSearchView : %@", stHotSearchView));
 
    UIButton *stHotSearchRefreshButton  = [UIButton buttonWithType:UIButtonTypeCustom];
    [stHotSearchRefreshButton setImage:[NSBundle search_imageNamed:@"SearchRefresh"]
@@ -670,8 +678,8 @@
    
    [stHotSearchRefreshButton sizeToFit];
    [stHotSearchRefreshButton setWidth:stHotSearchRefreshButton.width + 6];
-   [hotSearchView addSubview:stHotSearchRefreshButton];
-   [stHotSearchRefreshButton setOrigin:CGPointMake(hotSearchView.width - CGRectGetWidth(stHotSearchRefreshButton.frame), self.hotSearchHeader.top)];
+   [stHotSearchView addSubview:stHotSearchRefreshButton];
+   [stHotSearchRefreshButton setOrigin:CGPointMake(stHotSearchView.width - CGRectGetWidth(stHotSearchRefreshButton.frame), self.hotSearchHeader.top)];
 
 #if __DebugColor__
    [self.hotSearchHeader setBackgroundColor:[UIColor systemGreenColor]];
@@ -680,32 +688,32 @@
 // HARRY FIXED
    
    UIView *hotSearchTagsContentView = [[UIView alloc] init];
-   hotSearchTagsContentView.width   = hotSearchView.width;
-   hotSearchTagsContentView.top     = CGRectGetMaxY(titleLabel.frame) + IDEASEARCH_MARGIN;
+   hotSearchTagsContentView.width   = stHotSearchView.width;
+   hotSearchTagsContentView.top     = CGRectGetMaxY(stTitleLabel.frame) + IDEASEARCH_MARGIN;
    hotSearchTagsContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-   [hotSearchView addSubview:hotSearchTagsContentView];
-   [headerView addSubview:hotSearchView];
+   [stHotSearchView addSubview:hotSearchTagsContentView];
+   [stHeaderView addSubview:stHotSearchView];
    self.hotSearchTagsContentView = hotSearchTagsContentView;
-   self.hotSearchView = hotSearchView;
-   self.headerView = headerView;
-   self.baseSearchTableView.tableHeaderView = headerView;
+   self.hotSearchView            = stHotSearchView;
+   self.headerView               = stHeaderView;
+   self.baseSearchTableView.tableHeaderView  = stHeaderView;
    
-   UIView *footerView = [[UIView alloc] init];
-   footerView.width = IDEA_SCREEN_WIDTH;
-   UILabel *emptySearchHistoryLabel = [[UILabel alloc] init];
-   emptySearchHistoryLabel.textColor = UIColor.darkGrayColor;
-   emptySearchHistoryLabel.font = [UIFont search_regularFontOfSize:13];
-   emptySearchHistoryLabel.userInteractionEnabled = YES;
-   emptySearchHistoryLabel.text = [NSBundle search_localizedStringForKey:IDEASearchEmptySearchHistoryText];
-   emptySearchHistoryLabel.textAlignment = NSTextAlignmentCenter;
-   emptySearchHistoryLabel.height = 49;
-   [emptySearchHistoryLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emptySearchHistoryDidClick)]];
-   emptySearchHistoryLabel.width = footerView.width;
-   emptySearchHistoryLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-   self.emptySearchHistoryLabel = emptySearchHistoryLabel;
-   [footerView addSubview:emptySearchHistoryLabel];
-   footerView.height = emptySearchHistoryLabel.height;
-   self.baseSearchTableView.tableFooterView = footerView;
+   UIView   *stFooterView  = [[UIView alloc] init];
+   stFooterView.width = IDEA_SCREEN_WIDTH;
+   UILabel  *stEmptySearchHistoryLabel = [[UILabel alloc] init];
+   stEmptySearchHistoryLabel.textColor = UIColor.darkGrayColor;
+   stEmptySearchHistoryLabel.font = [UIFont search_regularFontOfSize:13];
+   stEmptySearchHistoryLabel.userInteractionEnabled = YES;
+   stEmptySearchHistoryLabel.text = [NSBundle search_localizedStringForKey:IDEASearchEmptySearchHistoryText];
+   stEmptySearchHistoryLabel.textAlignment = NSTextAlignmentCenter;
+   stEmptySearchHistoryLabel.height = 49;
+   [stEmptySearchHistoryLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emptySearchHistoryDidClick)]];
+   stEmptySearchHistoryLabel.width = stFooterView.width;
+   stEmptySearchHistoryLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   self.emptySearchHistoryLabel = stEmptySearchHistoryLabel;
+   [stFooterView addSubview:stEmptySearchHistoryLabel];
+   stFooterView.height = stEmptySearchHistoryLabel.height;
+   self.baseSearchTableView.tableFooterView = stFooterView;
    
    self.hotSearches = nil;
    
@@ -714,55 +722,55 @@
 
 - (UILabel *)setupTitleLabel:(NSString *)title {
    
-   UILabel *titleLabel = [[UILabel alloc] init];
-   titleLabel.text = title;
-   titleLabel.font = [UIFont search_regularFontOfSize:13];
-   titleLabel.tag = 1;
-   titleLabel.textColor = IDEATextColor;
-   [titleLabel sizeToFit];
-   titleLabel.left = 0;
-   titleLabel.top = 0;
+   UILabel  *stTitleLabel  = [[UILabel alloc] init];
+   stTitleLabel.text = title;
+   stTitleLabel.font = [UIFont search_regularFontOfSize:13];
+   stTitleLabel.tag  = 1;
+   stTitleLabel.textColor = IDEATextColor;
+   [stTitleLabel sizeToFit];
+   stTitleLabel.left = 0;
+   stTitleLabel.top  = 0;
    
-   return titleLabel;
+   return stTitleLabel;
 }
 
 - (void)setupHotSearchRectangleTags {
    
-   UIView *contentView = self.hotSearchTagsContentView;
-   contentView.width = IDEASEARCH_REALY_SCREEN_WIDTH;
-   contentView.left = -IDEASEARCH_MARGIN * 1.5;
-   contentView.top += 2;
-   contentView.backgroundColor = UIColor.whiteColor;
+   UIView   *stContentView    = self.hotSearchTagsContentView;
+   stContentView.width  = IDEASEARCH_REALY_SCREEN_WIDTH;
+   stContentView.left   = -IDEASEARCH_MARGIN * 1.5;
+   stContentView.top    += 2;
+   stContentView.backgroundColor = UIColor.whiteColor;
    self.baseSearchTableView.backgroundColor = [UIColor search_colorWithHexString:@"#efefef"];
    // remove all subviews in hotSearchTagsContentView
    [self.hotSearchTagsContentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
    
-   CGFloat rectangleTagH = 40;
+   CGFloat   fRectangleTagH   = 40;
    NSMutableArray *rectangleTagLabelsM = [NSMutableArray array];
    
    for (int H = 0; H < self.hotSearches.count; H++) {
       
-      UILabel *rectangleTagLabel = [[UILabel alloc] init];
-      rectangleTagLabel.userInteractionEnabled = YES;
-      rectangleTagLabel.font = [UIFont search_regularFontOfSize:14];
-      rectangleTagLabel.textColor = IDEATextColor;
-      rectangleTagLabel.backgroundColor = UIColor.clearColor;
-      rectangleTagLabel.text = self.hotSearches[H];
-      rectangleTagLabel.width = contentView.width / IDEARectangleTagMaxCol;
-      rectangleTagLabel.height = rectangleTagH;
-      rectangleTagLabel.textAlignment = NSTextAlignmentCenter;
-      [rectangleTagLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagDidCLick:)]];
-      rectangleTagLabel.left = rectangleTagLabel.width * (H % IDEARectangleTagMaxCol);
-      rectangleTagLabel.top = rectangleTagLabel.height * (H / IDEARectangleTagMaxCol);
-      [contentView addSubview:rectangleTagLabel];
-      [rectangleTagLabelsM addObject:rectangleTagLabel];
+      UILabel  *stRectangleTagLabel = [[UILabel alloc] init];
+      stRectangleTagLabel.userInteractionEnabled = YES;
+      stRectangleTagLabel.font      = [UIFont search_regularFontOfSize:14];
+      stRectangleTagLabel.textColor = IDEATextColor;
+      stRectangleTagLabel.backgroundColor = UIColor.clearColor;
+      stRectangleTagLabel.text      = self.hotSearches[H];
+      stRectangleTagLabel.width     = stContentView.width / IDEARectangleTagMaxCol;
+      stRectangleTagLabel.height    = fRectangleTagH;
+      stRectangleTagLabel.textAlignment   = NSTextAlignmentCenter;
+      [stRectangleTagLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagDidCLick:)]];
+      stRectangleTagLabel.left      = stRectangleTagLabel.width * (H % IDEARectangleTagMaxCol);
+      stRectangleTagLabel.top       = stRectangleTagLabel.height * (H / IDEARectangleTagMaxCol);
+      [stContentView addSubview:stRectangleTagLabel];
+      [rectangleTagLabelsM addObject:stRectangleTagLabel];
       
    } /* End for (int H = 0; H < self.hotSearches.count; H++) */
    
    self.hotSearchTags = [rectangleTagLabelsM copy];
-   contentView.height = CGRectGetMaxY(contentView.subviews.lastObject.frame);
+   stContentView.height = CGRectGetMaxY(stContentView.subviews.lastObject.frame);
    
-   self.hotSearchView.height = CGRectGetMaxY(contentView.frame) + IDEASEARCH_MARGIN * 2;
+   self.hotSearchView.height = CGRectGetMaxY(stContentView.frame) + IDEASEARCH_MARGIN * 2;
    self.baseSearchTableView.tableHeaderView.height = self.headerView.height = MAX(CGRectGetMaxY(self.hotSearchView.frame), CGRectGetMaxY(self.searchHistoryView.frame));
    
 //   for (int H = 0; H < IDEARectangleTagMaxCol - 1; H++) {
@@ -1093,8 +1101,12 @@
    _showSearchResultWhenSearchTextChanged = showSearchResultWhenSearchTextChanged;
    
    if (YES == _showSearchResultWhenSearchTextChanged) {
+      
       self.searchSuggestionHidden = YES;
-   }
+      
+   } /* End if () */
+   
+   return;
 }
 
 - (void)setShowHotSearch:(BOOL)showHotSearch {
