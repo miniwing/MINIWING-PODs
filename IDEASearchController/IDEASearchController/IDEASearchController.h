@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <IDEASearchController/IDEASearchConst.h>
 
+#import <IDEAUIKit/IDEAUIKit.h>
+
 #if __has_include(<IDEAUIVendor/IDEAUIVendor.h>)
 #  define IDEA_UI_VENDOR                                                (1)
 #  import <IDEAUIVendor/IDEAUIVendor.h>
@@ -118,6 +120,9 @@ typedef NS_ENUM(NSInteger, IDEASearchControllerShowMode) {
  The protocol of delegate
  */
 @protocol IDEASearchControllerDelegate <NSObject, UITableViewDelegate>
+
+@required
+- (UINavigationBarX *)navigationBarX:(IDEASearchController *)aSearchController;
 
 @optional
 
@@ -355,78 +360,78 @@ didSelectSearchSuggestionAtIndex:(NSInteger)aIndex
 /**
  The background color of search bar.
  */
-@property (nonatomic, strong) UIColor *searchBarBackgroundColor;
+@property (nonatomic, strong) UIColor                       * searchBarBackgroundColor;
 
 /**
  The cornerRadius of `_UISearchBarSearchFieldBackgroundView` which from `self.searchTextField.subviews`, default is 0.0.
  */
-@property (nonatomic, assign) CGFloat searchBarCornerRadius;
+@property (nonatomic, assign) CGFloat                         searchBarCornerRadius;
 
 /**
  The barButtonItem of cancel
  */
-@property (nonatomic, strong) UIBarButtonItem *cancelBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem               * cancelBarButtonItem;
 
 /**
  The customView of cancelBarButtonItem
  */
-@property (nonatomic, weak) UIButton *cancelButton;
+@property (nonatomic, weak) UIButton                        * cancelButton;
 
 /**
  The barButtonItem of back
  */
-@property (nonatomic, strong) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem               * backBarButtonItem;
 
 /**
  The customView of backBarButtonItem
  */
-@property (nonatomic, weak) UIButton *backButton;
+@property (nonatomic, weak) UIButton                        * backButton;
 
 /**
  The search suggestion view
  */
-@property (nonatomic, weak, readonly) UITableView *searchSuggestion;
+@property (nonatomic, weak, readonly) UITableView           * searchSuggestion;
 
 /**
  The block which invoked when search begain.
  */
-@property (nonatomic, copy) IDEADidSearchBlock didSearchBlock;
+@property (nonatomic, copy) IDEADidSearchBlock                didSearchBlock;
 
 /**
  The element of search suggestions
  
  Note: it is't effective when `searchSuggestionHidden` is NO or cell of suggestion view is custom.
  */
-@property (nonatomic, copy) NSArray<NSString *> *searchSuggestions;
+@property (nonatomic, copy) NSArray<NSString *>             * searchSuggestions;
 
 /**
  Whether hidden search suggstion view, default is NO.
  */
-@property (nonatomic, assign) BOOL searchSuggestionHidden;
+@property (nonatomic, assign) BOOL                            searchSuggestionHidden;
 
 /**
  The view controller of search result.
  */
-@property (nonatomic, strong) UIViewController *searchResultController;
+@property (nonatomic, strong) UIViewController              * searchResultController;
 
 /**
  Whether show search result view when search text did change, default is NO.
  
  Note: it is effective only when `searchResultShowMode` is `IDEASearchResultShowModeEmbed`.
  */
-@property (nonatomic, assign) BOOL showSearchResultWhenSearchTextChanged;
+@property (nonatomic, assign) BOOL                            showSearchResultWhenSearchTextChanged;
 
 /**
  Whether show search result view when search bar become first responder again.
  
  Note: it is effective only when `searchResultShowMode` is `IDEASearchResultShowModeEmbed`.
  */
-@property (nonatomic, assign) BOOL showSearchResultWhenSearchBarRefocused;
+@property (nonatomic, assign) BOOL                            showSearchResultWhenSearchBarRefocused;
 
 /**
  Whether show keyboard when return to search result, default is YES.
  */
-@property (nonatomic, assign) BOOL showKeyboardWhenReturnSearchResult;
+@property (nonatomic, assign) BOOL                            showKeyboardWhenReturnSearchResult;
 
 /**
  Creates an instance of searchViewContoller with popular searches and search bar's placeholder.
@@ -451,5 +456,15 @@ didSelectSearchSuggestionAtIndex:(NSInteger)aIndex
 + (instancetype)searchControllerWithHotSearches:(NSArray<NSString *> *)hotSearches
                            searchBarPlaceholder:(NSString *)placeholder
                                  didSearchBlock:(IDEADidSearchBlock)block;
+
+@end
+
+@interface IDEASearchController ()
+
+/**
+ The base table view  of search view controller
+ */
+@property (nonatomic, weak)                  UITableView          * baseSearchTableView;
+@property (nonatomic, weak)   IBOutlet       UISearchBar          * searchBarX;
 
 @end

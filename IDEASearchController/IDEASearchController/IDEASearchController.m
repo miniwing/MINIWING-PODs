@@ -77,11 +77,6 @@
 @property (nonatomic, weak)      UIView               * searchHistoryTagsContentView;
 
 /**
- The base table view  of search view controller
- */
-@property (nonatomic, strong)    UITableView          * baseSearchTableView;
-
-/**
  Whether did press suggestion cell
  */
 @property (nonatomic, assign)    BOOL                   didClickSuggestionCell;
@@ -106,7 +101,7 @@
       
       [self setup];
       
-   }
+   } /* End if () */
    
    return self;
 }
@@ -126,7 +121,7 @@
    
    [super awakeFromNib];
    
-//   [self setup];
+   [self setup];
    
    return;
 }
@@ -169,129 +164,129 @@
       
    } /* End if () */
    
-//   if (nil != self.navigationController && !self.navigationController.navigationBarHidden) {
-//            
-//   } /* End if () */
-//   
-//   CGFloat         fAdaptWidth   = 0.0;
-//   UISearchBar    *searchBar     = self.searchBar;
-//   UITextField    *searchField   = self.searchTextField;
-//   UIView         *titleView     = self.navigationItem.titleView;
-//   UIButton       *backButton    = self.navigationItem.leftBarButtonItem.customView;
-//   UIButton       *cancelButton  = self.navigationItem.rightBarButtonItem.customView;
-//   UIEdgeInsets    backButtonLayoutMargins   = UIEdgeInsetsZero;
-//   UIEdgeInsets    cancelButtonLayoutMargins = UIEdgeInsetsZero;
-//   UIEdgeInsets    navigationBarLayoutMargins= UIEdgeInsetsZero;
-//   
-//   UINavigationBar *navigationBar   = self.navigationController.navigationBar;
-//   
-//   if (@available(iOS 8.0, *)) {
-//      
-//      backButton.layoutMargins   = UIEdgeInsetsMake(8, 0, 8, 8);
-//      backButtonLayoutMargins    = backButton.layoutMargins;
-//      cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
-//      cancelButtonLayoutMargins  = cancelButton.layoutMargins;
-//      navigationBarLayoutMargins = navigationBar.layoutMargins;
-//      
-//   } /* End if () */
-//   
-//   if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
-//      
-//      UIButton    *backButton = self.navigationItem.leftBarButtonItem.customView;
-//      UIImageView *imageView  = backButton.imageView;
-//      UIView      *titleLabel = backButton.titleLabel;
-//      
-//      [backButton sizeToFit];
-//      [imageView sizeToFit];
-//      [titleLabel sizeToFit];
-//      
-////      backButton.height = navigationBar.height;
+   if (nil != self.navigationController && !self.navigationController.navigationBarHidden) {
+            
+   } /* End if () */
+   
+   CGFloat         fAdaptWidth   = 0.0;
+   UISearchBar    *searchBar     = self.searchBar;
+   UITextField    *searchField   = self.searchTextField;
+   UIView         *titleView     = self.navigationItem.titleView;
+   UIButton       *backButton    = self.navigationItem.leftBarButtonItem.customView;
+   UIButton       *cancelButton  = self.navigationItem.rightBarButtonItem.customView;
+   UIEdgeInsets    backButtonLayoutMargins   = UIEdgeInsetsZero;
+   UIEdgeInsets    cancelButtonLayoutMargins = UIEdgeInsetsZero;
+   UIEdgeInsets    navigationBarLayoutMargins= UIEdgeInsetsZero;
+   
+   UINavigationBar *navigationBar   = self.navigationController.navigationBar;
+   
+   if (@available(iOS 8.0, *)) {
+      
+      backButton.layoutMargins   = UIEdgeInsetsMake(8, 0, 8, 8);
+      backButtonLayoutMargins    = backButton.layoutMargins;
+      cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
+      cancelButtonLayoutMargins  = cancelButton.layoutMargins;
+      navigationBarLayoutMargins = navigationBar.layoutMargins;
+      
+   } /* End if () */
+   
+   if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
+      
+      UIButton    *backButton = self.navigationItem.leftBarButtonItem.customView;
+      UIImageView *imageView  = backButton.imageView;
+      UIView      *titleLabel = backButton.titleLabel;
+      
+      [backButton sizeToFit];
+      [imageView sizeToFit];
+      [titleLabel sizeToFit];
+      
 //      backButton.height = navigationBar.height;
-//      
-//      if (nil != backButton) {
-//         
-////         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
+      backButton.height = navigationBar.height;
+      
+      if (nil != backButton) {
+         
 //         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
-//
-////      adaptWidth = backButton.width + 8;
-//         fAdaptWidth = backButton.width + 8;
-//
-//      } /* End if () */
-//      else {
-//
-////      adaptWidth = backButton.width + 8;
-//         fAdaptWidth = 44 + 8;
-//
-//      } /* End else */
-//            
-//   } /* End if () */
-//   else { // Default is IDEASearchControllerShowModeModal
-//      
-//      if (nil != backButton) {
-//         
-//         [cancelButton sizeToFit];
-//         [cancelButton.titleLabel sizeToFit];
-//         self.cancelButtonWidth = cancelButton.width + cancelButtonLayoutMargins.left + cancelButtonLayoutMargins.right;
-//         fAdaptWidth = self.cancelButtonWidth + 8;
-//
-//      } /* End if () */
-//      else {
-//         
-//         self.cancelButtonWidth  = 44;
-//         fAdaptWidth = self.cancelButtonWidth + 8;
-//
-//      } /* End else */
-//      
-//   } /* End else */
-//   
-//   fAdaptWidth = fAdaptWidth + navigationBarLayoutMargins.left + navigationBarLayoutMargins.right;
-//   // Adapt the search bar layout problem in the navigation bar on iOS 11
-//   // More details : https://github.com/iphone5solo/PYSearch/issues/108
-//   if (@available(iOS 11.0, *)) { // iOS 11
-//      
-//      if (self.searchControllerShowMode == IDEASearchControllerShowModeModal) {
-//         
-//         NSLayoutConstraint *leftLayoutConstraint = [searchBar.leftAnchor constraintEqualToAnchor:titleView.leftAnchor];
-//         
-//         if (navigationBarLayoutMargins.left > IDEASEARCH_MARGIN) {
-//            [leftLayoutConstraint setConstant:0];
-//            
-//         } /* End if () */
-//         else {
-//            
-//            [leftLayoutConstraint setConstant:IDEASEARCH_MARGIN - navigationBarLayoutMargins.left];
-//            
-//         } /* End else */
-//         
-//      } /* End if () */
-//      
-////      searchBar.height = self.view.width > self.view.frameHeight ? 24 : 30;
-//      searchBar.height   = self.view.width > self.view.height ? 24 : 30;
-//      
-////      searchBar.width = self.view.width - adaptWidth - IDEASEARCH_MARGIN;
-//      searchBar.width    = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
-//      
-//      searchField.frame       = searchBar.bounds;
-//      cancelButton.width = self.cancelButtonWidth;
-//      
-//   } /* End if () */
-//   else {
-//      
-//      titleView.top  = self.view.width > self.view.height ? 4 : 7;
-//      titleView.height   = self.view.width > self.view.height ? 24 : 30;
-//      
-//      if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
-//         
-//         titleView.width = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
-//         
-//      } /* End if () */
-//      else {
-//         
-//         titleView.left = IDEASEARCH_MARGIN * 1.5;
-//         titleView.width = self.view.width - self.cancelButtonWidth - titleView.left * 2 - 3;
-//         
-//      } /* End else */
-//   } /* End else */
+         backButton.width   = titleLabel.width + imageView.width / 2.0 + backButtonLayoutMargins.left + backButtonLayoutMargins.right;
+
+//      adaptWidth = backButton.width + 8;
+         fAdaptWidth = backButton.width + 8;
+
+      } /* End if () */
+      else {
+
+//      adaptWidth = backButton.width + 8;
+         fAdaptWidth = 44 + 8;
+
+      } /* End else */
+            
+   } /* End if () */
+   else { // Default is IDEASearchControllerShowModeModal
+      
+      if (nil != backButton) {
+         
+         [cancelButton sizeToFit];
+         [cancelButton.titleLabel sizeToFit];
+         self.cancelButtonWidth = cancelButton.width + cancelButtonLayoutMargins.left + cancelButtonLayoutMargins.right;
+         fAdaptWidth = self.cancelButtonWidth + 8;
+
+      } /* End if () */
+      else {
+         
+         self.cancelButtonWidth  = 44;
+         fAdaptWidth = self.cancelButtonWidth + 8;
+
+      } /* End else */
+      
+   } /* End else */
+   
+   fAdaptWidth = fAdaptWidth + navigationBarLayoutMargins.left + navigationBarLayoutMargins.right;
+   // Adapt the search bar layout problem in the navigation bar on iOS 11
+   // More details : https://github.com/iphone5solo/PYSearch/issues/108
+   if (@available(iOS 11.0, *)) { // iOS 11
+      
+      if (self.searchControllerShowMode == IDEASearchControllerShowModeModal) {
+         
+         NSLayoutConstraint *leftLayoutConstraint = [searchBar.leftAnchor constraintEqualToAnchor:titleView.leftAnchor];
+         
+         if (navigationBarLayoutMargins.left > IDEASEARCH_MARGIN) {
+            [leftLayoutConstraint setConstant:0];
+            
+         } /* End if () */
+         else {
+            
+            [leftLayoutConstraint setConstant:IDEASEARCH_MARGIN - navigationBarLayoutMargins.left];
+            
+         } /* End else */
+         
+      } /* End if () */
+      
+//      searchBar.height = self.view.width > self.view.frameHeight ? 24 : 30;
+      searchBar.height   = self.view.width > self.view.height ? 24 : 30;
+      
+//      searchBar.width = self.view.width - adaptWidth - IDEASEARCH_MARGIN;
+      searchBar.width    = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
+      
+      searchField.frame       = searchBar.bounds;
+      cancelButton.width = self.cancelButtonWidth;
+      
+   } /* End if () */
+   else {
+      
+      titleView.top  = self.view.width > self.view.height ? 4 : 7;
+      titleView.height   = self.view.width > self.view.height ? 24 : 30;
+      
+      if (self.searchControllerShowMode == IDEASearchControllerShowModePush) {
+         
+         titleView.width = self.view.width - fAdaptWidth - IDEASEARCH_MARGIN;
+         
+      } /* End if () */
+      else {
+         
+         titleView.left = IDEASEARCH_MARGIN * 1.5;
+         titleView.width = self.view.width - self.cancelButtonWidth - titleView.left * 2 - 3;
+         
+      } /* End else */
+   } /* End else */
    
    return;
 }
@@ -419,6 +414,7 @@
       }
       baseSearchTableView.delegate = self;
       baseSearchTableView.dataSource = self;
+            
       [self.view addSubview:baseSearchTableView];
       _baseSearchTableView = baseSearchTableView;
    }
@@ -609,25 +605,41 @@
    self.removeSpaceOnSearchString               = YES;
    self.searchBarCornerRadius                   = 0.0;
    
-   UIView      *titleView  = [[UIView alloc] init];
-   UISearchBar *searchBar  = [[UISearchBar alloc] initWithFrame:titleView.bounds];
-   [titleView addSubview:searchBar];
-   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) { // iOS 11
-      [NSLayoutConstraint activateConstraints:@[
-         [searchBar.topAnchor constraintEqualToAnchor:titleView.topAnchor],
-         [searchBar.leftAnchor constraintEqualToAnchor:titleView.leftAnchor],
-         [searchBar.rightAnchor constraintEqualToAnchor:titleView.rightAnchor],
-         [searchBar.bottomAnchor constraintEqualToAnchor:titleView.bottomAnchor]
-      ]];
-   }
+   UINavigationBarX  *stNavigationBarX = [self.delegate navigationBarX:self];
+
+   UIView      *stTitleView   = [[UIView alloc] init];
+   UISearchBar *stSearchBar   = [[UISearchBar alloc] initWithFrame:stTitleView.bounds];
+   
+   if (nil != stNavigationBarX) {
+      
+      stSearchBar = self.searchBarX;
+      
+   } /* End if () */
    else {
-      searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-   }
-   self.navigationItem.titleView = titleView;
-   searchBar.placeholder = [NSBundle search_localizedStringForKey:IDEASearchSearchPlaceholderText];
-   searchBar.backgroundImage = [NSBundle search_imageNamed:@"clearImage"];
-   searchBar.delegate = self;
-   for (UIView *subView in [[searchBar.subviews lastObject] subviews]) {
+      
+      [stTitleView addSubview:stSearchBar];
+
+      if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) { // iOS 11
+         [NSLayoutConstraint activateConstraints:@[
+            [stSearchBar.topAnchor constraintEqualToAnchor:stTitleView.topAnchor],
+            [stSearchBar.leftAnchor constraintEqualToAnchor:stTitleView.leftAnchor],
+            [stSearchBar.rightAnchor constraintEqualToAnchor:stTitleView.rightAnchor],
+            [stSearchBar.bottomAnchor constraintEqualToAnchor:stTitleView.bottomAnchor]
+         ]];
+      }
+      else {
+         stSearchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+      }
+      
+      self.navigationItem.titleView = stTitleView;
+
+   } /* End else */
+
+   stSearchBar.placeholder       = [NSBundle search_localizedStringForKey:IDEASearchSearchPlaceholderText];
+   stSearchBar.backgroundImage   = [NSBundle search_imageNamed:@"clearImage"];
+   stSearchBar.delegate          = self;
+   
+   for (UIView *subView in [[stSearchBar.subviews lastObject] subviews]) {
       if ([[subView class] isSubclassOfClass:[UITextField class]]) {
          UITextField *textField = (UITextField *)subView;
          textField.font = [UIFont search_regularFontOfSize:14];
@@ -636,7 +648,7 @@
       }
    }
    
-   self.searchBar = searchBar;
+   self.searchBar = stSearchBar;
    
    UIView   *stHeaderView = [[UIView alloc] init];
    stHeaderView.width = IDEA_SCREEN_WIDTH;
@@ -1189,6 +1201,8 @@
    }
    
    self.hotSearches = self.hotSearches;
+   
+   return;
 }
 
 - (void)setHotSearches:(NSArray *)hotSearches {
@@ -1711,7 +1725,7 @@
       self.searchSuggestionVC.tableView.contentInset = UIEdgeInsetsMake(-30, 0, 30, 0);
       [self.searchBar resignFirstResponder];
       
-   }
+   } /* End if () */
    
    return;
 }
