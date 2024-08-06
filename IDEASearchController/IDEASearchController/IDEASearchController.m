@@ -665,10 +665,10 @@
    
 // HARRY FIXED
 // IDEASearchHotSearchRefresh
-#if __DebugColor__
-   [stHotSearchView setBackgroundColor:[UIColor systemPinkColor]];
-   [stHeaderView setBackgroundColor:[UIColor systemBlueColor]];
-#endif /* __DebugColor__ */
+//#if __DebugColor__
+//   [stHotSearchView setBackgroundColor:[UIColor systemPinkColor]];
+//   [stHeaderView setBackgroundColor:[UIColor systemBlueColor]];
+//#endif /* __DebugColor__ */
    LogDebug((@"hotSearchView : %@", stHotSearchView));
 
    UIButton *stHotSearchRefreshButton  = [UIButton buttonWithType:UIButtonTypeCustom];
