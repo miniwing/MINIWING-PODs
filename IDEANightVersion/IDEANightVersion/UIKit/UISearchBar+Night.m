@@ -232,6 +232,24 @@
    return;
 }
 
+- (void)setBackgroundImagePicker:(DKImagePicker)aPicker {
+
+   if (nil != aPicker) {
+            
+      [self.pickers setValue:[aPicker copy] forKey:@"setBackgroundImage:"];
+
+      self.backgroundImage = aPicker(self.themeManager.themeVersion);
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:@"setBackgroundImage:"];
+
+   } /* End else */
+   
+   return;
+}
+
 - (void)night_updateColor:(NSNotification *)aNotification {
 
 //   UITextField *stTextField   = nil;

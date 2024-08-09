@@ -19,6 +19,7 @@
  *  @param aRadius 0 正圆  > 0 倒角半径
  */
 - (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds;
+- (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds masksToBounds:(BOOL)aMasksToBounds;
 
 - (void)setRectCorner:(UIRectCorner)aRectCorner radius:(CGFloat)aRadius;
 

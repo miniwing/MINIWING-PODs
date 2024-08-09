@@ -16,5 +16,6 @@
 @property (nonatomic, copy, setter = setBarTintColorPicker:) DKColorPicker barTintColorPicker;
 
 - (void)setImagePicker:(DKImagePicker)aPicker forSearchBarIcon:(UISearchBarIcon)aIcon state:(UIControlState)aState;
+- (void)setBackgroundImagePicker:(DKImagePicker)picker;
 
 @end

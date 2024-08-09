@@ -104,6 +104,8 @@
    DISPATCH_ASYNC_ON_MAIN_QUEUE(^{
 
       [self resignFirstResponder];
+      
+      return;
    });
    
    __CATCH(nErr);

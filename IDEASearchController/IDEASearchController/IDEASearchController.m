@@ -691,7 +691,7 @@
    [stHotSearchRefreshButton sizeToFit];
    [stHotSearchRefreshButton setWidth:stHotSearchRefreshButton.width + 6];
    [stHotSearchView addSubview:stHotSearchRefreshButton];
-   [stHotSearchRefreshButton setOrigin:CGPointMake(stHotSearchView.width - CGRectGetWidth(stHotSearchRefreshButton.frame), self.hotSearchHeader.top)];
+   [stHotSearchRefreshButton setOrigin:CGPointMake(_baseSearchTableView.width - CGRectGetWidth(stHotSearchRefreshButton.frame), self.hotSearchHeader.top)];
 
 #if __DebugColor__
    [self.hotSearchHeader setBackgroundColor:[UIColor systemGreenColor]];
@@ -1396,68 +1396,93 @@
 - (void)tagDidCLick:(UITapGestureRecognizer *)gr {
    
    UILabel *label = (UILabel *)gr.view;
+   
+   LogDebug((@"[IDEASearchController tagDidCLick:] : tag : %@", label.text));
    self.searchBar.text = label.text;
    // popular search tagLabel's tag is 1, search history tagLabel's tag is 0.
    if (1 == label.tag) {
       if ([self.delegate respondsToSelector:@selector(searchController:didSelectHotSearchAtIndex:searchText:)]) {
          [self.delegate searchController:self didSelectHotSearchAtIndex:[self.hotSearchTags indexOfObject:label] searchText:label.text];
          [self saveSearchCacheAndRefreshView];
-      } else {
-         [self searchBarSearchButtonClicked:self.searchBar];
       }
-   } else {
-      if ([self.delegate respondsToSelector:@selector(searchController:didSelectSearchHistoryAtIndex:searchText:)]) {
-         [self.delegate searchController:self didSelectSearchHistoryAtIndex:[self.searchHistoryTags indexOfObject:label] searchText:label.text];
-         [self saveSearchCacheAndRefreshView];
-      } else {
+      else {
          [self searchBarSearchButtonClicked:self.searchBar];
       }
    }
-   LogDebug((@"Search %@", label.text));
+   else {
+      if ([self.delegate respondsToSelector:@selector(searchController:didSelectSearchHistoryAtIndex:searchText:)]) {
+         [self.delegate searchController:self didSelectSearchHistoryAtIndex:[self.searchHistoryTags indexOfObject:label] searchText:label.text];
+         [self saveSearchCacheAndRefreshView];
+      }
+      else {
+         [self searchBarSearchButtonClicked:self.searchBar];
+      }
+   }
+   
+   LogDebug((@"[IDEASearchController tagDidCLick:] : Search %@", label.text));
+   
+   return;
 }
 
-- (UILabel *)labelWithTitle:(NSString *)title {
+- (UILabel *)labelWithTitle:(NSString *)aTitle {
    
-   UILabel *label = [[UILabel alloc] init];
-   label.userInteractionEnabled = YES;
-   label.font = [UIFont search_regularFontOfSize:12];
-   label.text = title;
-   label.textColor = UIColor.grayColor;
-   label.backgroundColor = [UIColor search_colorWithHexString:@"#fafafa"];
-   label.layer.cornerRadius = 3;
-   label.clipsToBounds = YES;
-   label.textAlignment = NSTextAlignmentCenter;
-   [label sizeToFit];
-   label.width += 20;
-   label.height += 14;
-   return label;
+   UILabel  *stLabel = [[UILabel alloc] init];
+   [stLabel setUserInteractionEnabled:YES];
+   [stLabel setFont:[UIFont search_regularFontOfSize:12]];
+   [stLabel setText:aTitle];
+   [stLabel setTextColor:UIColor.grayColor];
+   [stLabel setBackgroundColor:[UIColor search_colorWithHexString:@"#fafafa"]];
+   [stLabel.layer setCornerRadius:3];
+   [stLabel setClipsToBounds:YES];
+   [stLabel setTextAlignment:NSTextAlignmentCenter];
+   [stLabel sizeToFit];
+   stLabel.width += 20;
+   stLabel.height += 14;
+   
+   return stLabel;
 }
 
 - (void)saveSearchCacheAndRefreshView {
    
-   UISearchBar *searchBar = self.searchBar;
-   [searchBar resignFirstResponder];
-   NSString *searchText = searchBar.text;
+   UISearchBar *stSearchBar = self.searchBar;
+   [stSearchBar resignFirstResponder];
+   
+   NSString *szSearchText = stSearchBar.text;
+   
    if (self.removeSpaceOnSearchString) { // remove sapce on search string
-      searchText = [searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-   }
-   if (self.showSearchHistory && searchText.length > 0) {
-      [self.searchHistories removeObject:searchText];
-      [self.searchHistories insertObject:searchText atIndex:0];
+      
+      szSearchText = [stSearchBar.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+      
+   } /* End if () */
+   
+   if (self.showSearchHistory && szSearchText.length > 0) {
+      
+      [self.searchHistories removeObject:szSearchText];
+      [self.searchHistories insertObject:szSearchText atIndex:0];
       
       if (self.searchHistories.count > self.searchHistoriesCount) {
+         
          [self.searchHistories removeLastObject];
-      }
+         
+      } /* End if () */
+      
       [NSKeyedArchiver archiveRootObject:self.searchHistories toFile:self.searchHistoriesCachePath];
       
       if (IDEASearchHistoryStyleCell == self.searchHistoryStyle) {
+         
          [self.baseSearchTableView reloadData];
-      } else {
+
+      } /* End if () */
+      else {
+         
          self.searchHistoryStyle = self.searchHistoryStyle;
-      }
+         
+      } /* End else */
    }
    
    [self handleSearchResultShow];
+   
+   return;
 }
 
 - (void)handleSearchResultShow {
@@ -1486,14 +1511,18 @@
       default:
          break;
    }
+   
+   return;
 }
 
 #pragma mark - IDEASearchSuggestionDataSource
 - (NSInteger)numberOfSectionsInSearchSuggestionView:(UITableView *)searchSuggestion {
    
    if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInSearchSuggestionView:)]) {
+      
       return [self.dataSource numberOfSectionsInSearchSuggestionView:searchSuggestion];
-   }
+      
+   } /* End if () */
    
    return 1;
 }
@@ -1512,8 +1541,11 @@
 - (UITableViewCell *)searchSuggestion:(UITableView *)searchSuggestion cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
    if ([self.dataSource respondsToSelector:@selector(searchSuggestion:cellForRowAtIndexPath:)]) {
+      
       return [self.dataSource searchSuggestion:searchSuggestion cellForRowAtIndexPath:indexPath];
-   }
+      
+   } /* End if () */
+   
    return nil;
 }
 
@@ -1529,12 +1561,22 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
    
    if ([self.delegate respondsToSelector:@selector(searchController:didSearchWithSearchBar:searchText:)]) {
+      
       [self.delegate searchController:self didSearchWithSearchBar:searchBar searchText:searchBar.text];
+      
       [self saveSearchCacheAndRefreshView];
+      
       return;
    }
-   if (self.didSearchBlock) self.didSearchBlock(self, searchBar, searchBar.text);
+   if (self.didSearchBlock) {
+      
+      self.didSearchBlock(self, searchBar, searchBar.text);
+      
+   } /* End if () */
+   
    [self saveSearchCacheAndRefreshView];
+   
+   return;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -1608,7 +1650,7 @@
    return;
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    
    return  1;
@@ -1621,13 +1663,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
-   static NSString   *cellID  = @"IDEASearchHistoryCellID";
+   static NSString   *g_szCellID  = @"IDEASearchHistoryCellID";
    
-   UITableViewCell   *stCell  = [tableView dequeueReusableCellWithIdentifier:cellID];
+   UITableViewCell   *stCell  = [tableView dequeueReusableCellWithIdentifier:g_szCellID];
    
    if (!stCell) {
       
-      stCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+      stCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:g_szCellID];
       stCell.textLabel.textColor = IDEATextColor;
       stCell.textLabel.font = [UIFont search_regularFontOfSize:14];
       stCell.backgroundColor = UIColor.clearColor;

@@ -34,17 +34,21 @@
 
 - (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds {
    
-//   if (0 == aRadius) {
-//
-//      aRadius  = self.frame.size.height / 2;
-//
-//   } /* End if () */
+//   [self setClipsToBounds:aClipsToBounds];
 //   
-//   objc_setAssociatedObject(self, UIVIEW_ROUND_RADIUS, aRadius, OBJC_ASSOCIATION_RETAIN);
+//   [self.layer setMasksToBounds:YES];
+//   [self.layer setCornerRadius:aRadius];
+   
+   [self setCornerRadius:aRadius clipsToBounds:aClipsToBounds masksToBounds:YES];
+   
+   return;
+}
+
+- (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds masksToBounds:(BOOL)aMasksToBounds {
    
    [self setClipsToBounds:aClipsToBounds];
    
-   [self.layer setMasksToBounds:YES];
+   [self.layer setMasksToBounds:aMasksToBounds];
    [self.layer setCornerRadius:aRadius];
    
    return;

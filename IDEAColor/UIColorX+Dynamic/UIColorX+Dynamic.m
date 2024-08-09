@@ -37,7 +37,7 @@
 
 - (UIColor *)reverse {
    
-   CGFloat r = 0, g, b, a;
+   CGFloat r = 0, g = 0, b = 0, a = 0;
    [self getRed:&r green:&g blue:&b alpha:&a];
    
    return [UIColor colorWithRed: 1 - r
