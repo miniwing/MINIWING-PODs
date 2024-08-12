@@ -33,7 +33,7 @@
    
    LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
    
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
 
       return UIUserInterfaceStyleDark;
       
@@ -49,7 +49,7 @@
 
    LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
    
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
 
       return UIStatusBarStyleLightContent;
       

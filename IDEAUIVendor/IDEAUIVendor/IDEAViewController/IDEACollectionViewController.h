@@ -14,6 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef void (^KeyboardDoneBlock)(void);
+
+@interface IDEACollectionViewController ()
+
+@property (nonatomic, strong)                NSMutableDictionary<NSString *, KeyboardDoneBlock> * keyboardDoneBlocks;
+
+@end
+
 @interface IDEACollectionViewController (UIStoryboard)
 
 @property (class, nonatomic, readonly)       NSString                            * storyboard;

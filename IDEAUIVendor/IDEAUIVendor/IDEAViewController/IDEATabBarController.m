@@ -17,7 +17,6 @@
 - (void)dealloc {
    
    __LOG_FUNCTION;
-   
    // Custom dealloc
 #if IDEA_NIGHT_VERSION_MANAGER
    [self removeNotificationName:DKNightVersionThemeChangingNotification

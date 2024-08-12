@@ -15,7 +15,8 @@
    __LOG_FUNCTION;
    
    // Custom dealloc
-   
+   [self.keyboardDoneBlocks removeAllObjects];
+
 #if IDEA_NIGHT_VERSION_MANAGER
    [self removeNotificationName:DKNightVersionThemeChangingNotification
                          object:nil];
@@ -96,6 +97,18 @@
 //   return UIRectEdgeBottom;
 //}
 
+#pragma mark - (NSMutableDictionary<NSString *, KeyboardDoneBlock> *)keyboardDoneBlocks;
+- (NSMutableDictionary<NSString *, KeyboardDoneBlock> *)keyboardDoneBlocks {
+   
+   if (nil == _keyboardDoneBlocks) {
+      
+      _keyboardDoneBlocks  = [NSMutableDictionary<NSString *, KeyboardDoneBlock> dictionary];
+      
+   } /* End if () */
+   
+   return _keyboardDoneBlocks;
+}
+
 @end
 
 #pragma mark - UIStoryboard
@@ -173,7 +186,7 @@ static const CGFloat kNavigationBarMinHeight       = 24;
 //   //
 //   //   } /* End else */
 //   
-//   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+//   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
 //      
 //      return UIUserInterfaceStyleDark;
 //      

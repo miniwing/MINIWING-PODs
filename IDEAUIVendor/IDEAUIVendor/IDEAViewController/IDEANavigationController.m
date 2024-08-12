@@ -20,9 +20,9 @@
    [self removeNotificationName:DKNightVersionThemeChangingNotification
                          object:nil];
 #endif /* IDEA_NIGHT_VERSION_MANAGER */
-
-   [self removeAllNotifications];
    
+   [self removeAllNotifications];
+
    __SUPER_DEALLOC;
    
    return;
@@ -220,7 +220,7 @@
 
    } /* End if () */
    
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
 
       return UIStatusBarStyleLightContent;
       

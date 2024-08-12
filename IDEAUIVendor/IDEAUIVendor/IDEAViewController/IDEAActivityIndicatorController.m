@@ -211,7 +211,7 @@
    LogView((@"-[%@ preferredStatusBarStyle]", [self class]));
    
 #if IDEA_NIGHT_VERSION_MANAGER
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
       
       return UIStatusBarStyleLightContent;
       
@@ -246,7 +246,7 @@
    //
    //   } /* End else */
    
-   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+   if ([DKThemeVersionNight isEqualToString:[DKNightVersionManager sharedManager].themeVersion]) {
       
       return UIUserInterfaceStyleDark;
       

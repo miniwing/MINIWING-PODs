@@ -138,6 +138,27 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    return stStrongController;
 }
 
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//      
+//   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
+//      
+//      return UIStatusBarStyleLightContent;
+//      
+//   } /* End if () */
+//   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
+//      
+//      if (@available(iOS 13, *)) {
+//         
+//         // 系统版本高于 13.0
+//         return UIStatusBarStyleDarkContent;
+//         
+//      } /* End if () */
+//      
+//      return UIStatusBarStyleDefault;
+//      
+//   } /* End if () */
+//}
+
 + (instancetype)showAlertInViewController:(UIViewController *)aViewController
                        userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
                                 withTitle:(NSString *)aTitle
