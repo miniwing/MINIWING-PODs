@@ -54,7 +54,8 @@
       NSString    *szName        = [NSString stringWithCString:szIvarName
                                                       encoding:NSUTF8StringEncoding];
       [stIvarNames addObject:szName];
-   }
+      
+   } /* End for () */
    
    return [stIvarNames copy];
 }

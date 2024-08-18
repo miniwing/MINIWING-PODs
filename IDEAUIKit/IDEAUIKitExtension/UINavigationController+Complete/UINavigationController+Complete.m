@@ -6,9 +6,9 @@
 //  Copyright © 2024 Harry. All rights reserved.
 //
 
-#import "UINavigationController+Complete.h"
-
 #import <IDEAKit/IDEAUtils.h>
+
+#import "UINavigationController+Complete.h"
 
 @implementation UINavigationController (Complete)
 
@@ -44,9 +44,15 @@
       [self.transitionCoordinator animateAlongsideTransition:nil
                                                   completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
 
+//         if (nil != aCompletion) {
+//
+//            aCompletion();
+//            
+//         } /* End if () */
+         
          if (nil != aCompletion) {
-
-            aCompletion();
+            
+            dispatch_async_on_main_queue(aCompletion);
             
          } /* End if () */
       }];
@@ -98,13 +104,99 @@
       [self.transitionCoordinator animateAlongsideTransition:nil
                                                   completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
 
+//         if (nil != aCompletion) {
+//            
+//            aCompletion();
+//            
+//         } /* End if () */
+         
          if (nil != aCompletion) {
             
-            aCompletion();
+            dispatch_async_on_main_queue(aCompletion);
             
          } /* End if () */
       }];
 
+   } /* End if () */
+   else {
+      
+      if (nil != aCompletion) {
+         
+         dispatch_async_on_main_queue(aCompletion);
+         
+      } /* End if () */
+      
+   } /* End else */
+   
+   __CATCH(nErr);
+   
+   return stViewController;
+}
+
+- (nullable UIViewController *)popToViewController:(UIViewController *)aViewController
+                                          animated:(BOOL)aAnimated
+                                        completion:(nullable void (^)(void))aCompletion {
+   
+   int                            nErr                                     = EFAULT;
+   
+   UIViewController              *stViewController                         = nil;
+   
+   __TRY;
+   
+   stViewController  = [self popToViewController:aViewController
+                                        animated:aAnimated];
+
+   if (aAnimated) {
+      
+      [self.transitionCoordinator animateAlongsideTransition:nil
+                                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
+         
+         if (nil != aCompletion) {
+            
+            dispatch_async_on_main_queue(aCompletion);
+            
+         } /* End if () */
+      }];
+
+   } /* End if () */
+   else {
+      
+      if (nil != aCompletion) {
+         
+         dispatch_async_on_main_queue(aCompletion);
+         
+      } /* End if () */
+      
+   } /* End else */
+   
+   __CATCH(nErr);
+   
+   return stViewController;
+}
+
+- (nullable UIViewController *)popToRootViewControllerAnimated:(BOOL)aAnimated
+                                                    completion:(nullable void (^)(void))aCompletion {
+   
+   int                            nErr                                     = EFAULT;
+   
+   UIViewController              *stViewController                         = nil;
+   
+   __TRY;
+   
+   stViewController  = [self popToRootViewControllerAnimated:aAnimated];
+   
+   if (aAnimated) {
+      
+      [self.transitionCoordinator animateAlongsideTransition:nil
+                                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> aContext) {
+         
+         if (nil != aCompletion) {
+            
+            dispatch_async_on_main_queue(aCompletion);
+            
+         } /* End if () */
+      }];
+      
    } /* End if () */
    else {
       

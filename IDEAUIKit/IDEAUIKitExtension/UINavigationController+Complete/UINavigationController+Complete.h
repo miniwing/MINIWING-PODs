@@ -16,8 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
                   animated:(BOOL)aAnimated
                 completion:(nullable void (^)(void))aCompletion;
 
-- (nullable UIViewController *)popViewControllerAnimated:(BOOL)animated
+- (nullable UIViewController *)popViewControllerAnimated:(BOOL)aAnimated
                                               completion:(nullable void (^)(void))aCompletion;
+
+- (nullable UIViewController *)popToViewController:(UIViewController *)aViewController
+                                          animated:(BOOL)aAnimated
+                                        completion:(nullable void (^)(void))aCompletion;
+
+- (nullable UIViewController *)popToRootViewControllerAnimated:(BOOL)aAnimated
+                                                    completion:(nullable void (^)(void))aCompletion;
 
 @end
 

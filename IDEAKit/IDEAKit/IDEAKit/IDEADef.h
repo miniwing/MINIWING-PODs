@@ -145,8 +145,8 @@ LOCAL void * MALLOC_EX(size_t aSize) {
 
 #ifdef __OBJC__
 
-#define NS_STR(key, comment)                                NSLocalizedString((key), (comment))
-#define APP_STR(key)                                        NS_STR((key), nil)
+//#define NS_STR(key, comment)                                NSLocalizedString((key), (comment))
+//#define APP_STR(key)                                        NS_STR((key), nil)
 
 #define WEAK_SELF                                           __weak __typeof__(self)
 #define STRONG_SELF                                         __strong __typeof__(self)
@@ -237,5 +237,7 @@ typedef signed   long                                       LONG;
 #else
 #  define HTTP_TIME_OUT_INTERVAL                   (30)
 #endif
+
+/*********************************************************************************************/
 
 #endif /* IdeaDef_H */

@@ -26,6 +26,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "UIAlertAction+Color.h"
 #import "UIAlertController+Blocks.h"
 
 #pragma clang diagnostic push
@@ -34,12 +35,6 @@
 static NSInteger const UIAlertControllerBlocksCancelButtonIndex      = 0;
 static NSInteger const UIAlertControllerBlocksDestructiveButtonIndex = 1;
 static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
-
-@interface UIViewController (UACB_Topmost)
-
-- (UIViewController *)__topMost;
-
-@end
 
 @implementation UIAlertController (Blocks)
 
@@ -73,13 +68,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
       }];
       
       [stStrongController addAction:stCancelAction];
-      
-//      LogDebug((@" : %@", [UIAlertController getAllProperty:stStrongController]));
-//      LogDebug((@" : %@", [UIAlertController getAllProperty:stCancelAction]));
-//      LogDebug((@" : %@", [UIAlertController getAllProperty:[[NSClassFromString(@"_UIAlertControllerActionView") alloc] init]]));
-//      [stCancelAction setValue:[UIColor colorWithHexString:@"#3FBE8C"] forKey:@"_titleTextColor"];
-//      [stCancelAction setValue:[UIFont systemFontOfSize:14 weight:UIFontWeightLight] forKey:@"_font"];
-      
+
    } /* End if () */
    
    for (NSUInteger H = 0; H < aOtherButtonTitles.count; H++) {
@@ -125,9 +114,9 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    } /* End if () */
    
-   LogDebug((@"+[UIAlertController showInViewController:] : %@", aViewController.__topMost));
+   LogDebug((@"+[UIAlertController showInViewController:] : %@", aViewController.topMost));
    
-   [aViewController.__topMost presentViewController:stStrongController animated:YES completion:nil];
+   [aViewController.topMost presentViewController:stStrongController animated:YES completion:nil];
    
    if (@available(iOS 13, *)) {
       
@@ -137,27 +126,6 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
       
    return stStrongController;
 }
-
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//      
-//   if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNight]) {
-//      
-//      return UIStatusBarStyleLightContent;
-//      
-//   } /* End if () */
-//   else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
-//      
-//      if (@available(iOS 13, *)) {
-//         
-//         // 系统版本高于 13.0
-//         return UIStatusBarStyleDarkContent;
-//         
-//      } /* End if () */
-//      
-//      return UIStatusBarStyleDefault;
-//      
-//   } /* End if () */
-//}
 
 + (instancetype)showAlertInViewController:(UIViewController *)aViewController
                        userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
@@ -232,13 +200,13 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
    
-   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.__topMost));
+   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.topMost));
    
-   if (nil != self.__topMost && self != self.__topMost) {
+   if (nil != self.topMost && self != self.topMost) {
       
-      if (![self.__topMost isKindOfClass:UIAlertController.class]) {
+      if (![self.topMost isKindOfClass:UIAlertController.class]) {
          
-         return [self.__topMost supportedInterfaceOrientations];
+         return [self.topMost supportedInterfaceOrientations];
 
       } /* End if () */
 
@@ -249,13 +217,13 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 - (BOOL)shouldAutorotate {
 
-   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.__topMost));
+   LogDebug((@"+[UIAlertController supportedInterfaceOrientations] : %@", self.topMost));
    
-   if (nil != self.__topMost && self != self.__topMost) {
+   if (nil != self.topMost && self != self.topMost) {
       
-      if (![self.__topMost isKindOfClass:UIAlertController.class]) {
+      if (![self.topMost isKindOfClass:UIAlertController.class]) {
          
-         return [self.__topMost shouldAutorotate];
+         return [self.topMost shouldAutorotate];
 
       } /* End if () */
             
@@ -268,7 +236,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @implementation UIViewController (UACB_Topmost)
 
-- (UIViewController *)__topMost {
+- (UIViewController *)topMost {
    
    UIViewController  *stTopMost  = self;
    UIViewController  *stAbove    = nil;

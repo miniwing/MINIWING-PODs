@@ -160,32 +160,6 @@ NS_INLINE dispatch_queue_global_t DISPATCH_GET_GLOBAL_QUEUE_HIGH(void) {
 
 /******************************************************************************************************/
 
-//NS_INLINE NSBundle * IDEA_BUNDLE_FROM(NSString *aBundle, Class aClass) {
-//
-//  static NSBundle         *g_BUNDLE      = nil;
-//  static dispatch_once_t   stOnceToken;
-//
-//  dispatch_once(&stOnceToken, ^{
-//
-//     NSBundle *stBundle   = [NSBundle bundleForClass:aClass];
-//     NSString *szPath     = [stBundle pathForResource:aBundle ofType:@"bundle"];
-//
-//     g_BUNDLE = [NSBundle bundleWithPath:szPath];
-//  });
-//
-//  return g_BUNDLE;
-//}
-//
-//NS_INLINE NSString * IDEA_LOCALIZED_STRING(NSString *aBundle, Class aClass, NSString *aKey) {
-//
-//   return NSLocalizedStringFromTableInBundle(aKey, nil, IDEA_BUNDLE_FROM(aBundle, aClass), nil);
-//}
-//
-//NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString *aName, Class aClass) {
-//
-//   return [UIImage imageNamed:aName inBundle:IDEA_BUNDLE_FROM(aBundle, aClass) compatibleWithTraitCollection:nil];
-//}
-
 NS_INLINE NSBundle * IDEA_BUNDLE_FROM(NSString *aBundle, Class aClass) {
    
    static NSBundle         *g_BUNDLE      = nil;
@@ -215,12 +189,31 @@ NS_INLINE NSBundle * IDEA_BUNDLE_FROM(NSString *aBundle, Class aClass) {
 NS_INLINE NSString * IDEA_LOCALIZED_STRING(NSString *aBundle, Class aClass, NSString *aKey) {
    
    return NSLocalizedStringWithDefaultValue(aKey, nil, IDEA_BUNDLE_FROM(aBundle, aClass), aKey, aKey);
-//   return NSLocalizedStringFromTableInBundle(aKey, nil, IDEA_BUNDLE_FROM(aBundle, aClass), nil);
 }
 
 NS_INLINE UIImage * IMAGE_NAMED_IN_BUNDLE(NSString *aBundle, NSString *aName, Class aClass) {
    
    return [UIImage imageNamed:aName inBundle:IDEA_BUNDLE_FROM(aBundle, aClass) compatibleWithTraitCollection:nil];
+}
+
+/******************************************************************************************************/
+
+NS_INLINE NSBundle * BUNDLE_FROM(Class aClass) {
+   
+   static NSBundle         *g_BUNDLE      = nil;
+   static dispatch_once_t   stOnceToken;
+   
+   dispatch_once(&stOnceToken, ^{
+            
+      g_BUNDLE = [NSBundle bundleForClass:aClass];
+   });
+   
+   return g_BUNDLE;
+}
+
+NS_INLINE NSString * LOCALIZED_STRING(Class aClass, NSString *aKey) {
+   
+   return NSLocalizedStringWithDefaultValue(aKey, nil, BUNDLE_FROM(aClass), aKey, aKey);
 }
 
 /******************************************************************************************************/

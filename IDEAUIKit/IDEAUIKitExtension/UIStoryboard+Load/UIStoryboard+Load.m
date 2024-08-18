@@ -38,13 +38,13 @@
    else {
       
       szDevice = @"_iPhone";
-   
+      
    } /* End else */
-
+   
 #else /* __UNIVERSAL__ */
-
+   
    szDevice = @"";
-
+   
 #endif /* !__UNIVERSAL__ */
    
    
@@ -72,7 +72,7 @@
    NSArray        *stItems       = [szIdentifier split:@"."];
    
    szIdentifier   = stItems.lastObject;
-
+   
    id stView   = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
    
    __RELEASE(szStoryboard);
@@ -85,7 +85,7 @@
    
    NSBundle *stBaseBundle  = [NSBundle bundleForClass:aClass];
    NSString *szBundlePath  = [stBaseBundle pathForResource:aBundleName ofType:@"bundle"];
-
+   
    return [NSBundle bundleWithPath:szBundlePath];
 }
 
@@ -110,7 +110,7 @@
    NSArray        *stItems       = [szIdentifier split:@"."];
    
    szIdentifier   = stItems.lastObject;
-
+   
    id stView   = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
    
    __RELEASE(szStoryboard);
@@ -145,21 +145,6 @@
 
 + (id)loadStoryboard:(NSString *)aStoryboard viewController:(Class)aClass inBundle:(NSString *)aBundle {
    
-//   NSBundle       *stBundle      = [NSBundle bundleForClass:aClass];
-//
-//   UIStoryboard   *stStoryboard  = [UIStoryboard storyboardWithName:aStoryboard
-//                                                             bundle:stBundle];
-//
-//   NSString       *szIdentifier  = NSStringFromClass(aClass);
-//
-//   NSArray        *stItems       = [szIdentifier split:@"."];
-//
-//   szIdentifier   = stItems.lastObject;
-//
-////   id stView   = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
-//
-//   return [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
-   
    int                            nErr                                     = EFAULT;
    
    UIViewController              *stViewController                         = nil;
@@ -167,56 +152,63 @@
    UIStoryboard                  *stStoryboard                             = nil;
    
    NSString                      *szBundle                                 = nil;
-   NSBundle                      *stBundle                                 = [NSBundle bundleForClass:aClass];
+   NSBundle                      *stBundle                                 = nil;
    NSString                      *szIdentifier                             = nil;
    
    __TRY;
-
-   aStoryboard   = [UIStoryboard storyboard:aStoryboard
-                                        PAD:[UIDevice currentDevice].isPad];
-
+   
+   aStoryboard    = [UIStoryboard storyboard:aStoryboard
+                                         PAD:[UIDevice currentDevice].isPad];
+   
    szIdentifier   = NSStringFromClass(aClass);
+   
+   stBundle       = [NSBundle bundleForClass:aClass]; // framework
+   LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : Bundle : %@", stBundle));
    
    @try {
       
-      stBundle       = [NSBundle bundleForClass:aClass];
-
+      /**
+       在framework中
+       */
       stStoryboard   = [UIStoryboard storyboardWithName:aStoryboard
                                                  bundle:stBundle];
       
    } /* End try */
    @catch (NSException *_Exception) {
-
+      
       LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : NSException : %@", _Exception));
       
-      szBundle       = [[NSBundle mainBundle] pathForResource:aBundle
-                                                       ofType:@"framework"];
+      /**
+       在Bundle中
+       */
+      szBundle       = [stBundle pathForResource:aBundle
+                                          ofType:@"bundle"];
       
       stBundle       = [NSBundle bundleWithPath:szBundle];
       
       stStoryboard   = [UIStoryboard storyboardWithName:aStoryboard
                                                  bundle:stBundle];
-
+      
    } /* End catch (NSException) */
    
    LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : %@ in %@", szIdentifier, stBundle));
-
+   
    NSArray  *stItems = [szIdentifier split:@"."];
-
+   
    szIdentifier      = stItems.lastObject;
-
+   
    @try {
-
+      
       stViewController  = [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];
       LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : ViewController : %@", stViewController));
-
+      
    } /* End try */
    @catch (NSException *_Exception) {
       
       LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inBundle:] : NSException : %@", _Exception));
-
+      
    } /* End catch (NSException) */
-
+   
    __CATCH(nErr);
    
    return stViewController;
@@ -237,22 +229,22 @@
    NSString                      *szIdentifier                             = nil;
    
    __TRY;
-
+   
    aStoryboard   = [UIStoryboard storyboard:aStoryboard
                                         PAD:[UIDevice currentDevice].isPad];
-
+   
    szIdentifier   = NSStringFromClass(aClass);
    
    @try {
       
       stBundle       = [NSBundle bundleForClass:aClass];
-
+      
       stStoryboard   = [UIStoryboard storyboardWithName:aStoryboard
                                                  bundle:stBundle];
       
    } /* End try */
    @catch (NSException *_Exception) {
-
+      
       LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inFramework:] : NSException : %@", _Exception));
       
       szBundle       = [[NSBundle mainBundle] pathForResource:aFramework
@@ -263,18 +255,18 @@
       
       stStoryboard   = [UIStoryboard storyboardWithName:aStoryboard
                                                  bundle:stBundle];
-
+      
    } /* End catch (NSException) */
    @finally {
       
       NSArray        *stItems       = [szIdentifier split:@"."];
-
+      
       szIdentifier   = stItems.lastObject;
-
+      
    } /* End finally */
    
    LogDebug((@"+[UIStoryboard loadStoryboard:viewController:inFramework:] : %@ in %@", szIdentifier, stBundle));
-
+   
    __CATCH(nErr);
    
    return [stStoryboard instantiateViewControllerWithIdentifier:szIdentifier];

@@ -9,7 +9,16 @@
 
 #import "IDEAAlertController.h"
 
+#import "UIAlertAction+Color.h"
+#import "UIAlertController+Blocks.h"
+
 NS_ASSUME_NONNULL_BEGIN
+
+@interface IDEAAlertController ()
+
+@property (nonatomic, copy)   IDEAAlertControllerThemeBlock  themeBlock;
+
+@end
 
 @interface IDEAAlertController (Inner)
 

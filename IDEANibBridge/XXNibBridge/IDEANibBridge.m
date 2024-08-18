@@ -50,6 +50,8 @@
          method_exchangeImplementations(originalMethod, swizzledMethod);
       }
    });
+   
+   return;
 }
 
 - (id)hackedAwakeAfterUsingCoder:(NSCoder *)aDecoder {

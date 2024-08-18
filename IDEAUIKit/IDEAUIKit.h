@@ -28,9 +28,13 @@
 #import <IDEAUIKit/UIImageView+UIImage.h>
 
 #import <IDEAUIKit/UILabel+Animate.h>
+
 #import <IDEAUIKit/UIButton+Layout.h>
+#import <IDEAUIKit/UIButton+Font.h>
+#import <IDEAUIKit/UIAlertAction+Color.h>
 
 #import <IDEAUIKit/UIStoryboard+Load.h>
+#import <IDEAUIKit/NSBundle+Load.h>
 
 #import <IDEAUIKit/UIViewController+Keyboard.h>
 #import <IDEAUIKit/UIViewController+TopMost.h>

@@ -15,13 +15,13 @@ QTEventBus是一个优雅的iOS事件总线，用来实现“发布-订阅”的
 - 快速
 - 兼容`NSNotification`
 - 单元测试覆盖
-- 支持AppDelegate解耦
+- 支持APPDelegate解耦
 - 支持基于响应链的局部总线
 
 文章：
 
 - [实现一个优雅的iOS消息总线](https://github.com/LeoMobileDeveloper/Blogs/blob/master/iOS/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%BC%98%E9%9B%85%E7%9A%84iOS%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF.md)
-- [聊聊AppDelegate解耦](https://github.com/LeoMobileDeveloper/Blogs/blob/master/iOS/AppDelegate%E8%A7%A3%E8%80%A6.md)
+- [聊聊APPDelegate解耦](https://github.com/LeoMobileDeveloper/Blogs/blob/master/iOS/APPDelegate%E8%A7%A3%E8%80%A6.md)
 
 ## 安装
 
@@ -31,7 +31,7 @@ QTEventBus是一个优雅的iOS事件总线，用来实现“发布-订阅”的
 pod QTEventBus
 ```
 
-AppDelegate解耦：
+APPDelegate解耦：
 
 ```
 pod QTEventBus/AppModule
@@ -83,7 +83,7 @@ QTLoginEvent * event;
 ## 详细文档
 
 - [核心功能](./Doc/Basic.md)
-- [扩展：AppDelegate解耦](./Doc/Module.md)
+- [扩展：APPDelegate解耦](./Doc/Module.md)
 - [扩展：基于响应链的事件传递](./Doc/UIKitSupport.md)
 
 

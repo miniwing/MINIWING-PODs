@@ -34,6 +34,7 @@
 #if TARGET_OS_IOS
 typedef void (^UIAlertControllerPopoverPresentationControllerBlock) (UIPopoverPresentationController * aPopover);
 #endif
+typedef void (^UIAlertControllerPrepareBlock) (UIAlertController * aController, NSArray<UIAlertAction *> *aActions);
 typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aController, UIAlertAction * aAction, NSInteger aButtonIndex);
 
 @interface UIAlertController (Blocks)
@@ -60,7 +61,6 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
                         otherButtonTitles:(NSArray<NSString *> *)aOtherButtonTitles
                                  tapBlock:(UIAlertControllerCompletionBlock)aTapBlock;
 
-
 + (instancetype)showActionSheetInViewController:(UIViewController *)aViewController
                              userInterfaceStyle:(UIUserInterfaceStyle)aUserInterfaceStyle
                                       withTitle:(NSString *)aTitle
@@ -77,6 +77,12 @@ typedef void (^UIAlertControllerCompletionBlock) (UIAlertController * aControlle
 @property (readonly, nonatomic) NSInteger cancelButtonIndex;
 @property (readonly, nonatomic) NSInteger firstOtherButtonIndex;
 @property (readonly, nonatomic) NSInteger destructiveButtonIndex;
+
+@end
+
+@interface UIViewController (Topmost)
+
+- (UIViewController *)topMost;
 
 @end
 

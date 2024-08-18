@@ -618,6 +618,19 @@ __END_DECLS
 
 /******************************************************************************************************/
 
+NS_INLINE NSBundle * __FRAMEWORK_FROM(Class aClass) {
+  
+   static NSBundle         *g_BUNDLE      = nil;
+   static dispatch_once_t   stOnceToken;
+  
+   dispatch_once(&stOnceToken, ^{
+     
+      g_BUNDLE = [NSBundle bundleForClass:aClass];
+   });
+  
+   return g_BUNDLE;
+}
+
 NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
    
    static NSBundle         *g_BUNDLE      = nil;

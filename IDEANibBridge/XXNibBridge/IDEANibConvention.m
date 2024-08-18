@@ -43,7 +43,8 @@
 
 + (UINib *)nib {
    
-   return [UINib nibWithNibName:self.nibID bundle:[NSBundle bundleForClass:NSClassFromString(self.nibID)]];
+   return [UINib nibWithNibName:self.nibID
+                         bundle:[NSBundle bundleForClass:NSClassFromString(self.nibID)]];
 }
 
 //#pragma mark - IDEADeprecatedNibConvention

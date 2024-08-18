@@ -25,15 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign)                NSInteger                             tableViewXStyle;
 
+@property (nonatomic, class, readonly)       CGFloat                               cornerRadii;
+@property (nonatomic, class, readonly)       CGFloat                               constraintLeftInset;
+@property (nonatomic, class, readonly)       CGFloat                               constraintRightInset;
+
 @end
 
 @interface UITableViewCellX ()
 
-+ (CGFloat)cornerRadii;
-+ (CGFloat)constraintLeftInset;
-+ (CGFloat)constraintRightInset;
-
-//- (void)setRectCorner:(UIRectCorner)aRectCorner API_DEPRECATED("", ios(2.0, 12.0));
 - (void)setRectCorner:(UIRectCorner)aRectCorner;
 
 @end

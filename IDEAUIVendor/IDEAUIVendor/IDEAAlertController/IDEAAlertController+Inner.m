@@ -10,19 +10,21 @@
 
 #import "IDEAAlertController+Inner.h"
 
+@implementation IDEAAlertController (Inner)
+
+@end
+
 #pragma mark - UIStoryboard
 @implementation IDEAAlertController (UIStoryboard)
 
 + (NSString *)storyboard {
    
-#warning Incomplete implementation, Name of the Stroyboard.
-   return @"";
+   return @(MODULE);
 }
 
 + (NSString *)bundle {
 
-#warning Incomplete implementation, Name of the Bundle.
-   return @"";
+   return @(MODULE);
 }
 
 @end
