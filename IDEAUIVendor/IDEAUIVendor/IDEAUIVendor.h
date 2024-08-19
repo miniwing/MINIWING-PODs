@@ -31,6 +31,8 @@
 #import <IDEAUIVendor/IDEAPresentationController.h>
 #import <IDEAUIVendor/IDEAPageViewController.h>
 
+#import <IDEAUIVendor/IDEACapsuleButton.h>
+
 //#import <IDEAUIVendor/IDEATabBarController.h>
 //#import <IDEAUIVendor/IDEATableViewController.h>
 //#import <IDEAUIVendor/IDEACollectionViewController.h>

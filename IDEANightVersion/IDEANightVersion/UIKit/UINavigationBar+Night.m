@@ -158,6 +158,7 @@
                             animations:^{
                
                if ([aSelector isEqualToString:NSStringFromSelector(@selector(setBackgroundImage:forBarMetrics:))]) {
+                  
                   UIImage  *stImage = aPicker(self.themeManager.themeVersion);
                   
                   [self setBackgroundImage:stImage forBarMetrics:eMetrics];
@@ -173,13 +174,28 @@
          DKPicker  stPicker   = (DKPicker)aObject;
          id        stResult   = stPicker(self.themeManager.themeVersion);
          
-         [UIView animateWithDuration:DKNightVersionAnimationDuration
-                          animations:^{
+         [UIView transitionWithView:self
+                           duration:DKNightVersionAnimationDuration
+                            options:UIViewAnimationOptionTransitionCrossDissolve
+                         animations:^{
+            
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:stSEL withObject:stResult];
 #pragma clang diagnostic pop
-         }];
+         }
+                         completion:nil];
+
+         /**
+          animateWithDuration 动画会有延时和效果不统一
+          */
+//         [UIView animateWithDuration:DKNightVersionAnimationDuration
+//                          animations:^{
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+//            [self performSelector:stSEL withObject:stResult];
+//#pragma clang diagnostic pop
+//         }];
          
       } /* End else */
    }];

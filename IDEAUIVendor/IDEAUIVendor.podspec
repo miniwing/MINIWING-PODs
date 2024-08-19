@@ -79,7 +79,8 @@ Pod::Spec.new do |spec|
 
   spec.pod_target_xcconfig          = {
     'GCC_PREPROCESSOR_DEFINITIONS'      => [
-                                              ' MODULE=\"IDEAUIVendor\" '
+                                              ' MODULE=\"IDEAUIVendor\" ',
+                                              ' BUNDLE=\"IDEAUIVendor\" '
                                            ]
                                       }
 
@@ -121,6 +122,15 @@ Pod::Spec.new do |spec|
   spec.public_header_files    = 'IDEAUIVendor/**/*.{h}'
   spec.source_files           = 'IDEAUIVendor/**/*.{h,m,mm}'
   spec.requires_arc           = true
+
+#  spec.resources              = 'IDEAUIVendor/**/*.xib'
+  spec.resource_bundles     = {
+                                'IDEAUIVendor' => [
+                                            'IDEAUIVendor/**/*.{xib,storyboard}',
+                                            '*.lproj/*.strings',
+                                            '*.xcassets'
+                                         ]
+                              }
 
 #  spec.vendored_libraries     = 'xxx.a'
 #  spec.vendored_frameworks    = 'xxx.framework'
@@ -728,7 +738,35 @@ __END_DECLS
 
 #import <IDEAUIKit/IDEAUIKit.h>
 
-  EOS
-  spec.prefix_header_contents = pch_app_kit
+NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
+   
+   static NSBundle         *g_BUNDLE      = nil;
+   static dispatch_once_t   stOnceToken;
+   
+   dispatch_once(&stOnceToken, ^{
+      
+      NSBundle *stBundle   = [NSBundle bundleForClass:aClass];
+      NSString *szPath     = [stBundle pathForResource:@(BUNDLE) ofType:@"bundle"];
+      
+      g_BUNDLE = [NSBundle bundleWithPath:szPath];
+   });
+   
+   return g_BUNDLE;
+}
+
+NS_INLINE NSString * __LOCALIZED_STRING(Class aClass, NSString *aKey) {
+   
+   return NSLocalizedStringWithDefaultValue(aKey, nil, __BUNDLE_FROM(aClass), aKey, aKey);
+}
+
+NS_INLINE UIImage * __IMAGE_NAMED_IN_BUNDLE(Class aClass, NSString *aName) {
+   
+   return [UIImage imageNamed:aName inBundle:__BUNDLE_FROM(aClass) compatibleWithTraitCollection:nil];
+}
+
+/******************************************************************************************************/
+
+EOS
+spec.prefix_header_contents = pch_app_kit
 
 end
