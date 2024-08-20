@@ -64,7 +64,6 @@
    [self.moreButton setTitle:nil forState:UIControlStateHighlighted];
    [self.moreButton setTitle:nil forState:UIControlStateSelected];
 
-   [self.moreButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
    [self.moreButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
       return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_more") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
@@ -90,7 +89,6 @@
    [self.stopButton setTitle:nil forState:UIControlStateNormal];
    [self.stopButton setTitle:nil forState:UIControlStateHighlighted];
    [self.stopButton setTitle:nil forState:UIControlStateSelected];
-   [self.stopButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
    [self.stopButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
       return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_done") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
@@ -111,9 +109,17 @@
 
    [self.trailingView setBackgroundColor:UIColor.clearColor];
    
+   [self.moreButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+   [self.stopButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+
    __CATCH(nErr);
 
    return;
+}
+
++ (CGFloat)fixedWidth {
+   
+   return 96.0f;
 }
 
 /*
@@ -128,7 +134,6 @@
 */
 
 @end
-
 
 @implementation IDEACapsuleButton (Notification)
 

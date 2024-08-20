@@ -14,6 +14,11 @@
 
 @implementation IDEACapsuleButton (Inner)
 
+@end
+
+@implementation IDEACapsuleButton (IDEANibBridge)
+
+#pragma mark - IDEANibBridge
 + (UINib *)nib {
    
    return [UINib nibWithNibName:self.nibID

@@ -34,4 +34,7 @@
 @optional
 - (BOOL)shouldApplyNibBridge;
 
+@required
++ (UINib *)nib;
+
 @end

@@ -314,7 +314,7 @@
    return;
 }
 
-#if __Debug__
+#if (__Debug__ && TARGET_INTERFACE_BUILDER)
 // 这个函数是专门为 xib设计的，会在渲染前设置你想要配置的属性。
 - (void)prepareForInterfaceBuilder {
   
@@ -322,7 +322,7 @@
    
    return;
 }
-#endif /* __Debug__ */
+#endif /* (__Debug__ && TARGET_INTERFACE_BUILDER) */
 
 /*
 // Only override drawRect: if you perform custom drawing.
