@@ -13,6 +13,7 @@
 @interface UITableViewCellX ()
 
 @property (nonatomic, assign)                UIRectCorner                          rectCorner;
+@property (nonatomic, assign)                CGFloat                               rectCornerRadius;
 
 @property (nonatomic, strong)                NSLayoutConstraint                  * layoutConstraintL;
 @property (nonatomic, strong)                NSLayoutConstraint                  * layoutConstraintR;
@@ -135,6 +136,8 @@
    
    [self.separatorView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
    
+   self.rectCornerRadius   = UITableViewCellX.cornerRadii;
+   
    __CATCH(nErr);
    
    return;
@@ -165,7 +168,8 @@
 
 - (void)setRectCorner:(UIRectCorner)aRectCorner {
    
-   _rectCorner = aRectCorner;
+   _rectCorner       = aRectCorner;
+//   _rectCornerRadius = aRectCornerRadius;
    
    if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
 

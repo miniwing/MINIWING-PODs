@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UITableViewCellX ()
 
 - (void)setRectCorner:(UIRectCorner)aRectCorner;
+//- (void)setRectCorner:(UIRectCorner)aRectCorner rectCornerRadius:(CGFloat)aRectCornerRadius;
 
 @end
 
