@@ -21,10 +21,6 @@
    
    LogDebug((@"-[UINavigationBarX onThemeUpdate:] : Notification : %@", aNotification));
 
-   if ([super respondsToSelector:@selector(onThemeUpdate:)]) {
-      
-   } /* End if () */
-
    __CATCH(nErr);
 
    return;

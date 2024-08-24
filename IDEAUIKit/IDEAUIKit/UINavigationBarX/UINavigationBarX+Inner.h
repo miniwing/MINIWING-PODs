@@ -7,11 +7,13 @@
 //  Mail: miniwing.hz@gmail.com
 //
 
+#import <IDEANibBridge/IDEANibBridge.h>
+
 #import "UINavigationBarX.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UINavigationBarX ()
+@interface UINavigationBarX () <IDEANibBridge>
 
 @property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarT;
 @property (nonatomic, weak)   IBOutlet       NSLayoutConstraint                  * navigationBarB;

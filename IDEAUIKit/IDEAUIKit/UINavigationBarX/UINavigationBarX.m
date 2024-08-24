@@ -15,10 +15,6 @@
 #import "UINavigationBarX.h"
 #import "UINavigationBarX+Inner.h"
 
-@interface UINavigationBarX () <IDEANibBridge>
-
-@end
-
 @implementation UINavigationBarX
 
 - (void)dealloc {

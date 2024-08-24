@@ -46,17 +46,18 @@
 //   self.layoutConstraintLeftInset   = [UICollectionViewCellX constraintLeftInset];
 //   self.layoutConstraintRightInset  = [UICollectionViewCellX constraintRightInset];
    
-   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
-      
-      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
-         
-         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
-         
-      } /* End if () */
-      
-      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
-   }];
-   
+//   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+//      
+//      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+//         
+//         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+//         
+//      } /* End if () */
+//      
+//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+//   }];
+   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemBackground])];
+
 //   for (NSLayoutConstraint *stConstraint in self.contentView.constraints) {
 //
 //      if (([stConstraint.firstItem isEqual:self.containerView] && [stConstraint.secondItem isEqual:self.contentView])

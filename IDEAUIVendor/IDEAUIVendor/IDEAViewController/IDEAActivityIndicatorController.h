@@ -9,15 +9,6 @@
 
 #import <IDEAUIVendor/IDEAViewController.h>
 
-#if __has_include(<MaterialComponents/MaterialActivityIndicator.h>)
-#  import <MaterialComponents/MaterialActivityIndicator.h>
-#elif __has_include("MaterialComponents/MaterialActivityIndicator.h")
-#  import "MaterialComponents/MaterialActivityIndicator.h"
-#elif __has_include("MaterialActivityIndicator.h")
-#  import "MaterialActivityIndicator.h"
-#else
-#endif
-
 NS_ASSUME_NONNULL_BEGIN
 
 IB_DESIGNABLE

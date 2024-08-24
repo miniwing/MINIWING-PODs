@@ -66,7 +66,7 @@
    
    [self.layer setMasksToBounds:YES];
    [self.layer setMask:stMaskLayer];
-
+   
    // 提高性能
    [self.layer setShouldRasterize:YES];
    [self.layer setRasterizationScale:[UIScreen mainScreen].scale];

@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.license        = "MIT"
   spec.author         = { "Harry" => "miniwing.hz@gmail.com" }
   
-#  spec.platform       = :ios, "10.0"
+#  spec.platform       = :ios, "12.0"
   
   spec.tvos.deployment_target       = '12.0'
   spec.ios.deployment_target        = '12.0'
@@ -104,6 +104,11 @@ Pod::Spec.new do |spec|
   if ENV['OpenSSL'] == 'YES'
     spec.dependency 'OpenSSL-Universal'
   end # OpenSSL
+
+  if ENV['IDEA_MATERIAL_NAVIGATION_BAR'] == 'YES'
+    spec.dependency 'MaterialComponents/NavigationBar'
+    spec.dependency 'MaterialComponents/ActivityIndicator'
+  end # IDEA_MATERIAL_NAVIGATION_BAR
 
 #  spec.dependency 'pop'
 
@@ -268,6 +273,19 @@ Pod::Spec.new do |spec|
 #     define YY_KIT                                                        (1)
 #  else
 #     define YY_KIT                                                        (0)
+#  endif
+
+#  if __has_include(<MaterialComponents/MaterialActivityIndicator.h>)
+#     import <MaterialComponents/MaterialActivityIndicator.h>
+#     define MATERIAL_COMPONENTS                                           (1)
+#  elif __has_include("MaterialComponents/MaterialActivityIndicator.h")
+#     import "MaterialComponents/MaterialActivityIndicator.h"
+#     define MATERIAL_COMPONENTS                                           (1)
+#  elif __has_include("MaterialActivityIndicator.h")
+#     import "MaterialActivityIndicator.h"
+#     define MATERIAL_COMPONENTS                                           (1)
+#  else
+#     define MATERIAL_COMPONENTS                                           (0)
 #  endif
 
 #endif /* __OBJC__ */

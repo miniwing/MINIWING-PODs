@@ -20,17 +20,17 @@
 
    int                            nErr                                     = EFAULT;
 
-   UIView                        *stContentView                            = nil;
-
-   UIColor                       *stBackgroundColor                        = UIColor.whiteColor;
-   
-   __block UIVisualEffectView    *stVisualEffectView                       = nil;
-   UIBlurEffectStyle              eBlurEffectStyle                         = UIBlurEffectStyleLight;
-   UIUserInterfaceStyle           eUserInterfaceStyle                      = UIUserInterfaceStyleLight;
-
-   NSAttributedString            *stTitle                                  = nil;
-   NSAttributedString            *stMessage                                = nil;
-   NSMutableDictionary<NSString *, id> *stTitleAttributes                  = [NSMutableDictionary dictionary];
+//   UIView                        *stContentView                            = nil;
+//
+//   UIColor                       *stBackgroundColor                        = UIColor.whiteColor;
+//   
+//   __block UIVisualEffectView    *stVisualEffectView                       = nil;
+//   UIBlurEffectStyle              eBlurEffectStyle                         = UIBlurEffectStyleLight;
+//   UIUserInterfaceStyle           eUserInterfaceStyle                      = UIUserInterfaceStyleLight;
+//
+//   NSAttributedString            *stTitle                                  = nil;
+//   NSAttributedString            *stMessage                                = nil;
+//   NSMutableDictionary<NSString *, id> *stTitleAttributes                  = [NSMutableDictionary dictionary];
    
    __TRY;
    
@@ -123,7 +123,12 @@
 ////   });
 //
 //   [self.view setNeedsDisplay];
-   [self setNeedsStatusBarAppearanceUpdate];
+
+   [UIView animateWithDuration:DKNightVersionAnimationDuration
+                    animations:^(void) {
+      
+      [self setNeedsStatusBarAppearanceUpdate];
+   }];
 
    __CATCH(nErr);
 

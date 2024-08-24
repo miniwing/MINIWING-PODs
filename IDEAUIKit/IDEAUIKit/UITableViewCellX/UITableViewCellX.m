@@ -46,17 +46,18 @@
    self.layoutConstraintLeftInset   = [UITableViewCellX constraintLeftInset];
    self.layoutConstraintRightInset  = [UITableViewCellX constraintRightInset];
    
-   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
-      
-      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
-         
-         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
-         
-      } /* End if () */
-      
-      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
-   }];
-   
+//   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+//      
+//      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+//         
+//         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemBackground]];
+//         
+//      } /* End if () */
+//      
+//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+//   }];
+   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemBackground])];
+
    if (@available(iOS 13, *)) {
       
    } /* End if () */
@@ -82,44 +83,48 @@
          
       } /* End for () */
       
-      if (nil == self.layoutConstraintL) {
+      if (nil != self.containerView) {
          
-         self.layoutConstraintL  = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                                attribute:NSLayoutAttributeLeading
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.contentView
-                                                                attribute:NSLayoutAttributeLeading
-                                                               multiplier:1
-                                                                 constant:self.layoutConstraintLeftInset];
+         if (nil == self.layoutConstraintL) {
+            
+            self.layoutConstraintL  = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.contentView
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                  multiplier:1
+                                                                    constant:self.layoutConstraintLeftInset];
+            
+            [self.contentView addConstraint:self.layoutConstraintL];
+            
+         } /* End if () */
+         else {
+            
+            [self.layoutConstraintL setConstant:self.layoutConstraintLeftInset];
+            
+         } /* End else */
          
-         [self.contentView addConstraint:self.layoutConstraintL];
-         
+         if (nil == self.layoutConstraintR) {
+            
+            self.layoutConstraintR  = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.contentView
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:1
+                                                                    constant:self.layoutConstraintRightInset];
+            
+            [self.contentView addConstraint:self.layoutConstraintR];
+            
+         } /* End if () */
+         else {
+            
+            [self.layoutConstraintR setConstant:self.layoutConstraintRightInset];
+            
+         } /* End else */
+
       } /* End if () */
-      else {
-         
-         [self.layoutConstraintL setConstant:self.layoutConstraintLeftInset];
-         
-      } /* End else */
-      
-      if (nil == self.layoutConstraintR) {
-         
-         self.layoutConstraintR  = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                                attribute:NSLayoutAttributeTrailing
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.contentView
-                                                                attribute:NSLayoutAttributeTrailing
-                                                               multiplier:1
-                                                                 constant:self.layoutConstraintRightInset];
-         
-         [self.contentView addConstraint:self.layoutConstraintR];
-         
-      } /* End if () */
-      else {
-         
-         [self.layoutConstraintR setConstant:self.layoutConstraintRightInset];
-         
-      } /* End else */
-      
+            
       [self.contentView setNeedsUpdateConstraints];
       [self.contentView updateConstraintsIfNeeded];
       

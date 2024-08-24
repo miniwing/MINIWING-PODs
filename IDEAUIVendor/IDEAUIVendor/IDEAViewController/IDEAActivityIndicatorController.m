@@ -193,11 +193,23 @@
    
    LogDebug((@"-[IDEAActivityIndicatorController onThemeUpdate:] : Notification : %@", aNotification));
 
+   /**
+    Super onThemeUpdate
+    */
    if ([super respondsToSelector:@selector(onThemeUpdate:)]) {
-      
-      [super onThemeUpdate:aNotification];
 
+      [super onThemeUpdate:aNotification];
+      
    } /* End if () */
+   else {
+      
+      [UIView animateWithDuration:DKNightVersionAnimationDuration
+                       animations:^(void) {
+         
+         [self setNeedsStatusBarAppearanceUpdate];
+      }];
+
+   } /* End else */
 
    __CATCH(nErr);
 

@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.homepage       = "https://github.com/miniwing"
   spec.license        = "MIT"
   spec.author         = { "Harry" => "miniwing.hz@gmail.com" }
-  spec.platform       = :ios, "10.0"
+  spec.platform       = :ios, "12.0"
   
   spec.ios.pod_target_xcconfig     = {
                                         'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAUIKit',
@@ -113,12 +113,12 @@ Pod::Spec.new do |spec|
   spec.dependency 'IDEANightVersion'
   
   spec.public_header_files    = 'IDEAUIKit.h',
-  'IDEAUIKit/**/*.{h}',
-  'IDEAUIKitExtension/**/*.{h}'
+                                'IDEAUIKit/**/*.{h}',
+                                'IDEAUIKitExtension/**/*.{h}'
   
   spec.source_files           = 'IDEAUIKit.h',
-  'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
-  'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
+                                'IDEAUIKit/**/*.{h,m,mm,c,cpp}',
+                                'IDEAUIKitExtension/**/*.{h,m,mm,c,cpp}'
   
   spec.requires_arc           = true
   
@@ -129,13 +129,14 @@ Pod::Spec.new do |spec|
 ##    sub.resource_bundle       = { 'IDEAFONTSFUI'    => [ 'FONTs/SF-UI/SF-UI-Text-Light.otf', 'FONTs/SF-UI/SF-UI-Text-Regular.otf', 'FONTs/SF-UI/SF-UI-Text-Semibold.otf' ] }
 #  end
 
-#  spec.resource_bundles     = {
-#                                'UINavigationBarX' => [
-#                                                'IDEAUIKit/UINavigationBarX/*.xib'
-#                                               ]
-#                              }
-  spec.resources            = 'IDEAUIKit/UINavigationBarX/*.xib'
-  
+#  spec.resources            = 'IDEAUIKit/UINavigationBarX/*.xib'
+  spec.resource_bundles     = {
+                                'IDEAUIKit' => [
+                                                'IDEAUIKit/**/*.{xib,storyboard}',
+                                                '*.lproj/*.strings',
+                                                '*.xcassets'
+                                               ]
+                              }
 #  spec.vendored_libraries     = 'libXG-SDK.a'
 #  spec.vendored_frameworks    = 'libXG-SDK.a'
 #  spec.vendored_libraries  = 'UIKitExtension.framework'

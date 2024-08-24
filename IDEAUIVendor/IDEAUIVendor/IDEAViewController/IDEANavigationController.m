@@ -459,6 +459,12 @@
    
    LogDebug((@"-[IDEANavigationController onThemeUpdate:] : Notification : %@", aNotification));
 
+   [UIView animateWithDuration:DKNightVersionAnimationDuration
+                    animations:^(void) {
+      
+      [self setNeedsStatusBarAppearanceUpdate];
+   }];
+
    __CATCH(nErr);
 
    return;

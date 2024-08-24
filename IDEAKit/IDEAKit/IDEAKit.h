@@ -25,6 +25,7 @@
 #import <IDEAKit/IDEAUtils.h>
 #import <IDEAKit/IDEAIdentifier.h>
 #import <IDEAKit/IDEAFileUtils.h>
+#import <IDEAKit/KeyChainStore.h>
 #import <IDEAKit/LocationCoordinate2D.h>
 
 #import <IDEAKit/NSObject+Null.h>

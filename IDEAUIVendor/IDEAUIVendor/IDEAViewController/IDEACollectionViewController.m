@@ -63,7 +63,16 @@
    // Do any additional setup after loading the view.
 
 #if IDEA_NIGHT_VERSION_MANAGER
-   [self.view setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
+   [self.view setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+      
+      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+         
+         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+
+      } /* End if () */
+      
+      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+   }];
 #endif /* if IDEA_NIGHT_VERSION_MANAGER */
    
 #if IDEA_NAVIGATION_BAR

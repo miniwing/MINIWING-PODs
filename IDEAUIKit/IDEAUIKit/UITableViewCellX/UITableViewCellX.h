@@ -25,9 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign)                NSInteger                             tableViewXStyle;
 
-@property (nonatomic, class, readonly)       CGFloat                               cornerRadii;
-@property (nonatomic, class, readonly)       CGFloat                               constraintLeftInset;
-@property (nonatomic, class, readonly)       CGFloat                               constraintRightInset;
+@property (class, nonatomic, readonly)       CGFloat                               cornerRadii;
+@property (class, nonatomic, readonly)       CGFloat                               constraintLeftInset;
+@property (class, nonatomic, readonly)       CGFloat                               constraintRightInset;
 
 @end
 

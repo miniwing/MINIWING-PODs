@@ -13,3 +13,14 @@
 @implementation UINavigationBarX (Inner)
 
 @end
+
+@implementation UINavigationBarX (IDEANibBridge)
+
+#pragma mark - IDEANibBridge
++ (UINib *)nib {
+   
+   return [UINib nibWithNibName:self.nibID
+                         bundle:__BUNDLE_FROM(self.class)];
+}
+
+@end

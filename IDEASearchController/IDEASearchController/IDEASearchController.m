@@ -540,7 +540,16 @@
       
 #if IDEA_NIGHT_VERSION_MANAGER
 //   self.view.backgroundColor  = UIColor.whiteColor;
-   [self.view setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
+   [self.view setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+      
+      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+         
+         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+
+      } /* End if () */
+      
+      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+   }];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
    self.view.backgroundColor  = [UIColor systemBackgroundColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */

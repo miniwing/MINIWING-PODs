@@ -61,8 +61,8 @@
 //      
 //      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
 //         
-//         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
-//         
+//         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+//
 //      } /* End if () */
 //      
 //      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
@@ -89,7 +89,7 @@
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemGroupedBackground]];
+         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
          
       } /* End if () */
 

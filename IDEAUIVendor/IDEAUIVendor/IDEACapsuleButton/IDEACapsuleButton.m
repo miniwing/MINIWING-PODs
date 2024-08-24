@@ -48,6 +48,8 @@
 
    int                            nErr                                     = EFAULT;
 
+   UIImage                       *stImage                                  = nil;
+   
    __TRY;
 
    [super awakeFromNib];
@@ -64,23 +66,25 @@
    [self.moreButton setTitle:nil forState:UIControlStateHighlighted];
    [self.moreButton setTitle:nil forState:UIControlStateSelected];
 
-   [self.moreButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
-      
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_more") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
-   }
-                             forState:UIControlStateNormal];
+   stImage  = __IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_more");
    
    [self.moreButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_more") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
    }
-                             forState:UIControlStateSelected];
+                          forState:UIControlStateNormal];
    
    [self.moreButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_more") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
    }
-                             forState:UIControlStateHighlighted];
+                          forState:UIControlStateSelected];
+   
+   [self.moreButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
+      
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
+   }
+                          forState:UIControlStateHighlighted];
 
    
    [self.separationView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
@@ -89,23 +93,26 @@
    [self.stopButton setTitle:nil forState:UIControlStateNormal];
    [self.stopButton setTitle:nil forState:UIControlStateHighlighted];
    [self.stopButton setTitle:nil forState:UIControlStateSelected];
+   
+   stImage  = __IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_done");
+
    [self.stopButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_done") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor label]]];
    }
-                             forState:UIControlStateNormal];
+                          forState:UIControlStateNormal];
    
    [self.stopButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_done") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
    }
-                             forState:UIControlStateSelected];
+                          forState:UIControlStateSelected];
    
    [self.stopButton setImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [__IMAGE_NAMED_IN_BUNDLE(self.class, @"ic_done") imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
+      return [stImage imageRenderWithTintColor:[IDEAColor colorWithKey:[IDEAColor darkGray]]];
    }
-                             forState:UIControlStateHighlighted];
+                          forState:UIControlStateHighlighted];
 
    [self.trailingView setBackgroundColor:UIColor.clearColor];
    
@@ -119,7 +126,7 @@
 
 + (CGFloat)fixedWidth {
    
-   return 96.0f;
+   return 92.0f;
 }
 
 /*
