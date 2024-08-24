@@ -38,27 +38,27 @@
    [self.contentView setBackgroundColor:UIColor.clearColor];
    
    self.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];// 这句不可省略
-//   [self.selectedBackgroundView setSize:CGSizeZero];
+   //   [self.selectedBackgroundView setSize:CGSizeZero];
    [self.selectedBackgroundView setBackgroundColor:UIColor.clearColor];
    [self.selectedBackgroundView setClipsToBounds:YES];
-
+   
    [self.containerView setClipsToBounds:YES];
    
    self.layoutConstraintLeftInset   = [UITableViewCellX constraintLeftInset];
    self.layoutConstraintRightInset  = [UITableViewCellX constraintRightInset];
    
-//   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
-//      
-//      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
-//         
-//         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemBackground]];
-//         
-//      } /* End if () */
-//      
-//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
-//   }];
+   //   [self.containerView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
+   //
+   //      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
+   //
+   //         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemBackground]];
+   //
+   //      } /* End if () */
+   //
+   //      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+   //   }];
    [self.containerView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemBackground])];
-
+   
    if (@available(iOS 13, *)) {
       
    } /* End if () */
@@ -123,9 +123,9 @@
             [self.layoutConstraintR setConstant:self.layoutConstraintRightInset];
             
          } /* End else */
-
+         
       } /* End if () */
-            
+      
       [self.contentView setNeedsUpdateConstraints];
       [self.contentView updateConstraintsIfNeeded];
       
@@ -153,12 +153,12 @@
    
    // Configure the view for the selected state
    self.rectCorner   = UIRectCornerNone;
-
+   
    if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
-
+      
       [self.containerView.layer setMask:nil];
       [self.containerView.layer setMasksToBounds:NO];
-
+      
    } /* End if () */
    
    __CATCH(nErr);
@@ -169,14 +169,14 @@
 - (void)setRectCorner:(UIRectCorner)aRectCorner {
    
    _rectCorner       = aRectCorner;
-//   _rectCornerRadius = aRectCornerRadius;
+   //   _rectCornerRadius = aRectCornerRadius;
    
    if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
-
+      
       [self setNeedsDisplay];
-
+      
    } /* End if () */
-
+   
    return;
 }
 
@@ -198,31 +198,31 @@
 - (void)drawRect:(CGRect)aRect {
    
    if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
-
+      
       if (UIRectCornerNone != self.rectCorner) {
-
+         
          UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
                                                                byRoundingCorners:self.rectCorner
                                                                      cornerRadii:CGSizeMake([UITableViewCellX cornerRadii], [UITableViewCellX cornerRadii])];
          CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
          stMaskLayer.frame = self.containerView.bounds;
          stMaskLayer.path  = stBezierPath.CGPath;
-
+         
          [self.containerView.layer setMasksToBounds:YES];
          [self.containerView.layer setMask:stMaskLayer];
-
+         
       } /* End if () */
       else {
-
+         
          [self.containerView.layer setMask:nil];
          [self.containerView.layer setMasksToBounds:NO];
-
+         
       } /* End else */
-
+      
    } /* End if () */
-
+   
    [super drawRect:aRect];
-
+   
    return;
 }
 
