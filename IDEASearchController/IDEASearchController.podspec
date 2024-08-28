@@ -13,8 +13,8 @@ Pod::Spec.new do |spec|
   
   spec.ios.pod_target_xcconfig      = {
                                       'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.SearchController',
-                                      'ENABLE_BITCODE'            => 'NO',
-                                      'SWIFT_VERSION'             => '5.0',
+                                      'ENABLE_BITCODE'            => ENV['ENABLE_BITCODE'],
+                                      'SWIFT_VERSION'             => ENV['SWIFT_VERSION'],
                                       'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
                                       'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                       'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
@@ -131,79 +131,79 @@ Pod::Spec.new do |spec|
 #  import <MessageUI/MessageUI.h>
 
 #  if __has_include(<FoundationExtension/FoundationExtension.h>)
-#     define FOUNDATION_EXTENSION                                          (1)
 #     import <FoundationExtension/FoundationExtension.h>
+#     define FOUNDATION_EXTENSION                                          (1)
 #  elif __has_include("FoundationExtension/FoundationExtension.h")
-#     define FOUNDATION_EXTENSION                                          (1)
 #     import "FoundationExtension/FoundationExtension.h"
-#  elif __has_include("FoundationExtension.h")
 #     define FOUNDATION_EXTENSION                                          (1)
+#  elif __has_include("FoundationExtension.h")
 #     import "FoundationExtension.h"
+#     define FOUNDATION_EXTENSION                                          (1)
 #  else
 #     define FOUNDATION_EXTENSION                                          (0)
 #  endif
 
 #  if __has_include(<UIKitExtension/UIKitExtension.h>)
-#     define UIKIT_EXTENSION                                               (1)
 #     import <UIKitExtension/UIKitExtension.h>
+#     define UIKIT_EXTENSION                                               (1)
 #  elif __has_include("UIKitExtension/UIKitExtension.h")
-#     define UIKIT_EXTENSION                                               (1)
 #     import "UIKitExtension/UIKitExtension.h"
-#  elif __has_include("UIKitExtension.h")
 #     define UIKIT_EXTENSION                                               (1)
+#  elif __has_include("UIKitExtension.h")
 #     import "UIKitExtension.h"
+#     define UIKIT_EXTENSION                                               (1)
 #  else
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
 #  if __has_include(<IDEANightVersion/DKNightVersion.h>)
-#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #     import <IDEANightVersion/DKNightVersion.h>
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  elif __has_include("IDEANightVersion/DKNightVersion.h")
-#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #     import "IDEANightVersion/DKNightVersion.h"
-#  elif __has_include("DKNightVersion.h")
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
+#  elif __has_include("DKNightVersion.h")
 #     import "DKNightVersion.h"
+#     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  else
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
 #  endif
 
 #  if __has_include(<IDEAUIVendor/IDEAUIVendor.h>)
-#     define IDEA_UI_VENDOR                                                (1)
 #     import <IDEAUIVendor/IDEAUIVendor.h>
+#     define IDEA_UI_VENDOR                                                (1)
 #  elif __has_include("IDEAUIVendor/IDEAUIVendor.h")
-#     define IDEA_UI_VENDOR                                                (1)
 #     import "IDEAUIVendor/IDEAUIVendor.h"
-#  elif __has_include("IDEAUIVendor.h")
 #     define IDEA_UI_VENDOR                                                (1)
+#  elif __has_include("IDEAUIVendor.h")
 #     import "IDEAUIVendor.h"
+#     define IDEA_UI_VENDOR                                                (1)
 #  else
 #     define IDEA_UI_VENDOR                                                (0)
 #  endif
 
 #  if __has_include(<IDEAColor/IDEAColor.h>)
-#     define IDEA_COLOR                                                    (1)
 #     import <IDEAColor/IDEAColor.h>
+#     define IDEA_COLOR                                                    (1)
 #  elif __has_include("IDEAColor/IDEAColor.h")
-#     define IDEA_COLOR                                                    (1)
 #     import "IDEAColor/IDEAColor.h"
-#  elif __has_include("IDEAColor.h")
 #     define IDEA_COLOR                                                    (1)
+#  elif __has_include("IDEAColor.h")
 #     import "IDEAColor.h"
+#     define IDEA_COLOR                                                    (1)
 #  else
 #     define IDEA_COLOR                                                    (0)
 #  endif
 
 #  if __has_include(<IDEAFONT/IDEAFONT.h>)
-#     define IDEA_FONT                                                     (1)
 #     import <IDEAFONT/IDEAFONT.h>
+#     define IDEA_FONT                                                     (1)
 #  elif __has_include("IDEAFONT/IDEAFONT.h")
-#     define IDEA_FONT                                                     (1)
 #     import "IDEAFONT/IDEAFONT.h"
-#  elif __has_include("IDEAFONT.h")
 #     define IDEA_FONT                                                     (1)
+#  elif __has_include("IDEAFONT.h")
 #     import "IDEAFONT.h"
+#     define IDEA_FONT                                                     (1)
 #  else
 #     define IDEA_FONT                                                     (0)
 #  endif

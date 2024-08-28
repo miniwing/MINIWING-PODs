@@ -181,7 +181,7 @@
       _backgroundView   = [[UIView alloc] init];
       
 #if IDEA_NIGHT_VERSION_MANAGER
-//      [_backgroundView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor translucentBackground])];
+//      [_backgroundView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.translucentBackground)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
 //      [_backgroundView setBackgroundColor:[UIColor.blackColor colorWithAlphaComponent:0.5]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -229,7 +229,7 @@
 
 + (NSString *)BACKGROUND_TOUCH_NOTIFICATIN {
    
-   return [[self class] notificationName:@"BACKGROUND.TOUCH"];
+   return [[self class] notificationName:@(__PRETTY_FUNCTION__)];
 }
 
 @end

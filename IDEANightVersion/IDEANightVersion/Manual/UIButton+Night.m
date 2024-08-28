@@ -17,53 +17,80 @@
 
 @implementation UIButton (Night)
 
-- (void)setTitleColorPicker:(DKColorPicker)picker forState:(UIControlState)state {
+- (void)setTitleColorPicker:(DKColorPicker)picker forState:(UIControlState)aState {
    
-   NSString *key = [NSString stringWithFormat:@"%@", @(state)];
+   NSString    *szKey   = [NSString stringWithFormat:@"setTitleColor:forState:%@", @(aState)];
 
    if (nil != picker) {
       
       [self setTitleColor:picker(self.themeManager.themeVersion)
-                 forState:state];
+                 forState:aState];
       
-      NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
+      NSMutableDictionary *dictionary = [self.pickers valueForKey:szKey];
       if (!dictionary) {
          dictionary = [[NSMutableDictionary alloc] init];
       }
       [dictionary setValue:[picker copy] forKey:NSStringFromSelector(@selector(setTitleColor:forState:))];
-      [self.pickers setValue:dictionary forKey:key];
+      [self.pickers setValue:dictionary forKey:szKey];
 
    } /* End if () */
    else {
       
-      [self.pickers removeObjectForKey:key];
+      [self.pickers removeObjectForKey:szKey];
 
    } /* End else */
    
    return;
 }
 
-- (void)setBackgroundImagePicker:(DKImagePicker)picker forState:(UIControlState)state {
+- (void)setBackgroundImagePicker:(DKImagePicker)aPicker forState:(UIControlState)aState {
+
+   NSString    *szKey   = [NSString stringWithFormat:@"setBackgroundImage:forState:%@", @(aState)];
+
+   if (nil != aPicker) {
+      
+      [self setBackgroundImage:aPicker(self.themeManager.themeVersion) forState:aState];
+      NSMutableDictionary *dictionary = [self.pickers valueForKey:szKey];
+      if (!dictionary) {
+         dictionary = [[NSMutableDictionary alloc] init];
+      }
+      [dictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setBackgroundImage:forState:))];
+      [self.pickers setValue:dictionary forKey:szKey];
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:szKey];
+
+   } /* End else */
    
-   [self setBackgroundImage:picker(self.themeManager.themeVersion) forState:state];
-   NSString *key = [NSString stringWithFormat:@"%@", @(state)];
-   NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
-   if (!dictionary) {
-      dictionary = [[NSMutableDictionary alloc] init];
-   }
-   [dictionary setValue:[picker copy] forKey:NSStringFromSelector(@selector(setBackgroundImage:forState:))];
-   [self.pickers setValue:dictionary forKey:key];
+   return;
 }
 
-- (void)setImagePicker:(DKImagePicker)picker forState:(UIControlState)state {
-   [self setImage:picker(self.themeManager.themeVersion) forState:state];
-   NSString *key = [NSString stringWithFormat:@"%@", @(state)];
-   NSMutableDictionary *dictionary = [self.pickers valueForKey:key];
-   if (!dictionary) {
-      dictionary = [[NSMutableDictionary alloc] init];
-   }
-   [dictionary setValue:[picker copy] forKey:NSStringFromSelector(@selector(setImage:forState:))];
-   [self.pickers setValue:dictionary forKey:key];
+- (void)setImagePicker:(DKImagePicker)aPicker forState:(UIControlState)aState {
+
+   NSString    *szKey   = [NSString stringWithFormat:@"setImage:forState:%@", @(aState)];
+   
+   if (nil != aPicker) {
+
+      [self setImage:aPicker(self.themeManager.themeVersion) forState:aState];
+      
+      NSMutableDictionary *stDictionary = [self.pickers valueForKey:szKey];
+      if (!stDictionary) {
+         stDictionary = [[NSMutableDictionary alloc] init];
+      }
+      [stDictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setImage:forState:))];
+
+      [self.pickers setValue:stDictionary forKey:szKey];
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:szKey];
+
+   } /* End else */
+   
+   return;
 }
 
 - (void)night_updateColor:(NSNotification *)aNotification {

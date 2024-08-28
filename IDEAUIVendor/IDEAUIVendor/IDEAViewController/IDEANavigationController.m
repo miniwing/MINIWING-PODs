@@ -459,15 +459,16 @@
    
    LogDebug((@"-[IDEANavigationController onThemeUpdate:] : Notification : %@", aNotification));
 
-   [UIView animateWithDuration:DKNightVersionAnimationDuration
-                    animations:^(void) {
-      
-      [self setNeedsStatusBarAppearanceUpdate];
-   }];
+   [self setNeedsStatusBarAppearanceUpdate];
 
    __CATCH(nErr);
 
    return;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+      
+   return UIStatusBarAnimationFade;
 }
 
 @end

@@ -50,13 +50,13 @@
 //      
 //      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
 //         
-//         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+//         return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
 //         
 //      } /* End if () */
 //      
-//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+//      return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 //   }];
-   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemBackground])];
+   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.tertiarySystemBackground)];
 
 //   for (NSLayoutConstraint *stConstraint in self.contentView.constraints) {
 //

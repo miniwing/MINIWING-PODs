@@ -18,17 +18,28 @@
 @implementation UISegmentedControl (Night)
 
 - (void)setTitleTextAttributesPicker:(DKAttributesPicker)aPicker forState:(UIControlState)aState {
-   
+
+   NSString             *szKey         = [NSString stringWithFormat:@"setTitleTextAttributes:forState:%@", @(aState)];
+
    [self setTitleTextAttributes:aPicker(self.themeManager.themeVersion) forState:aState];
-   NSString             *szKey         = [NSString stringWithFormat:@"%@", @(aState)];
+   
    NSMutableDictionary  *stDictionary  = [self.pickers valueForKey:szKey];
    
-   if (!stDictionary) {
-      stDictionary = [[NSMutableDictionary alloc] init];
-   }
-   
-   [stDictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setTitleTextAttributes:forState:))];
-   [self.pickers setValue:stDictionary forKey:szKey];
+   if (nil != aPicker) {
+      
+      if (!stDictionary) {
+         stDictionary = [NSMutableDictionary dictionary];
+      }
+      
+      [stDictionary setValue:[aPicker copy] forKey:NSStringFromSelector(@selector(setTitleTextAttributes:forState:))];
+      [self.pickers setValue:stDictionary forKey:szKey];
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:szKey];
+      
+   } /* End else */
    
    return;
 }

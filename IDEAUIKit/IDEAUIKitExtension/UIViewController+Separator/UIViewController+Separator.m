@@ -29,7 +29,7 @@
 //      stSeparatorLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 //
 //#if IDEA_NIGHT_VERSION_MANAGER
-//      [stSeparatorLine setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+//      [stSeparatorLine setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
 //#else /* IDEA_NIGHT_VERSION_MANAGER */
 //      [stSeparatorLine setBackgroundColor:[UIColor separatorColor]];
 //#endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -41,7 +41,7 @@
 #if IDEA_NIGHT_VERSION_MANAGER
       [self.navigationController.navigationBar setShadowImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
          
-         return [UIImage imageWithColor:[IDEAColor colorWithKey:[IDEAColor opaqueSeparator]]];
+         return [UIImage imageWithColor:[IDEAColor colorWithKey:IDEAColor.opaqueSeparator]];
       }];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:UIColor.systemRedColor]];

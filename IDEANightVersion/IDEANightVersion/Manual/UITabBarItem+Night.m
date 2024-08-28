@@ -56,12 +56,12 @@
    if (nil != aPicker) {
       
       self.image = aPicker(self.themeManager.themeVersion);
-      [self.pickers setValue:[aPicker copy] forKey:@"selectedImagePicker:"];
+      [self.pickers setValue:[aPicker copy] forKey:@"selectedImage:"];
       
    } /* End if () */
    else {
       
-      [self.pickers removeObjectForKey:@"selectedImagePicker:"];
+      [self.pickers removeObjectForKey:@"selectedImage:"];
       
    } /* End else */
    
@@ -79,16 +79,18 @@
          
          [UIView animateWithDuration:DKNightVersionAnimationDuration
                           animations:^{
+            
             ((void (*)(id, SEL, UIImage *))objc_msgSend)(self, NSSelectorFromString(aKey), stImage);
          }];
       } /* End if () */
-      else if ([aKey isEqualToString:@"selectedImagePicker:"]) {
+      else if ([aKey isEqualToString:@"selectedImage:"]) {
          
          DKImagePicker   stPicker   = (DKImagePicker)aObject;
          UIImage        *stImage    = stPicker(self.themeManager.themeVersion);
          
          [UIView animateWithDuration:DKNightVersionAnimationDuration
                           animations:^{
+            
             ((void (*)(id, SEL, UIImage *))objc_msgSend)(self, NSSelectorFromString(aKey), stImage);
          }];
       } /* End else if () */

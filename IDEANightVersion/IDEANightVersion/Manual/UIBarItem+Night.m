@@ -31,7 +31,16 @@
    
    self.image = aPicker(self.themeManager.themeVersion);
    
-   [self.pickers setValue:[aPicker copy] forKey:@"setImage:"];
+   if (nil != aPicker) {
+      
+      [self.pickers setValue:[aPicker copy] forKey:@"setImage:"];
+
+   } /* End if () */
+   else {
+      
+      [self.pickers removeObjectForKey:@"setImage:"];
+
+   } /* End else */
    
    return;
 }
@@ -56,7 +65,7 @@
    
    [self setTitleTextAttributes:aPicker(self.themeManager.themeVersion) forState:aState];
    
-   NSString             *szKey         = [NSString stringWithFormat:@"%@", @(aState)];
+   NSString *szKey   = [NSString stringWithFormat:@"setTitleTextAttributes:forState:%@", @(aState)];
    
    if (nil != aPicker) {
       
@@ -64,7 +73,7 @@
       
       if (!stDictionary) {
          
-         stDictionary = [[NSMutableDictionary alloc] init];
+         stDictionary = [NSMutableDictionary dictionary];
          
       } /* End if () */
       

@@ -45,9 +45,9 @@
 //
 //   } /* End if () */
 //
-//   [stTitleAttributes setObject:[IDEAColor colorWithKey:[IDEAColor label]]
+//   [stTitleAttributes setObject:[IDEAColor colorWithKey:IDEAColor.label]
 //                         forKey:NSForegroundColorAttributeName];
-//   [stTitleAttributes setObject:[IDEAColor colorWithKey:[IDEAColor label]]
+//   [stTitleAttributes setObject:[IDEAColor colorWithKey:IDEAColor.label]
 //                         forKey:UITextAttributeTextColor];
 //
 //   stTitle     = [NSAttributedString attributedStringWithString:self.title
@@ -124,11 +124,7 @@
 //
 //   [self.view setNeedsDisplay];
 
-   [UIView animateWithDuration:DKNightVersionAnimationDuration
-                    animations:^(void) {
-      
-      [self setNeedsStatusBarAppearanceUpdate];
-   }];
+   [self setNeedsStatusBarAppearanceUpdate];
 
    __CATCH(nErr);
 

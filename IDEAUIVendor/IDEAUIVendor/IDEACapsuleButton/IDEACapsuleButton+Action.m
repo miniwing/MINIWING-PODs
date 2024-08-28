@@ -33,7 +33,11 @@
    
    __TRY;
    
-   [self postNotificationName:IDEACapsuleButton.moreNotification object:self];
+   if (nil != self.actionMoreBlock) {
+      
+      self.actionMoreBlock(self);
+      
+   } /* End if () */
 
    __CATCH(nErr);
 
@@ -46,7 +50,11 @@
    
    __TRY;
    
-   [self postNotificationName:IDEACapsuleButton.doneNotification object:self];
+   if (nil != self.actionMoreBlock) {
+      
+      self.actionDoneBlock(self);
+      
+   } /* End if () */
 
    __CATCH(nErr);
 

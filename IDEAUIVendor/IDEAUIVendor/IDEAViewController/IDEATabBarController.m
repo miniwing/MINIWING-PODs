@@ -66,14 +66,14 @@
    
    // Do any additional setup after loading the view.
 #if IDEA_NIGHT_VERSION_MANAGER
-   [self.tabBar setTintColorPicker:DKColorPickerWithKey([IDEAColor appTabbarTint])];
-   [self.tabBar setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor appTabbarBackground])];
-   [self.tabBar setBarTintColorPicker:DKColorPickerWithKey([IDEAColor appTabbarBackground])];
+   [self.tabBar setTintColorPicker:DKColorPickerWithKey(IDEAColor.appTabbarTint)];
+   [self.tabBar setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.appTabbarBackground)];
+   [self.tabBar setBarTintColorPicker:DKColorPickerWithKey(IDEAColor.appTabbarBackground)];
    
    [self.tabBar setBackgroundImage:[UIImage new]];
    [self.tabBar setShadowImagePicker:^UIImage *(DKThemeVersion *aThemeVersion) {
       
-      return [UIImage imageWithColor:[IDEAColor colorWithKey:[IDEAColor separator]] size:CGSizeMake(1, 0.5)];
+      return [UIImage imageWithColor:[IDEAColor colorWithKey:IDEAColor.separator] size:CGSizeMake(1, 0.5)];
    }];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
    [self.tabBar setTintColor:UIColor.appTabbarTintColor];
@@ -81,7 +81,7 @@
    [self.tabBar setBarTintColor:UIColor.appTabbarBackgroundColor];
    
    [self.tabBar setBackgroundImage:[UIImage new]];
-   [self.tabBar setShadowImage:[UIImage imageWithColor:[IDEAColor colorWithKey:[IDEAColor separator]] size:CGSizeMake(1, 0.5)]];
+   [self.tabBar setShadowImage:[UIImage imageWithColor:[IDEAColor colorWithKey:IDEAColor.separator] size:CGSizeMake(1, 0.5)]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
    
    __CATCH(nErr);
@@ -250,15 +250,16 @@
    
    LogDebug((@"-[IDEATabBarController onThemeUpdate:] : Notification : %@", aNotification));
    
-   [UIView animateWithDuration:DKNightVersionAnimationDuration
-                    animations:^{
-      
-      [self setNeedsStatusBarAppearanceUpdate];
-   }];
+   [self setNeedsStatusBarAppearanceUpdate];
    
    __CATCH(nErr);
    
    return;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+      
+   return UIStatusBarAnimationFade;
 }
 
 @end

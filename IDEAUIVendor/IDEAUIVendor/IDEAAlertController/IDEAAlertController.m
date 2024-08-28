@@ -77,9 +77,9 @@ static NSInteger const IDEAAlertControllerBlocksFirstOtherButtonIndex  = 2;
 #  pragma clang diagnostic pop
 #endif /* IDEA_NIGHT_VERSION_MANAGER */
    
-   [stTitleAttributes setObject:[IDEAColor colorWithKey:[IDEAColor label]]
+   [stTitleAttributes setObject:[IDEAColor colorWithKey:IDEAColor.label]
                          forKey:NSForegroundColorAttributeName];
-   [stTitleAttributes setObject:[IDEAColor colorWithKey:[IDEAColor label]]
+   [stTitleAttributes setObject:[IDEAColor colorWithKey:IDEAColor.label]
                          forKey:UITextAttributeTextColor];
    
    stTitle     = [NSAttributedString attributedStringWithString:self.title

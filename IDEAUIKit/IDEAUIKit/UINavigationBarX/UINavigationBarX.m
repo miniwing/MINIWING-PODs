@@ -98,7 +98,7 @@
       
    } /* End if () */
 
-   [self setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor appNavigationBarBackground])];
+   [self setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.appNavigationBarBackground)];
 
    [self.navigationBar setBackgroundColor:UIColor.clearColor];
 
@@ -113,7 +113,7 @@
 
    [self.splitView setHidden:YES];
    [self.splitView setBackgroundColor:UIColorX.opaqueSeparatorColor];
-//   [self.splitView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor lightGray])];
+//   [self.splitView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.lightGray)];
    [self.splitViewH setConstant:0.5f];
 
 //   if (nil == self.navigationBarXHeight) {

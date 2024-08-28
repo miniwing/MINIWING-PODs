@@ -67,11 +67,11 @@
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+         return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 
       } /* End if () */
       
-      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+      return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
    }];
 #endif /* if IDEA_NIGHT_VERSION_MANAGER */
    
@@ -353,15 +353,22 @@
    
    LogDebug((@"-[IDEATabNavigationController onThemeUpdate:] : Notification : %@", aNotification));
    
-   [UIView animateWithDuration:DKNightVersionAnimationDuration
-                    animations:^{
-      
-      [self setNeedsStatusBarAppearanceUpdate];
-   }];
+   [self setNeedsStatusBarAppearanceUpdate];
+
+//   [UIView animateWithDuration:DKNightVersionAnimationDuration
+//                    animations:^{
+//      
+//      [self setNeedsStatusBarAppearanceUpdate];
+//   }];
    
    __CATCH(nErr);
    
    return;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+      
+   return UIStatusBarAnimationFade;
 }
 
 @end

@@ -243,9 +243,9 @@
 //   [stCancelButton setAttributedTitle:stAttributedCancel
 //                             forState:UIControlStateHighlighted];
    
-//   [stCancelButton setTitleColorPicker:DKColorPickerWithKey([IDEAColor label]) forState:UIControlStateNormal];
+//   [stCancelButton setTitleColorPicker:DKColorPickerWithKey(IDEAColor.label) forState:UIControlStateNormal];
    
-   [stCancelButton setTintColorPicker:DKColorPickerWithKey([IDEAColor label])];
+   [stCancelButton setTintColorPicker:DKColorPickerWithKey(IDEAColor.label)];
 
    __CATCH(nErr);
    

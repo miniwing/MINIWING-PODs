@@ -56,16 +56,16 @@
    
 //   [self.searchBar setPlaceholder:__LOCALIZED_STRING(self.class, @"Search")];
 
-//   [self.searchBar setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor systemBackground])];
+//   [self.searchBar setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.systemBackground)];
 //   [self.searchBar setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
 //      
 //      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
 //         
-//         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+//         return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
 //
 //      } /* End if () */
 //      
-//      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+//      return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 //   }];
 
    [self.searchBar setReturnKeyType:UIReturnKeySearch];
@@ -81,19 +81,19 @@
 
    } /* End else */
 
-   [self.searchTextField setPlaceholderColorPicker:DKColorPickerWithKey([IDEAColor placeholderText])];
-   [self.searchTextField setTextColorPicker:DKColorPickerWithKey([IDEAColor label])];
+   [self.searchTextField setPlaceholderColorPicker:DKColorPickerWithKey(IDEAColor.placeholderText)];
+   [self.searchTextField setTextColorPicker:DKColorPickerWithKey(IDEAColor.label)];
    [self.searchTextField setBorderStyle:UITextBorderStyleRoundedRect];
-//   [self.searchTextField setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemGroupedBackground])];
+//   [self.searchTextField setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.tertiarySystemGroupedBackground)];
    [self.searchTextField setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+         return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
          
       } /* End if () */
 
-      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+      return [IDEAColor colorWithKey:IDEAColor.systemBackground];
    }];
 
    [self setCancelButtnAttributes];

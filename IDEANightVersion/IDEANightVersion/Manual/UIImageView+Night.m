@@ -61,7 +61,9 @@
          
          [UIView animateWithDuration:DKNightVersionAnimationDuration
                           animations:^{
+            
             ((void (*)(id, SEL, CGFloat))objc_msgSend)(self, NSSelectorFromString(aKey), fAlpha);
+//            [self setAlpha:fAlpha];
          }];
       }
       else {

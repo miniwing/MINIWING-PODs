@@ -544,11 +544,11 @@
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+         return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 
       } /* End if () */
       
-      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+      return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
    }];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
    self.view.backgroundColor  = [UIColor systemBackgroundColor];
@@ -804,7 +804,7 @@
 //      [contentView addSubview:stVerticalLine];
 //
 ////#if IDEA_NIGHT_VERSION_MANAGER
-////      [stVerticalLine setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+////      [stVerticalLine setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
 ////#else /* IDEA_NIGHT_VERSION_MANAGER */
 ////      [stVerticalLine setBackgroundColor:[UIColor separatorColor]];
 ////#endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -821,7 +821,7 @@
 //      [contentView addSubview:stVerticalLine];
 //
 ////#if IDEA_NIGHT_VERSION_MANAGER
-////      [stVerticalLine setTintColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+////      [stVerticalLine setTintColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
 ////#else /* IDEA_NIGHT_VERSION_MANAGER */
 ////      [stVerticalLine setBackgroundColor:[UIColor separatorColor]];
 ////#endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -875,7 +875,7 @@
       
 //      stRankTextLabel.textColor        = IDEATextColor;
 #if IDEA_NIGHT_VERSION_MANAGER
-      [stRankTextLabel setTextColorPicker:DKColorPickerWithKey([IDEAColor label])];
+      [stRankTextLabel setTextColorPicker:DKColorPickerWithKey(IDEAColor.label)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [stRankTextLabel setTextColor:UIColorX.labelColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -901,7 +901,7 @@
       stLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
       
 #if IDEA_NIGHT_VERSION_MANAGER
-      [stLine setTintColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+      [stLine setTintColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [stLine setTintColor:[UIColor separatorColor]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -1688,7 +1688,7 @@
       [stClosetButton setImage:[NSBundle search_imageNamed:@"close"] forState:UIControlStateNormal];
 
 #if IDEA_NIGHT_VERSION_MANAGER
-      [stClosetButton setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
+      [stClosetButton setTintColorPicker:DKColorPickerWithKey(IDEAColor.darkGray)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [stClosetButton setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -1696,7 +1696,7 @@
       UIImageView *stCloseView      = [[UIImageView alloc] initWithImage:[NSBundle search_imageNamed:@"close"]];
       
 #if IDEA_NIGHT_VERSION_MANAGER
-      [stCloseView setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
+      [stCloseView setTintColorPicker:DKColorPickerWithKey(IDEAColor.darkGray)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [stCloseView setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -1714,7 +1714,7 @@
       stLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
 #if IDEA_NIGHT_VERSION_MANAGER
-      [stLine setTintColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+      [stLine setTintColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
       [stLine setTintColor:[UIColor separatorColor]];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */
@@ -1727,7 +1727,7 @@
    stCell.textLabel.text = self.searchHistories[indexPath.row];
    
 #if IDEA_NIGHT_VERSION_MANAGER
-   [stCell.imageView setTintColorPicker:DKColorPickerWithKey([IDEAColor darkGray])];
+   [stCell.imageView setTintColorPicker:DKColorPickerWithKey(IDEAColor.darkGray)];
 #else /* IDEA_NIGHT_VERSION_MANAGER */
    [stCell.imageView setTintColor:UIColor.darkGrayColor];
 #endif /* !IDEA_NIGHT_VERSION_MANAGER */

@@ -9,9 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <IDEANightVersion/DKColor.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
-//IB_DESIGNABLE
+// IB_DESIGNABLE
 @interface IDEACapsuleButton : UIView
 
 @property (nonatomic, weak)   IBOutlet       UIView                              * containerView;
@@ -24,18 +26,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-//IB_DESIGNABLE
+// IB_DESIGNABLE
 @interface IDEACapsuleButton ()
 
 @property (class, nonatomic, readonly)       CGFloat                               fixedWidth;
 
 @end
 
-//IB_DESIGNABLE
-@interface IDEACapsuleButton (Notification)
+typedef void (^IDEACapsuleActionBlock) (IDEACapsuleButton * aCapsuleButton);
 
-@property (class, nonatomic, readonly)       NSString                            * moreNotification;
-@property (class, nonatomic, readonly)       NSString                            * doneNotification;
+// IB_DESIGNABLE
+@interface IDEACapsuleButton ()
+
+@property (nonatomic, copy)                  IDEACapsuleActionBlock                actionMoreBlock;
+@property (nonatomic, copy)                  IDEACapsuleActionBlock                actionDoneBlock;
+
+@end
+
+// IB_DESIGNABLE
+@interface IDEACapsuleButton ()
+
+- (void)setTintColor:(UIColor *)aTintColor;
+- (void)setTintColorPicker:(DKColorPicker)aTintColorPicker;
 
 @end
 

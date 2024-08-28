@@ -51,13 +51,13 @@
    //
    //      if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
    //
-   //         return [IDEAColor colorWithKey:[IDEAColor tertiarySystemBackground]];
+   //         return [IDEAColor colorWithKey:IDEAColor.tertiarySystemBackground];
    //
    //      } /* End if () */
    //
-   //      return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+   //      return [IDEAColor colorWithKey:IDEAColor.systemBackground];
    //   }];
-   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor tertiarySystemBackground])];
+   [self.containerView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.tertiarySystemBackground)];
    
    if (@available(iOS 13, *)) {
       
@@ -134,7 +134,7 @@
       
    } /* End else */
    
-   [self.separatorView setBackgroundColorPicker:DKColorPickerWithKey([IDEAColor separator])];
+   [self.separatorView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.separator)];
    
    self.rectCornerRadius   = UITableViewCellX.cornerRadii;
    
@@ -154,7 +154,13 @@
    // Configure the view for the selected state
    self.rectCorner   = UIRectCornerNone;
    
-   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   if (UITableViewStyleGrouped == self.tableViewXStyle) {
+      
+      [self.containerView.layer setMask:nil];
+      [self.containerView.layer setMasksToBounds:NO];
+
+   } /* End if () */
+   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       [self.containerView.layer setMask:nil];
       [self.containerView.layer setMasksToBounds:NO];
@@ -171,7 +177,12 @@
    _rectCorner       = aRectCorner;
    //   _rectCornerRadius = aRectCornerRadius;
    
-   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   if (UITableViewStyleGrouped == self.tableViewXStyle) {
+
+      [self setNeedsDisplay];
+
+   } /* End if () */
+   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       [self setNeedsDisplay];
       
@@ -197,7 +208,30 @@
 
 - (void)drawRect:(CGRect)aRect {
    
-   if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   if (UITableViewStyleGrouped == self.tableViewXStyle) {
+      
+      if (UIRectCornerNone != self.rectCorner) {
+         
+         UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds
+                                                               byRoundingCorners:self.rectCorner
+                                                                     cornerRadii:CGSizeMake([UITableViewCellX cornerRadii], [UITableViewCellX cornerRadii])];
+         CAShapeLayer   *stMaskLayer   = [CAShapeLayer layer];
+         stMaskLayer.frame = self.containerView.bounds;
+         stMaskLayer.path  = stBezierPath.CGPath;
+         
+         [self.containerView.layer setMasksToBounds:YES];
+         [self.containerView.layer setMask:stMaskLayer];
+         
+      } /* End if () */
+      else {
+         
+         [self.containerView.layer setMask:nil];
+         [self.containerView.layer setMasksToBounds:NO];
+         
+      } /* End else */
+
+   } /* End if () */
+   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       if (UIRectCornerNone != self.rectCorner) {
          

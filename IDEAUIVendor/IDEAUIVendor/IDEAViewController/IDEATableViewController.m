@@ -69,30 +69,30 @@
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+         return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 
       } /* End if () */
       
-      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+      return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
    }];
    [self.tableView setBackgroundColorPicker:^UIColor *(DKThemeVersion *aThemeVersion) {
       
       if ([DKThemeVersionNight isEqualToString:aThemeVersion]) {
          
-         return [IDEAColor colorWithKey:[IDEAColor systemBackground]];
+         return [IDEAColor colorWithKey:IDEAColor.systemBackground];
 
       } /* End if () */
       
-      return [IDEAColor colorWithKey:[IDEAColor systemGroupedBackground]];
+      return [IDEAColor colorWithKey:IDEAColor.systemGroupedBackground];
    }];
 //   [self.tableView setBackgroundColor:UIColor.clearColor];
 #endif /* if IDEA_NIGHT_VERSION_MANAGER */
    
 #if IDEA_NAVIGATION_BAR
-   [self wr_setNavBarTitleColor:[IDEAColor colorWithKey:[IDEAColor appNavigationBarTitle]]];
-   [self wr_setNavBarTintColor:[IDEAColor colorWithKey:[IDEAColor appNavigationBarTint]]];
-   [self wr_setNavBarBarTintColor:[IDEAColor colorWithKey:[IDEAColor appNavigationBarTint]]];
-   [self.navigationController.navigationBar wr_setBackgroundColor:[IDEAColor colorWithKey:[IDEAColor systemBackground]]];
+   [self wr_setNavBarTitleColor:[IDEAColor colorWithKey:IDEAColor.appNavigationBarTitle]];
+   [self wr_setNavBarTintColor:[IDEAColor colorWithKey:IDEAColor.appNavigationBarTint]];
+   [self wr_setNavBarBarTintColor:[IDEAColor colorWithKey:IDEAColor.appNavigationBarTint]];
+   [self.navigationController.navigationBar wr_setBackgroundColor:[IDEAColor colorWithKey:IDEAColor.systemBackground]];
 #endif /* IDEA_NAVIGATION_BAR */
 
 #if 0
@@ -157,11 +157,7 @@
    
    LogDebug((@"-[IDEATableViewController onThemeUpdate:] : Notification : %@", aNotification));
       
-   [UIView animateWithDuration:DKNightVersionAnimationDuration
-                    animations:^{
-      
-      [self setNeedsStatusBarAppearanceUpdate];
-   }];
+   [self setNeedsStatusBarAppearanceUpdate];
 
    __CATCH(nErr);
    
@@ -193,5 +189,10 @@
 //      
 //   } /* End if () */
 //}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+      
+   return UIStatusBarAnimationFade;
+}
 
 @end

@@ -203,12 +203,8 @@
    } /* End if () */
    else {
       
-      [UIView animateWithDuration:DKNightVersionAnimationDuration
-                       animations:^(void) {
-         
-         [self setNeedsStatusBarAppearanceUpdate];
-      }];
-
+      [self setNeedsStatusBarAppearanceUpdate];
+      
    } /* End else */
 
    __CATCH(nErr);

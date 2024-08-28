@@ -10,16 +10,15 @@ Pod::Spec.new do |spec|
 #  spec.source                       = { :path => "." }
   spec.source                       = { :git => 'https://github.com/miniwing/IDEANightVersion.git', :tag => spec.version.to_s }
 
-  spec.tvos.deployment_target       = '12.0'
-  spec.ios.deployment_target        = '12.0'
-
-  spec.osx.deployment_target        = '10.15'
-  spec.watchos.deployment_target    = '5.0'
+  spec.ios.deployment_target        = ENV['ios.deployment_target']
+  spec.watchos.deployment_target    = ENV['watchos.deployment_target']
+  spec.tvos.deployment_target       = ENV['tvos.deployment_target']
+  spec.osx.deployment_target        = ENV['osx.deployment_target']
 
   spec.ios.pod_target_xcconfig      = {
                                         'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEANightVersion',
-                                        'ENABLE_BITCODE'            => 'NO',
-                                        'SWIFT_VERSION'             => '5.0',
+                                        'ENABLE_BITCODE'            => ENV['ENABLE_BITCODE'],
+                                        'SWIFT_VERSION'             => ENV['SWIFT_VERSION'],
                                         'EMBEDDED_CONTENT_CONTAINS_SWIFT'       => 'NO',
                                         'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'NO',
                                         'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'

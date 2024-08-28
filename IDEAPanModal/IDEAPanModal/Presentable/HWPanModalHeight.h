@@ -52,7 +52,7 @@ CG_INLINE HWPanModalShadow PanModalShadowMake(UIColor *shadowColor, CGFloat shad
 }
 
 CG_INLINE HWPanModalShadow PanModalShadowNil() {
-    return PanModalShadowMake([UIColor clearColor], 0, CGSizeZero, 0);
+    return PanModalShadowMake(UIColor.clearColor, 0, CGSizeZero, 0);
 }
 
 static inline BOOL HW_FLOAT_IS_ZERO(CGFloat value) {
