@@ -77,7 +77,7 @@
 
 @implementation IDEAColor
 
-#if (__has_include(<IDEANightVersion/DKNightVersion.h>) || __has_include("IDEANightVersion/DKNightVersion.h") || __has_include("DKNightVersion.h"))
+#if (__has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>) || __has_include("IDEANightVersion/IDEANightVersion-umbrella.h") || __has_include("DKNightVersion.h"))
 + (UIColor *)colorWithKey:(NSString *)aKey {
    
    DKColorPicker   fnColorPicker = DKColorPickerWithKey(aKey);

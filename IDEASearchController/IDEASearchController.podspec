@@ -156,10 +156,10 @@ Pod::Spec.new do |spec|
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
-#  if __has_include(<IDEANightVersion/DKNightVersion.h>)
+#  if __has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>)
 #     import <IDEANightVersion/DKNightVersion.h>
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#  elif __has_include("IDEANightVersion/DKNightVersion.h")
+#  elif __has_include("IDEANightVersion/IDEANightVersion-umbrella.h")
 #     import "IDEANightVersion/DKNightVersion.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  elif __has_include("DKNightVersion.h")

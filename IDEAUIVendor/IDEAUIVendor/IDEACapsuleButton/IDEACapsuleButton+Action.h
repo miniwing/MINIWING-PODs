@@ -1,6 +1,6 @@
 //
 //  IDEACapsuleButton+Action.h
-//  Pods
+//  IDEAUIVendor
 //
 //  Created by Harry on 2024/8/18.
 //

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IDEAColor : NSObject
 
-#if (__has_include(<IDEANightVersion/DKNightVersion.h>) || __has_include("IDEANightVersion/DKNightVersion.h") || __has_include("DKNightVersion.h"))
+#if (__has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>) || __has_include("IDEANightVersion/IDEANightVersion-umbrella.h") || __has_include("DKNightVersion.h"))
 + (UIColor *) colorWithKey:(NSString *)aKey;
 #endif
 @property (class, nonatomic, readonly) UIColor *appTint;

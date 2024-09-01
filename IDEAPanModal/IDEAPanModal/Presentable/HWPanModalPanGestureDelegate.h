@@ -1,6 +1,6 @@
 //
 //  HWPanModalPanGestureDelegate.h
-//  Pods
+//  IDEAPanModal
 //
 //  Created by heath wang on 2022/8/1.
 //

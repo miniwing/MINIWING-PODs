@@ -103,7 +103,8 @@
          
          [stDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker  _Nonnull aPicker, BOOL * _Nonnull aStop) {
             
-            UIControlState eState = [aKey integerValue];
+            NSArray        *stKeys  = [aKey componentsSeparatedByString:@":"];
+            UIControlState  eState  = [stKeys.lastObject integerValue];
             
 //            [UIView animateWithDuration:DKNightVersionAnimationDuration
 //                             animations:^{
@@ -139,11 +140,6 @@
                                   options:UIViewAnimationOptionTransitionCrossDissolve
                                animations:^{
                   
-//                  if ([aSelector isEqualToString:NSStringFromSelector(@selector(setTitleColor:forState:))]) {
-//                     UIColor *resultColor = ((DKColorPicker)aPicker)(self.themeManager.themeVersion);
-//                     [self setTitleColor:resultColor forState:eState];
-//                  }
-//                  else
                   if ([aSelector isEqualToString:NSStringFromSelector(@selector(setBackgroundImage:forState:))]) {
                      UIImage  *stImage = ((DKImagePicker)aPicker)(self.themeManager.themeVersion);
                      [self setBackgroundImage:stImage forState:eState];

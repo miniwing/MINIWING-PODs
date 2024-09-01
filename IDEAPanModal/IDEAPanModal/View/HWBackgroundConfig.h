@@ -1,6 +1,6 @@
 //
 //  HWBackgroundConfig.h
-//  Pods
+//  IDEAPanModal
 //
 //  Created by heath wang on 2020/4/17.
 //

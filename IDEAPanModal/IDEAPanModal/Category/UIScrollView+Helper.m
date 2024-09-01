@@ -1,6 +1,6 @@
 //
 //  UIScrollView+Helper.m
-//  Pods
+//  IDEAPanModal
 //
 //  Created by heath wang on 2019/10/15.
 //

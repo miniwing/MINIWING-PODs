@@ -54,7 +54,9 @@
          
          [stDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull aSelector, DKPicker  _Nonnull aPicker, BOOL * _Nonnull stop) {
             
-            UIControlState state = [aKey integerValue];
+            NSArray        *stKeys  = [aKey componentsSeparatedByString:@":"];
+            UIControlState  eState  = [stKeys.lastObject integerValue];
+
             [UIView animateWithDuration:DKNightVersionAnimationDuration
                              animations:^{
                
@@ -62,7 +64,7 @@
                   
                   NSDictionary   *stAttribute   = ((DKAttributesPicker)aPicker)(self.themeManager.themeVersion);
                   
-                  [self setTitleTextAttributes:stAttribute forState:state];
+                  [self setTitleTextAttributes:stAttribute forState:eState];
                   
                } /* End if () */
             }];

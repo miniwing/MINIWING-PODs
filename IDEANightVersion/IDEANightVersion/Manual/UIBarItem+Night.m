@@ -100,7 +100,8 @@
          
          [stDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull selector, DKPicker _Nonnull aPicker, BOOL * _Nonnull aStop) {
             
-            UIControlState state = [aKey integerValue];
+            NSArray        *stKeys  = [aKey componentsSeparatedByString:@":"];
+            UIControlState  eState  = [stKeys.lastObject integerValue];
             
             [UIView animateWithDuration:DKNightVersionAnimationDuration
                              animations:^{
@@ -109,7 +110,7 @@
                   
                   NSDictionary   *stAttributes  = ((DKAttributesPicker)aPicker)(self.themeManager.themeVersion);
                   
-                  [self setTitleTextAttributes:stAttributes forState:state];
+                  [self setTitleTextAttributes:stAttributes forState:eState];
                }
                else if ([selector isEqualToString:NSStringFromSelector(@selector(setImage:))]) {
                   
@@ -121,7 +122,7 @@
          }];
       }
       else {
-         SEL    stSEL   = NSSelectorFromString(aKey);
+         SEL       stSEL      = NSSelectorFromString(aKey);
          DKPicker  stPicker   = aObject;
          id        stResult   = stPicker(self.themeManager.themeVersion);
          [UIView animateWithDuration:DKNightVersionAnimationDuration

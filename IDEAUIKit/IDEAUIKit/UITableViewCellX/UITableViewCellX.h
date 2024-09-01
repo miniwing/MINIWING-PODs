@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UITableViewCellX : UITableViewCell
 
 @property (nonatomic, weak)   IBOutlet       UIView                              * containerView;
+@property (nonatomic, weak)   IBOutlet       UIView                              * selectedColorView;
 @property (nonatomic, weak)   IBOutlet       UIView                              * separatorView;
 
 @end

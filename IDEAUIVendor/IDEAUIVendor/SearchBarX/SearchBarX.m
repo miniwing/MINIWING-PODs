@@ -18,6 +18,9 @@
    __LOG_FUNCTION;
 
    // Custom dealloc
+   [self unregisterKeyboardNotifications];
+      
+   [self removeAllNotifications];
 
    __SUPER_DEALLOC;
 

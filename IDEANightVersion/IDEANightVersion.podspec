@@ -143,7 +143,7 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 #ifdef __OBJC__
 
-#  if __has_include(<IDEAApplet/IDEAApplet.h>)
+#  if __has_include(<IDEAApplet/IDEAApplet-umbrella.h>)
 #     import <IDEAApplet/IDEAApplet.h>
 #     import <IDEAApplet/IDEAAppletCore.h>
 #     import <IDEAApplet/IDEAAppletModel.h>
@@ -152,7 +152,17 @@ Pod::Spec.new do |spec|
 #     import <IDEAApplet/IDEAAppletSingleton.h>
 #     import <IDEAApplet/IDEAAppletNotificationBus.h>
 #     import <IDEAApplet/IDEAAppletSignalBus.h>
-#  endif // __has_include(<IDEAApplet/IDEAApplet.h>)
+#  elif __has_include("IDEAApplet/IDEAApplet-umbrella.h")
+#     import "IDEAApplet/IDEAApplet.h"
+#     import "IDEAApplet/IDEAAppletCore.h"
+#     import "IDEAApplet/IDEAAppletModel.h"
+#     import "IDEAApplet/IDEAAppletEvent.h"
+#     import "IDEAApplet/IDEAAppletService.h"
+#     import "IDEAApplet/IDEAAppletNotification.h"
+#     import "IDEAApplet/IDEAAppletNotificationBus.h"
+#     import "IDEAApplet/IDEAAppletSignal.h"
+#     import "IDEAApplet/IDEAAppletSignalBus.h"
+#  endif // __has_include(<IDEAApplet/IDEAApplet-umbrella.h>)
 
 #  if __has_include(<IDEAApplet/IDEAAppletDebug.h>)
 #     import <IDEAApplet/IDEAAppletDebug.h>

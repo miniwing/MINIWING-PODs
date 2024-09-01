@@ -1,6 +1,6 @@
 //
 //  IDEAFileUtils.m
-//  Pods
+//  IDEAKit
 //
 //  Created by Harry on 2022/10/23.
 //
