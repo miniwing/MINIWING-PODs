@@ -59,7 +59,7 @@
 //   }];
    [self.containerView setBackgroundColorPicker:DKColorPickerWithKey(IDEAColor.tertiarySystemBackground)];
    
-   if (@available(iOS 13, *)) {
+   if (@available(iOS 13.0, *)) {
       
    } /* End if () */
    else {
@@ -160,7 +160,7 @@
       [self.containerView.layer setMasksToBounds:NO];
 
    } /* End if () */
-   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   else if (!@available(iOS 13.0, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       [self.containerView.layer setMask:nil];
       [self.containerView.layer setMasksToBounds:NO];
@@ -182,7 +182,7 @@
       [self setNeedsDisplay];
 
    } /* End if () */
-   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   else if (!@available(iOS 13.0, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       [self setNeedsDisplay];
       
@@ -231,7 +231,7 @@
       } /* End else */
 
    } /* End if () */
-   else if (!@available(iOS 13, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
+   else if (!@available(iOS 13.0, *) || UITableViewXStyleInsetGrouped == self.tableViewXStyle) {
       
       if (UIRectCornerNone != self.rectCorner) {
          

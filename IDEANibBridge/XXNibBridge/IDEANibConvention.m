@@ -74,8 +74,10 @@
       if ([view isMemberOfClass:self.class]) {
          
          return view;
-      }
-   }
+         
+      } /* End if () */
+      
+   } /* End for () */
    
    NSAssert(NO, @"Expect file: %@", [NSString stringWithFormat:@"%@.xib", self.nibID]);
    

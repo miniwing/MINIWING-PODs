@@ -27,7 +27,7 @@ static BOOL respondsToAdjustedContentInset_;
 - (UIEdgeInsets)mj_inset
 {
 //#ifdef __IPHONE_11_0
-   if (@available(iOS 11, *)) {
+   if (@available(iOS 11.0, *)) {
       if (respondsToAdjustedContentInset_) {
           return self.adjustedContentInset;
       }
@@ -42,7 +42,7 @@ static BOOL respondsToAdjustedContentInset_;
     inset.top = mj_insetT;
    
 //#ifdef __IPHONE_11_0
-   if (@available(iOS 11, *)) {
+   if (@available(iOS 11.0, *)) {
       if (respondsToAdjustedContentInset_) {
           inset.top -= (self.adjustedContentInset.top - self.contentInset.top);
       }
@@ -63,7 +63,7 @@ static BOOL respondsToAdjustedContentInset_;
     inset.bottom = mj_insetB;
    
 //#ifdef __IPHONE_11_0
-   if (@available(iOS 11, *)) {
+   if (@available(iOS 11.0, *)) {
       if (respondsToAdjustedContentInset_) {
           inset.bottom -= (self.adjustedContentInset.bottom - self.contentInset.bottom);
       }
@@ -83,7 +83,7 @@ static BOOL respondsToAdjustedContentInset_;
     inset.left = mj_insetL;
    
 //#ifdef __IPHONE_11_0
-   if (@available(iOS 11, *)) {
+   if (@available(iOS 11.0, *)) {
       if (respondsToAdjustedContentInset_) {
           inset.left -= (self.adjustedContentInset.left - self.contentInset.left);
       }
@@ -104,7 +104,7 @@ static BOOL respondsToAdjustedContentInset_;
     inset.right = mj_insetR;
    
 //#ifdef __IPHONE_11_0
-   if (@available(iOS 11, *)) {
+   if (@available(iOS 11.0, *)) {
       if (respondsToAdjustedContentInset_) {
           inset.right -= (self.adjustedContentInset.right - self.contentInset.right);
       }

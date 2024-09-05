@@ -85,7 +85,7 @@
       
       UIApplication  *stApplication = [UIApplication performSelector:@selector(sharedApplication)];
       
-      if (@available(iOS 13, *)) {
+      if (@available(iOS 13.0, *)) {
          
          for (UIScreen *windowsScenes in stApplication.connectedScenes) {
             

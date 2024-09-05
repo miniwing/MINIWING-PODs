@@ -60,6 +60,7 @@
 #import <IDEAUIKit/UITextFieldX.h>
 #import <IDEAUIKit/UITextViewX.h>
 #import <IDEAUIKit/UITableViewCellX.h>
+#import <IDEAUIKit/UICollectionViewCellX.h>
 #import <IDEAUIKit/UIImageViewX.h>
 #import <IDEAUIKit/MKAnnotationViewX.h>
 

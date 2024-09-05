@@ -118,7 +118,7 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
    
    [aViewController.topMost presentViewController:stStrongController animated:YES completion:nil];
    
-   if (@available(iOS 13, *)) {
+   if (@available(iOS 13.0, *)) {
       
       stStrongController.overrideUserInterfaceStyle  = aUserInterfaceStyle;
 

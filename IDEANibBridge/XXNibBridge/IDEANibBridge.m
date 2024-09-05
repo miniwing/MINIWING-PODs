@@ -58,24 +58,33 @@
    
    self = [super awakeAfterUsingCoder:aDecoder];
    
+#if __Debug__
+   if ([NSStringFromClass(self.class) isEqualToString:@"UINavigationBarX"]) {
+      
+      LogDebug((@"UINavigationBarX"));
+      
+   } /* End if () */
+#endif /* __Debug__ */
    if ([self.class conformsToProtocol:@protocol(IDEANibBridge)] && ((UIView *)self).subviews.count == 0) {
       
-      if ([self respondsToSelector:@selector(shouldApplyNibBridge)]) {
-         
-         if ([(id<IDEANibBridge>)self shouldApplyNibBridge]) {
-            
-            // "self" is placeholder view for this moment, replace it.
-            return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
-            
-         } /* End if () */
-         
-      } /* End if () */
-      else {
-         
-         // "self" is placeholder view for this moment, replace it.
-         return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
-         
-      } /* End else */
+      return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
+
+//      if ([self respondsToSelector:@selector(shouldApplyNibBridge)]) {
+//         
+//         if ([(id<IDEANibBridge>)self shouldApplyNibBridge]) {
+//            
+//            // "self" is placeholder view for this moment, replace it.
+//            return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
+//            
+//         } /* End if () */
+//         
+//      } /* End if () */
+//      else {
+//         
+//         // "self" is placeholder view for this moment, replace it.
+//         return [IDEANibBridgeImplementation instantiateRealViewFromPlaceholder:(UIView *)self];
+//         
+//      } /* End else */
       
    } /* End if () */
    
@@ -116,7 +125,7 @@
                                                            attribute:constraint.secondAttribute
                                                           multiplier:constraint.multiplier
                                                             constant:constraint.constant];
-         }
+         } /* End if () */
          // "Aspect ratio" constraint
          // "self" as its first AND second item
          else if ([constraint.firstItem isEqual:constraint.secondItem]) {
@@ -128,7 +137,7 @@
                                                            attribute:constraint.secondAttribute
                                                           multiplier:constraint.multiplier
                                                             constant:constraint.constant];
-         }
+         } /* End else if () */
          
          // Copy properties to new constraint
          if (newConstraint) {
@@ -138,7 +147,7 @@
             
 //            if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
 //               newConstraint.identifier = constraint.identifier;
-//            }
+//            } /* End if () */
             
             if (@available(iOS 7.0, *)) {
                
@@ -147,9 +156,12 @@
             } /* End if () */
             
             [realView addConstraint:newConstraint];
-         }
-      }
-   }
+            
+         } /* End if () */
+         
+      } /* End for () */
+      
+   } /* End for () */
    
    return realView;
 }

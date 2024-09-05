@@ -83,7 +83,7 @@
 //   stVisualEffectView  = [UIVisualEffectView appearanceWhenContainedInInstancesOfClasses:@[UIAlertController.class]];
 //   LogDebug((@"-[IDEAAlertController onThemeUpdate:] : UIVisualEffectView : %@", stVisualEffectView));
 //
-//   if (@available(iOS 13, *)) {
+//   if (@available(iOS 13.0, *)) {
 //      
 //      self.overrideUserInterfaceStyle  = eUserInterfaceStyle;
 //
@@ -159,7 +159,7 @@
    } /* End if () */
    else { // if ([[DKNightVersionManager sharedManager].themeVersion isEqualToString:DKThemeVersionNormal])
 
-      if (@available(iOS 13, *)) {
+      if (@available(iOS 13.0, *)) {
 
          // 系统版本高于 13.0
          return UIStatusBarStyleDarkContent;

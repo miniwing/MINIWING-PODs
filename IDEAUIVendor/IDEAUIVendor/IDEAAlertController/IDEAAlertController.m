@@ -91,7 +91,7 @@ static NSInteger const IDEAAlertControllerBlocksFirstOtherButtonIndex  = 2;
    [self setValue:stTitle forKey:@"attributedTitle"];
    [self setValue:stMessage forKey:@"attributedMessage"];
    
-   if (@available(iOS 13, *)) {
+   if (@available(iOS 13.0, *)) {
       
    } /* End if () */
    else {
@@ -272,7 +272,7 @@ static NSInteger const IDEAAlertControllerBlocksFirstOtherButtonIndex  = 2;
                                          animated:YES
                                        completion:nil];
    
-//   if (@available(iOS 13, *)) {
+//   if (@available(iOS 13.0, *)) {
 //
 //      stStrongController.overrideUserInterfaceStyle  = aUserInterfaceStyle;
 //

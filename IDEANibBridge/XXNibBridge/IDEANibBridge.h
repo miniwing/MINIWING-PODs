@@ -31,8 +31,8 @@
 ///
 @protocol IDEANibBridge <IDEANibConvention>
 
-@optional
-- (BOOL)shouldApplyNibBridge;
+//@optional
+//- (BOOL)shouldApplyNibBridge;
 
 @required
 + (UINib *)nib;
