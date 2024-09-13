@@ -67,7 +67,7 @@
    [self.backgroundView setFrame:self.presentedView.frame];
    [self.containerView addSubview:self.backgroundView];
    
-   [UIView animateWithDuration:[UIView animationDefaultDuration]
+   [UIView animateWithDuration:UIView.animationDefaultDuration
                     animations:^{
 
       [self.backgroundView setAlpha:1];
@@ -97,7 +97,7 @@
    
    __TRY;
    
-   [UIView animateWithDuration:[UIView animationDefaultDuration]
+   [UIView animateWithDuration:UIView.animationDefaultDuration
                     animations:^{
       
       [self.backgroundView setAlpha:0];

@@ -11,10 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIWindow (SafeArea)
 
-+ (UIEdgeInsets)safeArea;
-- (UIEdgeInsets)safeArea;
+//+ (UIEdgeInsets)safeArea;
+//- (UIEdgeInsets)safeArea;
 
-+ (CGFloat)topSafeAreaInset;
+@property (class, nonatomic, readonly)       UIEdgeInsets                          safeArea;
+
+@property (class, nonatomic, readonly)       CGFloat                               topSafeAreaInset;
+@property (class, nonatomic, readonly)       CGFloat                               bottomSafeAreaInset;
 
 @end
 

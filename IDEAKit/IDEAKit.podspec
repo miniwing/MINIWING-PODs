@@ -225,34 +225,24 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 
 #ifdef __OBJC__
 
-#  if __has_include(<FoundationExtension/FoundationExtension.h>)
+#  if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #     import <FoundationExtension/FoundationExtension.h>
 #     define FOUNDATION_EXTENSION                                          (1)
-#  elif __has_include("FoundationExtension/FoundationExtension.h")
+#  elif __has_include("FoundationExtension/FoundationExtension-umbrella.h")
 #     import "FoundationExtension/FoundationExtension.h"
 #     define FOUNDATION_EXTENSION                                          (1)
 #  else
 #     define FOUNDATION_EXTENSION                                          (0)
 #  endif
 
-#  if __has_include(<UIKitExtension/UIKitExtension.h>)
+#  if __has_include(<UIKitExtension/UIKitExtension-umbrella.h>)
 #     import <UIKitExtension/UIKitExtension.h>
 #     define UIKIT_EXTENSION                                               (1)
-#  elif __has_include("UIKitExtension/UIKitExtension.h")
+#  elif __has_include("UIKitExtension/UIKitExtension-umbrella.h")
 #     import "UIKitExtension/UIKitExtension.h"
 #     define UIKIT_EXTENSION                                               (1)
 #  else
 #     define UIKIT_EXTENSION                                               (0)
-#  endif
-
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
 #  endif
 
 #  if __has_include(<RegexKitLite/RegexKitLite.h>)
@@ -276,6 +266,52 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 #  endif
 
 #endif /* __OBJC__ */
+
+/******************************************************************************************************/
+
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
+#  import <YYKit/YYKit.h>
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
+#  import "YYKit/YYKit.h"
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
+#  import "YYKit.h"
+#     define YY_KIT                                                        (1)
+#else /* YY_KIT */
+#     define YY_KIT                                                        (0)
+#  ifndef weakify
+#     if __has_feature(objc_arc)
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !weakify */
+
+#  ifndef strongify
+#     if __has_feature(objc_arc)
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !strongify */
+#endif
 
 /******************************************************************************************************/
 

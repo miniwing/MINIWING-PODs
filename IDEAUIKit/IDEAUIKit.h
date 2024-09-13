@@ -10,10 +10,11 @@
 #define IDEAUIKit_H
 
 #import <IDEAUIKit/IDEAStatusBar.h>
-#import <IDEAUIKit/UIWindow+SafeArea.h>
 
 #import <IDEAUIKit/UITableView+Reuse.h>
 #import <IDEAUIKit/UICollectionView+Reuse.h>
+
+#import <IDEAUIKit/UIWindow+SafeArea.h>
 
 //#import <IDEAUIKit/UIView+UIRectCorner.h>
 
@@ -59,6 +60,7 @@
 #import <IDEAUIKit/UILabelX.h>
 #import <IDEAUIKit/UITextFieldX.h>
 #import <IDEAUIKit/UITextViewX.h>
+#import <IDEAUIKit/UITableViewX.h>
 #import <IDEAUIKit/UITableViewCellX.h>
 #import <IDEAUIKit/UICollectionViewCellX.h>
 #import <IDEAUIKit/UIImageViewX.h>

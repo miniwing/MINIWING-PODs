@@ -9,15 +9,15 @@
 
 #import "IDEAUIKit/UIView+Animated.h"
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>))
-#elif (__has_include("UIKitExtension/UIKitExtension.h"))
+#if (__has_include(<UIKitExtension/UIKitExtension-umbrella.h>))
+#elif (__has_include("UIKitExtension/UIKitExtension-umbrella.h"))
 #else
 const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
 #endif
 
 @implementation UIView (Animated)
 
-#if (__has_include(<UIKitExtension/UIKitExtension.h>) || __has_include("UIKitExtension/UIKitExtension.h") || __has_include("UIKitExtension.h"))
+#if (__has_include(<UIKitExtension/UIKitExtension-umbrella.h>) || __has_include("UIKitExtension/UIKitExtension-umbrella.h") || __has_include("UIKitExtension.h"))
 #else
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated {
    
@@ -39,11 +39,11 @@ const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:[UIView animationDefaultDuration]
+   [[self class] animateWithDuration:UIView.animationDefaultDuration
                           animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL aFinished) {
+                          completion:^(BOOL isFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.
@@ -74,7 +74,7 @@ const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
    [[self class] animateWithDuration:duration animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL aFinished) {
+                          completion:^(BOOL isFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.
@@ -109,11 +109,11 @@ const NSTimeInterval UIAViewAnimationDefaultDuration = 0.25f;
       self.hidden = NO;
    }
    
-   [[self class] animateWithDuration:[UIView animationDefaultDuration]
+   [[self class] animateWithDuration:UIView.animationDefaultDuration
                           animations:^(void) {
       self.alpha = endAlpha;
    }
-                          completion:^(BOOL aFinished) {
+                          completion:^(BOOL isFinished) {
       if (hidden) {
          self.alpha = backupAlpha;
          self.hidden = YES; // value compatibility - this delayed action may be cause of unknown strange behavior.

@@ -14,12 +14,12 @@
 - (void)setText:(NSString *)aText animated:(BOOL)aAnimated completion:(void (^ __nullable)(void))aCompletion {
    
    [UIView transitionWithView:self
-                     duration:[UIView animationDefaultDuration]
+                     duration:UIView.animationDefaultDuration
                       options:UIViewAnimationOptionTransitionCrossDissolve
                    animations:^{
       [self setText:aText];
    }
-                   completion:^(BOOL aFinished) {
+                   completion:^(BOOL isFinished) {
       if (aCompletion) {
          
          aCompletion();

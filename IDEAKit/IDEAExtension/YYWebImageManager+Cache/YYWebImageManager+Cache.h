@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#if (__has_include(<YYKit/YYKit.h>) && __has_include(<YYKit/YYWebImageManager.h>))
+#if (__has_include(<YYKit/YYKit-umbrella.h>) && __has_include(<YYKit/YYWebImageManager.h>))
 #  import <YYKit/YYWebImageManager.h>
 #  define YY_WebImageManager_Cache                 (1)
-#elif (__has_include("YYKit/YYKit.h") && __has_include("YYKit/YYWebImageManager.h"))
+#elif (__has_include("YYKit/YYKit-umbrella.h") && __has_include("YYKit/YYWebImageManager.h"))
 #  import "YYKit/YYWebImageManager.h"
 #  define YY_WebImageManager_Cache                 (1)
 #elif (__has_include("YYKit.h") && __has_include("YYWebImageManager.h"))

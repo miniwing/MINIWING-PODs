@@ -4,18 +4,18 @@ Pod::Spec.new do |spec|
   spec.summary                      = "IDEAThrottle"
   spec.description                  = "IDEAThrottle"
   spec.homepage                     = "https://github.com/miniwing"
-#  spec.homepage                     = "https://github.com/yulingtianxia/MessageThrottle"
+#                                     https://github.com/yulingtianxia/MessageThrottle
+#                                     git@github.com:HighwayLaw/HWThrottle.git
   spec.license                      = "MIT"
   spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }
 
 #  spec.source                       = { :path => "." }
   spec.source                       = { :git => 'https://github.com/miniwing/IDEANightVersion.git', :tag => spec.version.to_s }
 
-  spec.ios.deployment_target        = '10.0'
-  spec.watchos.deployment_target    = '4.3'
-    
-  spec.osx.deployment_target        = '10.10'
-  spec.tvos.deployment_target       = '10.0'
+  spec.ios.deployment_target        = ENV['ios.deployment_target']
+  spec.watchos.deployment_target    = ENV['watchos.deployment_target']
+  spec.tvos.deployment_target       = ENV['tvos.deployment_target']
+  spec.osx.deployment_target        = ENV['osx.deployment_target']
 
   spec.ios.pod_target_xcconfig      = {
                                         'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAThrottle',
@@ -30,8 +30,11 @@ Pod::Spec.new do |spec|
   spec.tvos.pod_target_xcconfig     = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.idea.IDEAThrottle' }
 
   spec.pod_target_xcconfig          = {
-    'GCC_PREPROCESSOR_DEFINITIONS'  => ' MODULE=\"IDEAThrottle\" '
-  }
+    'GCC_PREPROCESSOR_DEFINITIONS'      => [
+                                          ' MODULE=\"LOGIN\" ',
+                                          ' BUNDLE=\"LOGIN\" '
+                                          ]
+                                      }
 
   spec.frameworks                   = ['Foundation', 'UIKit']
 
@@ -44,8 +47,8 @@ Pod::Spec.new do |spec|
                                         ]
                                       }
 
-  spec.public_header_files        = 'IDEAThrottle/*.{h}'
-  spec.source_files               = 'IDEAThrottle/*.{h,m}'
+  spec.public_header_files        = 'IDEAThrottle/**/*.{h}'
+  spec.source_files               = 'IDEAThrottle/**/*.{h,m}'
 
   spec.requires_arc                 = true
 
@@ -136,6 +139,52 @@ Pod::Spec.new do |spec|
 
 /******************************************************************************************************/
 
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
+#  import <YYKit/YYKit.h>
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
+#  import "YYKit/YYKit.h"
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
+#  import "YYKit.h"
+#     define YY_KIT                                                        (1)
+#else /* YY_KIT */
+#     define YY_KIT                                                        (0)
+#  ifndef weakify
+#     if __has_feature(objc_arc)
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !weakify */
+
+#  ifndef strongify
+#     if __has_feature(objc_arc)
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !strongify */
+#endif
+
+/******************************************************************************************************/
+
 #if __has_feature(objc_arc)
 #  define __AUTORELEASE(x)                         (x);
 #  define __RELEASE(x)                             (x) = nil;
@@ -164,50 +213,6 @@ Pod::Spec.new do |spec|
 #else
 #  define __AUTO__                                 (0)
 #  define __Debug__                                (0)
-#endif
-
-/******************************************************************************************************/
-
-#if (__has_include(<YYKit/YYKit.h>))
-#  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
-#  import "YYKit/YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
-#else /* YY_KIT */
-
-#  ifndef weakify
-#     if __has_feature(objc_arc)
-#        define weakify( x )                                                                       \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;                             \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define weakify( x )                                                                       \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;                           \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !weakify */
-
-#  ifndef strongify
-#     if __has_feature(objc_arc)
-#        define strongify( x )                                                                     \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;                                     \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define strongify( x )                                                                     \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;                                    \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !strongify */
-
 #endif
 
 /******************************************************************************************************/

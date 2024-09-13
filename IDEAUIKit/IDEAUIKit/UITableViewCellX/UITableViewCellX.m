@@ -38,7 +38,7 @@
    [self.contentView setBackgroundColor:UIColor.clearColor];
    
    self.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];// 这句不可省略
-   //   [self.selectedBackgroundView setSize:CGSizeZero];
+//   [self.selectedBackgroundView setSize:CGSizeZero];
    [self.selectedBackgroundView setBackgroundColor:UIColor.clearColor];
    [self.selectedBackgroundView setClipsToBounds:YES];
    

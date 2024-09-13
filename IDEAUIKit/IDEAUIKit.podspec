@@ -80,14 +80,13 @@ Pod::Spec.new do |spec|
   end # IDEA_FULLSCREEN_POP_GESTURE
   
   if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
-    spec.dependency 'MaterialComponents'
     spec.dependency 'MotionInterchange'
-  else
-    if ENV['IDEA_MATERIAL_NAVIGATION_BAR'] == 'YES'
-      spec.dependency 'MaterialComponents/NavigationBar'
-      spec.dependency 'MaterialComponents/ActivityIndicator'
-      spec.dependency 'MotionInterchange'
-    end # IDEA_MATERIAL_NAVIGATION_BAR
+    spec.dependency 'MaterialComponents/NavigationBar'
+    spec.dependency 'MaterialComponents/Buttons'
+    spec.dependency 'MaterialComponents/BottomSheet'
+    spec.dependency 'MaterialComponents/BottomSheet+ShapeThemer'
+#    spec.dependency 'MaterialComponents/ActivityIndicator'
+    spec.dependency 'MaterialComponents/Snackbar',  :configurations => ['Debug']
   end # IDEA_MATERIAL_COMPONENTS
 
   spec.dependency 'IDEANibBridge'
@@ -115,6 +114,7 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'IDEAKit'
   spec.dependency 'IDEAColor'
+  spec.dependency 'IDEAPalettes'
   spec.dependency 'IDEANightVersion'
   
   spec.public_header_files    = 'IDEAUIKit.h',
@@ -225,30 +225,30 @@ Pod::Spec.new do |spec|
 
 #ifdef __OBJC__
 
-#  if __has_include(<FoundationExtension/FoundationExtension.h>)
+#  if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #     import <FoundationExtension/FoundationExtension.h>
 #     define FOUNDATION_EXTENSION                                          (1)
-#  elif __has_include("FoundationExtension/FoundationExtension.h")
+#  elif __has_include("FoundationExtension/FoundationExtension-umbrella.h")
 #     import "FoundationExtension/FoundationExtension.h"
 #     define FOUNDATION_EXTENSION                                          (1)
 #  else
 #     define FOUNDATION_EXTENSION                                          (0)
 #  endif
 
-#  if __has_include(<UIKitExtension/UIKitExtension.h>)
+#  if __has_include(<UIKitExtension/UIKitExtension-umbrella.h>)
 #     import <UIKitExtension/UIKitExtension.h>
 #     define UIKIT_EXTENSION                                               (1)
-#  elif __has_include("UIKitExtension/UIKitExtension.h")
+#  elif __has_include("UIKitExtension/UIKitExtension-umbrella.h")
 #     import "UIKitExtension/UIKitExtension.h"
 #     define UIKIT_EXTENSION                                               (1)
 #  else
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
+#  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
 #     import <RTRootNavigationController/RTRootNavigationController.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
+#  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
 #     import "RTRootNavigationController/RTRootNavigationController.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
@@ -259,24 +259,14 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATIONBAR                                        (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATIONBAR                                        (1)
+#  if __has_include(<MaterialComponents/MaterialComponents-umbrella.h>)
+#     import <MaterialComponents/MaterialComponents-umbrella.h>
+#     define MATERIAL_COMPONENTS                                           (1)
+#  elif __has_include("MaterialComponents/MaterialComponents-umbrella.h")
+#     import "MaterialComponents/MaterialComponents-umbrella.h"
+#     define MATERIAL_COMPONENTS                                           (1)
 #  else
-#     define MATERIAL_NAVIGATIONBAR                                        (0)
-#  endif
-
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  else
-#     define MATERIAL_NAVIGATION_BAR                                       (0)
+#     define MATERIAL_COMPONENTS                                           (0)
 #  endif
 
 #  if __has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>)
@@ -313,48 +303,21 @@ Pod::Spec.new do |spec|
 #import <IDEAColor/UIColorX+System.h>
 #import <IDEAColor/UIColorX+Dynamic.h>
 
-/******************************************************************************************************/
-
-#if __has_feature(objc_arc)
-#  define __AUTORELEASE(x)                         (x);
-#  define __RELEASE(x)                             (x) = nil;
-#  define __RETAIN(x)                              (x)
-#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);
-#  define __dispatch_release(x)                    (x) = nil;
-#else
-#  define __RETAIN(x)                              [(x) retain];
-#  define __AUTORELEASE(x)                         [(x) autorelease];
-#  define __RELEASE(x)                             if (nil != (x)) {                               \\
-                                                      [(x) release];                               \\
-                                                      (x) = nil;                                   \\
-                                                   }
-#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);[super dealloc];
-#  define __dispatch_release(x)                    dispatch_release((x))
-#endif
+#import <IDEAPalettes/IDEAPalettes.h>
 
 /******************************************************************************************************/
 
-#define __ON__                                     (1)
-#define __OFF__                                    (0)
-
-#if (defined(DEBUG) && (1==DEBUG))
-#  define __AUTO__                                 (1)
-#  define __Debug__                                (1)
-#else
-#  define __AUTO__                                 (0)
-#  define __Debug__                                (0)
-#endif
-
-/******************************************************************************************************/
-
-#if (__has_include(<YYKit/YYKit.h>))
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
 #  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
 #  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
 #  import "YYKit.h"
+#     define YY_KIT                                                        (1)
 #else /* YY_KIT */
-
+#     define YY_KIT                                                        (0)
 #  ifndef weakify
 #     if __has_feature(objc_arc)
 #        define weakify( x )                                               \\
@@ -386,7 +349,38 @@ Pod::Spec.new do |spec|
             _Pragma("clang diagnostic pop")
 #     endif
 #  endif /* !strongify */
+#endif
 
+/******************************************************************************************************/
+
+#if __has_feature(objc_arc)
+#  define __AUTORELEASE(x)                         (x);
+#  define __RELEASE(x)                             (x) = nil;
+#  define __RETAIN(x)                              (x)
+#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);
+#  define __dispatch_release(x)                    (x) = nil;
+#else
+#  define __RETAIN(x)                              [(x) retain];
+#  define __AUTORELEASE(x)                         [(x) autorelease];
+#  define __RELEASE(x)                             if (nil != (x)) {                               \\
+                                                      [(x) release];                               \\
+                                                      (x) = nil;                                   \\
+                                                   }
+#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);[super dealloc];
+#  define __dispatch_release(x)                    dispatch_release((x))
+#endif
+
+/******************************************************************************************************/
+
+#define __ON__                                     (1)
+#define __OFF__                                    (0)
+
+#if (defined(DEBUG) && (1==DEBUG))
+#  define __AUTO__                                 (1)
+#  define __Debug__                                (1)
+#else
+#  define __AUTO__                                 (0)
+#  define __Debug__                                (0)
 #endif
 
 /******************************************************************************************************/

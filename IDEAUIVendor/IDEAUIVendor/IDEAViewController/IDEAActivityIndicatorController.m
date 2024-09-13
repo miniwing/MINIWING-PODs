@@ -20,10 +20,6 @@
 //#  define MATERIAL_PALETTES                                             (0)
 #endif
 
-@interface IDEAActivityIndicatorController ()
-
-@end
-
 @implementation IDEAActivityIndicatorController
 
 - (void)dealloc {

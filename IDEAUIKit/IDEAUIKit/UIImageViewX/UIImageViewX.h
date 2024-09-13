@@ -15,8 +15,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface UIImageViewX ()
-
-@end
-
 NS_ASSUME_NONNULL_END

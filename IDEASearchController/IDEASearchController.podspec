@@ -49,6 +49,7 @@ Pod::Spec.new do |spec|
   spec.dependency  'IDEAUIKit'
   spec.dependency  'IDEAUIVendor'
   spec.dependency  'IDEAColor'
+  spec.dependency 'IDEAPalettes'
   spec.dependency  'IDEANightVersion'
 
   spec.source_files         = 'IDEASearchController/**/*.{h,m}'
@@ -130,10 +131,10 @@ Pod::Spec.new do |spec|
 #  import <QuartzCore/CAAnimation.h>
 #  import <MessageUI/MessageUI.h>
 
-#  if __has_include(<FoundationExtension/FoundationExtension.h>)
+#  if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #     import <FoundationExtension/FoundationExtension.h>
 #     define FOUNDATION_EXTENSION                                          (1)
-#  elif __has_include("FoundationExtension/FoundationExtension.h")
+#  elif __has_include("FoundationExtension/FoundationExtension-umbrella.h")
 #     import "FoundationExtension/FoundationExtension.h"
 #     define FOUNDATION_EXTENSION                                          (1)
 #  elif __has_include("FoundationExtension.h")
@@ -143,10 +144,10 @@ Pod::Spec.new do |spec|
 #     define FOUNDATION_EXTENSION                                          (0)
 #  endif
 
-#  if __has_include(<UIKitExtension/UIKitExtension.h>)
+#  if __has_include(<UIKitExtension/UIKitExtension-umbrella.h>)
 #     import <UIKitExtension/UIKitExtension.h>
 #     define UIKIT_EXTENSION                                               (1)
-#  elif __has_include("UIKitExtension/UIKitExtension.h")
+#  elif __has_include("UIKitExtension/UIKitExtension-umbrella.h")
 #     import "UIKitExtension/UIKitExtension.h"
 #     define UIKIT_EXTENSION                                               (1)
 #  elif __has_include("UIKitExtension.h")
@@ -195,10 +196,10 @@ Pod::Spec.new do |spec|
 #     define IDEA_COLOR                                                    (0)
 #  endif
 
-#  if __has_include(<IDEAFONT/IDEAFONT.h>)
+#  if __has_include(<IDEAFONT/IDEAFONT-umbrella.h>)
 #     import <IDEAFONT/IDEAFONT.h>
 #     define IDEA_FONT                                                     (1)
-#  elif __has_include("IDEAFONT/IDEAFONT.h")
+#  elif __has_include("IDEAFONT/IDEAFONT-umbrella.h")
 #     import "IDEAFONT/IDEAFONT.h"
 #     define IDEA_FONT                                                     (1)
 #  elif __has_include("IDEAFONT.h")
@@ -208,32 +209,65 @@ Pod::Spec.new do |spec|
 #     define IDEA_FONT                                                     (0)
 #  endif
 
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit.h")
-#     import "YYKit.h"
-#     define YY_KIT                                                        (1)
+#  if __has_include(<MaterialComponents/MaterialComponents-umbrella.h>)
+#     import <MaterialComponents/MaterialComponents-umbrella.h>
+#     define MATERIAL_COMPONENTS                                           (1)
+#  elif __has_include("MaterialComponents/MaterialComponents-umbrella.h")
+#     import "MaterialComponents/MaterialComponents-umbrella.h"
+#     define MATERIAL_COMPONENTS                                           (1)
 #  else
-#     define YY_KIT                                                        (0)
-#  endif
-
-#  if __has_include(<MaterialComponents/MaterialNavigationBar.h>)
-#     import <MaterialComponents/MaterialNavigationBar.h>
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  elif __has_include("MaterialComponents/MaterialNavigationBar.h")
-#     import "MaterialComponents/MaterialNavigationBar.h"
-#     define MATERIAL_NAVIGATION_BAR                                       (1)
-#  else
-#     define MATERIAL_NAVIGATION_BAR                                       (0)
+#     define MATERIAL_COMPONENTS                                           (0)
 #  endif
 
 #endif /* __OBJC__ */
 
- /******************************************************************************************************/
+/******************************************************************************************************/
+
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
+#  import <YYKit/YYKit.h>
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
+#  import "YYKit/YYKit.h"
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
+#  import "YYKit.h"
+#     define YY_KIT                                                        (1)
+#else /* YY_KIT */
+#     define YY_KIT                                                        (0)
+#  ifndef weakify
+#     if __has_feature(objc_arc)
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !weakify */
+
+#  ifndef strongify
+#     if __has_feature(objc_arc)
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !strongify */
+#endif
+
+/******************************************************************************************************/
 
 #if __has_feature(objc_arc)
 #  define __AUTORELEASE(x)                         (x);
@@ -263,50 +297,6 @@ Pod::Spec.new do |spec|
 #else
 #  define __AUTO__                                 (0)
 #  define __Debug__                                (0)
-#endif
-
-/******************************************************************************************************/
-
-#if (__has_include(<YYKit/YYKit.h>))
-#  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
-#  import "YYKit/YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
-#else /* YY_KIT */
-
-#  ifndef weakify
-#     if __has_feature(objc_arc)
-#        define weakify( x )                                                                       \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;                             \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define weakify( x )                                                                       \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;                           \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !weakify */
-
-#  ifndef strongify
-#     if __has_feature(objc_arc)
-#        define strongify( x )                                                                     \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;                                     \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define strongify( x )                                                                     \\
-            _Pragma("clang diagnostic push")                                                       \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")                                       \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;                                    \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !strongify */
-
 #endif
 
 /******************************************************************************************************/

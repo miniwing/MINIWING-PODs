@@ -15,59 +15,59 @@ NS_ASSUME_NONNULL_BEGIN
 #if (__has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>) || __has_include("IDEANightVersion/IDEANightVersion-umbrella.h") || __has_include("DKNightVersion.h"))
 + (UIColor *) colorWithKey:(NSString *)aKey;
 #endif
-@property (class, nonatomic, readonly) UIColor *appTint;
+@property (class, nonatomic, readonly) NSString *appTint;
 
-@property (class, nonatomic, readonly) UIColor *text;
-@property (class, nonatomic, readonly) UIColor *switchOn;
+@property (class, nonatomic, readonly) NSString *text;
+@property (class, nonatomic, readonly) NSString *switchOn;
 
-@property (class, nonatomic, readonly) UIColor *appNavigationBarTitle;
-@property (class, nonatomic, readonly) UIColor *appNavigationBarTint;
-@property (class, nonatomic, readonly) UIColor *appNavigationBarBackground;
+@property (class, nonatomic, readonly) NSString *appNavigationBarTitle;
+@property (class, nonatomic, readonly) NSString *appNavigationBarTint;
+@property (class, nonatomic, readonly) NSString *appNavigationBarBackground;
 
-@property (class, nonatomic, readonly) UIColor *appTabbarTint;
-@property (class, nonatomic, readonly) UIColor *appTabbarBackground;
-@property (class, nonatomic, readonly) UIColor *appTabbarUnselected;
+@property (class, nonatomic, readonly) NSString *appTabbarTint;
+@property (class, nonatomic, readonly) NSString *appTabbarBackground;
+@property (class, nonatomic, readonly) NSString *appTabbarUnselected;
 
-@property (class, nonatomic, readonly) UIColor *translucentBackground;
+@property (class, nonatomic, readonly) NSString *translucentBackground;
 
-@property (class, nonatomic, readonly) UIColor *label;
-@property (class, nonatomic, readonly) UIColor *secondaryLabel;
-@property (class, nonatomic, readonly) UIColor *tertiaryLabel;
-@property (class, nonatomic, readonly) UIColor *quaternaryLabel;
-@property (class, nonatomic, readonly) UIColor *systemFill;
-@property (class, nonatomic, readonly) UIColor *secondarySystemFill;
-@property (class, nonatomic, readonly) UIColor *tertiarySystemFill;
-@property (class, nonatomic, readonly) UIColor *quaternarySystemFill;
-@property (class, nonatomic, readonly) UIColor *placeholderText;
-@property (class, nonatomic, readonly) UIColor *systemBackground;
-@property (class, nonatomic, readonly) UIColor *secondarySystemBackground;
-@property (class, nonatomic, readonly) UIColor *tertiarySystemBackground;
-@property (class, nonatomic, readonly) UIColor *systemGroupedBackground;
-@property (class, nonatomic, readonly) UIColor *secondarySystemGroupedBackground;
-@property (class, nonatomic, readonly) UIColor *tertiarySystemGroupedBackground;
-@property (class, nonatomic, readonly) UIColor *separator;
-@property (class, nonatomic, readonly) UIColor *opaqueSeparator;
-@property (class, nonatomic, readonly) UIColor *link;
-@property (class, nonatomic, readonly) UIColor *darkText;
-@property (class, nonatomic, readonly) UIColor *lightText;
-@property (class, nonatomic, readonly) UIColor *systemBlue;
-@property (class, nonatomic, readonly) UIColor *systemGreen;
-@property (class, nonatomic, readonly) UIColor *systemIndigo;
-@property (class, nonatomic, readonly) UIColor *systemOrange;
-@property (class, nonatomic, readonly) UIColor *systemPink;
-@property (class, nonatomic, readonly) UIColor *systemPurple;
-@property (class, nonatomic, readonly) UIColor *systemRed;
-@property (class, nonatomic, readonly) UIColor *systemTeal;
-@property (class, nonatomic, readonly) UIColor *systemYellow;
-@property (class, nonatomic, readonly) UIColor *systemGray;
-@property (class, nonatomic, readonly) UIColor *systemGray2;
-@property (class, nonatomic, readonly) UIColor *systemGray3;
-@property (class, nonatomic, readonly) UIColor *systemGray4;
-@property (class, nonatomic, readonly) UIColor *systemGray5;
-@property (class, nonatomic, readonly) UIColor *systemGray6;
+@property (class, nonatomic, readonly) NSString *label;
+@property (class, nonatomic, readonly) NSString *secondaryLabel;
+@property (class, nonatomic, readonly) NSString *tertiaryLabel;
+@property (class, nonatomic, readonly) NSString *quaternaryLabel;
+@property (class, nonatomic, readonly) NSString *systemFill;
+@property (class, nonatomic, readonly) NSString *secondarySystemFill;
+@property (class, nonatomic, readonly) NSString *tertiarySystemFill;
+@property (class, nonatomic, readonly) NSString *quaternarySystemFill;
+@property (class, nonatomic, readonly) NSString *placeholderText;
+@property (class, nonatomic, readonly) NSString *systemBackground;
+@property (class, nonatomic, readonly) NSString *secondarySystemBackground;
+@property (class, nonatomic, readonly) NSString *tertiarySystemBackground;
+@property (class, nonatomic, readonly) NSString *systemGroupedBackground;
+@property (class, nonatomic, readonly) NSString *secondarySystemGroupedBackground;
+@property (class, nonatomic, readonly) NSString *tertiarySystemGroupedBackground;
+@property (class, nonatomic, readonly) NSString *separator;
+@property (class, nonatomic, readonly) NSString *opaqueSeparator;
+@property (class, nonatomic, readonly) NSString *link;
+@property (class, nonatomic, readonly) NSString *darkText;
+@property (class, nonatomic, readonly) NSString *lightText;
+@property (class, nonatomic, readonly) NSString *systemBlue;
+@property (class, nonatomic, readonly) NSString *systemGreen;
+@property (class, nonatomic, readonly) NSString *systemIndigo;
+@property (class, nonatomic, readonly) NSString *systemOrange;
+@property (class, nonatomic, readonly) NSString *systemPink;
+@property (class, nonatomic, readonly) NSString *systemPurple;
+@property (class, nonatomic, readonly) NSString *systemRed;
+@property (class, nonatomic, readonly) NSString *systemTeal;
+@property (class, nonatomic, readonly) NSString *systemYellow;
+@property (class, nonatomic, readonly) NSString *systemGray;
+@property (class, nonatomic, readonly) NSString *systemGray2;
+@property (class, nonatomic, readonly) NSString *systemGray3;
+@property (class, nonatomic, readonly) NSString *systemGray4;
+@property (class, nonatomic, readonly) NSString *systemGray5;
+@property (class, nonatomic, readonly) NSString *systemGray6;
 
-@property (class, nonatomic, readonly) UIColor *darkGray;
-@property (class, nonatomic, readonly) UIColor *lightGray;
+@property (class, nonatomic, readonly) NSString *darkGray;
+@property (class, nonatomic, readonly) NSString *lightGray;
 
 @end
 

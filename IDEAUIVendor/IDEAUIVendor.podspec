@@ -104,9 +104,14 @@ Pod::Spec.new do |spec|
     spec.dependency 'OpenSSL-Universal'
   end # OpenSSL
 
-  if ENV['IDEA_MATERIAL_NAVIGATION_BAR'] == 'YES'
+  if ENV['IDEA_MATERIAL_COMPONENTS'] == 'YES'
+    spec.dependency 'MotionInterchange'
     spec.dependency 'MaterialComponents/NavigationBar'
-    spec.dependency 'MaterialComponents/ActivityIndicator'
+    spec.dependency 'MaterialComponents/Buttons'
+    spec.dependency 'MaterialComponents/BottomSheet'
+    spec.dependency 'MaterialComponents/BottomSheet+ShapeThemer'
+#    spec.dependency 'MaterialComponents/ActivityIndicator'
+    spec.dependency 'MaterialComponents/Snackbar',  :configurations => ['Debug']
   end # IDEA_MATERIAL_NAVIGATION_BAR
 
 #  spec.dependency 'pop'
@@ -118,6 +123,7 @@ Pod::Spec.new do |spec|
 
 #  spec.dependency 'YYKit'
   spec.dependency 'IDEAColor'
+  spec.dependency 'IDEAPalettes'
 #  spec.dependency 'IDEAFONT'
   spec.dependency 'IDEAKit'
   spec.dependency 'IDEAUIKit'
@@ -230,10 +236,10 @@ Pod::Spec.new do |spec|
 
 #ifdef __OBJC__
 
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
+#  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
 #     import <RTRootNavigationController/RTRootNavigationController.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
+#  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
 #     import "RTRootNavigationController/RTRootNavigationController.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
@@ -254,24 +260,14 @@ Pod::Spec.new do |spec|
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
 #  endif
 
-#  if __has_include(<IDEAFONT/IDEAFONT.h>)
+#  if __has_include(<IDEAFONT/IDEAFONT-umbrella.h>)
 #     import <IDEAFONT/IDEAFONT.h>
 #     define IDEA_FONT                                                     (1)
-#  elif __has_include("IDEAFONT/IDEAFONT.h")
+#  elif __has_include("IDEAFONT/IDEAFONT-umbrella.h")
 #     import "IDEAFONT/IDEAFONT.h"
 #     define IDEA_FONT                                                     (1)
 #  else
 #     define IDEA_FONT                                                     (0)
-#  endif
-
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
 #  endif
 
 #  if __has_include(<MaterialComponents/MaterialActivityIndicator.h>)
@@ -288,6 +284,52 @@ Pod::Spec.new do |spec|
 #  endif
 
 #endif /* __OBJC__ */
+
+/******************************************************************************************************/
+
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
+#  import <YYKit/YYKit.h>
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
+#  import "YYKit/YYKit.h"
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
+#  import "YYKit.h"
+#     define YY_KIT                                                        (1)
+#else /* YY_KIT */
+#     define YY_KIT                                                        (0)
+#  ifndef weakify
+#     if __has_feature(objc_arc)
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define weakify( x )                                               \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !weakify */
+
+#  ifndef strongify
+#     if __has_feature(objc_arc)
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
+            _Pragma("clang diagnostic pop")
+#     else
+#        define strongify( x )                                             \\
+            _Pragma("clang diagnostic push")                               \\
+            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
+            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
+            _Pragma("clang diagnostic pop")
+#     endif
+#  endif /* !strongify */
+#endif
 
 /******************************************************************************************************/
 
@@ -323,9 +365,9 @@ Pod::Spec.new do |spec|
 
 /******************************************************************************************************/
 
-#if (__has_include(<YYKit/YYKit.h>))
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
 #  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
 #  import "YYKit/YYKit.h"
 // #elif (__has_include("YYKit.h"))
 // #  import "YYKit.h"
@@ -753,7 +795,11 @@ __END_DECLS
 #import <IDEAColor/UIColorX+System.h>
 #import <IDEAColor/UIColorX+Dynamic.h>
 
+#import <IDEAPalettes/IDEAPalettes.h>
+
 #import <IDEAUIKit/IDEAUIKit.h>
+
+/******************************************************************************************************/
 
 NS_INLINE NSBundle * __BUNDLE_FROM(Class aClass) {
    

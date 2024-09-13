@@ -30,16 +30,16 @@
    return UIEdgeInsetsZero;
 }
 
-- (UIEdgeInsets)safeArea {
-   
-   if (@available(iOS 11.0, *)) {
-            
-      return self.safeAreaInsets;
-
-   } /* End if () */
-
-   return UIEdgeInsetsZero;
-}
+//- (UIEdgeInsets)safeArea {
+//   
+//   if (@available(iOS 11.0, *)) {
+//            
+//      return self.safeAreaInsets;
+//
+//   } /* End if () */
+//
+//   return UIEdgeInsetsZero;
+//}
 
 static const CGFloat __FixedStatusBarHeightOnPreiPhoneXDevices = 20;
 
@@ -55,10 +55,32 @@ static const CGFloat __FixedStatusBarHeightOnPreiPhoneXDevices = 20;
      // running on such a device, we read from the safe area insets instead of the fixed status bar
      // height so that we react to changes in safe area insets (usually due to orientation changes)
      // and update the fixed margin accordingly.
-      UIEdgeInsets insets = [UIWindow safeArea];
-      topInset = insets.top;
-   }
+//      UIEdgeInsets insets = [UIWindow safeArea];
+      topInset = UIWindow.safeArea.top;
+      
+   } /* End if () */
+   
    return topInset;
+ }
+
++ (CGFloat)bottomSafeAreaInset {
+   
+   CGFloat bottomInset = 0;
+   
+   if (@available(iOS 11.0, *)) {
+      
+     // Devices with hardware safe area insets have fixed insets that depend on the device
+     // orientation. On such devices, we aren't interested in the status bar's height because the
+     // hardware safe area insets are what ultimately define the margins for the app. If we are
+     // running on such a device, we read from the safe area insets instead of the fixed status bar
+     // height so that we react to changes in safe area insets (usually due to orientation changes)
+     // and update the fixed margin accordingly.
+//      UIEdgeInsets insets = [UIWindow safeArea];
+      bottomInset = UIWindow.safeArea.top;
+
+   } /* End if () */
+
+   return bottomInset;
  }
 
 @end

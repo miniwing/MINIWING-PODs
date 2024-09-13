@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 youknowone.org. All rights reserved.
 //
 
-#if __has_include(<FoundationExtension/FoundationExtension.h>)
+#if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #import <FoundationExtension/FoundationExtension.h>
 #else
 #endif /* !FOUNDATION_EXTENSION */
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSAttributedString (IDEAKit)
 
-#if __has_include(<FoundationExtension/FoundationExtension.h>)
+#if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #else
 + (id)attributedString {
    

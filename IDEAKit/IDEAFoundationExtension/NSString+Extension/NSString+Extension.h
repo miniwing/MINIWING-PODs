@@ -11,10 +11,10 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_include(<FoundationExtension/FoundationExtension.h>)
+#if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #  import <FoundationExtension/FoundationExtension.h>
 #  define FOUNDATION_EXTENSION                                       (1)
-#elif __has_include("FoundationExtension/FoundationExtension.h")
+#elif __has_include("FoundationExtension/FoundationExtension-umbrella.h")
 #  import "FoundationExtension/FoundationExtension.h"
 #  define FOUNDATION_EXTENSION                                       (1)
 #else

@@ -10,10 +10,6 @@
 
 #import "UIImageViewX.h"
 
-@interface UIImageViewX ()
-
-@end
-
 @implementation UIImageViewX
 
 - (void)dealloc {

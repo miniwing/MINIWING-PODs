@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIApplication (Extension)
 
-#if __has_include(<YYKit/YYKit.h>)
-#elif __has_include("YYKit/YYKit.h")
+#if __has_include(<YYKit/YYKit-umbrella.h>)
+#elif __has_include("YYKit/YYKit-umbrella.h")
 #else
 + (BOOL)isAppExtension;
 + (UIApplication *)sharedExtensionApplication;

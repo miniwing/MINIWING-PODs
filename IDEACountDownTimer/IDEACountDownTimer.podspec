@@ -151,10 +151,10 @@ Pod::Spec.new do |spec|
 
 #ifdef __OBJC__
 
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
+#  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
 #     import <RTRootNavigationController/RTRootNavigationController.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
+#  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
 #     import "RTRootNavigationController/RTRootNavigationController.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
@@ -165,62 +165,21 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
-#  endif
-
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/
 
-#if __has_feature(objc_arc)
-#  define __AUTORELEASE(x)                         (x);
-#  define __RELEASE(x)                             (x) = nil;
-#  define __RETAIN(x)                              (x)
-#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);
-#  define __dispatch_release(x)                    (x) = nil;
-#else
-#  define __RETAIN(x)                              [(x) retain];
-#  define __AUTORELEASE(x)                         [(x) autorelease];
-#  define __RELEASE(x)                             if (nil != (x)) {                               \\
-                                                      [(x) release];                               \\
-                                                      (x) = nil;                                   \\
-                                                   }
-#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);[super dealloc];
-#  define __dispatch_release(x)                    dispatch_release((x))
-#endif
-
-/******************************************************************************************************/
-
-#define __ON__                                     (1)
-#define __OFF__                                    (0)
-
-#if (defined(DEBUG) && (1==DEBUG))
-#  define __AUTO__                                 (1)
-#  define __Debug__                                (1)
-#else
-#  define __AUTO__                                 (0)
-#  define __Debug__                                (0)
-#endif
-
-/******************************************************************************************************/
-
-#if (__has_include(<YYKit/YYKit.h>))
+#if (__has_include(<YYKit/YYKit-umbrella.h>))
 #  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit.h"))
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit/YYKit-umbrella.h"))
 #  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
+#     define YY_KIT                                                        (1)
+#elif (__has_include("YYKit-umbrella.h"))
 #  import "YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
+#     define YY_KIT                                                        (1)
 #else /* YY_KIT */
-
+#     define YY_KIT                                                        (0)
 #  ifndef weakify
 #     if __has_feature(objc_arc)
 #        define weakify( x )                                               \\
@@ -252,7 +211,38 @@ Pod::Spec.new do |spec|
             _Pragma("clang diagnostic pop")
 #     endif
 #  endif /* !strongify */
+#endif
 
+/******************************************************************************************************/
+
+#if __has_feature(objc_arc)
+#  define __AUTORELEASE(x)                         (x);
+#  define __RELEASE(x)                             (x) = nil;
+#  define __RETAIN(x)                              (x)
+#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);
+#  define __dispatch_release(x)                    (x) = nil;
+#else
+#  define __RETAIN(x)                              [(x) retain];
+#  define __AUTORELEASE(x)                         [(x) autorelease];
+#  define __RELEASE(x)                             if (nil != (x)) {                               \\
+                                                      [(x) release];                               \\
+                                                      (x) = nil;                                   \\
+                                                   }
+#  define __SUPER_DEALLOC                          objc_removeAssociatedObjects(self);[super dealloc];
+#  define __dispatch_release(x)                    dispatch_release((x))
+#endif
+
+/******************************************************************************************************/
+
+#define __ON__                                     (1)
+#define __OFF__                                    (0)
+
+#if (defined(DEBUG) && (1==DEBUG))
+#  define __AUTO__                                 (1)
+#  define __Debug__                                (1)
+#else
+#  define __AUTO__                                 (0)
+#  define __Debug__                                (0)
 #endif
 
 /******************************************************************************************************/

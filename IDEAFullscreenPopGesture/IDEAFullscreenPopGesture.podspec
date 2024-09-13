@@ -171,10 +171,10 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #ifdef __OBJC__
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
+#  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
 #     import <RTRootNavigationController/RTRootNavigationController.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
+#  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
 #     import "RTRootNavigationController/RTRootNavigationController.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else

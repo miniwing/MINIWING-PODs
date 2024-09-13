@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-#if __has_include(<UIKitExtension/UIKitExtension.h>)
+#if __has_include(<UIKitExtension/UIKitExtension-umbrella.h>)
 #else
 @interface UIView (Shortcut)
 

@@ -25,8 +25,4 @@ IB_DESIGNABLE
 
 @end
 
-@interface IDEAActivityIndicatorController ()
-
-@end
-
 NS_ASSUME_NONNULL_END

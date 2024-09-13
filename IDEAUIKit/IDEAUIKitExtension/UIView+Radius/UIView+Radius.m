@@ -55,6 +55,13 @@
 }
 
 - (void)setRectCorner:(UIRectCorner)aRectCorner radius:(CGFloat)aRadius {
+   
+   [self setRectCorner:aRectCorner radius:aRadius masksToBounds:YES];
+   
+   return;
+}
+
+- (void)setRectCorner:(UIRectCorner)aRectCorner radius:(CGFloat)aRadius masksToBounds:(BOOL)aMasksToBounds {
       
    UIBezierPath   *stBezierPath  = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                          byRoundingCorners:aRectCorner
@@ -64,7 +71,7 @@
    stMaskLayer.path  = stBezierPath.CGPath;
 //   stMaskLayer.maskedCorners  = nil;
    
-   [self.layer setMasksToBounds:YES];
+   [self.layer setMasksToBounds:aMasksToBounds];
    [self.layer setMask:stMaskLayer];
    
    // 提高性能

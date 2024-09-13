@@ -22,6 +22,7 @@
 - (void)setCornerRadius:(CGFloat)aRadius clipsToBounds:(BOOL)aClipsToBounds masksToBounds:(BOOL)aMasksToBounds;
 
 - (void)setRectCorner:(UIRectCorner)aRectCorner radius:(CGFloat)aRadius;
+- (void)setRectCorner:(UIRectCorner)aRectCorner radius:(CGFloat)aRadius masksToBounds:(BOOL)aMasksToBounds;
 
 @end
 

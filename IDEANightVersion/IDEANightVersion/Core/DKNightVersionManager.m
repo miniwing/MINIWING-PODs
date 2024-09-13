@@ -13,11 +13,11 @@
 NSString *  const DKThemeVersionNormal                      = @"NORMAL";
 NSString *  const DKThemeVersionNight                       = @"NIGHT";
 
-//#if __has_include(<UIKitExtension/UIKitExtension.h>)
+//#if __has_include(<UIKitExtension/UIKitExtension-umbrella.h>)
 //#  import <UIKitExtension/UIKitExtension.h>
 //CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuration;
 ////CGFloat     const DKNightVersionAnimationDuration           = 3.0f;
-//#elif __has_include("UIKitExtension/UIKitExtension.h")
+//#elif __has_include("UIKitExtension/UIKitExtension-umbrella.h")
 //#  import "UIKitExtension/UIKitExtension.h"
 //CGFloat     const DKNightVersionAnimationDuration           = UIAViewAnimationDefaultDuration;
 //#else
