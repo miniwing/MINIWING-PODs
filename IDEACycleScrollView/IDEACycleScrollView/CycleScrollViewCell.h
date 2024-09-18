@@ -10,7 +10,7 @@
 
 @class CycleScrollViewCell;
 
-typedef void(^cellClickBlock)(NSInteger index);
+typedef void(^didClickBlock)(NSInteger index);
 
 @interface CycleScrollViewCell : UIView
 
@@ -21,7 +21,7 @@ typedef void(^cellClickBlock)(NSInteger index);
 @property (nonatomic, strong)                UIView                              * coverView;
 
 /// cell点击回调
-@property (nonatomic, copy)                  cellClickBlock                        didCellClick;
+@property (nonatomic, copy)                  didClickBlock                         onDidClick;
 
 @end
 

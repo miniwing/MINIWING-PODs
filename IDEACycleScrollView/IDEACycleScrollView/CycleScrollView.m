@@ -765,7 +765,7 @@
          if (!self.isChangeAlpha) cell.coverView.hidden = YES;
          
          __weak __typeof(self) weakSelf = self;
-         cell.didCellClick = ^(NSInteger index) {
+         cell.onDidClick = ^(NSInteger index) {
             [weakSelf handleCellSelectWithIndex:index];
          };
          

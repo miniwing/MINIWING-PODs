@@ -22,8 +22,10 @@
       [self addSubview:self.imageView];
       [self addSubview:self.coverView];
       
-      UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
-      [self addGestureRecognizer:tapGesture];
+      [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
+
+      UITapGestureRecognizer *stTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+      [self addGestureRecognizer:stTapGesture];
       
    } /* End if () */
    
@@ -32,7 +34,7 @@
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)aTap {
    
-   !self.didCellClick ? : self.didCellClick(self.tag);
+   !self.onDidClick ? : self.onDidClick(self.tag);
    
    return;
 }
@@ -66,6 +68,7 @@
 - (UIView *)coverView {
    
    if (!_coverView) {
+      
       _coverView = [UIView new];
       _coverView.backgroundColor = [UIColor blackColor];
       _coverView.userInteractionEnabled = NO;
