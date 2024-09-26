@@ -23,6 +23,8 @@
       [self addSubview:self.coverView];
       
       [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
+      
+      [self.imageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
 
       UITapGestureRecognizer *stTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
       [self addGestureRecognizer:stTapGesture];

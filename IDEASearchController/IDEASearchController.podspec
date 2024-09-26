@@ -5,10 +5,15 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://github.com/ko1o/PYSearch'
   spec.license      = 'MIT'
   spec.authors      = {'CoderKo1o' => '499491531@qq.com'}
-  spec.platform     = :ios, '10.0'
+#  spec.platform     = :ios, '10.0'
 #  spec.source       = {:git => 'https://github.com/ko1o/PYSearch.git', :tag => spec.version}
   spec.source       = { :path => "." }
   
+  spec.ios.deployment_target        = ENV['ios.deployment_target']
+  spec.watchos.deployment_target    = ENV['watchos.deployment_target']
+  spec.tvos.deployment_target       = ENV['tvos.deployment_target']
+  spec.osx.deployment_target        = ENV['osx.deployment_target']
+
   spec.requires_arc = true
   
   spec.ios.pod_target_xcconfig      = {
@@ -124,12 +129,12 @@ Pod::Spec.new do |spec|
 #import <objc/message.h>
 #import <objc/runtime.h>
 
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CAAnimation.h>
+
 #ifdef __OBJC__
-#  import <UIKit/UIKit.h>
-#  import <Foundation/Foundation.h>
-#  import <QuartzCore/QuartzCore.h>
-#  import <QuartzCore/CAAnimation.h>
-#  import <MessageUI/MessageUI.h>
 
 #  if __has_include(<FoundationExtension/FoundationExtension-umbrella.h>)
 #     import <FoundationExtension/FoundationExtension.h>

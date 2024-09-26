@@ -19,9 +19,12 @@
       
       if (self != [NSNull null]) {
          
-         if ([self isKindOfClass:[NSString class]]) {
+         if ([self isKindOfClass:NSString.class]) {
             
-            if (![(NSString *)self contains:@"null"] && [(NSString *)self length]) {
+            if (![(NSString *)self contains:@"null"]
+                && ![(NSString *)self contains:@"Null"]
+                && ![(NSString *)self contains:@"NULL"]
+                && [(NSString *)self length]) {
                
                bNULL = NO;
                

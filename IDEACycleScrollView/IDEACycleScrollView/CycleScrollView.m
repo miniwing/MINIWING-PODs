@@ -396,7 +396,9 @@
    
    // 默认选中
    if (self.defaultSelectIndex >= 0 && self.defaultSelectIndex < self.realCount) {
+      
       [self handleCellScrollWithIndex:self.defaultSelectIndex];
+      
    } /* End if () */
    
    return;
@@ -752,37 +754,52 @@
 }
 
 - (void)addCellAtIndex:(NSInteger)index {
+   
    NSParameterAssert(index >= 0 && index < self.visibleCells.count);
    
-   CycleScrollViewCell *cell = self.visibleCells[index];
-   if ((NSObject *)cell == [NSNull null]) {
-      cell = [self.dataSource cycleScrollView:self cellForViewAtIndex:index % self.realCount];
-      if (cell) {
-         [self.visibleCells replaceObjectAtIndex:index withObject:cell];
+   CycleScrollViewCell *stCell = self.visibleCells[index];
+   
+   if ((NSObject *)stCell == [NSNull null]) {
+      
+      stCell = [self.dataSource cycleScrollView:self cellForViewAtIndex:index % self.realCount];
+      if (stCell) {
+         [self.visibleCells replaceObjectAtIndex:index withObject:stCell];
          
-         cell.tag = index % self.realCount;
-         [cell setupCellFrame:CGRectMake(0, 0, self.cellSize.width, self.cellSize.height)];
-         if (!self.isChangeAlpha) cell.coverView.hidden = YES;
+         stCell.tag = index % self.realCount;
+//         [stCell setupCellFrame:CGRectMake(0, 0, self.cellSize.width, self.cellSize.height)];
+         if (!self.isChangeAlpha) stCell.coverView.hidden = YES;
          
          __weak __typeof(self) weakSelf = self;
-         cell.onDidClick = ^(NSInteger index) {
+         stCell.onDidClick = ^(NSInteger index) {
+            
             [weakSelf handleCellSelectWithIndex:index];
          };
          
          switch (self.direction) {
             case CycleScrollViewScrollDirectionHorizontal:
-               cell.frame = CGRectMake(self.cellSize.width * index, 0, self.cellSize.width, self.cellSize.height);
+               stCell.frame = CGRectMake(self.cellSize.width * index, 0, self.cellSize.width, self.cellSize.height);
                break;
             case CycleScrollViewScrollDirectionVertical:
-               cell.frame = CGRectMake(0, self.cellSize.height * index, self.cellSize.width, self.cellSize.height);
+               stCell.frame = CGRectMake(0, self.cellSize.height * index, self.cellSize.width, self.cellSize.height);
                break;
             default:
                break;
-         }
-         
-         if (!cell.superview) {
-            [self.scrollView addSubview:cell];
-         }
+               
+         } /* End switch () */
+
+//         [stCell updateConstraints];
+//         [stCell setNeedsLayout];
+//         [stCell layoutIfNeeded];
+
+         if (!stCell.superview) {
+            
+            [self.scrollView addSubview:stCell];
+
+//            [stCell setNeedsLayout];
+//            [self.scrollView setNeedsLayout];
+//            [self.scrollView layoutIfNeeded];
+            
+         } /* End if () */
       }
    }
 }

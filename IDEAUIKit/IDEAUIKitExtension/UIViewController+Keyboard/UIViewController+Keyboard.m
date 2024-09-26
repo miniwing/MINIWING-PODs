@@ -59,8 +59,8 @@
    return;
 }
 
-- (void)unregisterKeyboardNotifications
-{
+- (void)unregisterKeyboardNotifications {
+   
    int                            nErr                                     = EFAULT;
    
    __TRY;

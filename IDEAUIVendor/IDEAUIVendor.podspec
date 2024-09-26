@@ -111,7 +111,7 @@ Pod::Spec.new do |spec|
     spec.dependency 'MaterialComponents/BottomSheet'
     spec.dependency 'MaterialComponents/BottomSheet+ShapeThemer'
 #    spec.dependency 'MaterialComponents/ActivityIndicator'
-    spec.dependency 'MaterialComponents/Snackbar',  :configurations => ['Debug']
+    spec.dependency 'MaterialComponents/Snackbar'
   end # IDEA_MATERIAL_NAVIGATION_BAR
 
 #  spec.dependency 'pop'
@@ -223,14 +223,10 @@ Pod::Spec.new do |spec|
 #import <objc/message.h>
 #import <objc/runtime.h>
 
-#ifdef __OBJC__
-#  import <UIKit/UIKit.h>
-#  import <Foundation/Foundation.h>
-#  import <QuartzCore/QuartzCore.h>
-#  import <QuartzCore/CAAnimation.h>
-#  import <MessageUI/MessageUI.h>
-#else /* __OBJC__ */
-#endif /* !__OBJC__ */
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CAAnimation.h>
 
 /******************************************************************************************************/
 

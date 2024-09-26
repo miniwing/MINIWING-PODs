@@ -202,10 +202,10 @@ LOCAL void * MALLOC_EX(size_t aSize) {
 //#endif
 
 #ifndef IDEA_DUMMY_CLASS
-# define IDEA_DUMMY_CLASS(_name_)                  @interface __DUMMY_CLASS_ ## _name_ : NSObject           \
-                                                   @end                                                     \
-                                                   @implementation __DUMMY_CLASS_ ## _name_                 \
-                                                   @end
+# define IDEA_DUMMY_CLASS(_name_)                           @interface __DUMMY_CLASS_ ## _name_ : NSObject           \
+                                                            @end                                                     \
+                                                            @implementation __DUMMY_CLASS_ ## _name_                 \
+                                                            @end
 #endif
 
 #endif /* __OBJC__ */
@@ -233,11 +233,15 @@ typedef signed   long                                       LONG;
  * HTTP Timeout                                                                              *
  *********************************************************************************************/
 #if __Debug__
-#  define HTTP_TIME_OUT_INTERVAL                   (10)
+#  define HTTP_TIME_OUT_INTERVAL                            (10)
 #else
-#  define HTTP_TIME_OUT_INTERVAL                   (30)
+#  define HTTP_TIME_OUT_INTERVAL                            (30)
 #endif
 
+/*********************************************************************************************/
+#if !defined(APP_INSTALLER)
+#  define APP_INSTALLER                                     "com.ios.vending"
+#endif
 /*********************************************************************************************/
 
 #endif /* IdeaDef_H */
