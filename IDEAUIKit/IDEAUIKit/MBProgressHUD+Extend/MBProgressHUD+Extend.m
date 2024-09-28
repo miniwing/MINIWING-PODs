@@ -18,15 +18,27 @@
 
 @implementation MBProgressHUD (Extend)
 
-+ (NSArray *)allHUDsForView:(UIView *)view {
-   NSMutableArray *huds = [NSMutableArray array];
-   NSArray *subviews = view.subviews;
-   for (UIView *aView in subviews) {
-      if ([aView isKindOfClass:self]) {
-         [huds addObject:aView];
-      }
-   }
-   return [NSArray arrayWithArray:huds];
++ (NSTimeInterval)hideDelay {
+   
+   return 1.5;
+}
+
++ (NSArray<MBProgressHUD *> *)allHUDsForView:(UIView *)aView {
+   
+   NSMutableArray<MBProgressHUD *>  *stHUDs     = [NSMutableArray array];
+   NSArray<UIView *>                *stSubViews = aView.subviews;
+   
+   for (UIView *aView in stSubViews) {
+      
+      if ([aView isKindOfClass:MBProgressHUD.class]) {
+         
+         [stHUDs addObject:aView];
+         
+      } /* End if () */
+      
+   } /* End for () */
+   
+   return stHUDs;
 }
 
 - (void)setFontWithName:(NSString *)aName {

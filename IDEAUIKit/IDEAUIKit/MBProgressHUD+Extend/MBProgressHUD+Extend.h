@@ -16,6 +16,8 @@
 
 @interface MBProgressHUD (Extend)
 
+@property (class, nonatomic, readonly) NSTimeInterval hideDelay;
+
 + (MBProgressHUD *)HUDForView:(UIView *)aView ID:(NSInteger)aID;
 - (void)setFontWithName:(NSString *)aName;
 
