@@ -29,6 +29,8 @@
 #import "UIAlertAction+Color.h"
 #import "UIAlertController+Blocks.h"
 
+#define TOP_MOST                                                     0
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
 
@@ -234,19 +236,25 @@ static NSInteger const UIAlertControllerBlocksFirstOtherButtonIndex  = 2;
 
 @end
 
-@implementation UIViewController (UACB_Topmost)
+@implementation UIViewController (AlertTopmost)
 
 - (UIViewController *)topMost {
    
    UIViewController  *stTopMost  = self;
    UIViewController  *stAbove    = nil;
-   
+
    while ((stAbove = stTopMost.presentedViewController)) {
+      
+      if (stAbove.isBeingDismissed) {
+         
+         break;
+         
+      } /* End if () */
       
       stTopMost = stAbove;
       
    } /* End while () */
-   
+
    return stTopMost;
 }
 
