@@ -154,10 +154,10 @@ Pod::Spec.new do |spec|
 #ifdef __OBJC__
 
 #  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
+#     import <RTRootNavigationController/RTRootNavigationController-umbrella.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
+#     import "RTRootNavigationController/RTRootNavigationController-umbrella.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
 #     define rt_topViewController                                          topViewController
@@ -172,13 +172,13 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)
@@ -245,52 +245,6 @@ Pod::Spec.new do |spec|
 #else
 #  define __AUTO__                                 (0)
 #  define __Debug__                                (0)
-#endif
-
-/******************************************************************************************************/
-
-#if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
-#elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
-#elif (__has_include("YYKit.h"))
-#  import "YYKit.h"
-// #elif (__has_include("YYKit.h"))
-// #  import "YYKit.h"
-#else /* YY_KIT */
-
-#  ifndef weakify
-#     if __has_feature(objc_arc)
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __weak __typeof__(x) __weak_##x##__ = x;     \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define weakify( x )                                               \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            autoreleasepool{} __block __typeof__(x) __block_##x##__ = x;   \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !weakify */
-
-#  ifndef strongify
-#     if __has_feature(objc_arc)
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __weak_##x##__;             \\
-            _Pragma("clang diagnostic pop")
-#     else
-#        define strongify( x )                                             \\
-            _Pragma("clang diagnostic push")                               \\
-            _Pragma("clang diagnostic ignored \\"-Wshadow\\"")               \\
-            try{} @finally{} __typeof__(x) x = __block_##x##__;            \\
-            _Pragma("clang diagnostic pop")
-#     endif
-#  endif /* !strongify */
-
 #endif
 
 /******************************************************************************************************/

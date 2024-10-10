@@ -8,10 +8,10 @@
 
 #if __has_include(<MBProgressHUD/MBProgressHUD.h>) || __has_include("MBProgressHUD/MBProgressHUD.h")
 
-#  if __has_include(<MBProgressHUD/MBProgressHUD.h>)
-#     import <MBProgressHUD/MBProgressHUD.h>
-#  elif __has_include("MBProgressHUD/MBProgressHUD.h")
-#     import "MBProgressHUD/MBProgressHUD.h"
+#  if __has_include(<MBProgressHUD/MBProgressHUD-umbrella.h>)
+#     import <MBProgressHUD/MBProgressHUD-umbrella.h>
+#  elif __has_include("MBProgressHUD/MBProgressHUD-umbrella.h")
+#     import "MBProgressHUD/MBProgressHUD-umbrella.h"
 #  endif
 
 #import "MBProgressHUD+Extend.h"

@@ -10,15 +10,16 @@
 #import <UIKit/UIKit.h>
 
 #if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
-#  import <RTRootNavigationController/RTRootNavigationController.h>
+#  import <RTRootNavigationController/RTRootNavigationController-umbrella.h>
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
-#  import "RTRootNavigationController/RTRootNavigationController.h"
-#  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#elif __has_include("RTRootNavigationController.h")
-#  import "RTRootNavigationController.h"
+#  import "RTRootNavigationController/RTRootNavigationController-umbrella.h"
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #else
+#  define rt_topViewController                                          topViewController
+#  define rt_visibleViewController                                      visibleViewController
+#  define rt_viewControllers                                            viewControllers
+#  define rt_navigationController                                       navigationController
 #  define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #endif
 

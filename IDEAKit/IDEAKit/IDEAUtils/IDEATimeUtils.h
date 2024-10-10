@@ -12,4 +12,7 @@
 
 @interface IDEATimeUtils : NSObject
 
++ (NSString *)getTimeAgo:(long)aCreatedAt;
++ (NSString *)millisecondToHMS:(NSTimeInterval)aMillisecond;
+
 @end

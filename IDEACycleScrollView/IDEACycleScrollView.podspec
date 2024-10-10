@@ -177,11 +177,11 @@ Pod::Spec.new do |spec|
 #     define UIKIT_EXTENSION                                               (0)
 #  endif
 
-#  if __has_include(<RTRootNavigationController/RTRootNavigationController.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
+#  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
+#     import <RTRootNavigationController/RTRootNavigationController-umbrella.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
-#  elif __has_include("RTRootNavigationController/RTRootNavigationController.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
+#  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
+#     import "RTRootNavigationController/RTRootNavigationController-umbrella.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
 #     define rt_topViewController                                          topViewController
@@ -191,78 +191,63 @@ Pod::Spec.new do |spec|
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (0)
 #  endif
 
-#  if __has_include(<IDEAFullscreenPopGesture/UINavigationController+FullscreenPopGesture.h>)
-#     import <IDEAFullscreenPopGesture/UINavigationController+FullscreenPopGesture.h>
+#  if __has_include(<IDEAFullscreenPopGesture/IDEAFullscreenPopGesture-umbrella.h>)
+#     import <IDEAFullscreenPopGesture/IDEAFullscreenPopGesture-umbrella.h>
 #     define FULLSCREEN_POP_GESTURE                                        (1)
-#  elif __has_include("IDEAFullscreenPopGesture/UINavigationController+FullscreenPopGesture.h")
-#     import "IDEAFullscreenPopGesture/UINavigationController+FullscreenPopGesture.h"
+#  elif __has_include("IDEAFullscreenPopGesture/IDEAFullscreenPopGesture-umbrella.h")
+#     import "IDEAFullscreenPopGesture/IDEAFullscreenPopGesture-umbrella.h"
 #     define FULLSCREEN_POP_GESTURE                                        (1)
 #  else
 #     define FULLSCREEN_POP_GESTURE                                        (0)
 #  endif
 
-#  if __has_include(<IDEATabBarControllerTransition/IDEATabBarControllerTransition.h>)
-#     import <IDEATabBarControllerTransition/IDEATabBarControllerTransition.h>
-#     import <IDEATabBarControllerTransition/IDEATabBarControllerTransitionAnimation.h>
+#  if __has_include(<IDEATabBarControllerTransition/IDEATabBarControllerTransition-umbrella.h>)
+#     import <IDEATabBarControllerTransition/IDEATabBarControllerTransition-umbrella.h>
 #     define IDEA_TABBARCONTROLLER_TRANSITION                              (1)
-#  elif __has_include("IDEATabBarControllerTransition/IDEATabBarControllerTransition.h")
-#     import "IDEATabBarControllerTransition/IDEATabBarControllerTransition.h"
-#     import "IDEATabBarControllerTransition/IDEATabBarControllerTransitionAnimation.h"
+#  elif __has_include("IDEATabBarControllerTransition/IDEATabBarControllerTransition-umbrella.h")
+#     import "IDEATabBarControllerTransition/IDEATabBarControllerTransition-umbrella.h"
 #     define IDEA_TABBARCONTROLLER_TRANSITION                              (1)
 #  else
 #     define IDEA_TABBARCONTROLLER_TRANSITION                              (0)
 #  endif
 
-#  if __has_include(<YYKit/YYKit.h>)
-#     import <YYKit/YYKit.h>
-#     define YY_KIT                                                        (1)
-#  elif __has_include("YYKit/YYKit.h")
-#     import "YYKit/YYKit.h"
-#     define YY_KIT                                                        (1)
-#  else
-#     define YY_KIT                                                        (0)
-#  endif
-
-#  if __has_include(<IDEANightVersion/DKNightVersion.h>)
-#     import <IDEANightVersion/DKNightVersion.h>
+#  if __has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>)
+#     import <IDEANightVersion/IDEANightVersion-umbrella.h>
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#  elif __has_include("IDEANightVersion/DKNightVersion.h")
-#     import "IDEANightVersion/DKNightVersion.h"
+#  elif __has_include("IDEANightVersion/IDEANightVersion-umbrella.h")
+#     import "IDEANightVersion/IDEANightVersion-umbrella.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  else
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
 #  endif
 
-#  if __has_include(<IDEACountDownTimer/IDEACountDownTimer.h>)
-#     import <IDEACountDownTimer/IDEACountDownTimer.h>
+#  if __has_include(<IDEACountDownTimer/IDEACountDownTimer-umbrella.h>)
+#     import <IDEACountDownTimer/IDEACountDownTimer-umbrella.h>
 #     define IDEA_COUNT_DOWN_TIMER                                         (1)
-#  elif __has_include("IDEACountDownTimer/IDEACountDownTimer.h")
-#     import "IDEACountDownTimer/IDEACountDownTimer.h"
+#  elif __has_include("IDEACountDownTimer/IDEACountDownTimer-umbrella.h")
+#     import "IDEACountDownTimer/IDEACountDownTimer-umbrella.h"
 #     define IDEA_COUNT_DOWN_TIMER                                         (1)
 #  else
 #     define IDEA_COUNT_DOWN_TIMER                                         (0)
 #  endif
 
-#  if __has_include(<IDEAFONT/IDEAFONT.h>)
-#     import <IDEAFONT/IDEAFONT.h>
+#  if __has_include(<IDEAFONT/IDEAFONT-umbrella.h>)
+#     import <IDEAFONT/IDEAFONT-umbrella.h>
 #     define IDEA_FONT                                                     (1)
-#  elif __has_include("IDEAFONT/IDEAFONT.h")
-#     import "IDEAFONT/IDEAFONT.h"
+#  elif __has_include("IDEAFONT/IDEAFONT-umbrella.h")
+#     import "IDEAFONT/IDEAFONT-umbrella.h"
 #     define IDEA_FONT                                                     (1)
 #  else
 #     define IDEA_FONT                                                     (0)
 #  endif
 
-#  if __has_include(<IDEAApplet/IDEAApplet.h>)
-#     import <IDEAApplet/IDEAApplet.h>
-#     import <IDEAApplet/IDEAAppletCore.h>
-#     import <IDEAApplet/IDEAAppletModel.h>
-#     import <IDEAApplet/IDEAAppletEvent.h>
-#     import <IDEAApplet/IDEAAppletService.h>
-#     import <IDEAApplet/IDEAAppletSingleton.h>
-#     import <IDEAApplet/IDEAAppletNotificationBus.h>
-#     import <IDEAApplet/IDEAAppletSignalBus.h>
-#  endif // __has_include(<IDEAApplet/IDEAApplet.h>)
+#  if __has_include(<IDEAApplet/IDEAApplet-umbrella.h>)
+#     import <IDEAApplet/IDEAApplet-umbrella.h>
+#  elif __has_include("IDEAApplet/IDEAApplet-umbrella.h")
+#     import "IDEAApplet/IDEAApplet-umbrella.h"
+#  elif __has_include("IDEAApplet-umbrella.h")
+#     import "IDEAApplet-umbrella.h"
+#  endif
 
 #endif /* __OBJC__ */
 

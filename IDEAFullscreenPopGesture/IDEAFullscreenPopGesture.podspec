@@ -167,11 +167,12 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #ifdef __OBJC__
+
 #  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
+#     import <RTRootNavigationController/RTRootNavigationController-umbrella.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
+#     import "RTRootNavigationController/RTRootNavigationController-umbrella.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
 #     define rt_topViewController                                          topViewController
@@ -182,14 +183,15 @@ Pod::Spec.new do |spec|
 #  endif
 
 #  if __has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>)
+#     import <IDEANightVersion/IDEANightVersion-umbrella.h>
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#     import <IDEANightVersion/DKNightVersion.h>
 #  elif __has_include("IDEANightVersion/IDEANightVersion-umbrella.h")
+#     import "IDEANightVersion/IDEANightVersion-umbrella.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
-#     import "IDEANightVersion/DKNightVersion.h"
 #  else
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
 #  endif
+
 #endif /* __OBJC__ */
 
 /******************************************************************************************************/

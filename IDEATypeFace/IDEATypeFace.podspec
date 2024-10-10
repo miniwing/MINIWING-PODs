@@ -135,13 +135,13 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)

@@ -140,25 +140,12 @@ Pod::Spec.new do |spec|
 #ifdef __OBJC__
 
 #  if __has_include(<IDEAApplet/IDEAApplet-umbrella.h>)
-#     import <IDEAApplet/IDEAApplet.h>
-#     import <IDEAApplet/IDEAAppletCore.h>
-#     import <IDEAApplet/IDEAAppletModel.h>
-#     import <IDEAApplet/IDEAAppletEvent.h>
-#     import <IDEAApplet/IDEAAppletService.h>
-#     import <IDEAApplet/IDEAAppletSingleton.h>
-#     import <IDEAApplet/IDEAAppletNotificationBus.h>
-#     import <IDEAApplet/IDEAAppletSignalBus.h>
+#     import <IDEAApplet/IDEAApplet-umbrella.h>
 #  elif __has_include("IDEAApplet/IDEAApplet-umbrella.h")
-#     import "IDEAApplet/IDEAApplet.h"
-#     import "IDEAApplet/IDEAAppletCore.h"
-#     import "IDEAApplet/IDEAAppletModel.h"
-#     import "IDEAApplet/IDEAAppletEvent.h"
-#     import "IDEAApplet/IDEAAppletService.h"
-#     import "IDEAApplet/IDEAAppletNotification.h"
-#     import "IDEAApplet/IDEAAppletNotificationBus.h"
-#     import "IDEAApplet/IDEAAppletSignal.h"
-#     import "IDEAApplet/IDEAAppletSignalBus.h"
-#  endif // __has_include(<IDEAApplet/IDEAApplet-umbrella.h>)
+#     import "IDEAApplet/IDEAApplet-umbrella.h"
+#  elif __has_include("IDEAApplet-umbrella.h")
+#     import "IDEAApplet-umbrella.h"
+#  endif
 
 #  if __has_include(<IDEAApplet/IDEAAppletDebug.h>)
 #     import <IDEAApplet/IDEAAppletDebug.h>
@@ -171,13 +158,13 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)

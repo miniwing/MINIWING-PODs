@@ -169,10 +169,10 @@ spec.dependency 'IDEANightVersion'
 
 #ifdef __OBJC__
 #  if __has_include(<IDEANightVersion/IDEANightVersion-umbrella.h>)
-#     import <IDEANightVersion/DKNightVersion.h>
+#     import <IDEANightVersion/IDEANightVersion-umbrella.h>
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  elif __has_include("IDEANightVersion/IDEANightVersion-umbrella.h")
-#     import "IDEANightVersion/DKNightVersion.h"
+#     import "IDEANightVersion/IDEANightVersion-umbrella.h"
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (1)
 #  else
 #     define IDEA_NIGHT_VERSION_MANAGER                                    (0)
@@ -182,13 +182,13 @@ spec.dependency 'IDEANightVersion'
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)

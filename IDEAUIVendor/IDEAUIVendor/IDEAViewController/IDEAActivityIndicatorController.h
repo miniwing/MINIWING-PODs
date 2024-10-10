@@ -14,12 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 IB_DESIGNABLE
 @interface IDEAActivityIndicatorController : IDEAViewController
 
-#if MATERIAL_COMPONENTS
+#if MATERIAL_ACTIVITY_INDICATOR
 //@property (nullable, nonatomic, copy) IBInspectable
 @property (nonatomic, strong) IBOutlet       MDCActivityIndicator                * activityIndicator;
-#else /* MATERIAL_COMPONENTS */
+#else /* MATERIAL_ACTIVITY_INDICATOR */
 @property (nonatomic, strong) IBOutlet       UIActivityIndicatorView             * activityIndicator;
-#endif /* !MATERIAL_COMPONENTS */
+#endif /* !MATERIAL_ACTIVITY_INDICATOR */
 
 @property (nonatomic, assign) IBInspectable  CGFloat                               activityIndicatorRadius;
 

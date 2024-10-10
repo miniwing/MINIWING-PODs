@@ -16,8 +16,6 @@
 #  import "MaterialComponents/MaterialPalettes.h"
 #elif __has_include("MaterialPalettes.h")
 #  import "MaterialPalettes.h"
-#else
-//#  define MATERIAL_PALETTES                                             (0)
 #endif
 
 @implementation IDEAActivityIndicatorController
@@ -62,16 +60,20 @@
    
    if (nil == self.activityIndicator) {
       
-#if MATERIAL_COMPONENTS
+#if MATERIAL_ACTIVITY_INDICATOR
       self.activityIndicator  = [[MDCActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, self.activityIndicatorRadius * 2, self.activityIndicatorRadius * 2)];
-#else /* MATERIAL_COMPONENTS */
-      
-#  ifdef __IPHONE_13_0
-      self.activityIndicator  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
-#  else /* __IPHONE_13_0 */
-      self.activityIndicator  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-#  endif /* !__IPHONE_13_0 */
-#endif /* !MATERIAL_COMPONENTS */
+#else /* MATERIAL_ACTIVITY_INDICATOR */
+      if (@available(iOS 13.0, *)) {
+         
+         self.activityIndicator  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
+
+      } /* End if () */
+      else {
+         
+         self.activityIndicator  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+
+      } /* End else */
+#endif /* !MATERIAL_ACTIVITY_INDICATOR */
       
    } /* End if () */
 

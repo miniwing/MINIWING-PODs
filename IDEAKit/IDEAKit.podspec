@@ -254,11 +254,11 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 #     define REGEX_KITLITE                                                 (0)
 #  endif
 
-#  if __has_include(<SSZipArchive/SSZipArchive.h>)
-#     import <SSZipArchive/SSZipArchive.h>
+#  if __has_include(<SSZipArchive/SSZipArchive-umbrella.h>)
+#     import <SSZipArchive/SSZipArchive-umbrella.h>
 #     define SS_ZIP_ARCHIVE                                                (1)
-#  elif __has_include("SSZipArchive/SSZipArchive.h")
-#     import "SSZipArchive/SSZipArchive.h"
+#  elif __has_include("SSZipArchive/SSZipArchive-umbrella.h")
+#     import "SSZipArchive/SSZipArchive-umbrella.h"
 #     define SS_ZIP_ARCHIVE                                                (1)
 #  else
 #     define SS_ZIP_ARCHIVE                                                (0)
@@ -269,13 +269,13 @@ NS_INLINE NSString * __APP_BUILD_VERSION() {
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)

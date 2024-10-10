@@ -148,10 +148,10 @@ Pod::Spec.new do |spec|
 #ifdef __OBJC__
 
 #  if __has_include(<RTRootNavigationController/RTRootNavigationController-umbrella.h>)
-#     import <RTRootNavigationController/RTRootNavigationController.h>
+#     import <RTRootNavigationController/RTRootNavigationController-umbrella.h>
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  elif __has_include("RTRootNavigationController/RTRootNavigationController-umbrella.h")
-#     import "RTRootNavigationController/RTRootNavigationController.h"
+#     import "RTRootNavigationController/RTRootNavigationController-umbrella.h"
 #     define RT_ROOT_NAVIGATIONCONTROLLER                                  (1)
 #  else
 #     define rt_topViewController                                          topViewController
@@ -166,13 +166,13 @@ Pod::Spec.new do |spec|
 /******************************************************************************************************/
 
 #if (__has_include(<YYKit/YYKit-umbrella.h>))
-#  import <YYKit/YYKit.h>
+#  import <YYKit/YYKit-umbrella.h>
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit/YYKit-umbrella.h"))
-#  import "YYKit/YYKit.h"
+#  import "YYKit/YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #elif (__has_include("YYKit-umbrella.h"))
-#  import "YYKit.h"
+#  import "YYKit-umbrella.h"
 #     define YY_KIT                                                        (1)
 #else /* YY_KIT */
 #     define YY_KIT                                                        (0)
