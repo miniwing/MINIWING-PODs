@@ -9,8 +9,8 @@ Pod::Spec.new do |spec|
   spec.license                      = "MIT"
   spec.author                       = { "Harry" => "miniwing.hz@gmail.com" }
 
-#  spec.source                       = { :path => "." }
-  spec.source                       = { :git => 'https://github.com/miniwing/IDEANightVersion.git', :tag => spec.version.to_s }
+  spec.source                       = { :path => "." }
+#  spec.source                       = { :git => 'https://github.com/miniwing/IDEANightVersion.git', :tag => spec.version.to_s }
 
   spec.ios.deployment_target        = ENV['ios.deployment_target']
   spec.watchos.deployment_target    = ENV['watchos.deployment_target']

@@ -60,7 +60,7 @@
 
 #pragma mark - public methods
 
-- (void)call {
+- (void)call:(id)aSender {
    NSAssert(1, @"This method should be overrided!");
 }
 
@@ -95,20 +95,20 @@
    return self;
 }
 
-- (void)call {
+- (void)call:(id)aSender {
    if (self.lastRunTaskDate) {
       if ([[NSDate date] timeIntervalSinceDate:self.lastRunTaskDate] > self.interval) {
-         [self runTaskDirectly];
+         [self runTaskDirectly:aSender];
       }
    } else {
-      [self runTaskDirectly];
+      [self runTaskDirectly:aSender];
    }
 }
 
-- (void)runTaskDirectly {
+- (void)runTaskDirectly:(id)aSender {
    dispatch_async(self.queue, ^{
       if (self.taskBlock) {
-         self.taskBlock();
+         self.taskBlock(aSender);
       }
       self.lastRunTaskDate = [NSDate date];
    });
@@ -146,16 +146,23 @@
    return self;
 }
 
-- (void)call {
+- (void)call:(id)aSender {
+   
    NSDate *now = [NSDate date];
+   
    if (!self.nextRunTaskDate) {
+      
       if (self.lastRunTaskDate) {
+         
          if ([now timeIntervalSinceDate:self.lastRunTaskDate] > self.interval) {
+            
             self.nextRunTaskDate = [NSDate dateWithTimeInterval:self.interval sinceDate:now];
-         } else {
+         }
+         else {
             self.nextRunTaskDate = [NSDate dateWithTimeInterval:self.interval sinceDate:self.lastRunTaskDate];
          }
-      } else {
+      }
+      else {
          self.nextRunTaskDate = [NSDate dateWithTimeInterval:self.interval sinceDate:now];
       }
       
@@ -163,8 +170,10 @@
       NSTimeInterval nextInterval = [self.nextRunTaskDate timeIntervalSinceDate:now];
       
       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(nextInterval * NSEC_PER_SEC)), self.queue, ^{
+         
          if (self.taskBlock) {
-            self.taskBlock();
+            
+            self.taskBlock(aSender);
          }
          self.lastRunTaskDate = [NSDate date];
          self.nextRunTaskDate = nil;

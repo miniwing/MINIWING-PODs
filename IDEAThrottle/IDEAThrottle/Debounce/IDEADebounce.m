@@ -58,7 +58,7 @@
 
 #pragma mark - public methods
 
-- (void)call {
+- (void)call:(id)aSender {
    NSAssert(1, @"This method should be overrided!");
 }
 
@@ -93,14 +93,15 @@
    return self;
 }
 
-- (void)call {
+- (void)call:(id)aSender {
+   
    if (self.block) {
       dispatch_block_cancel(self.block);
    }
    __weak typeof(self)weakSelf = self;
    self.block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS, ^{
       if (weakSelf.taskBlock) {
-         weakSelf.taskBlock();
+         weakSelf.taskBlock(aSender);
       }
    });
    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.interval * NSEC_PER_SEC)), self.queue, self.block);
@@ -139,13 +140,13 @@
    return self;
 }
 
-- (void)call {
+- (void)call:(id)aSender {
    if (self.lastCallTaskDate) {
       if ([[NSDate date] timeIntervalSinceDate:self.lastCallTaskDate] > self.interval) {
-         [self runTaskDirectly];
+         [self runTaskDirectly:aSender];
       }
    } else {
-      [self runTaskDirectly];
+      [self runTaskDirectly:aSender];
    }
    self.lastCallTaskDate = [NSDate date];
 }
@@ -155,10 +156,10 @@
    self.block = nil;
 }
 
-- (void)runTaskDirectly {
+- (void)runTaskDirectly:(id)aSender {
    dispatch_async(self.queue, ^{
       if (self.taskBlock) {
-         self.taskBlock();
+         self.taskBlock(aSender);
       }
    });
 }

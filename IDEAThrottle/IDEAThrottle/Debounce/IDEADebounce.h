@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, IDEADebounceMode) {
    IDEADebounceModeLeading,         //invoking on the leading edge of the timeout
 };
 
-typedef void(^IDEADebounceTaskBlock)(void);
+typedef void(^IDEADebounceTaskBlock)(id _Nullable aSender);
 
 @interface IDEADebounce : NSObject
 
@@ -46,7 +46,7 @@ typedef void(^IDEADebounceTaskBlock)(void);
 
 
 /// debouncing call the task
-- (void)call;
+- (void)call:(id _Nullable)aSender;
 
 
 /// When the owner of the IDEADebounce object is about to release, call this method on the IDEADebounce object first to prevent circular references

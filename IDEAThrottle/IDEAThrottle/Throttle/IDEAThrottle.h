@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, IDEAThrottleMode) {
    IDEAThrottleModeTrailing,         //invoking on the trailing edge of the timeout
 };
 
-typedef void(^IDEAThrottleTaskBlock)(void);
+typedef void(^IDEAThrottleTaskBlock)(id _Nullable aSender);
 
 @interface IDEAThrottle : NSObject
 
@@ -46,7 +46,7 @@ typedef void(^IDEAThrottleTaskBlock)(void);
 
 
 /// throttling call the task
-- (void)call;
+- (void)call:(id _Nullable)aSender;
 
 
 /// When the owner of the IDEAThrottle object is about to release, call this method on the IDEAThrottle object first to prevent circular references
