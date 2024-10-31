@@ -12,7 +12,7 @@
 #define __SERVICE_SECTION_NAME                  "__SERVICE"
 #define __SECTION_DATA(sectname)                __attribute((used, section("__DATA," #sectname)))
 
-#define __EXPORT_SERVICE(servicename, impl)     char * k_##servicename##_service __SECTION_DATA(__SERVICE) = "{ \""#servicename"\" : \""#impl"\"}";
+#define __EXPORT_SERVICE(servicename, impl)     char * IDEA_##servicename##_service __SECTION_DATA(__SERVICE) = "{ \""#servicename"\" : \""#impl"\"}";
 
 @interface IDEAServiceManager : NSObject
 
