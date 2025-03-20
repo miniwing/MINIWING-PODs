@@ -3,7 +3,7 @@
 //  UIImageView+UIImage
 //
 //  Created by Harry on 16/3/2.
-//  Copyright © 2016年 Harry. All rights reserved.
+//  Copyright © 2016年 MINIWING. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

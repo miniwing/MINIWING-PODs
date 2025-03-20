@@ -5,7 +5,7 @@
 //	MIT License
 //
 // Created by Harry on 15/10/26.
-// Copyright © 2015年 Harry. All rights reserved.
+// Copyright © 2015年 MINIWING. All rights reserved.
 //
 // Mail:miniwing.hz@gmail.com
 // TEL :+(852)53054612

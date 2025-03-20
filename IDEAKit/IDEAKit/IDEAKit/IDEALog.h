@@ -3,7 +3,7 @@
 //  IDEAKit
 //
 //  Created by Harry on 14-6-29.
-//  Copyright (c) 2014年 Harry. All rights reserved.
+//  Copyright (c) 2014年 MINIWING. All rights reserved.
 //
 //  Mail:miniwing.hz@gmail.com
 //  TEL :+(852)53054612
@@ -20,7 +20,7 @@
 
 #ifdef __OBJC__
 
-typedef NS_ENUM(NSInteger, LogLevel) {
+typedef NS_ENUM(NSInteger, _LogLevel) {
 
    LogLevelFatal = 0,
    LogLevelError,
@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, LogLevel) {
    LogLevelDebug
 };
 
-NS_INLINE const char* __LogLevelToString(LogLevel _eLevel) {
+NS_INLINE const char* __LogLevelToString(_LogLevel _eLevel) {
    
    switch (_eLevel)
    {
@@ -51,7 +51,7 @@ NS_INLINE const char* __LogLevelToString(LogLevel _eLevel) {
    return ("Unknown");
 }
 
-NS_INLINE void __Log(LogLevel _eLevel, const NSString *_aMsg) {
+NS_INLINE void __Log(_LogLevel _eLevel, const NSString *_aMsg) {
    
    if (LOG_BUG_SIZE >= _aMsg.length) {
       

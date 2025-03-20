@@ -3,7 +3,7 @@
 //  MBProgressHUD+Extend
 //
 //  Created by Harry on 15/11/10.
-//  Copyright © 2015年 Harry. All rights reserved.
+//  Copyright © 2015年 MINIWING. All rights reserved.
 //
 
 #if __has_include(<MBProgressHUD/MBProgressHUD.h>) || __has_include("MBProgressHUD/MBProgressHUD.h")

@@ -3,7 +3,7 @@
 //  IDEAKit
 //
 //  Created by Harry on 2019/3/20.
-//  Copyright © 2019年 Harry. All rights reserved.
+//  Copyright © 2019年 MINIWING. All rights reserved.
 //
 
 #import "YYWebImageManager+Cache.h"

@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2022/10/23.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //
 
 #import <Foundation/Foundation.h>

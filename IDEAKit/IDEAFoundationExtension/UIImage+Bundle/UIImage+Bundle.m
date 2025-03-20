@@ -3,7 +3,7 @@
 //  IDEAKit
 //
 //  Created by Harry on 16/5/7.
-//  Copyright © 2016年 Harry. All rights reserved.
+//  Copyright © 2016年 MINIWING. All rights reserved.
 //
 
 #import "UIImage+Bundle.h"

@@ -87,6 +87,12 @@ Pod::Spec.new do |spec|
     spec.dependency 'MaterialComponents/BottomSheet+ShapeThemer'
 #    spec.dependency 'MaterialComponents/ActivityIndicator'
     spec.dependency 'MaterialComponents/Snackbar'
+  else
+    if ENV['IDEA_MATERIAL_NAVIGATION_BAR'] == 'YES'
+      spec.dependency 'MaterialComponents/NavigationBar'
+      spec.dependency 'MaterialComponents/ActivityIndicator'
+      spec.dependency 'MotionInterchange'
+    end # IDEA_MATERIAL_NAVIGATION_BAR
   end # IDEA_MATERIAL_COMPONENTS
 
   spec.dependency 'IDEANibBridge'

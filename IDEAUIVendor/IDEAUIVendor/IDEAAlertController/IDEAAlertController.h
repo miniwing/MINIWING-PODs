@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2022/6/21.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //
 
 #import <UIKit/UIKit.h>

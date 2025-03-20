@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2022/4/10.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //
 
 #import "UITableViewX.h"

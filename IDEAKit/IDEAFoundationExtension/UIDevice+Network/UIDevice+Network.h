@@ -3,7 +3,7 @@
 //  NetworkArch
 //
 //  Created by Harry on 2021/7/31.
-//  Copyright © 2024 Harry. All rights reserved.
+//  Copyright © 2024 MINIWING. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

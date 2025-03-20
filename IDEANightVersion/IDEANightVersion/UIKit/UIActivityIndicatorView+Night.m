@@ -3,7 +3,7 @@
 //  IDEANightVersion
 //
 //  Created by Harry on 2019/12/30.
-//  Copyright © 2019 Harry. All rights reserved.
+//  Copyright © 2019 MINIWING. All rights reserved.
 //
 
 #import "UITabBar+Night.h"

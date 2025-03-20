@@ -3,7 +3,7 @@
 //  IDEAKit
 //
 //  Created by Harry on 14-7-25.
-//  Copyright (c) 2014年 Harry. All rights reserved.
+//  Copyright (c) 2014年 MINIWING. All rights reserved.
 //
 
 #import "IDEAKit/NSObject+Notification.h"

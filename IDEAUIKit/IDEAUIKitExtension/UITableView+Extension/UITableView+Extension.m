@@ -3,7 +3,7 @@
 //  UITableView+Extension
 //
 //  Created by Harry on 15/1/13.
-//  Copyright (c) 2015年 Harry. All rights reserved.
+//  Copyright (c) 2015年 MINIWING. All rights reserved.
 //
 
 #import "UITableView+Extension.h"

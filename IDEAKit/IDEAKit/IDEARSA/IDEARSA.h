@@ -3,9 +3,9 @@
 //  IDEA-APP
 //
 //  Created by Harry on 2019/4/2.
-//  Copyright © 2019年 Harry. All rights reserved.
+//  Copyright © 2019年 MINIWING. All rights reserved.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //  TEL : +(852)53054612
 //
 

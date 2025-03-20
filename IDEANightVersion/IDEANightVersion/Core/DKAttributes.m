@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2020/1/7.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //  TEL : +(852)53054612
 //
 

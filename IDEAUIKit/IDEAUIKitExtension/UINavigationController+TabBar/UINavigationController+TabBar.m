@@ -3,7 +3,7 @@
 //  UINavigationController+TabBar
 //
 //  Created by Harry on 2019/9/26.
-//  Copyright © 2019 Harry. All rights reserved.
+//  Copyright © 2019 MINIWING. All rights reserved.
 //
 
 #import "UINavigationController+TabBar.h"

@@ -3,7 +3,7 @@
 //  IDEAStatusBar
 //
 //  Created by Harry on 2020/3/16.
-//  Copyright © 2020 Harry. All rights reserved.
+//  Copyright © 2020 MINIWING. All rights reserved.
 //
 
 #import "IDEAStatusBar.h"

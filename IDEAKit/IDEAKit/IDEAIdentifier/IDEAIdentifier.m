@@ -3,9 +3,9 @@
 //  IDEAKit
 //
 //  Created by Harry on 2019/9/30.
-//  Copyright © 2019 Harry. All rights reserved.
+//  Copyright © 2019 MINIWING. All rights reserved.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //  TEL : +(852)53054612
 //
 

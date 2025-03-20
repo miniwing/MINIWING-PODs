@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2024/8/18.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //
 
 #import <IDEANibBridge/IDEANibBridge.h>

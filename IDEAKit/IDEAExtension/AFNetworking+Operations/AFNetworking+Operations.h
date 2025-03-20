@@ -3,7 +3,7 @@
 //  IDEAKit
 //
 //  Created by Harry on 15/12/1.
-//  Copyright © 2015年 Harry. All rights reserved.
+//  Copyright © 2015年 MINIWING. All rights reserved.
 //
 
 #ifdef DEBUG

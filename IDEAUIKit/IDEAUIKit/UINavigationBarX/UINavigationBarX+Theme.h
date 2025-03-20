@@ -4,7 +4,7 @@
 //
 //  Created by Harry on 2022/3/25.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //
 
 #import "UINavigationBarX.h"

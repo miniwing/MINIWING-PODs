@@ -3,9 +3,9 @@
 //  IDEAColor
 //
 //  Created by Harry on 2020/11/3.
-//  Copyright © 2020 Harry. All rights reserved.
+//  Copyright © 2020 MINIWING. All rights reserved.
 //
-//  Mail: miniwing.hz@gmail.com
+//  MAIL: miniwing.hz@gmail.com
 //  TEL : +(852)53054612
 //
 
